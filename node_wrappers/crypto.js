@@ -1,5 +1,5 @@
 
-goog.provide("crypto");
+goog.provide("node.crypto");
 
 /**
  * @fileoverview Use `require('crypto')` to access this module.
@@ -23,8 +23,8 @@ goog.provide("crypto");
  * @param {*} options
  * @return {*}
  */
-crypto.prototype.createCredentials = function(options) {
-  return crypto.core.createCredentials(options);
+node.crypto.prototype.createCredentials = function(options) {
+  return node.crypto.core_.createCredentials(options);
 };
 
 /**
@@ -37,8 +37,8 @@ crypto.prototype.createCredentials = function(options) {
  * @param {*} hash
  * @return {*}
  */
-crypto.prototype.createHash = function(hash) {
-  return crypto.core.createHash(hash);
+node.crypto.prototype.createHash = function(hash) {
+  return node.crypto.core_.createHash(hash);
 };
 
 /**
@@ -50,8 +50,8 @@ crypto.prototype.createHash = function(hash) {
  * @param {*} key
  * @return {*}
  */
-crypto.prototype.createHmac = function(hmac, key) {
-  return crypto.core.createHmac(hmac, key);
+node.crypto.prototype.createHmac = function(hmac, key) {
+  return node.crypto.core_.createHmac(hmac, key);
 };
 
 /**
@@ -63,8 +63,8 @@ crypto.prototype.createHmac = function(hmac, key) {
  * @param {*} key
  * @return {*}
  */
-crypto.prototype.createCipher = function(cipher, key) {
-  return crypto.core.createCipher(cipher, key);
+node.crypto.prototype.createCipher = function(cipher, key) {
+  return node.crypto.core_.createCipher(cipher, key);
 };
 
 /**
@@ -73,8 +73,8 @@ crypto.prototype.createCipher = function(cipher, key) {
  * @param {*} iv
  * @return {*}
  */
-crypto.prototype.createCipheriv = function(cipher, key, iv) {
-  return crypto.core.createCipheriv(cipher, key, iv);
+node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
+  return node.crypto.core_.createCipheriv(cipher, key, iv);
 };
 
 /**
@@ -84,8 +84,8 @@ crypto.prototype.createCipheriv = function(cipher, key, iv) {
  * @param {*} key
  * @return {*}
  */
-crypto.prototype.createDecipher = function(cipher, key) {
-  return crypto.core.createDecipher(cipher, key);
+node.crypto.prototype.createDecipher = function(cipher, key) {
+  return node.crypto.core_.createDecipher(cipher, key);
 };
 
 /**
@@ -94,8 +94,8 @@ crypto.prototype.createDecipher = function(cipher, key) {
  * @param {*} iv
  * @return {*}
  */
-crypto.prototype.createDecipheriv = function(cipher, key, iv) {
-  return crypto.core.createDecipheriv(cipher, key, iv);
+node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
+  return node.crypto.core_.createDecipheriv(cipher, key, iv);
 };
 
 /**
@@ -105,8 +105,8 @@ crypto.prototype.createDecipheriv = function(cipher, key, iv) {
  * @param {*} algorithm
  * @return {*}
  */
-crypto.prototype.createSign = function(algorithm) {
-  return crypto.core.createSign(algorithm);
+node.crypto.prototype.createSign = function(algorithm) {
+  return node.crypto.core_.createSign(algorithm);
 };
 
 /**
@@ -115,9 +115,13 @@ crypto.prototype.createSign = function(algorithm) {
  * @param {*} algorithm
  * @return {*}
  */
-crypto.prototype.createVerify = function(algorithm) {
-  return crypto.core.createVerify(algorithm);
+node.crypto.prototype.createVerify = function(algorithm) {
+  return node.crypto.core_.createVerify(algorithm);
 };
 
 
-crypto.core = require("crypto");
+/**
+ * @private
+ * @type {*}
+ */
+node.crypto.core_ = require("crypto");

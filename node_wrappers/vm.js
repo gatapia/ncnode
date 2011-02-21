@@ -1,5 +1,5 @@
 
-goog.provide("vm");
+goog.provide("node.vm");
 
 /**
  * @fileoverview You can access this module with:
@@ -23,22 +23,22 @@ goog.provide("vm");
  * @param {*} name
  * @return {*}
  */
-vm.prototype.createScript = function(code, ctx, name) {
-  return vm.core.createScript(code, ctx, name);
+node.vm.prototype.createScript = function(code, ctx, name) {
+  return node.vm.core_.createScript(code, ctx, name);
 };
 
 /**
  * @return {*}
  */
-vm.prototype.createContext = function() {
-  return vm.core.createContext();
+node.vm.prototype.createContext = function() {
+  return node.vm.core_.createContext();
 };
 
 /**
  * @return {*}
  */
-vm.prototype.runInContext = function() {
-  return vm.core.runInContext();
+node.vm.prototype.runInContext = function() {
+  return node.vm.core_.runInContext();
 };
 
 /**
@@ -65,8 +65,8 @@ vm.prototype.runInContext = function() {
  * </pre>
  * @return {*}
  */
-vm.prototype.runInThisContext = function() {
-  return vm.core.runInThisContext();
+node.vm.prototype.runInThisContext = function() {
+  return node.vm.core_.runInThisContext();
 };
 
 /**
@@ -99,9 +99,13 @@ vm.prototype.runInThisContext = function() {
  * requires a separate process.
  * @return {*}
  */
-vm.prototype.runInNewContext = function() {
-  return vm.core.runInNewContext();
+node.vm.prototype.runInNewContext = function() {
+  return node.vm.core_.runInNewContext();
 };
 
 
-vm.core = require("vm");
+/**
+ * @private
+ * @type {*}
+ */
+node.vm.core_ = require("vm");

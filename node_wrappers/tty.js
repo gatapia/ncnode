@@ -1,9 +1,13 @@
 
-goog.provide("tty");
+goog.provide("node.tty");
 
 /**
  * @fileoverview Use `require('tty')` to access this module.
  */
 
 
-tty.core = require("tty");
+/**
+ * @private
+ * @type {*}
+ */
+node.tty.core_ = require("tty");

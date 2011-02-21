@@ -1,5 +1,5 @@
 
-goog.provide("events");
+goog.provide("node.events");
 
 /**
  * @fileoverview Many objects in Node emit events: a `net.Server` emits an event each time
@@ -15,4 +15,8 @@ goog.provide("events");
  */
 
 
-events.core = require("events");
+/**
+ * @private
+ * @type {*}
+ */
+node.events.core_ = require("events");

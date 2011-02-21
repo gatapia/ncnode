@@ -1,5 +1,5 @@
 
-goog.provide("assert");
+goog.provide("node.assert");
 
 /**
  * @fileoverview This module is used for writing unit tests for your applications, you can
@@ -15,8 +15,8 @@ goog.provide("assert");
  * @param {*} stackStartFunction
  * @return {*}
  */
-assert.prototype.fail = function(actual, expected, message, operator, stackStartFunction) {
-  return assert.core.fail(actual, expected, message, operator, stackStartFunction);
+node.assert.prototype.fail = function(actual, expected, message, operator, stackStartFunction) {
+  return node.assert.core_.fail(actual, expected, message, operator, stackStartFunction);
 };
 
 /**
@@ -25,8 +25,8 @@ assert.prototype.fail = function(actual, expected, message, operator, stackStart
  * @param {*} message
  * @return {*}
  */
-assert.prototype.ok = function(value, message) {
-  return assert.core.ok(value, message);
+node.assert.prototype.ok = function(value, message) {
+  return node.assert.core_.ok(value, message);
 };
 
 /**
@@ -36,8 +36,8 @@ assert.prototype.ok = function(value, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.equal = function(actual, expected, message) {
-  return assert.core.equal(actual, expected, message);
+node.assert.prototype.equal = function(actual, expected, message) {
+  return node.assert.core_.equal(actual, expected, message);
 };
 
 /**
@@ -47,8 +47,8 @@ assert.prototype.equal = function(actual, expected, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.notEqual = function(actual, expected, message) {
-  return assert.core.notEqual(actual, expected, message);
+node.assert.prototype.notEqual = function(actual, expected, message) {
+  return node.assert.core_.notEqual(actual, expected, message);
 };
 
 /**
@@ -58,8 +58,8 @@ assert.prototype.notEqual = function(actual, expected, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.deepEqual = function(actual, expected, message) {
-  return assert.core.deepEqual(actual, expected, message);
+node.assert.prototype.deepEqual = function(actual, expected, message) {
+  return node.assert.core_.deepEqual(actual, expected, message);
 };
 
 /**
@@ -69,8 +69,8 @@ assert.prototype.deepEqual = function(actual, expected, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.notDeepEqual = function(actual, expected, message) {
-  return assert.core.notDeepEqual(actual, expected, message);
+node.assert.prototype.notDeepEqual = function(actual, expected, message) {
+  return node.assert.core_.notDeepEqual(actual, expected, message);
 };
 
 /**
@@ -80,8 +80,8 @@ assert.prototype.notDeepEqual = function(actual, expected, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.strictEqual = function(actual, expected, message) {
-  return assert.core.strictEqual(actual, expected, message);
+node.assert.prototype.strictEqual = function(actual, expected, message) {
+  return node.assert.core_.strictEqual(actual, expected, message);
 };
 
 /**
@@ -91,8 +91,8 @@ assert.prototype.strictEqual = function(actual, expected, message) {
  * @param {*} message
  * @return {*}
  */
-assert.prototype.notStrictEqual = function(actual, expected, message) {
-  return assert.core.notStrictEqual(actual, expected, message);
+node.assert.prototype.notStrictEqual = function(actual, expected, message) {
+  return node.assert.core_.notStrictEqual(actual, expected, message);
 };
 
 /**
@@ -136,8 +136,8 @@ assert.prototype.notStrictEqual = function(actual, expected, message) {
  * @param {*=} message
  * @return {*}
  */
-assert.prototype.throws = function(block, error, message) {
-  return assert.core.throws(block, error, message);
+node.assert.prototype.throws = function(block, error, message) {
+  return node.assert.core_.throws(block, error, message);
 };
 
 /**
@@ -147,8 +147,8 @@ assert.prototype.throws = function(block, error, message) {
  * @param {*=} message
  * @return {*}
  */
-assert.prototype.doesNotThrow = function(block, error, message) {
-  return assert.core.doesNotThrow(block, error, message);
+node.assert.prototype.doesNotThrow = function(block, error, message) {
+  return node.assert.core_.doesNotThrow(block, error, message);
 };
 
 /**
@@ -157,9 +157,13 @@ assert.prototype.doesNotThrow = function(block, error, message) {
  * @param {*} err
  * @return {*}
  */
-assert.prototype.ifError = function(err) {
-  return assert.core.ifError(err);
+node.assert.prototype.ifError = function(err) {
+  return node.assert.core_.ifError(err);
 };
 
 
-assert.core = require("assert");
+/**
+ * @private
+ * @type {*}
+ */
+node.assert.core_ = require("assert");

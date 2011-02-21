@@ -1,5 +1,5 @@
 
-goog.provide("fs");
+goog.provide("node.fs");
 
 /**
  * @fileoverview File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
@@ -71,8 +71,8 @@ goog.provide("fs");
  * @param {*} encoding_
  * @return {*}
  */
-fs.prototype.readFile = function(path, encoding_) {
-  return fs.core.readFile(path, encoding_);
+node.fs.prototype.readFile = function(path, encoding_) {
+  return node.fs.core_.readFile(path, encoding_);
 };
 
 /**
@@ -84,8 +84,8 @@ fs.prototype.readFile = function(path, encoding_) {
  * @param {*} encoding
  * @return {*}
  */
-fs.prototype.readFileSync = function(path, encoding) {
-  return fs.core.readFileSync(path, encoding);
+node.fs.prototype.readFileSync = function(path, encoding) {
+  return node.fs.core_.readFileSync(path, encoding);
 };
 
 /**
@@ -95,8 +95,8 @@ fs.prototype.readFileSync = function(path, encoding) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.close = function(fd, callback) {
-  return fs.core.close(fd, callback);
+node.fs.prototype.close = function(fd, callback) {
+  return node.fs.core_.close(fd, callback);
 };
 
 /**
@@ -104,8 +104,8 @@ fs.prototype.close = function(fd, callback) {
  * @param {*} fd
  * @return {*}
  */
-fs.prototype.closeSync = function(fd) {
-  return fs.core.closeSync(fd);
+node.fs.prototype.closeSync = function(fd) {
+  return node.fs.core_.closeSync(fd);
 };
 
 /**
@@ -117,8 +117,8 @@ fs.prototype.closeSync = function(fd) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.open = function(path, flags, mode_, callback) {
-  return fs.core.open(path, flags, mode_, callback);
+node.fs.prototype.open = function(path, flags, mode_, callback) {
+  return node.fs.core_.open(path, flags, mode_, callback);
 };
 
 /**
@@ -128,8 +128,8 @@ fs.prototype.open = function(path, flags, mode_, callback) {
  * @param {*} mode
  * @return {*}
  */
-fs.prototype.openSync = function(path, flags, mode) {
-  return fs.core.openSync(path, flags, mode);
+node.fs.prototype.openSync = function(path, flags, mode) {
+  return node.fs.core_.openSync(path, flags, mode);
 };
 
 /**
@@ -153,8 +153,8 @@ fs.prototype.openSync = function(path, flags, mode) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.read = function(fd, buffer, offset, length, position, callback) {
-  return fs.core.read(fd, buffer, offset, length, position, callback);
+node.fs.prototype.read = function(fd, buffer, offset, length, position, callback) {
+  return node.fs.core_.read(fd, buffer, offset, length, position, callback);
 };
 
 /**
@@ -167,8 +167,8 @@ fs.prototype.read = function(fd, buffer, offset, length, position, callback) {
  * @param {*} position
  * @return {*}
  */
-fs.prototype.readSync = function(fd, buffer, offset, length, position) {
-  return fs.core.readSync(fd, buffer, offset, length, position);
+node.fs.prototype.readSync = function(fd, buffer, offset, length, position) {
+  return node.fs.core_.readSync(fd, buffer, offset, length, position);
 };
 
 /**
@@ -191,8 +191,8 @@ fs.prototype.readSync = function(fd, buffer, offset, length, position) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.write = function(fd, buffer, offset, length, position, callback) {
-  return fs.core.write(fd, buffer, offset, length, position, callback);
+node.fs.prototype.write = function(fd, buffer, offset, length, position, callback) {
+  return node.fs.core_.write(fd, buffer, offset, length, position, callback);
 };
 
 /**
@@ -205,8 +205,8 @@ fs.prototype.write = function(fd, buffer, offset, length, position, callback) {
  * @param {*} position
  * @return {*}
  */
-fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
-  return fs.core.writeSync(fd, buffer, offset, length, position);
+node.fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
+  return node.fs.core_.writeSync(fd, buffer, offset, length, position);
 };
 
 /**
@@ -217,8 +217,8 @@ fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.rename = function(oldPath, newPath, callback) {
-  return fs.core.rename(oldPath, newPath, callback);
+node.fs.prototype.rename = function(oldPath, newPath, callback) {
+  return node.fs.core_.rename(oldPath, newPath, callback);
 };
 
 /**
@@ -227,8 +227,8 @@ fs.prototype.rename = function(oldPath, newPath, callback) {
  * @param {*} newPath
  * @return {*}
  */
-fs.prototype.renameSync = function(oldPath, newPath) {
-  return fs.core.renameSync(oldPath, newPath);
+node.fs.prototype.renameSync = function(oldPath, newPath) {
+  return node.fs.core_.renameSync(oldPath, newPath);
 };
 
 /**
@@ -239,8 +239,8 @@ fs.prototype.renameSync = function(oldPath, newPath) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.truncate = function(fd, len, callback) {
-  return fs.core.truncate(fd, len, callback);
+node.fs.prototype.truncate = function(fd, len, callback) {
+  return node.fs.core_.truncate(fd, len, callback);
 };
 
 /**
@@ -249,8 +249,8 @@ fs.prototype.truncate = function(fd, len, callback) {
  * @param {*} len
  * @return {*}
  */
-fs.prototype.truncateSync = function(fd, len) {
-  return fs.core.truncateSync(fd, len);
+node.fs.prototype.truncateSync = function(fd, len) {
+  return node.fs.core_.truncateSync(fd, len);
 };
 
 /**
@@ -260,8 +260,8 @@ fs.prototype.truncateSync = function(fd, len) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.rmdir = function(path, callback) {
-  return fs.core.rmdir(path, callback);
+node.fs.prototype.rmdir = function(path, callback) {
+  return node.fs.core_.rmdir(path, callback);
 };
 
 /**
@@ -269,8 +269,8 @@ fs.prototype.rmdir = function(path, callback) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.rmdirSync = function(path) {
-  return fs.core.rmdirSync(path);
+node.fs.prototype.rmdirSync = function(path) {
+  return node.fs.core_.rmdirSync(path);
 };
 
 /**
@@ -278,16 +278,16 @@ fs.prototype.rmdirSync = function(path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.fdatasync = function(fd, callback) {
-  return fs.core.fdatasync(fd, callback);
+node.fs.prototype.fdatasync = function(fd, callback) {
+  return node.fs.core_.fdatasync(fd, callback);
 };
 
 /**
  * @param {*} fd
  * @return {*}
  */
-fs.prototype.fdatasyncSync = function(fd) {
-  return fs.core.fdatasyncSync(fd);
+node.fs.prototype.fdatasyncSync = function(fd) {
+  return node.fs.core_.fdatasyncSync(fd);
 };
 
 /**
@@ -295,16 +295,16 @@ fs.prototype.fdatasyncSync = function(fd) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.fsync = function(fd, callback) {
-  return fs.core.fsync(fd, callback);
+node.fs.prototype.fsync = function(fd, callback) {
+  return node.fs.core_.fsync(fd, callback);
 };
 
 /**
  * @param {*} fd
  * @return {*}
  */
-fs.prototype.fsyncSync = function(fd) {
-  return fs.core.fsyncSync(fd);
+node.fs.prototype.fsyncSync = function(fd) {
+  return node.fs.core_.fsyncSync(fd);
 };
 
 /**
@@ -315,8 +315,8 @@ fs.prototype.fsyncSync = function(fd) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.mkdir = function(path, mode, callback) {
-  return fs.core.mkdir(path, mode, callback);
+node.fs.prototype.mkdir = function(path, mode, callback) {
+  return node.fs.core_.mkdir(path, mode, callback);
 };
 
 /**
@@ -325,8 +325,8 @@ fs.prototype.mkdir = function(path, mode, callback) {
  * @param {*} mode
  * @return {*}
  */
-fs.prototype.mkdirSync = function(path, mode) {
-  return fs.core.mkdirSync(path, mode);
+node.fs.prototype.mkdirSync = function(path, mode) {
+  return node.fs.core_.mkdirSync(path, mode);
 };
 
 /**
@@ -337,8 +337,8 @@ fs.prototype.mkdirSync = function(path, mode) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
-  return fs.core.sendfile(outFd, inFd, inOffset, length, callback);
+node.fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
+  return node.fs.core_.sendfile(outFd, inFd, inOffset, length, callback);
 };
 
 /**
@@ -348,8 +348,8 @@ fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
  * @param {*} length
  * @return {*}
  */
-fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
-  return fs.core.sendfileSync(outFd, inFd, inOffset, length);
+node.fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
+  return node.fs.core_.sendfileSync(outFd, inFd, inOffset, length);
 };
 
 /**
@@ -360,8 +360,8 @@ fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.readdir = function(path, callback) {
-  return fs.core.readdir(path, callback);
+node.fs.prototype.readdir = function(path, callback) {
+  return node.fs.core_.readdir(path, callback);
 };
 
 /**
@@ -370,8 +370,8 @@ fs.prototype.readdir = function(path, callback) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.readdirSync = function(path) {
-  return fs.core.readdirSync(path);
+node.fs.prototype.readdirSync = function(path) {
+  return node.fs.core_.readdirSync(path);
 };
 
 /**
@@ -381,8 +381,8 @@ fs.prototype.readdirSync = function(path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.fstat = function(fd, callback) {
-  return fs.core.fstat(fd, callback);
+node.fs.prototype.fstat = function(fd, callback) {
+  return node.fs.core_.fstat(fd, callback);
 };
 
 /**
@@ -394,8 +394,8 @@ fs.prototype.fstat = function(fd, callback) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.lstat = function(path, callback) {
-  return fs.core.lstat(path, callback);
+node.fs.prototype.lstat = function(path, callback) {
+  return node.fs.core_.lstat(path, callback);
 };
 
 /**
@@ -421,8 +421,8 @@ fs.prototype.lstat = function(path, callback) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.stat = function(path, callback) {
-  return fs.core.stat(path, callback);
+node.fs.prototype.stat = function(path, callback) {
+  return node.fs.core_.stat(path, callback);
 };
 
 /**
@@ -430,8 +430,8 @@ fs.prototype.stat = function(path, callback) {
  * @param {*} fd
  * @return {*}
  */
-fs.prototype.fstatSync = function(fd) {
-  return fs.core.fstatSync(fd);
+node.fs.prototype.fstatSync = function(fd) {
+  return node.fs.core_.fstatSync(fd);
 };
 
 /**
@@ -439,8 +439,8 @@ fs.prototype.fstatSync = function(fd) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.lstatSync = function(path) {
-  return fs.core.lstatSync(path);
+node.fs.prototype.lstatSync = function(path) {
+  return node.fs.core_.lstatSync(path);
 };
 
 /**
@@ -448,8 +448,8 @@ fs.prototype.lstatSync = function(path) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.statSync = function(path) {
-  return fs.core.statSync(path);
+node.fs.prototype.statSync = function(path) {
+  return node.fs.core_.statSync(path);
 };
 
 /**
@@ -459,8 +459,8 @@ fs.prototype.statSync = function(path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.readlink = function(path, callback) {
-  return fs.core.readlink(path, callback);
+node.fs.prototype.readlink = function(path, callback) {
+  return node.fs.core_.readlink(path, callback);
 };
 
 /**
@@ -468,8 +468,8 @@ fs.prototype.readlink = function(path, callback) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.readlinkSync = function(path) {
-  return fs.core.readlinkSync(path);
+node.fs.prototype.readlinkSync = function(path) {
+  return node.fs.core_.readlinkSync(path);
 };
 
 /**
@@ -480,8 +480,8 @@ fs.prototype.readlinkSync = function(path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.symlink = function(destination, path, callback) {
-  return fs.core.symlink(destination, path, callback);
+node.fs.prototype.symlink = function(destination, path, callback) {
+  return node.fs.core_.symlink(destination, path, callback);
 };
 
 /**
@@ -490,8 +490,8 @@ fs.prototype.symlink = function(destination, path, callback) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.symlinkSync = function(destination, path) {
-  return fs.core.symlinkSync(destination, path);
+node.fs.prototype.symlinkSync = function(destination, path) {
+  return node.fs.core_.symlinkSync(destination, path);
 };
 
 /**
@@ -502,8 +502,8 @@ fs.prototype.symlinkSync = function(destination, path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.link = function(srcpath, dstpath, callback) {
-  return fs.core.link(srcpath, dstpath, callback);
+node.fs.prototype.link = function(srcpath, dstpath, callback) {
+  return node.fs.core_.link(srcpath, dstpath, callback);
 };
 
 /**
@@ -512,8 +512,8 @@ fs.prototype.link = function(srcpath, dstpath, callback) {
  * @param {*} dstpath
  * @return {*}
  */
-fs.prototype.linkSync = function(srcpath, dstpath) {
-  return fs.core.linkSync(srcpath, dstpath);
+node.fs.prototype.linkSync = function(srcpath, dstpath) {
+  return node.fs.core_.linkSync(srcpath, dstpath);
 };
 
 /**
@@ -523,8 +523,8 @@ fs.prototype.linkSync = function(srcpath, dstpath) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.unlink = function(path, callback) {
-  return fs.core.unlink(path, callback);
+node.fs.prototype.unlink = function(path, callback) {
+  return node.fs.core_.unlink(path, callback);
 };
 
 /**
@@ -532,8 +532,8 @@ fs.prototype.unlink = function(path, callback) {
  * @param {*} path
  * @return {*}
  */
-fs.prototype.unlinkSync = function(path) {
-  return fs.core.unlinkSync(path);
+node.fs.prototype.unlinkSync = function(path) {
+  return node.fs.core_.unlinkSync(path);
 };
 
 /**
@@ -544,8 +544,8 @@ fs.prototype.unlinkSync = function(path) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.chmod = function(path, mode, callback) {
-  return fs.core.chmod(path, mode, callback);
+node.fs.prototype.chmod = function(path, mode, callback) {
+  return node.fs.core_.chmod(path, mode, callback);
 };
 
 /**
@@ -554,8 +554,8 @@ fs.prototype.chmod = function(path, mode, callback) {
  * @param {*} mode
  * @return {*}
  */
-fs.prototype.chmodSync = function(path, mode) {
-  return fs.core.chmodSync(path, mode);
+node.fs.prototype.chmodSync = function(path, mode) {
+  return node.fs.core_.chmodSync(path, mode);
 };
 
 /**
@@ -565,8 +565,8 @@ fs.prototype.chmodSync = function(path, mode) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.chown = function(path, uid, gid, callback) {
-  return fs.core.chown(path, uid, gid, callback);
+node.fs.prototype.chown = function(path, uid, gid, callback) {
+  return node.fs.core_.chown(path, uid, gid, callback);
 };
 
 /**
@@ -575,8 +575,8 @@ fs.prototype.chown = function(path, uid, gid, callback) {
  * @param {*} gid
  * @return {*}
  */
-fs.prototype.chownSync = function(path, uid, gid) {
-  return fs.core.chownSync(path, uid, gid);
+node.fs.prototype.chownSync = function(path, uid, gid) {
+  return node.fs.core_.chownSync(path, uid, gid);
 };
 
 /**
@@ -595,8 +595,8 @@ fs.prototype.chownSync = function(path, uid, gid) {
  * @param {*} callback
  * @return {*}
  */
-fs.prototype.writeFile = function(path, data, encoding_, callback) {
-  return fs.core.writeFile(path, data, encoding_, callback);
+node.fs.prototype.writeFile = function(path, data, encoding_, callback) {
+  return node.fs.core_.writeFile(path, data, encoding_, callback);
 };
 
 /**
@@ -606,8 +606,8 @@ fs.prototype.writeFile = function(path, data, encoding_, callback) {
  * @param {*} encoding
  * @return {*}
  */
-fs.prototype.writeFileSync = function(path, data, encoding) {
-  return fs.core.writeFileSync(path, data, encoding);
+node.fs.prototype.writeFileSync = function(path, data, encoding) {
+  return node.fs.core_.writeFileSync(path, data, encoding);
 };
 
 /**
@@ -630,8 +630,8 @@ fs.prototype.writeFileSync = function(path, data, encoding) {
  * @param {*} filename
  * @return {*}
  */
-fs.prototype.watchFile = function(filename) {
-  return fs.core.watchFile(filename);
+node.fs.prototype.watchFile = function(filename) {
+  return node.fs.core_.watchFile(filename);
 };
 
 /**
@@ -639,8 +639,8 @@ fs.prototype.watchFile = function(filename) {
  * @param {*} filename
  * @return {*}
  */
-fs.prototype.unwatchFile = function(filename) {
-  return fs.core.unwatchFile(filename);
+node.fs.prototype.unwatchFile = function(filename) {
+  return node.fs.core_.unwatchFile(filename);
 };
 
 /**
@@ -648,8 +648,8 @@ fs.prototype.unwatchFile = function(filename) {
  * @param {*} p
  * @return {*}
  */
-fs.prototype.realpathSync = function(p) {
-  return fs.core.realpathSync(p);
+node.fs.prototype.realpathSync = function(p) {
+  return node.fs.core_.realpathSync(p);
 };
 
 /**
@@ -659,8 +659,8 @@ fs.prototype.realpathSync = function(p) {
  * @param {*} cb
  * @return {*}
  */
-fs.prototype.realpath = function(p, cb) {
-  return fs.core.realpath(p, cb);
+node.fs.prototype.realpath = function(p, cb) {
+  return node.fs.core_.realpath(p, cb);
 };
 
 /**
@@ -668,8 +668,8 @@ fs.prototype.realpath = function(p, cb) {
  * @param {*} options
  * @return {*}
  */
-fs.prototype.createReadStream = function(path, options) {
-  return fs.core.createReadStream(path, options);
+node.fs.prototype.createReadStream = function(path, options) {
+  return node.fs.core_.createReadStream(path, options);
 };
 
 /**
@@ -677,9 +677,13 @@ fs.prototype.createReadStream = function(path, options) {
  * @param {*} options
  * @return {*}
  */
-fs.prototype.createWriteStream = function(path, options) {
-  return fs.core.createWriteStream(path, options);
+node.fs.prototype.createWriteStream = function(path, options) {
+  return node.fs.core_.createWriteStream(path, options);
 };
 
 
-fs.core = require("fs");
+/**
+ * @private
+ * @type {*}
+ */
+node.fs.core_ = require("fs");

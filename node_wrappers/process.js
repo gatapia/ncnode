@@ -1,5 +1,5 @@
 
-goog.provide("process");
+goog.provide("node.process");
 
 /**
  * @fileoverview The `process` object is a global object and can be accessed from anywhere.
@@ -10,7 +10,7 @@ goog.provide("process");
  * Getter&#47;setter to set what is displayed in 'ps'.
  * @type {*}
  */
-process.prototype.title;
+node.process.prototype.title;
 
 /**
  * A compiled-in property that exposes `NODE_VERSION`.
@@ -19,7 +19,7 @@ process.prototype.title;
  * </pre>
  * @type {*}
  */
-process.prototype.version;
+node.process.prototype.version;
 
 /**
  * A compiled-in property that exposes `NODE_PREFIX`.
@@ -28,12 +28,12 @@ process.prototype.version;
  * </pre>
  * @type {*}
  */
-process.prototype.installPrefix;
+node.process.prototype.installPrefix;
 
 /**
  * @type {*}
  */
-process.prototype.versions;
+node.process.prototype.versions;
 
 /**
  * What platform you're running on. `'linux2'`, `'darwin'`, etc.
@@ -42,12 +42,12 @@ process.prototype.versions;
  * </pre>
  * @type {*}
  */
-process.prototype.platform;
+node.process.prototype.platform;
 
 /**
  * @type {*}
  */
-process.prototype.ARGV;
+node.process.prototype.ARGV;
 
 /**
  * An array containing the command line arguments.  The first element will be
@@ -70,18 +70,18 @@ process.prototype.ARGV;
  * </pre>
  * @type {*}
  */
-process.prototype.argv;
+node.process.prototype.argv;
 
 /**
  * An object containing the user environment. See environ(7).
  * @type {*}
  */
-process.prototype.env;
+node.process.prototype.env;
 
 /**
  * @type {*}
  */
-process.prototype.ENV;
+node.process.prototype.ENV;
 
 /**
  * The PID of the process.
@@ -90,7 +90,7 @@ process.prototype.ENV;
  * </pre>
  * @type {*}
  */
-process.prototype.pid;
+node.process.prototype.pid;
 
 /**
  * This is the absolute pathname of the executable that started the process.
@@ -101,7 +101,7 @@ process.prototype.pid;
  * </pre>
  * @type {*}
  */
-process.prototype.execPath;
+node.process.prototype.execPath;
 
 /**
  * A `Writable Stream` to `stdout`.
@@ -114,7 +114,7 @@ process.prototype.execPath;
  * </pre>
  * @type {*}
  */
-process.prototype.stdout;
+node.process.prototype.stdout;
 
 /**
  * A `Readable Stream` for stdin. The stdin stream is paused by default, so one
@@ -135,25 +135,25 @@ process.prototype.stdout;
  * </pre>
  * @type {*}
  */
-process.prototype.stdin;
+node.process.prototype.stdin;
 
 /**
  * @type {*}
  */
-process.prototype.mainModule;
+node.process.prototype.mainModule;
 
 /**
  * @return {*}
  */
-process.prototype.compile = function() {
-  return process.core.compile();
+node.process.prototype.compile = function() {
+  return node.process.core_.compile();
 };
 
 /**
  * @return {*}
  */
-process.prototype.reallyExit = function() {
-  return process.core.reallyExit();
+node.process.prototype.reallyExit = function() {
+  return node.process.core_.reallyExit();
 };
 
 /**
@@ -170,8 +170,8 @@ process.prototype.reallyExit = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.chdir = function() {
-  return process.core.chdir();
+node.process.prototype.chdir = function() {
+  return node.process.core_.chdir();
 };
 
 /**
@@ -181,8 +181,8 @@ process.prototype.chdir = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.cwd = function() {
-  return process.core.cwd();
+node.process.prototype.cwd = function() {
+  return node.process.core_.cwd();
 };
 
 /**
@@ -193,8 +193,8 @@ process.prototype.cwd = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.getuid = function() {
-  return process.core.getuid();
+node.process.prototype.getuid = function() {
+  return node.process.core_.getuid();
 };
 
 /**
@@ -213,8 +213,8 @@ process.prototype.getuid = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.setuid = function() {
-  return process.core.setuid();
+node.process.prototype.setuid = function() {
+  return node.process.core_.setuid();
 };
 
 /**
@@ -233,8 +233,8 @@ process.prototype.setuid = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.setgid = function() {
-  return process.core.setgid();
+node.process.prototype.setgid = function() {
+  return node.process.core_.setgid();
 };
 
 /**
@@ -245,8 +245,8 @@ process.prototype.setgid = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.getgid = function() {
-  return process.core.getgid();
+node.process.prototype.getgid = function() {
+  return node.process.core_.getgid();
 };
 
 /**
@@ -262,15 +262,15 @@ process.prototype.getgid = function() {
  * </pre>
  * @return {*}
  */
-process.prototype.umask = function() {
-  return process.core.umask();
+node.process.prototype.umask = function() {
+  return node.process.core_.umask();
 };
 
 /**
  * @return {*}
  */
-process.prototype.dlopen = function() {
-  return process.core.dlopen();
+node.process.prototype.dlopen = function() {
+  return node.process.core_.dlopen();
 };
 
 /**
@@ -290,22 +290,22 @@ process.prototype.dlopen = function() {
  * `heapTotal` and `heapUsed` refer to V8's memory usage.
  * @return {*}
  */
-process.prototype.memoryUsage = function() {
-  return process.core.memoryUsage();
+node.process.prototype.memoryUsage = function() {
+  return node.process.core_.memoryUsage();
 };
 
 /**
  * @return {*}
  */
-process.prototype.binding = function() {
-  return process.core.binding();
+node.process.prototype.binding = function() {
+  return node.process.core_.binding();
 };
 
 /**
  * @return {*}
  */
-process.prototype.assert = function() {
-  return process.core.assert();
+node.process.prototype.assert = function() {
+  return node.process.core_.assert();
 };
 
 /**
@@ -320,15 +320,15 @@ process.prototype.assert = function() {
  * @param {*} callback
  * @return {*}
  */
-process.prototype.nextTick = function(callback) {
-  return process.core.nextTick(callback);
+node.process.prototype.nextTick = function(callback) {
+  return node.process.core_.nextTick(callback);
 };
 
 /**
  * @return {*}
  */
-process.prototype.openStdin = function() {
-  return process.core.openStdin();
+node.process.prototype.openStdin = function() {
+  return node.process.core_.openStdin();
 };
 
 /**
@@ -343,8 +343,8 @@ process.prototype.openStdin = function() {
  * @param {*} code
  * @return {*}
  */
-process.prototype.exit = function(code) {
-  return process.core.exit(code);
+node.process.prototype.exit = function(code) {
+  return node.process.core_.exit(code);
 };
 
 /**
@@ -374,8 +374,8 @@ process.prototype.exit = function(code) {
  * @param {*} sig
  * @return {*}
  */
-process.prototype.kill = function(pid, sig) {
-  return process.core.kill(pid, sig);
+node.process.prototype.kill = function(pid, sig) {
+  return node.process.core_.kill(pid, sig);
 };
 
 /**
@@ -383,8 +383,8 @@ process.prototype.kill = function(pid, sig) {
  * @param {*} listener
  * @return {*}
  */
-process.prototype.addListener = function(type, listener) {
-  return process.core.addListener(type, listener);
+node.process.prototype.addListener = function(type, listener) {
+  return node.process.core_.addListener(type, listener);
 };
 
 /**
@@ -392,8 +392,8 @@ process.prototype.addListener = function(type, listener) {
  * @param {*} listener
  * @return {*}
  */
-process.prototype.on = function(type, listener) {
-  return process.core.on(type, listener);
+node.process.prototype.on = function(type, listener) {
+  return node.process.core_.on(type, listener);
 };
 
 /**
@@ -401,73 +401,73 @@ process.prototype.on = function(type, listener) {
  * @param {*} listener
  * @return {*}
  */
-process.prototype.removeListener = function(type, listener) {
-  return process.core.removeListener(type, listener);
+node.process.prototype.removeListener = function(type, listener) {
+  return node.process.core_.removeListener(type, listener);
 };
 
 /**
  * @return {*}
  */
-process.prototype.debug = function() {
-  return process.core.debug();
+node.process.prototype.debug = function() {
+  return node.process.core_.debug();
 };
 
 /**
  * @return {*}
  */
-process.prototype.error = function() {
-  return process.core.error();
+node.process.prototype.error = function() {
+  return node.process.core_.error();
 };
 
 /**
  * @return {*}
  */
-process.prototype.watchFile = function() {
-  return process.core.watchFile();
+node.process.prototype.watchFile = function() {
+  return node.process.core_.watchFile();
 };
 
 /**
  * @return {*}
  */
-process.prototype.unwatchFile = function() {
-  return process.core.unwatchFile();
+node.process.prototype.unwatchFile = function() {
+  return node.process.core_.unwatchFile();
 };
 
 /**
  * @return {*}
  */
-process.prototype.mixin = function() {
-  return process.core.mixin();
+node.process.prototype.mixin = function() {
+  return node.process.core_.mixin();
 };
 
 /**
  * @return {*}
  */
-process.prototype.createChildProcess = function() {
-  return process.core.createChildProcess();
+node.process.prototype.createChildProcess = function() {
+  return node.process.core_.createChildProcess();
 };
 
 /**
  * @return {*}
  */
-process.prototype.inherits = function() {
-  return process.core.inherits();
+node.process.prototype.inherits = function() {
+  return node.process.core_.inherits();
 };
 
 /**
  * @param {*} n
  * @return {*}
  */
-process.prototype.setMaxListeners = function(n) {
-  return process.core.setMaxListeners(n);
+node.process.prototype.setMaxListeners = function(n) {
+  return node.process.core_.setMaxListeners(n);
 };
 
 /**
  * @param {*} type
  * @return {*}
  */
-process.prototype.emit = function(type) {
-  return process.core.emit(type);
+node.process.prototype.emit = function(type) {
+  return node.process.core_.emit(type);
 };
 
 /**
@@ -475,25 +475,29 @@ process.prototype.emit = function(type) {
  * @param {*} listener
  * @return {*}
  */
-process.prototype.once = function(type, listener) {
-  return process.core.once(type, listener);
+node.process.prototype.once = function(type, listener) {
+  return node.process.core_.once(type, listener);
 };
 
 /**
  * @param {*} type
  * @return {*}
  */
-process.prototype.removeAllListeners = function(type) {
-  return process.core.removeAllListeners(type);
+node.process.prototype.removeAllListeners = function(type) {
+  return node.process.core_.removeAllListeners(type);
 };
 
 /**
  * @param {*} type
  * @return {*}
  */
-process.prototype.listeners = function(type) {
-  return process.core.listeners(type);
+node.process.prototype.listeners = function(type) {
+  return node.process.core_.listeners(type);
 };
 
 
-process.core = process;
+/**
+ * @private
+ * @type {*}
+ */
+node.process.core_ = process;

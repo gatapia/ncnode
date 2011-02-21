@@ -1,5 +1,9 @@
 
-goog.provide("constants");
+goog.provide("node.constants");
 
 
-constants.core = require("constants");
+/**
+ * @private
+ * @type {*}
+ */
+node.constants.core_ = require("constants");

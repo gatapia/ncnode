@@ -1,129 +1,133 @@
 
-goog.provide("global");
+goog.provide("node.global");
 
 /**
  * @type {*}
  */
-global.prototype.global;
+node.global.prototype.global;
 
 /**
  * @type {*}
  */
-global.prototype.process;
+node.global.prototype.process;
 
 /**
  * @type {*}
  */
-global.prototype.GLOBAL;
+node.global.prototype.GLOBAL;
 
 /**
  * @type {*}
  */
-global.prototype.root;
+node.global.prototype.root;
 
 /**
  * @type {*}
  */
-global.prototype.console;
+node.global.prototype.console;
 
 /**
  * @type {*}
  */
-global.prototype.nclosure;
+node.global.prototype.nclosure;
 
 /**
  * @type {*}
  */
-global.prototype.opts;
+node.global.prototype.opts;
 
 /**
  * @type {*}
  */
-global.prototype.COMPILED;
+node.global.prototype.COMPILED;
 
 /**
  * @type {*}
  */
-global.prototype.goog;
+node.global.prototype.goog;
 
 /**
  * @type {*}
  */
-global.prototype.top;
+node.global.prototype.top;
 
 /**
  * @type {*}
  */
-global.prototype.window;
+node.global.prototype.window;
 
 /**
  * @type {*}
  */
-global.prototype.ncnode;
+node.global.prototype.ncnode;
 
 /**
  * @return {*}
  */
-global.prototype.DTRACE_NET_SERVER_CONNECTION = function() {
-  return global.core.DTRACE_NET_SERVER_CONNECTION();
+node.global.prototype.DTRACE_NET_SERVER_CONNECTION = function() {
+  return node.global.core_.DTRACE_NET_SERVER_CONNECTION();
 };
 
 /**
  * @return {*}
  */
-global.prototype.DTRACE_NET_STREAM_END = function() {
-  return global.core.DTRACE_NET_STREAM_END();
+node.global.prototype.DTRACE_NET_STREAM_END = function() {
+  return node.global.core_.DTRACE_NET_STREAM_END();
 };
 
 /**
  * @return {*}
  */
-global.prototype.DTRACE_HTTP_SERVER_REQUEST = function() {
-  return global.core.DTRACE_HTTP_SERVER_REQUEST();
+node.global.prototype.DTRACE_HTTP_SERVER_REQUEST = function() {
+  return node.global.core_.DTRACE_HTTP_SERVER_REQUEST();
 };
 
 /**
  * @return {*}
  */
-global.prototype.DTRACE_HTTP_SERVER_RESPONSE = function() {
-  return global.core.DTRACE_HTTP_SERVER_RESPONSE();
+node.global.prototype.DTRACE_HTTP_SERVER_RESPONSE = function() {
+  return node.global.core_.DTRACE_HTTP_SERVER_RESPONSE();
 };
 
 /**
  * @return {*}
  */
-global.prototype.setTimeout = function() {
-  return global.core.setTimeout();
+node.global.prototype.setTimeout = function() {
+  return node.global.core_.setTimeout();
 };
 
 /**
  * @return {*}
  */
-global.prototype.setInterval = function() {
-  return global.core.setInterval();
+node.global.prototype.setInterval = function() {
+  return node.global.core_.setInterval();
 };
 
 /**
  * @return {*}
  */
-global.prototype.clearTimeout = function() {
-  return global.core.clearTimeout();
+node.global.prototype.clearTimeout = function() {
+  return node.global.core_.clearTimeout();
 };
 
 /**
  * @return {*}
  */
-global.prototype.clearInterval = function() {
-  return global.core.clearInterval();
+node.global.prototype.clearInterval = function() {
+  return node.global.core_.clearInterval();
 };
 
 /**
  * @param {*} path
  * @return {*}
  */
-global.prototype.require = function(path) {
-  return global.core.require(path);
+node.global.prototype.require = function(path) {
+  return node.global.core_.require(path);
 };
 
 
-global.core = global;
+/**
+ * @private
+ * @type {*}
+ */
+node.global.core_ = global;

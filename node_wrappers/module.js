@@ -1,5 +1,9 @@
 
-goog.provide("module");
+goog.provide("node.module");
 
 
-module.core = require("module");
+/**
+ * @private
+ * @type {*}
+ */
+node.module.core_ = require("module");

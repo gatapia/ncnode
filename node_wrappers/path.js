@@ -1,5 +1,5 @@
 
-goog.provide("path");
+goog.provide("node.path");
 
 /**
  * @fileoverview This module contains utilities for dealing with file paths.  Use
@@ -46,8 +46,8 @@ goog.provide("path");
  * </pre>
  * @return {*}
  */
-path.prototype.resolve = function() {
-  return path.core.resolve();
+node.path.prototype.resolve = function() {
+  return node.path.core_.resolve();
 };
 
 /**
@@ -66,8 +66,8 @@ path.prototype.resolve = function() {
  * @param {*} path
  * @return {*}
  */
-path.prototype.normalize = function(path) {
-  return path.core.normalize(path);
+node.path.prototype.normalize = function(path) {
+  return node.path.core_.normalize(path);
 };
 
 /**
@@ -81,8 +81,8 @@ path.prototype.normalize = function(path) {
  * </pre>
  * @return {*}
  */
-path.prototype.join = function() {
-  return path.core.join();
+node.path.prototype.join = function() {
+  return node.path.core_.join();
 };
 
 /**
@@ -97,8 +97,8 @@ path.prototype.join = function() {
  * @param {*} path
  * @return {*}
  */
-path.prototype.dirname = function(path) {
-  return path.core.dirname(path);
+node.path.prototype.dirname = function(path) {
+  return node.path.core_.dirname(path);
 };
 
 /**
@@ -118,8 +118,8 @@ path.prototype.dirname = function(path) {
  * @param {*} ext
  * @return {*}
  */
-path.prototype.basename = function(path, ext) {
-  return path.core.basename(path, ext);
+node.path.prototype.basename = function(path, ext) {
+  return node.path.core_.basename(path, ext);
 };
 
 /**
@@ -138,8 +138,8 @@ path.prototype.basename = function(path, ext) {
  * @param {*} path
  * @return {*}
  */
-path.prototype.extname = function(path) {
-  return path.core.extname(path);
+node.path.prototype.extname = function(path) {
+  return node.path.core_.extname(path);
 };
 
 /**
@@ -153,17 +153,21 @@ path.prototype.extname = function(path) {
  * @param {*} callback
  * @return {*}
  */
-path.prototype.exists = function(path, callback) {
-  return path.core.exists(path, callback);
+node.path.prototype.exists = function(path, callback) {
+  return node.path.core_.exists(path, callback);
 };
 
 /**
  * @param {*} path
  * @return {*}
  */
-path.prototype.existsSync = function(path) {
-  return path.core.existsSync(path);
+node.path.prototype.existsSync = function(path) {
+  return node.path.core_.existsSync(path);
 };
 
 
-path.core = require("path");
+/**
+ * @private
+ * @type {*}
+ */
+node.path.core_ = require("path");

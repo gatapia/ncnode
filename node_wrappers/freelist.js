@@ -1,5 +1,9 @@
 
-goog.provide("freelist");
+goog.provide("node.freelist");
 
 
-freelist.core = require("freelist");
+/**
+ * @private
+ * @type {*}
+ */
+node.freelist.core_ = require("freelist");

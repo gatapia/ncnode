@@ -1,5 +1,5 @@
 
-goog.provide("os");
+goog.provide("node.os");
 
 /**
  * @fileoverview Use `require('os')` to access this module.
@@ -9,40 +9,40 @@ goog.provide("os");
  * Returns the hostname of the operating system.
  * @return {*}
  */
-os.prototype.hostname = function() {
-  return os.core.hostname();
+node.os.prototype.hostname = function() {
+  return node.os.core_.hostname();
 };
 
 /**
  * Returns an array containing the 1, 5, and 15 minute load averages.
  * @return {*}
  */
-os.prototype.loadavg = function() {
-  return os.core.loadavg();
+node.os.prototype.loadavg = function() {
+  return node.os.core_.loadavg();
 };
 
 /**
  * Returns the system uptime in seconds.
  * @return {*}
  */
-os.prototype.uptime = function() {
-  return os.core.uptime();
+node.os.prototype.uptime = function() {
+  return node.os.core_.uptime();
 };
 
 /**
  * Returns the amount of free system memory in bytes.
  * @return {*}
  */
-os.prototype.freemem = function() {
-  return os.core.freemem();
+node.os.prototype.freemem = function() {
+  return node.os.core_.freemem();
 };
 
 /**
  * Returns the total amount of system memory in bytes.
  * @return {*}
  */
-os.prototype.totalmem = function() {
-  return os.core.totalmem();
+node.os.prototype.totalmem = function() {
+  return node.os.core_.totalmem();
 };
 
 /**
@@ -116,25 +116,29 @@ os.prototype.totalmem = function() {
  *            irq: 30 } } ]
  * @return {*}
  */
-os.prototype.cpus = function() {
-  return os.core.cpus();
+node.os.prototype.cpus = function() {
+  return node.os.core_.cpus();
 };
 
 /**
  * Returns the operating system name.
  * @return {*}
  */
-os.prototype.type = function() {
-  return os.core.type();
+node.os.prototype.type = function() {
+  return node.os.core_.type();
 };
 
 /**
  * Returns the operating system release.
  * @return {*}
  */
-os.prototype.release = function() {
-  return os.core.release();
+node.os.prototype.release = function() {
+  return node.os.core_.release();
 };
 
 
-os.core = require("os");
+/**
+ * @private
+ * @type {*}
+ */
+node.os.core_ = require("os");

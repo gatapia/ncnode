@@ -1,5 +1,5 @@
 
-goog.provide("repl");
+goog.provide("node.repl");
 
 /**
  * @fileoverview A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
@@ -37,8 +37,8 @@ goog.provide("repl");
  * @param {*} colors
  * @return {*}
  */
-repl.prototype.writer = function(obj, showHidden, depth, colors) {
-  return repl.core.writer(obj, showHidden, depth, colors);
+node.repl.prototype.writer = function(obj, showHidden, depth, colors) {
+  return node.repl.core_.writer(obj, showHidden, depth, colors);
 };
 
 /**
@@ -79,9 +79,13 @@ repl.prototype.writer = function(obj, showHidden, depth, colors) {
  * @param {*} source
  * @return {*}
  */
-repl.prototype.start = function(prompt, source) {
-  return repl.core.start(prompt, source);
+node.repl.prototype.start = function(prompt, source) {
+  return node.repl.core_.start(prompt, source);
 };
 
 
-repl.core = require("repl");
+/**
+ * @private
+ * @type {*}
+ */
+node.repl.core_ = require("repl");

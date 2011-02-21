@@ -1,5 +1,5 @@
 
-goog.provide("url");
+goog.provide("node.url");
 
 /**
  * @fileoverview This module has utilities for URL resolution and parsing.
@@ -53,8 +53,8 @@ goog.provide("url");
  * @param {*} slashesDenoteHost
  * @return {*}
  */
-url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
-  return url.core.parse(url, parseQueryString, slashesDenoteHost);
+node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
+  return node.url.core_.parse(url, parseQueryString, slashesDenoteHost);
 };
 
 /**
@@ -63,8 +63,8 @@ url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
  * @param {*} relative
  * @return {*}
  */
-url.prototype.resolve = function(source, relative) {
-  return url.core.resolve(source, relative);
+node.url.prototype.resolve = function(source, relative) {
+  return node.url.core_.resolve(source, relative);
 };
 
 /**
@@ -72,8 +72,8 @@ url.prototype.resolve = function(source, relative) {
  * @param {*} relative
  * @return {*}
  */
-url.prototype.resolveObject = function(source, relative) {
-  return url.core.resolveObject(source, relative);
+node.url.prototype.resolveObject = function(source, relative) {
+  return node.url.core_.resolveObject(source, relative);
 };
 
 /**
@@ -81,9 +81,13 @@ url.prototype.resolveObject = function(source, relative) {
  * @param {*} obj
  * @return {*}
  */
-url.prototype.format = function(obj) {
-  return url.core.format(obj);
+node.url.prototype.format = function(obj) {
+  return node.url.core_.format(obj);
 };
 
 
-url.core = require("url");
+/**
+ * @private
+ * @type {*}
+ */
+node.url.core_ = require("url");

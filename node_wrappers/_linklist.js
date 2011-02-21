@@ -1,36 +1,36 @@
 
-goog.provide("_linklist");
+goog.provide("node._linklist");
 
 /**
  * @param {*} list
  * @return {*}
  */
-_linklist.prototype.init = function(list) {
-  return _linklist.core.init(list);
+node._linklist.prototype.init = function(list) {
+  return node._linklist.core_.init(list);
 };
 
 /**
  * @param {*} list
  * @return {*}
  */
-_linklist.prototype.peek = function(list) {
-  return _linklist.core.peek(list);
+node._linklist.prototype.peek = function(list) {
+  return node._linklist.core_.peek(list);
 };
 
 /**
  * @param {*} list
  * @return {*}
  */
-_linklist.prototype.shift = function(list) {
-  return _linklist.core.shift(list);
+node._linklist.prototype.shift = function(list) {
+  return node._linklist.core_.shift(list);
 };
 
 /**
  * @param {*} item
  * @return {*}
  */
-_linklist.prototype.remove = function(item) {
-  return _linklist.core.remove(item);
+node._linklist.prototype.remove = function(item) {
+  return node._linklist.core_.remove(item);
 };
 
 /**
@@ -38,17 +38,21 @@ _linklist.prototype.remove = function(item) {
  * @param {*} item
  * @return {*}
  */
-_linklist.prototype.append = function(list, item) {
-  return _linklist.core.append(list, item);
+node._linklist.prototype.append = function(list, item) {
+  return node._linklist.core_.append(list, item);
 };
 
 /**
  * @param {*} list
  * @return {*}
  */
-_linklist.prototype.isEmpty = function(list) {
-  return _linklist.core.isEmpty(list);
+node._linklist.prototype.isEmpty = function(list) {
+  return node._linklist.core_.isEmpty(list);
 };
 
 
-_linklist.core = require("_linklist");
+/**
+ * @private
+ * @type {*}
+ */
+node._linklist.core_ = require("_linklist");

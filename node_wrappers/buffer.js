@@ -1,5 +1,9 @@
 
-goog.provide("buffer");
+goog.provide("node.buffer");
 
 
-buffer.core = require("buffer");
+/**
+ * @private
+ * @type {*}
+ */
+node.buffer.core_ = require("buffer");

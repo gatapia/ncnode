@@ -1,5 +1,5 @@
 
-goog.provide("querystring");
+goog.provide("node.querystring");
 
 /**
  * @fileoverview This module provides utilities for dealing with query strings.
@@ -11,8 +11,8 @@ goog.provide("querystring");
  * @param {*} decodeSpaces
  * @return {*}
  */
-querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
-  return querystring.core.unescapeBuffer(s, decodeSpaces);
+node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
+  return node.querystring.core_.unescapeBuffer(s, decodeSpaces);
 };
 
 /**
@@ -22,8 +22,8 @@ querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
  * @param {*} decodeSpaces
  * @return {*}
  */
-querystring.prototype.unescape = function(s, decodeSpaces) {
-  return querystring.core.unescape(s, decodeSpaces);
+node.querystring.prototype.unescape = function(s, decodeSpaces) {
+  return node.querystring.core_.unescape(s, decodeSpaces);
 };
 
 /**
@@ -32,8 +32,8 @@ querystring.prototype.unescape = function(s, decodeSpaces) {
  * @param {*} str
  * @return {*}
  */
-querystring.prototype.escape = function(str) {
-  return querystring.core.escape(str);
+node.querystring.prototype.escape = function(str) {
+  return node.querystring.core_.escape(str);
 };
 
 /**
@@ -43,8 +43,8 @@ querystring.prototype.escape = function(str) {
  * @param {*} name
  * @return {*}
  */
-querystring.prototype.encode = function(obj, sep, eq, name) {
-  return querystring.core.encode(obj, sep, eq, name);
+node.querystring.prototype.encode = function(obj, sep, eq, name) {
+  return node.querystring.core_.encode(obj, sep, eq, name);
 };
 
 /**
@@ -67,8 +67,8 @@ querystring.prototype.encode = function(obj, sep, eq, name) {
  * @param {*} name
  * @return {*}
  */
-querystring.prototype.stringify = function(obj, sep, eq, name) {
-  return querystring.core.stringify(obj, sep, eq, name);
+node.querystring.prototype.stringify = function(obj, sep, eq, name) {
+  return node.querystring.core_.stringify(obj, sep, eq, name);
 };
 
 /**
@@ -77,8 +77,8 @@ querystring.prototype.stringify = function(obj, sep, eq, name) {
  * @param {*} eq
  * @return {*}
  */
-querystring.prototype.decode = function(qs, sep, eq) {
-  return querystring.core.decode(qs, sep, eq);
+node.querystring.prototype.decode = function(qs, sep, eq) {
+  return node.querystring.core_.decode(qs, sep, eq);
 };
 
 /**
@@ -96,9 +96,13 @@ querystring.prototype.decode = function(qs, sep, eq) {
  * @param {*} eq
  * @return {*}
  */
-querystring.prototype.parse = function(qs, sep, eq) {
-  return querystring.core.parse(qs, sep, eq);
+node.querystring.prototype.parse = function(qs, sep, eq) {
+  return node.querystring.core_.parse(qs, sep, eq);
 };
 
 
-querystring.core = require("querystring");
+/**
+ * @private
+ * @type {*}
+ */
+node.querystring.core_ = require("querystring");

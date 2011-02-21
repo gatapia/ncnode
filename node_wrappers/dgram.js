@@ -1,5 +1,5 @@
 
-goog.provide("dgram");
+goog.provide("node.dgram");
 
 /**
  * @fileoverview Datagram sockets are available through `require('dgram')`.  Datagrams are most commonly
@@ -15,9 +15,13 @@ goog.provide("dgram");
  * @param {*} listener
  * @return {*}
  */
-dgram.prototype.createSocket = function(type, listener) {
-  return dgram.core.createSocket(type, listener);
+node.dgram.prototype.createSocket = function(type, listener) {
+  return node.dgram.core_.createSocket(type, listener);
 };
 
 
-dgram.core = require("dgram");
+/**
+ * @private
+ * @type {*}
+ */
+node.dgram.core_ = require("dgram");

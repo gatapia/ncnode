@@ -1,17 +1,21 @@
 
-goog.provide("_debugger");
+goog.provide("node._debugger");
 
 /**
  * @type {*}
  */
-_debugger.prototype.port;
+node._debugger.prototype.port;
 
 /**
  * @return {*}
  */
-_debugger.prototype.start = function() {
-  return _debugger.core.start();
+node._debugger.prototype.start = function() {
+  return node._debugger.core_.start();
 };
 
 
-_debugger.core = require("_debugger");
+/**
+ * @private
+ * @type {*}
+ */
+node._debugger.core_ = require("_debugger");

@@ -1,5 +1,5 @@
 
-goog.provide("https");
+goog.provide("node.https");
 
 /**
  * @fileoverview HTTPS is the HTTP protocol over TLS&#47;SSL. In Node this is implemented as a
@@ -11,25 +11,16 @@ goog.provide("https");
  * @param {*} requestListener
  * @return {*}
  */
-https.prototype.createServer = function(opts, requestListener) {
-  return https.core.createServer(opts, requestListener);
+node.https.prototype.createServer = function(opts, requestListener) {
+  return node.https.core_.createServer(opts, requestListener);
 };
 
 /**
  * @param {*} options
  * @return {*}
  */
-https.prototype.getAgent = function(options) {
-  return https.core.getAgent(options);
-};
-
-/**
- * @param {*} options
- * @param {*} cb
- * @return {*}
- */
-https.prototype.request = function(options, cb) {
-  return https.core.request(options, cb);
+node.https.prototype.getAgent = function(options) {
+  return node.https.core_.getAgent(options);
 };
 
 /**
@@ -37,9 +28,22 @@ https.prototype.request = function(options, cb) {
  * @param {*} cb
  * @return {*}
  */
-https.prototype.get = function(options, cb) {
-  return https.core.get(options, cb);
+node.https.prototype.request = function(options, cb) {
+  return node.https.core_.request(options, cb);
+};
+
+/**
+ * @param {*} options
+ * @param {*} cb
+ * @return {*}
+ */
+node.https.prototype.get = function(options, cb) {
+  return node.https.core_.get(options, cb);
 };
 
 
-https.core = require("https");
+/**
+ * @private
+ * @type {*}
+ */
+node.https.core_ = require("https");

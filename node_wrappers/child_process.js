@@ -1,5 +1,5 @@
 
-goog.provide("child_process");
+goog.provide("node.child_process");
 
 /**
  * @param {*} path
@@ -8,8 +8,8 @@ goog.provide("child_process");
  * @param {*} customFds */
  * @return {*}
  */
-child_process.prototype.spawn = function(path, args /*, options, customFds */) {
-  return child_process.core.spawn(path, args /*, options, customFds */);
+node.child_process.prototype.spawn = function(path, args /*, options, customFds */) {
+  return node.child_process.core_.spawn(path, args /*, options, customFds */);
 };
 
 /**
@@ -18,8 +18,8 @@ child_process.prototype.spawn = function(path, args /*, options, customFds */) {
  * @param {*} callback */
  * @return {*}
  */
-child_process.prototype.exec = function(command /*, options, callback */) {
-  return child_process.core.exec(command /*, options, callback */);
+node.child_process.prototype.exec = function(command /*, options, callback */) {
+  return node.child_process.core_.exec(command /*, options, callback */);
 };
 
 /**
@@ -28,9 +28,13 @@ child_process.prototype.exec = function(command /*, options, callback */) {
  * @param {*} callback */
  * @return {*}
  */
-child_process.prototype.execFile = function(file /* args, options, callback */) {
-  return child_process.core.execFile(file /* args, options, callback */);
+node.child_process.prototype.execFile = function(file /* args, options, callback */) {
+  return node.child_process.core_.execFile(file /* args, options, callback */);
 };
 
 
-child_process.core = require("child_process");
+/**
+ * @private
+ * @type {*}
+ */
+node.child_process.core_ = require("child_process");

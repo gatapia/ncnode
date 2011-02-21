@@ -1,5 +1,5 @@
 
-goog.provide("readline");
+goog.provide("node.readline");
 
 /**
  * @param {*} input
@@ -7,9 +7,13 @@ goog.provide("readline");
  * @param {*} completer
  * @return {*}
  */
-readline.prototype.createInterface = function(input, output, completer) {
-  return readline.core.createInterface(input, output, completer);
+node.readline.prototype.createInterface = function(input, output, completer) {
+  return node.readline.core_.createInterface(input, output, completer);
 };
 
 
-readline.core = require("readline");
+/**
+ * @private
+ * @type {*}
+ */
+node.readline.core_ = require("readline");

@@ -1,14 +1,18 @@
 
-goog.provide("tty_posix");
+goog.provide("node.tty_posix");
 
 /**
  * @param {*} path
  * @param {*} args
  * @return {*}
  */
-tty_posix.prototype.open = function(path, args) {
-  return tty_posix.core.open(path, args);
+node.tty_posix.prototype.open = function(path, args) {
+  return node.tty_posix.core_.open(path, args);
 };
 
 
-tty_posix.core = require("tty_posix");
+/**
+ * @private
+ * @type {*}
+ */
+node.tty_posix.core_ = require("tty_posix");

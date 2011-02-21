@@ -1,5 +1,5 @@
 
-goog.provide("http");
+goog.provide("node.http");
 
 /**
  * @fileoverview To use the HTTP server and client one must `require('http')`.
@@ -28,19 +28,19 @@ goog.provide("http");
 /**
  * @type {*}
  */
-http.prototype.parsers;
+node.http.prototype.parsers;
 
 /**
  * @type {*}
  */
-http.prototype.STATUS_CODES;
+node.http.prototype.STATUS_CODES;
 
 /**
  * @param {*} requestListener
  * @return {*}
  */
-http.prototype.createServer = function(requestListener) {
-  return http.core.createServer(requestListener);
+node.http.prototype.createServer = function(requestListener) {
+  return node.http.core_.createServer(requestListener);
 };
 
 /**
@@ -48,8 +48,8 @@ http.prototype.createServer = function(requestListener) {
  * @param {*} port
  * @return {*}
  */
-http.prototype.getAgent = function(host, port) {
-  return http.core.getAgent(host, port);
+node.http.prototype.getAgent = function(host, port) {
+  return node.http.core_.getAgent(host, port);
 };
 
 /**
@@ -57,8 +57,8 @@ http.prototype.getAgent = function(host, port) {
  * @param {*} cb
  * @return {*}
  */
-http.prototype.request = function(options, cb) {
-  return http.core.request(options, cb);
+node.http.prototype.request = function(options, cb) {
+  return node.http.core_.request(options, cb);
 };
 
 /**
@@ -66,8 +66,8 @@ http.prototype.request = function(options, cb) {
  * @param {*} cb
  * @return {*}
  */
-http.prototype.get = function(options, cb) {
-  return http.core.get(options, cb);
+node.http.prototype.get = function(options, cb) {
+  return node.http.core_.get(options, cb);
 };
 
 /**
@@ -75,8 +75,8 @@ http.prototype.get = function(options, cb) {
  * @param {*} host
  * @return {*}
  */
-http.prototype.createClient = function(port, host) {
-  return http.core.createClient(port, host);
+node.http.prototype.createClient = function(port, host) {
+  return node.http.core_.createClient(port, host);
 };
 
 /**
@@ -85,9 +85,13 @@ http.prototype.createClient = function(port, host) {
  * @param {*} headers_
  * @return {*}
  */
-http.prototype.cat = function(url, encoding_, headers_) {
-  return http.core.cat(url, encoding_, headers_);
+node.http.prototype.cat = function(url, encoding_, headers_) {
+  return node.http.core_.cat(url, encoding_, headers_);
 };
 
 
-http.core = require("http");
+/**
+ * @private
+ * @type {*}
+ */
+node.http.core_ = require("http");

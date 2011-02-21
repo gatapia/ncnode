@@ -1,34 +1,34 @@
 
-goog.provide("sys");
+goog.provide("node.sys");
 
 /**
  * @return {*}
  */
-sys.prototype.print = function() {
-  return sys.core.print();
+node.sys.prototype.print = function() {
+  return node.sys.core_.print();
 };
 
 /**
  * @return {*}
  */
-sys.prototype.puts = function() {
-  return sys.core.puts();
-};
-
-/**
- * @param {*} x
- * @return {*}
- */
-sys.prototype.debug = function(x) {
-  return sys.core.debug(x);
+node.sys.prototype.puts = function() {
+  return node.sys.core_.puts();
 };
 
 /**
  * @param {*} x
  * @return {*}
  */
-sys.prototype.error = function(x) {
-  return sys.core.error(x);
+node.sys.prototype.debug = function(x) {
+  return node.sys.core_.debug(x);
+};
+
+/**
+ * @param {*} x
+ * @return {*}
+ */
+node.sys.prototype.error = function(x) {
+  return node.sys.core_.error(x);
 };
 
 /**
@@ -38,30 +38,30 @@ sys.prototype.error = function(x) {
  * @param {*} colors
  * @return {*}
  */
-sys.prototype.inspect = function(obj, showHidden, depth, colors) {
-  return sys.core.inspect(obj, showHidden, depth, colors);
+node.sys.prototype.inspect = function(obj, showHidden, depth, colors) {
+  return node.sys.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
  * @return {*}
  */
-sys.prototype.p = function() {
-  return sys.core.p();
+node.sys.prototype.p = function() {
+  return node.sys.core_.p();
 };
 
 /**
  * @param {*} msg
  * @return {*}
  */
-sys.prototype.log = function(msg) {
-  return sys.core.log(msg);
+node.sys.prototype.log = function(msg) {
+  return node.sys.core_.log(msg);
 };
 
 /**
  * @return {*}
  */
-sys.prototype.exec = function() {
-  return sys.core.exec();
+node.sys.prototype.exec = function() {
+  return node.sys.core_.exec();
 };
 
 /**
@@ -70,8 +70,8 @@ sys.prototype.exec = function() {
  * @param {*} callback
  * @return {*}
  */
-sys.prototype.pump = function(readStream, writeStream, callback) {
-  return sys.core.pump(readStream, writeStream, callback);
+node.sys.prototype.pump = function(readStream, writeStream, callback) {
+  return node.sys.core_.pump(readStream, writeStream, callback);
 };
 
 /**
@@ -79,9 +79,13 @@ sys.prototype.pump = function(readStream, writeStream, callback) {
  * @param {*} superCtor
  * @return {*}
  */
-sys.prototype.inherits = function(ctor, superCtor) {
-  return sys.core.inherits(ctor, superCtor);
+node.sys.prototype.inherits = function(ctor, superCtor) {
+  return node.sys.core_.inherits(ctor, superCtor);
 };
 
 
-sys.core = require("sys");
+/**
+ * @private
+ * @type {*}
+ */
+node.sys.core_ = require("sys");

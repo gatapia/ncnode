@@ -1,5 +1,5 @@
 
-goog.provide("dns");
+goog.provide("node.dns");
 
 /**
  * @fileoverview Use `require('dns')` to access this module.
@@ -32,62 +32,62 @@ goog.provide("dns");
 /**
  * @type {*}
  */
-dns.prototype.NODATA;
+node.dns.prototype.NODATA;
 
 /**
  * @type {*}
  */
-dns.prototype.FORMERR;
+node.dns.prototype.FORMERR;
 
 /**
  * @type {*}
  */
-dns.prototype.BADRESP;
+node.dns.prototype.BADRESP;
 
 /**
  * @type {*}
  */
-dns.prototype.NOTFOUND;
+node.dns.prototype.NOTFOUND;
 
 /**
  * @type {*}
  */
-dns.prototype.BADNAME;
+node.dns.prototype.BADNAME;
 
 /**
  * @type {*}
  */
-dns.prototype.TIMEOUT;
+node.dns.prototype.TIMEOUT;
 
 /**
  * @type {*}
  */
-dns.prototype.CONNREFUSED;
+node.dns.prototype.CONNREFUSED;
 
 /**
  * @type {*}
  */
-dns.prototype.NOMEM;
+node.dns.prototype.NOMEM;
 
 /**
  * @type {*}
  */
-dns.prototype.DESTRUCTION;
+node.dns.prototype.DESTRUCTION;
 
 /**
  * @type {*}
  */
-dns.prototype.NOTIMP;
+node.dns.prototype.NOTIMP;
 
 /**
  * @type {*}
  */
-dns.prototype.EREFUSED;
+node.dns.prototype.EREFUSED;
 
 /**
  * @type {*}
  */
-dns.prototype.SERVFAIL;
+node.dns.prototype.SERVFAIL;
 
 /**
  * Resolves a domain (e.g. `'google.com'`) into an array of the record types
@@ -107,8 +107,8 @@ dns.prototype.SERVFAIL;
  * @param {*} callback_
  * @return {*}
  */
-dns.prototype.resolve = function(domain, type_, callback_) {
-  return dns.core.resolve(domain, type_, callback_);
+node.dns.prototype.resolve = function(domain, type_, callback_) {
+  return node.dns.core_.resolve(domain, type_, callback_);
 };
 
 /**
@@ -117,8 +117,8 @@ dns.prototype.resolve = function(domain, type_, callback_) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.getHostByName = function(domain, family/*=4*/, callback) {
-  return dns.core.getHostByName(domain, family/*=4*/, callback);
+node.dns.prototype.getHostByName = function(domain, family/*=4*/, callback) {
+  return node.dns.core_.getHostByName(domain, family/*=4*/, callback);
 };
 
 /**
@@ -127,8 +127,8 @@ dns.prototype.getHostByName = function(domain, family/*=4*/, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
-  return dns.core.getHostByAddr(address, family/*=4*/, callback);
+node.dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
+  return node.dns.core_.getHostByAddr(address, family/*=4*/, callback);
 };
 
 /**
@@ -144,8 +144,8 @@ dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.lookup = function(domain, family, callback) {
-  return dns.core.lookup(domain, family, callback);
+node.dns.prototype.lookup = function(domain, family, callback) {
+  return node.dns.core_.lookup(domain, family, callback);
 };
 
 /**
@@ -156,8 +156,8 @@ dns.prototype.lookup = function(domain, family, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolve4 = function(domain, callback) {
-  return dns.core.resolve4(domain, callback);
+node.dns.prototype.resolve4 = function(domain, callback) {
+  return node.dns.core_.resolve4(domain, callback);
 };
 
 /**
@@ -166,8 +166,8 @@ dns.prototype.resolve4 = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolve6 = function(domain, callback) {
-  return dns.core.resolve6(domain, callback);
+node.dns.prototype.resolve6 = function(domain, callback) {
+  return node.dns.core_.resolve6(domain, callback);
 };
 
 /**
@@ -179,8 +179,8 @@ dns.prototype.resolve6 = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolveMx = function(domain, callback) {
-  return dns.core.resolveMx(domain, callback);
+node.dns.prototype.resolveMx = function(domain, callback) {
+  return node.dns.core_.resolveMx(domain, callback);
 };
 
 /**
@@ -191,8 +191,8 @@ dns.prototype.resolveMx = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolveTxt = function(domain, callback) {
-  return dns.core.resolveTxt(domain, callback);
+node.dns.prototype.resolveTxt = function(domain, callback) {
+  return node.dns.core_.resolveTxt(domain, callback);
 };
 
 /**
@@ -204,8 +204,8 @@ dns.prototype.resolveTxt = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolveSrv = function(domain, callback) {
-  return dns.core.resolveSrv(domain, callback);
+node.dns.prototype.resolveSrv = function(domain, callback) {
+  return node.dns.core_.resolveSrv(domain, callback);
 };
 
 /**
@@ -228,8 +228,8 @@ dns.prototype.resolveSrv = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.reverse = function(domain, callback) {
-  return dns.core.reverse(domain, callback);
+node.dns.prototype.reverse = function(domain, callback) {
+  return node.dns.core_.reverse(domain, callback);
 };
 
 /**
@@ -237,8 +237,8 @@ dns.prototype.reverse = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolveNs = function(domain, callback) {
-  return dns.core.resolveNs(domain, callback);
+node.dns.prototype.resolveNs = function(domain, callback) {
+  return node.dns.core_.resolveNs(domain, callback);
 };
 
 /**
@@ -246,9 +246,13 @@ dns.prototype.resolveNs = function(domain, callback) {
  * @param {*} callback
  * @return {*}
  */
-dns.prototype.resolveCname = function(domain, callback) {
-  return dns.core.resolveCname(domain, callback);
+node.dns.prototype.resolveCname = function(domain, callback) {
+  return node.dns.core_.resolveCname(domain, callback);
 };
 
 
-dns.core = require("dns");
+/**
+ * @private
+ * @type {*}
+ */
+node.dns.core_ = require("dns");

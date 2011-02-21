@@ -1,5 +1,9 @@
 
-goog.provide("tty_win32");
+goog.provide("node.tty_win32");
 
 
-tty_win32.core = require("tty_win32");
+/**
+ * @private
+ * @type {*}
+ */
+node.tty_win32.core_ = require("tty_win32");

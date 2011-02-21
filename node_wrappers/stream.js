@@ -1,5 +1,9 @@
 
-goog.provide("stream");
+goog.provide("node.stream");
 
 
-stream.core = require("stream");
+/**
+ * @private
+ * @type {*}
+ */
+node.stream.core_ = require("stream");

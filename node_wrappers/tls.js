@@ -1,5 +1,5 @@
 
-goog.provide("tls");
+goog.provide("node.tls");
 
 /**
  * @fileoverview Use `require('tls')` to access this module.
@@ -36,8 +36,8 @@ goog.provide("tls");
  * @param {*} rejectUnauthorized
  * @return {*}
  */
-tls.prototype.createSecurePair = function(credentials, isServer, requestCert, rejectUnauthorized) {
-  return tls.core.createSecurePair(credentials, isServer, requestCert, rejectUnauthorized);
+node.tls.prototype.createSecurePair = function(credentials, isServer, requestCert, rejectUnauthorized) {
+  return node.tls.core_.createSecurePair(credentials, isServer, requestCert, rejectUnauthorized);
 };
 
 /**
@@ -45,8 +45,8 @@ tls.prototype.createSecurePair = function(credentials, isServer, requestCert, re
  * @param {*} listener
  * @return {*}
  */
-tls.prototype.createServer = function(options, listener) {
-  return tls.core.createServer(options, listener);
+node.tls.prototype.createServer = function(options, listener) {
+  return node.tls.core_.createServer(options, listener);
 };
 
 /**
@@ -75,9 +75,13 @@ tls.prototype.createServer = function(options, listener) {
  * @param {*} cb */
  * @return {*}
  */
-tls.prototype.connect = function(port /* host, options, cb */) {
-  return tls.core.connect(port /* host, options, cb */);
+node.tls.prototype.connect = function(port /* host, options, cb */) {
+  return node.tls.core_.connect(port /* host, options, cb */);
 };
 
 
-tls.core = require("tls");
+/**
+ * @private
+ * @type {*}
+ */
+node.tls.core_ = require("tls");

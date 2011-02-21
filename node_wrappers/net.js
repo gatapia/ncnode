@@ -1,5 +1,5 @@
 
-goog.provide("net");
+goog.provide("node.net");
 
 /**
  * @fileoverview The `net` module provides you with an asynchronous network wrapper. It contains
@@ -24,24 +24,24 @@ goog.provide("net");
  * Returns true if input is a version 6 IP address, otherwise returns false.
  * @return {*}
  */
-net.prototype.isIP = function() {
-  return net.core.isIP();
+node.net.prototype.isIP = function() {
+  return node.net.core_.isIP();
 };
 
 /**
  * @param {*} input
  * @return {*}
  */
-net.prototype.isIPv4 = function(input) {
-  return net.core.isIPv4(input);
+node.net.prototype.isIPv4 = function(input) {
+  return node.net.core_.isIPv4(input);
 };
 
 /**
  * @param {*} input
  * @return {*}
  */
-net.prototype.isIPv6 = function(input) {
-  return net.core.isIPv6(input);
+node.net.prototype.isIPv6 = function(input) {
+  return node.net.core_.isIPv6(input);
 };
 
 /**
@@ -64,8 +64,8 @@ net.prototype.isIPv6 = function(input) {
  * @param {*} host
  * @return {*}
  */
-net.prototype.createConnection = function(port, host) {
-  return net.core.createConnection(port, host);
+node.net.prototype.createConnection = function(port, host) {
+  return node.net.core_.createConnection(port, host);
 };
 
 /**
@@ -73,9 +73,13 @@ net.prototype.createConnection = function(port, host) {
  * automatically set as a listener for the `'connection'` event.
  * @return {*}
  */
-net.prototype.createServer = function() {
-  return net.core.createServer();
+node.net.prototype.createServer = function() {
+  return node.net.core_.createServer();
 };
 
 
-net.core = require("net");
+/**
+ * @private
+ * @type {*}
+ */
+node.net.core_ = require("net");

@@ -1,5 +1,5 @@
 
-goog.provide("util");
+goog.provide("node.util");
 
 /**
  * @fileoverview These functions are in the module `'util'`. Use `require('util')` to access
@@ -9,15 +9,15 @@ goog.provide("util");
 /**
  * @return {*}
  */
-util.prototype.print = function() {
-  return util.core.print();
+node.util.prototype.print = function() {
+  return node.util.core_.print();
 };
 
 /**
  * @return {*}
  */
-util.prototype.puts = function() {
-  return util.core.puts();
+node.util.prototype.puts = function() {
+  return node.util.core_.puts();
 };
 
 /**
@@ -29,16 +29,16 @@ util.prototype.puts = function() {
  * @param {*} x
  * @return {*}
  */
-util.prototype.debug = function(x) {
-  return util.core.debug(x);
+node.util.prototype.debug = function(x) {
+  return node.util.core_.debug(x);
 };
 
 /**
  * @param {*} x
  * @return {*}
  */
-util.prototype.error = function(x) {
-  return util.core.error(x);
+node.util.prototype.error = function(x) {
+  return node.util.core_.error(x);
 };
 
 /**
@@ -65,15 +65,15 @@ util.prototype.error = function(x) {
  * @param {*} colors
  * @return {*}
  */
-util.prototype.inspect = function(obj, showHidden, depth, colors) {
-  return util.core.inspect(obj, showHidden, depth, colors);
+node.util.prototype.inspect = function(obj, showHidden, depth, colors) {
+  return node.util.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
  * @return {*}
  */
-util.prototype.p = function() {
-  return util.core.p();
+node.util.prototype.p = function() {
+  return node.util.core_.p();
 };
 
 /**
@@ -84,15 +84,15 @@ util.prototype.p = function() {
  * @param {*} msg
  * @return {*}
  */
-util.prototype.log = function(msg) {
-  return util.core.log(msg);
+node.util.prototype.log = function(msg) {
+  return node.util.core_.log(msg);
 };
 
 /**
  * @return {*}
  */
-util.prototype.exec = function() {
-  return util.core.exec();
+node.util.prototype.exec = function() {
+  return node.util.core_.exec();
 };
 
 /**
@@ -108,8 +108,8 @@ util.prototype.exec = function() {
  * @param {*} callback
  * @return {*}
  */
-util.prototype.pump = function(readStream, writeStream, callback) {
-  return util.core.pump(readStream, writeStream, callback);
+node.util.prototype.pump = function(readStream, writeStream, callback) {
+  return node.util.core_.pump(readStream, writeStream, callback);
 };
 
 /**
@@ -147,9 +147,13 @@ util.prototype.pump = function(readStream, writeStream, callback) {
  * @param {*} superCtor
  * @return {*}
  */
-util.prototype.inherits = function(ctor, superCtor) {
-  return util.core.inherits(ctor, superCtor);
+node.util.prototype.inherits = function(ctor, superCtor) {
+  return node.util.core_.inherits(ctor, superCtor);
 };
 
 
-util.core = require("util");
+/**
+ * @private
+ * @type {*}
+ */
+node.util.core_ = require("util");

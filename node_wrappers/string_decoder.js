@@ -1,5 +1,9 @@
 
-goog.provide("string_decoder");
+goog.provide("node.string_decoder");
 
 
-string_decoder.core = require("string_decoder");
+/**
+ * @private
+ * @type {*}
+ */
+node.string_decoder.core_ = require("string_decoder");

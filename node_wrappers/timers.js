@@ -1,12 +1,12 @@
 
-goog.provide("timers");
+goog.provide("node.timers");
 
 /**
  * @param {*} item
  * @return {*}
  */
-timers.prototype.unenroll = function(item) {
-  return timers.core.unenroll(item);
+node.timers.prototype.unenroll = function(item) {
+  return node.timers.core_.unenroll(item);
 };
 
 /**
@@ -14,16 +14,16 @@ timers.prototype.unenroll = function(item) {
  * @param {*} msecs
  * @return {*}
  */
-timers.prototype.enroll = function(item, msecs) {
-  return timers.core.enroll(item, msecs);
+node.timers.prototype.enroll = function(item, msecs) {
+  return node.timers.core_.enroll(item, msecs);
 };
 
 /**
  * @param {*} item
  * @return {*}
  */
-timers.prototype.active = function(item) {
-  return timers.core.active(item);
+node.timers.prototype.active = function(item) {
+  return node.timers.core_.active(item);
 };
 
 /**
@@ -34,8 +34,8 @@ timers.prototype.active = function(item) {
  * @param {*} after
  * @return {*}
  */
-timers.prototype.setTimeout = function(callback, after) {
-  return timers.core.setTimeout(callback, after);
+node.timers.prototype.setTimeout = function(callback, after) {
+  return node.timers.core_.setTimeout(callback, after);
 };
 
 /**
@@ -43,8 +43,8 @@ timers.prototype.setTimeout = function(callback, after) {
  * @param {*} timer
  * @return {*}
  */
-timers.prototype.clearTimeout = function(timer) {
-  return timers.core.clearTimeout(timer);
+node.timers.prototype.clearTimeout = function(timer) {
+  return node.timers.core_.clearTimeout(timer);
 };
 
 /**
@@ -55,8 +55,8 @@ timers.prototype.clearTimeout = function(timer) {
  * @param {*} repeat
  * @return {*}
  */
-timers.prototype.setInterval = function(callback, repeat) {
-  return timers.core.setInterval(callback, repeat);
+node.timers.prototype.setInterval = function(callback, repeat) {
+  return node.timers.core_.setInterval(callback, repeat);
 };
 
 /**
@@ -64,9 +64,13 @@ timers.prototype.setInterval = function(callback, repeat) {
  * @param {*} timer
  * @return {*}
  */
-timers.prototype.clearInterval = function(timer) {
-  return timers.core.clearInterval(timer);
+node.timers.prototype.clearInterval = function(timer) {
+  return node.timers.core_.clearInterval(timer);
 };
 
 
-timers.core = require("timers");
+/**
+ * @private
+ * @type {*}
+ */
+node.timers.core_ = require("timers");
