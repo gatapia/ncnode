@@ -2,4 +2,4 @@
 goog.provide("WriteStream");
 
 
-WriteStream.core = require("WriteStream");
+WriteStream.core = require("tty_posix").WriteStream;

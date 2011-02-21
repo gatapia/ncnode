@@ -2,4 +2,4 @@
 goog.provide("Stats");
 
 
-Stats.core = require("Stats");
+Stats.core = require("fs").Stats;
