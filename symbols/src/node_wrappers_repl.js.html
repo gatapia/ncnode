@@ -1,0 +1,46 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name node.repl
+<span class='line'>  3</span>  * @namespace
+<span class='line'>  4</span>  * A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
+<span class='line'>  5</span>  * includable in other programs.  REPL provides a way to interactively run
+<span class='line'>  6</span>  * JavaScript and see the results.  It can be used for debugging, testing, or
+<span class='line'>  7</span>  * just trying things out.
+<span class='line'>  8</span>  *
+<span class='line'>  9</span>  * By executing `node` without any arguments from the command-line you will be
+<span class='line'> 10</span>  * dropped into the REPL. It has simplistic emacs line-editing.
+<span class='line'> 11</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 12</span>  *     mjr:~$ node
+<span class='line'> 13</span>  *     Type '.help' for options.
+<span class='line'> 14</span>  *     > a = [ 1, 2, 3];
+<span class='line'> 15</span>  *     [ 1, 2, 3 ]
+<span class='line'> 16</span>  *     > a.forEach(function (v) {
+<span class='line'> 17</span>  *     ...   console.log(v);
+<span class='line'> 18</span>  *     ...   });
+<span class='line'> 19</span>  *     1
+<span class='line'> 20</span>  *     2
+<span class='line'> 21</span>  *     3
+<span class='line'> 22</span>  * &lt;/pre>
+<span class='line'> 23</span>  * For advanced line-editors, start node with the environmental variable `NODE_NO_READLINE=1`.
+<span class='line'> 24</span>  * This will start the REPL in canonical terminal settings which will allow you to use with `rlwrap`.
+<span class='line'> 25</span>  *
+<span class='line'> 26</span>  * For example, you could add this to your bashrc file:
+<span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 28</span>  *     alias node="env NODE_NO_READLINE=1 rlwrap node"
+<span class='line'> 29</span>  * &lt;/pre>
+<span class='line'> 30</span>  */</span><span class="WHIT">
+<span class='line'> 31</span> 
+<span class='line'> 32</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.repl"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 33</span> 
+<span class='line'> 34</span> 
+<span class='line'> 35</span> </span><span class="COMM">/**
+<span class='line'> 36</span>  * @private
+<span class='line'> 37</span>  * @type {*}
+<span class='line'> 38</span>  */</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="NAME">node.repl.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"repl"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

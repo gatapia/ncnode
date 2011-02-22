@@ -1,0 +1,94 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name node.tls
+<span class='line'>  3</span>  * @namespace
+<span class='line'>  4</span>  * Use `require('tls')` to access this module.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * The `tls` module uses OpenSSL to provide Transport Layer Security and&#47;or
+<span class='line'>  7</span>  * Secure Socket Layer: encrypted stream communication.
+<span class='line'>  8</span>  *
+<span class='line'>  9</span>  * TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
+<span class='line'> 10</span>  * server must have a private key. A private key is created like this
+<span class='line'> 11</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 12</span>  *     openssl genrsa -out ryans-key.pem 1024
+<span class='line'> 13</span>  * &lt;/pre>
+<span class='line'> 14</span>  * All severs and some clients need to have a certificate. Certificates are public
+<span class='line'> 15</span>  * keys signed by a Certificate Authority or self-signed. The first step to
+<span class='line'> 16</span>  * getting a certificate is to create a "Certificate Signing Request" (CSR)
+<span class='line'> 17</span>  * file. This is done with:
+<span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 19</span>  *     openssl req -new -key ryans-key.pem -out ryans-csr.pem
+<span class='line'> 20</span>  * &lt;/pre>
+<span class='line'> 21</span>  * To create a self-signed certificate with the CSR, do this:
+<span class='line'> 22</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 23</span>  *     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
+<span class='line'> 24</span>  * &lt;/pre>
+<span class='line'> 25</span>  * Alternatively you can send the CSR to a Certificate Authority for signing.
+<span class='line'> 26</span>  *
+<span class='line'> 27</span>  * (TODO: docs on creating a CA, for now interested users should just look at
+<span class='line'> 28</span>  * `test&#47;fixtures&#47;keys&#47;Makefile` in the Node source code)
+<span class='line'> 29</span>  */</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.tls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * @param {*} credentials
+<span class='line'> 35</span>  * @param {*} isServer
+<span class='line'> 36</span>  * @param {*} requestCert
+<span class='line'> 37</span>  * @param {*} rejectUnauthorized
+<span class='line'> 38</span>  * @return {*}
+<span class='line'> 39</span>  */</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="NAME">node.tls.prototype.createSecurePair</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">credentials</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isServer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">requestCert</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rejectUnauthorized</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.tls.core_.createSecurePair</span><span class="PUNC">(</span><span class="NAME">credentials</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">isServer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">requestCert</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">rejectUnauthorized</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> 
+<span class='line'> 44</span> </span><span class="COMM">/**
+<span class='line'> 45</span>  * @param {*} options
+<span class='line'> 46</span>  * @param {*} listener
+<span class='line'> 47</span>  * @return {*}
+<span class='line'> 48</span>  */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="NAME">node.tls.prototype.createServer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.tls.core_.createServer</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> 
+<span class='line'> 53</span> </span><span class="COMM">/**
+<span class='line'> 54</span>  * Creates a new client connection to the given `port` and `host`. (If `host`
+<span class='line'> 55</span>  * defaults to `localhost`.) `options` should be an object which specifies
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  *   - `key`: A string or `Buffer` containing the private key of the server in
+<span class='line'> 58</span>  *     PEM format. (Required)
+<span class='line'> 59</span>  *
+<span class='line'> 60</span>  *   - `cert`: A string or `Buffer` containing the certificate key of the server in
+<span class='line'> 61</span>  *     PEM format.
+<span class='line'> 62</span>  *
+<span class='line'> 63</span>  *   - `ca`: An array of strings or `Buffer`s of trusted certificates. If this is
+<span class='line'> 64</span>  *     omitted several well known "root" CAs will be used, like VeriSign.
+<span class='line'> 65</span>  *     These are used to authorize connections.
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * `tls.connect()` returns a cleartext `CryptoStream` object.
+<span class='line'> 68</span>  *
+<span class='line'> 69</span>  * After the TLS&#47;SSL handshake the `callback` is called. The `callback` will be
+<span class='line'> 70</span>  * called no matter if the server's certificate was authorized or not. It is up
+<span class='line'> 71</span>  * to the user to test `s.authorized` to see if the server certificate was
+<span class='line'> 72</span>  * signed by one of the specified CAs. If `s.authorized === false` then the error
+<span class='line'> 73</span>  * can be found in `s.authorizationError`.
+<span class='line'> 74</span>  * @param {*} port /* host
+<span class='line'> 75</span>  * @param {*} options
+<span class='line'> 76</span>  * @param {*} cb */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
+<span class='line'> 79</span> node.tls.prototype.connect = function(port /</span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/) {
+<span class='line'> 80</span>   return node.tls.core_.connect(port /</span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/);
+<span class='line'> 81</span> };
+<span class='line'> 82</span> 
+<span class='line'> 83</span> 
+<span class='line'> 84</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">private</span><span class="WHIT">
+<span class='line'> 86</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="TOKN"></span></pre></body></html>

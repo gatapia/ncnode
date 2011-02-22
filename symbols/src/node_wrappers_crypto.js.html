@@ -1,0 +1,135 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name node.crypto
+<span class='line'>  3</span>  * @namespace
+<span class='line'>  4</span>  * Use `require('crypto')` to access this module.
+<span class='line'>  5</span>  *
+<span class='line'>  6</span>  * The crypto module requires OpenSSL to be available on the underlying platform.
+<span class='line'>  7</span>  * It offers a way of encapsulating secure credentials to be used as part
+<span class='line'>  8</span>  * of a secure HTTPS net or http connection.
+<span class='line'>  9</span>  *
+<span class='line'> 10</span>  * It also offers a set of wrappers for OpenSSL's hash, hmac, cipher, decipher, sign and verify methods.
+<span class='line'> 11</span>  */</span><span class="WHIT">
+<span class='line'> 12</span> 
+<span class='line'> 13</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.crypto"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span> 
+<span class='line'> 15</span> </span><span class="COMM">/**
+<span class='line'> 16</span>  * Creates a credentials object, with the optional details being a dictionary with keys:
+<span class='line'> 17</span>  *
+<span class='line'> 18</span>  * * `key` : a string holding the PEM encoded private key
+<span class='line'> 19</span>  * * `cert` : a string holding the PEM encoded certificate
+<span class='line'> 20</span>  * * `ca` : either a string or list of strings of PEM encoded CA certificates to trust.
+<span class='line'> 21</span>  *
+<span class='line'> 22</span>  * If no 'ca' details are given, then node.js will use the default publicly trusted list of CAs as given in
+<span class='line'> 23</span>  * &lt;http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
+<span class='line'> 24</span>  * @param {*} options
+<span class='line'> 25</span>  * @return {*}
+<span class='line'> 26</span>  */</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="NAME">node.crypto.prototype.createCredentials</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createCredentials</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 30</span> 
+<span class='line'> 31</span> </span><span class="COMM">/**
+<span class='line'> 32</span>  * Creates and returns a hash object, a cryptographic hash with the given algorithm
+<span class='line'> 33</span>  * which can be used to generate hash digests.
+<span class='line'> 34</span>  *
+<span class='line'> 35</span>  * `algorithm` is dependent on the available algorithms supported by the version
+<span class='line'> 36</span>  * of OpenSSL on the platform. Examples are `'sha1'`, `'md5'`, `'sha256'`, `'sha512'`, etc.
+<span class='line'> 37</span>  * On recent releases, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+<span class='line'> 38</span>  * @param {*} hash
+<span class='line'> 39</span>  * @return {*}
+<span class='line'> 40</span>  */</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="NAME">node.crypto.prototype.createHash</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">hash</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createHash</span><span class="PUNC">(</span><span class="NAME">hash</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * Creates and returns a hmac object, a cryptographic hmac with the given algorithm and key.
+<span class='line'> 47</span>  *
+<span class='line'> 48</span>  * `algorithm` is dependent on the available algorithms supported by OpenSSL - see createHash above.
+<span class='line'> 49</span>  * `key` is the hmac key to be used.
+<span class='line'> 50</span>  * @param {*} hmac
+<span class='line'> 51</span>  * @param {*} key
+<span class='line'> 52</span>  * @return {*}
+<span class='line'> 53</span>  */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="NAME">node.crypto.prototype.createHmac</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">hmac</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createHmac</span><span class="PUNC">(</span><span class="NAME">hmac</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> 
+<span class='line'> 58</span> </span><span class="COMM">/**
+<span class='line'> 59</span>  * Creates and returns a cipher object, with the given algorithm and key.
+<span class='line'> 60</span>  *
+<span class='line'> 61</span>  * `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc.
+<span class='line'> 62</span>  * On recent releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+<span class='line'> 63</span>  * @param {*} cipher
+<span class='line'> 64</span>  * @param {*} key
+<span class='line'> 65</span>  * @return {*}
+<span class='line'> 66</span>  */</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="NAME">node.crypto.prototype.createCipher</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createCipher</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="COMM">/**
+<span class='line'> 72</span>  * @param {*} cipher
+<span class='line'> 73</span>  * @param {*} key
+<span class='line'> 74</span>  * @param {*} iv
+<span class='line'> 75</span>  * @return {*}
+<span class='line'> 76</span>  */</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="NAME">node.crypto.prototype.createCipheriv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">iv</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createCipheriv</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">iv</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 80</span> 
+<span class='line'> 81</span> </span><span class="COMM">/**
+<span class='line'> 82</span>  * Creates and returns a decipher object, with the given algorithm and key.
+<span class='line'> 83</span>  * This is the mirror of the cipher object above.
+<span class='line'> 84</span>  * @param {*} cipher
+<span class='line'> 85</span>  * @param {*} key
+<span class='line'> 86</span>  * @return {*}
+<span class='line'> 87</span>  */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="NAME">node.crypto.prototype.createDecipher</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createDecipher</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> 
+<span class='line'> 92</span> </span><span class="COMM">/**
+<span class='line'> 93</span>  * @param {*} cipher
+<span class='line'> 94</span>  * @param {*} key
+<span class='line'> 95</span>  * @param {*} iv
+<span class='line'> 96</span>  * @return {*}
+<span class='line'> 97</span>  */</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="NAME">node.crypto.prototype.createDecipheriv</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">iv</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createDecipheriv</span><span class="PUNC">(</span><span class="NAME">cipher</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">key</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">iv</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="COMM">/**
+<span class='line'>103</span>  * Creates and returns a signing object, with the given algorithm.
+<span class='line'>104</span>  * On recent OpenSSL releases, `openssl list-public-key-algorithms` will display
+<span class='line'>105</span>  * the available signing algorithms. Examples are `'RSA-SHA256'`.
+<span class='line'>106</span>  * @param {*} algorithm
+<span class='line'>107</span>  * @return {*}
+<span class='line'>108</span>  */</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="NAME">node.crypto.prototype.createSign</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">algorithm</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createSign</span><span class="PUNC">(</span><span class="NAME">algorithm</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> 
+<span class='line'>113</span> </span><span class="COMM">/**
+<span class='line'>114</span>  * Creates and returns a verification object, with the given algorithm.
+<span class='line'>115</span>  * This is the mirror of the signing object above.
+<span class='line'>116</span>  * @param {*} algorithm
+<span class='line'>117</span>  * @return {*}
+<span class='line'>118</span>  */</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="NAME">node.crypto.prototype.createVerify</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">algorithm</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.crypto.core_.createVerify</span><span class="PUNC">(</span><span class="NAME">algorithm</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> 
+<span class='line'>123</span> 
+<span class='line'>124</span> </span><span class="COMM">/**
+<span class='line'>125</span>  * @private
+<span class='line'>126</span>  * @type {*}
+<span class='line'>127</span>  */</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="NAME">node.crypto.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"crypto"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

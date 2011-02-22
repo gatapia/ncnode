@@ -1,0 +1,39 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name node
+<span class='line'>  3</span>  * @namespace
+<span class='line'>  4</span>  * An example of a [web server](http.html) written with Node which responds with 'Hello
+<span class='line'>  5</span> World':
+<span class='line'>  6</span> &lt;pre class="code prettyprint lang-js">
+<span class='line'>  7</span>     var http = require('http');
+<span class='line'>  8</span> 
+<span class='line'>  9</span>     http.createServer(function (request, response) {
+<span class='line'> 10</span>       response.writeHead(200, {'Content-Type': 'text&#47;plain'});
+<span class='line'> 11</span>       response.end('Hello World\n');
+<span class='line'> 12</span>     }).listen(8124);
+<span class='line'> 13</span> 
+<span class='line'> 14</span>     console.log('Server running at http:&#47;&#47;127.0.0.1:8124&#47;');
+<span class='line'> 15</span> &lt;/pre>
+<span class='line'> 16</span> To run the server, put the code into a file called `example.js` and execute
+<span class='line'> 17</span> it with the node program
+<span class='line'> 18</span> &lt;pre class="code prettyprint lang-js">
+<span class='line'> 19</span>     > node example.js
+<span class='line'> 20</span>     Server running at http:&#47;&#47;127.0.0.1:8124&#47;
+<span class='line'> 21</span> &lt;/pre>
+<span class='line'> 22</span> All of the examples in the documentation can be run similarly.
+<span class='line'> 23</span>  */</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * @private
+<span class='line'> 30</span>  * @type {*}
+<span class='line'> 31</span>  */</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="NAME">node.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"node"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
