@@ -31,6 +31,12 @@ goog.provide("node.repl");
  */
 
 /**
+ * @constructor
+ * repl
+ */
+node.repl = function() {};
+
+/**
  * @param {*} obj
  * @param {*} showHidden
  * @param {*} depth

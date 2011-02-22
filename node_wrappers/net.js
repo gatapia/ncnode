@@ -8,6 +8,12 @@ goog.provide("node.net");
  */
 
 /**
+ * @constructor
+ * net
+ */
+node.net = function() {};
+
+/**
  * #### net.isIP(input)
  *
  * Tests if input is an IP address. Returns 0 for invalid strings,

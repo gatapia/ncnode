@@ -1,6 +1,12 @@
 
 goog.provide("node.net.Server");
 
+/**
+ * @constructor
+ * net.Server
+ */
+node.net.Server = function() {};
+
 
 /**
  * @private

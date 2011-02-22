@@ -2,6 +2,12 @@
 goog.provide("node.tty_posix");
 
 /**
+ * @constructor
+ * tty_posix
+ */
+node.tty_posix = function() {};
+
+/**
  * @param {*} path
  * @param {*} args
  * @return {*}

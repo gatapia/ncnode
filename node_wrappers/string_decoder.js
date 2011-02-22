@@ -1,6 +1,12 @@
 
 goog.provide("node.string_decoder");
 
+/**
+ * @constructor
+ * string_decoder
+ */
+node.string_decoder = function() {};
+
 
 /**
  * @private

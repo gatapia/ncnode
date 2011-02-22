@@ -12,6 +12,12 @@ goog.provide("node.crypto");
  */
 
 /**
+ * @constructor
+ * crypto
+ */
+node.crypto = function() {};
+
+/**
  * Creates a credentials object, with the optional details being a dictionary with keys:
  *
  * * `key` : a string holding the PEM encoded private key

@@ -1,6 +1,12 @@
 
 goog.provide("node.crypto.Cipher");
 
+/**
+ * @constructor
+ * crypto.Cipher
+ */
+node.crypto.Cipher = function() {};
+
 
 /**
  * @private

@@ -6,6 +6,12 @@ goog.provide("node.http.ServerResponse");
  * passed as the second parameter to the `'request'` event. It is a `Writable Stream`.
  */
 
+/**
+ * @constructor
+ * http.ServerResponse
+ */
+node.http.ServerResponse = function() {};
+
 
 /**
  * @private

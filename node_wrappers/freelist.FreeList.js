@@ -1,6 +1,12 @@
 
 goog.provide("node.freelist.FreeList");
 
+/**
+ * @constructor
+ * freelist.FreeList
+ */
+node.freelist.FreeList = function() {};
+
 
 /**
  * @private

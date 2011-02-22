@@ -2,6 +2,12 @@
 goog.provide("node.sys");
 
 /**
+ * @constructor
+ * sys
+ */
+node.sys = function() {};
+
+/**
  * @return {*}
  */
 node.sys.prototype.print = function() {

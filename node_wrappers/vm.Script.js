@@ -2,6 +2,12 @@
 goog.provide("node.vm.Script");
 
 /**
+ * @constructor
+ * vm.Script
+ */
+node.vm.Script = function() {};
+
+/**
  * @return {*}
  */
 node.vm.Script.prototype.createContext = function() {

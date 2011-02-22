@@ -1,6 +1,12 @@
 
 goog.provide("node.http.OutgoingMessage");
 
+/**
+ * @constructor
+ * http.OutgoingMessage
+ */
+node.http.OutgoingMessage = function() {};
+
 
 /**
  * @private

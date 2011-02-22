@@ -26,6 +26,12 @@ goog.provide("node.http");
  */
 
 /**
+ * @constructor
+ * http
+ */
+node.http = function() {};
+
+/**
  * @type {*}
  */
 node.http.prototype.parsers;

@@ -2,6 +2,12 @@
 goog.provide("node.readline");
 
 /**
+ * @constructor
+ * readline
+ */
+node.readline = function() {};
+
+/**
  * @param {*} input
  * @param {*} output
  * @param {*} completer

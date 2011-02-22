@@ -39,6 +39,12 @@ goog.provide("node.http.ClientRequest");
  * This is an `EventEmitter` with the following events:
  */
 
+/**
+ * @constructor
+ * http.ClientRequest
+ */
+node.http.ClientRequest = function() {};
+
 
 /**
  * @private

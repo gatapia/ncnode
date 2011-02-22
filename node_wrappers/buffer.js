@@ -1,6 +1,12 @@
 
 goog.provide("node.buffer");
 
+/**
+ * @constructor
+ * buffer
+ */
+node.buffer = function() {};
+
 
 /**
  * @private

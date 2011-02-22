@@ -7,6 +7,12 @@ goog.provide("node.dgram");
  */
 
 /**
+ * @constructor
+ * dgram
+ */
+node.dgram = function() {};
+
+/**
  * Creates a datagram socket of the specified types.  Valid types are:
  * `udp4`, `udp6`, and `unix_dgram`.
  *

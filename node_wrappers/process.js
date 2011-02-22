@@ -7,6 +7,12 @@ goog.provide("node.process");
  */
 
 /**
+ * @constructor
+ * process
+ */
+node.process = function() {};
+
+/**
  * Getter&#47;setter to set what is displayed in 'ps'.
  * @type {*}
  */

@@ -1,6 +1,12 @@
 
 goog.provide("node.net.Socket");
 
+/**
+ * @constructor
+ * net.Socket
+ */
+node.net.Socket = function() {};
+
 
 /**
  * @private

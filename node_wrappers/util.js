@@ -7,6 +7,12 @@ goog.provide("node.util");
  */
 
 /**
+ * @constructor
+ * util
+ */
+node.util = function() {};
+
+/**
  * @return {*}
  */
 node.util.prototype.print = function() {

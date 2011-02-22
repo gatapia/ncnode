@@ -46,6 +46,12 @@ goog.provide("node.url");
  */
 
 /**
+ * @constructor
+ * url
+ */
+node.url = function() {};
+
+/**
  * Take a URL string, and return an object.  Pass `true` as the second argument to also parse
  * the query string using the `querystring` module.
  * @param {*} url

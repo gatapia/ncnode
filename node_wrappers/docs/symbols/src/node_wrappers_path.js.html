@@ -1,0 +1,186 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.path"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> 
+<span class='line'>  4</span> </span><span class="COMM">/**
+<span class='line'>  5</span>  * @fileoverview This module contains utilities for dealing with file paths.  Use
+<span class='line'>  6</span>  * `require('path')` to use it.  It provides the following methods:
+<span class='line'>  7</span>  */</span><span class="WHIT">
+<span class='line'>  8</span> 
+<span class='line'>  9</span> </span><span class="COMM">/**
+<span class='line'> 10</span>  * @constructor
+<span class='line'> 11</span>  * path
+<span class='line'> 12</span>  */</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="NAME">node.path</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span> 
+<span class='line'> 15</span> </span><span class="COMM">/**
+<span class='line'> 16</span>  * Resolves `to` to an absolute path.
+<span class='line'> 17</span>  *
+<span class='line'> 18</span>  * If `to` isn't already absolute `from` arguments are prepended in right to left
+<span class='line'> 19</span>  * order, until an absolute path is found. If after using all `from` paths still
+<span class='line'> 20</span>  * no absolute path is found, the current working directory is used as well. The
+<span class='line'> 21</span>  * resulting path is normalized, and trailing slashes are removed unless the path
+<span class='line'> 22</span>  * gets resolved to the root directory.
+<span class='line'> 23</span>  *
+<span class='line'> 24</span>  * Another way to think of it is as a sequence of `cd` commands in a shell.
+<span class='line'> 25</span>  * &lt;pre>
+<span class='line'> 26</span>  *     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
+<span class='line'> 27</span>  * &lt;/pre>
+<span class='line'> 28</span>  * Is similar to:
+<span class='line'> 29</span>  * &lt;pre>
+<span class='line'> 30</span>  *     cd foo&#47;bar
+<span class='line'> 31</span>  *     cd &#47;tmp&#47;file&#47;
+<span class='line'> 32</span>  *     cd ..
+<span class='line'> 33</span>  *     cd a&#47;..&#47;subfile
+<span class='line'> 34</span>  *     pwd
+<span class='line'> 35</span>  * &lt;/pre>
+<span class='line'> 36</span>  * The difference is that the different paths don't need to exist and may also be
+<span class='line'> 37</span>  * files.
+<span class='line'> 38</span>  *
+<span class='line'> 39</span>  * Examples:
+<span class='line'> 40</span>  * &lt;pre>
+<span class='line'> 41</span>  *     path.resolve('&#47;foo&#47;bar', '.&#47;baz')
+<span class='line'> 42</span>  *     &#47;&#47; returns
+<span class='line'> 43</span>  *     '&#47;foo&#47;bar&#47;baz'
+<span class='line'> 44</span>  *
+<span class='line'> 45</span>  *     path.resolve('&#47;foo&#47;bar', '&#47;tmp&#47;file&#47;')
+<span class='line'> 46</span>  *     &#47;&#47; returns
+<span class='line'> 47</span>  *     '&#47;tmp&#47;file'
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  *     path.resolve('wwwroot', 'static_files&#47;png&#47;', '..&#47;gif&#47;image.gif')
+<span class='line'> 50</span>  *     &#47;&#47; if currently in &#47;home&#47;myself&#47;node, it returns
+<span class='line'> 51</span>  *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static_files&#47;gif&#47;image.gif'
+<span class='line'> 52</span>  * &lt;/pre>
+<span class='line'> 53</span>  * @return {*}
+<span class='line'> 54</span>  */</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="NAME">node.path.prototype.resolve</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> 
+<span class='line'> 59</span> </span><span class="COMM">/**
+<span class='line'> 60</span>  * Normalize a string path, taking care of `'..'` and `'.'` parts.
+<span class='line'> 61</span>  *
+<span class='line'> 62</span>  * When multiple slashes are found, they're replaces by a single one;
+<span class='line'> 63</span>  * when the path contains a trailing slash, it is preserved.
+<span class='line'> 64</span>  * On windows backslashes are used.
+<span class='line'> 65</span>  *
+<span class='line'> 66</span>  * Example:
+<span class='line'> 67</span>  * &lt;pre>
+<span class='line'> 68</span>  *     path.normalize('&#47;foo&#47;bar&#47;&#47;baz&#47;asdf&#47;quux&#47;..')
+<span class='line'> 69</span>  *     &#47;&#47; returns
+<span class='line'> 70</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
+<span class='line'> 71</span>  * &lt;/pre>
+<span class='line'> 72</span>  * @param {*} path
+<span class='line'> 73</span>  * @return {*}
+<span class='line'> 74</span>  */</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="NAME">node.path.prototype.normalize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.normalize</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> 
+<span class='line'> 79</span> </span><span class="COMM">/**
+<span class='line'> 80</span>  * Join all arguments together and normalize the resulting path.
+<span class='line'> 81</span>  *
+<span class='line'> 82</span>  * Example:
+<span class='line'> 83</span>  * &lt;pre>
+<span class='line'> 84</span>  *     node> require('path').join(
+<span class='line'> 85</span>  *     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
+<span class='line'> 86</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
+<span class='line'> 87</span>  * &lt;/pre>
+<span class='line'> 88</span>  * @return {*}
+<span class='line'> 89</span>  */</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="NAME">node.path.prototype.join</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.join</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * Return the directory name of a path.  Similar to the Unix `dirname` command.
+<span class='line'> 96</span>  *
+<span class='line'> 97</span>  * Example:
+<span class='line'> 98</span>  * &lt;pre>
+<span class='line'> 99</span>  *     path.dirname('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux')
+<span class='line'>100</span>  *     &#47;&#47; returns
+<span class='line'>101</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
+<span class='line'>102</span>  * &lt;/pre>
+<span class='line'>103</span>  * @param {*} path
+<span class='line'>104</span>  * @return {*}
+<span class='line'>105</span>  */</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="NAME">node.path.prototype.dirname</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.dirname</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>109</span> 
+<span class='line'>110</span> </span><span class="COMM">/**
+<span class='line'>111</span>  * Return the last portion of a path.  Similar to the Unix `basename` command.
+<span class='line'>112</span>  *
+<span class='line'>113</span>  * Example:
+<span class='line'>114</span>  * &lt;pre>
+<span class='line'>115</span>  *     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html')
+<span class='line'>116</span>  *     &#47;&#47; returns
+<span class='line'>117</span>  *     'quux.html'
+<span class='line'>118</span>  *
+<span class='line'>119</span>  *     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html', '.html')
+<span class='line'>120</span>  *     &#47;&#47; returns
+<span class='line'>121</span>  *     'quux'
+<span class='line'>122</span>  * &lt;/pre>
+<span class='line'>123</span>  * @param {*} path
+<span class='line'>124</span>  * @param {*} ext
+<span class='line'>125</span>  * @return {*}
+<span class='line'>126</span>  */</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="NAME">node.path.prototype.basename</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ext</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>128</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.basename</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ext</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>129</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>130</span> 
+<span class='line'>131</span> </span><span class="COMM">/**
+<span class='line'>132</span>  * Return the extension of the path.  Everything after the last '.' in the last portion
+<span class='line'>133</span>  * of the path.  If there is no '.' in the last portion of the path or the only '.' is
+<span class='line'>134</span>  * the first character, then it returns an empty string.  Examples:
+<span class='line'>135</span>  * &lt;pre>
+<span class='line'>136</span>  *     path.extname('index.html')
+<span class='line'>137</span>  *     &#47;&#47; returns
+<span class='line'>138</span>  *     '.html'
+<span class='line'>139</span>  *
+<span class='line'>140</span>  *     path.extname('index')
+<span class='line'>141</span>  *     &#47;&#47; returns
+<span class='line'>142</span>  *     ''
+<span class='line'>143</span>  * &lt;/pre>
+<span class='line'>144</span>  * @param {*} path
+<span class='line'>145</span>  * @return {*}
+<span class='line'>146</span>  */</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="NAME">node.path.prototype.extname</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>148</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.extname</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>150</span> 
+<span class='line'>151</span> </span><span class="COMM">/**
+<span class='line'>152</span>  * Test whether or not the given path exists.  Then, call the `callback` argument
+<span class='line'>153</span>  * with either true or false. Example:
+<span class='line'>154</span>  * &lt;pre>
+<span class='line'>155</span>  *     path.exists('&#47;etc&#47;passwd', function (exists) {
+<span class='line'>156</span>  *       util.debug(exists ? "it's there" : "no passwd!");
+<span class='line'>157</span>  *     });
+<span class='line'>158</span>  * @param {*} path
+<span class='line'>159</span>  * @param {*} callback
+<span class='line'>160</span>  * @return {*}
+<span class='line'>161</span>  */</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="NAME">node.path.prototype.exists</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.exists</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>165</span> 
+<span class='line'>166</span> </span><span class="COMM">/**
+<span class='line'>167</span>  * @param {*} path
+<span class='line'>168</span>  * @return {*}
+<span class='line'>169</span>  */</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="NAME">node.path.prototype.existsSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.path.core_.existsSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>173</span> 
+<span class='line'>174</span> 
+<span class='line'>175</span> </span><span class="COMM">/**
+<span class='line'>176</span>  * @private
+<span class='line'>177</span>  * @type {*}
+<span class='line'>178</span>  */</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="NAME">node.path.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"path"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

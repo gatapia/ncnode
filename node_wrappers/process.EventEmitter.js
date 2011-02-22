@@ -1,6 +1,12 @@
 
 goog.provide("node.process.EventEmitter");
 
+/**
+ * @constructor
+ * process.EventEmitter
+ */
+node.process.EventEmitter = function() {};
+
 
 /**
  * @private

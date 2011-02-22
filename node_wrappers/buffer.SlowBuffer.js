@@ -2,6 +2,12 @@
 goog.provide("node.buffer.SlowBuffer");
 
 /**
+ * @constructor
+ * buffer.SlowBuffer
+ */
+node.buffer.SlowBuffer = function() {};
+
+/**
  * @return {*}
  */
 node.buffer.SlowBuffer.prototype.byteLength = function() {

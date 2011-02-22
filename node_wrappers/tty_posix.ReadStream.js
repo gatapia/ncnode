@@ -1,6 +1,12 @@
 
 goog.provide("node.tty_posix.ReadStream");
 
+/**
+ * @constructor
+ * tty_posix.ReadStream
+ */
+node.tty_posix.ReadStream = function() {};
+
 
 /**
  * @private

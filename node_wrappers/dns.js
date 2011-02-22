@@ -30,6 +30,12 @@ goog.provide("node.dns");
  */
 
 /**
+ * @constructor
+ * dns
+ */
+node.dns = function() {};
+
+/**
  * @type {*}
  */
 node.dns.prototype.NODATA;

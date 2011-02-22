@@ -1,6 +1,12 @@
 
 goog.provide("node.net.Stream");
 
+/**
+ * @constructor
+ * net.Stream
+ */
+node.net.Stream = function() {};
+
 
 /**
  * @private

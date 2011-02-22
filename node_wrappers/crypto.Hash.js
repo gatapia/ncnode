@@ -1,6 +1,12 @@
 
 goog.provide("node.crypto.Hash");
 
+/**
+ * @constructor
+ * crypto.Hash
+ */
+node.crypto.Hash = function() {};
+
 
 /**
  * @private

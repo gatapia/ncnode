@@ -7,6 +7,12 @@ goog.provide("node.assert");
  */
 
 /**
+ * @constructor
+ * assert
+ */
+node.assert = function() {};
+
+/**
  * Tests if `actual` is equal to `expected` using the operator provided.
  * @param {*} actual
  * @param {*} expected

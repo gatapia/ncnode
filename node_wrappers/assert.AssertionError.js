@@ -2,6 +2,12 @@
 goog.provide("node.assert.AssertionError");
 
 /**
+ * @constructor
+ * assert.AssertionError
+ */
+node.assert.AssertionError = function() {};
+
+/**
  * @type {*}
  */
 node.assert.AssertionError.prototype.name;

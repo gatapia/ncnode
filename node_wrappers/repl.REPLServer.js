@@ -1,6 +1,12 @@
 
 goog.provide("node.repl.REPLServer");
 
+/**
+ * @constructor
+ * repl.REPLServer
+ */
+node.repl.REPLServer = function() {};
+
 
 /**
  * @private

@@ -2,6 +2,12 @@
 goog.provide("node.timers");
 
 /**
+ * @constructor
+ * timers
+ */
+node.timers = function() {};
+
+/**
  * @param {*} item
  * @return {*}
  */

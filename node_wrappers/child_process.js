@@ -2,6 +2,12 @@
 goog.provide("node.child_process");
 
 /**
+ * @constructor
+ * child_process
+ */
+node.child_process = function() {};
+
+/**
  * @param {*} path
  * @param {*} args /*
  * @param {*} options

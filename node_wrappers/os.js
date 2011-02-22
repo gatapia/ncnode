@@ -6,6 +6,12 @@ goog.provide("node.os");
  */
 
 /**
+ * @constructor
+ * os
+ */
+node.os = function() {};
+
+/**
  * Returns the hostname of the operating system.
  * @return {*}
  */

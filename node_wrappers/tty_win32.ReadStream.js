@@ -1,6 +1,12 @@
 
 goog.provide("node.tty_win32.ReadStream");
 
+/**
+ * @constructor
+ * tty_win32.ReadStream
+ */
+node.tty_win32.ReadStream = function() {};
+
 
 /**
  * @private

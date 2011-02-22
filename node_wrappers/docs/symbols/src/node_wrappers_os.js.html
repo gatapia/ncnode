@@ -1,0 +1,157 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.os"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> 
+<span class='line'>  4</span> </span><span class="COMM">/**
+<span class='line'>  5</span>  * @fileoverview Use `require('os')` to access this module.
+<span class='line'>  6</span>  */</span><span class="WHIT">
+<span class='line'>  7</span> 
+<span class='line'>  8</span> </span><span class="COMM">/**
+<span class='line'>  9</span>  * @constructor
+<span class='line'> 10</span>  * os
+<span class='line'> 11</span>  */</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="NAME">node.os</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 13</span> 
+<span class='line'> 14</span> </span><span class="COMM">/**
+<span class='line'> 15</span>  * Returns the hostname of the operating system.
+<span class='line'> 16</span>  * @return {*}
+<span class='line'> 17</span>  */</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="NAME">node.os.prototype.hostname</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.hostname</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="COMM">/**
+<span class='line'> 23</span>  * Returns an array containing the 1, 5, and 15 minute load averages.
+<span class='line'> 24</span>  * @return {*}
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="NAME">node.os.prototype.loadavg</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.loadavg</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * Returns the system uptime in seconds.
+<span class='line'> 32</span>  * @return {*}
+<span class='line'> 33</span>  */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">node.os.prototype.uptime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.uptime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> 
+<span class='line'> 38</span> </span><span class="COMM">/**
+<span class='line'> 39</span>  * Returns the amount of free system memory in bytes.
+<span class='line'> 40</span>  * @return {*}
+<span class='line'> 41</span>  */</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="NAME">node.os.prototype.freemem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.freemem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/**
+<span class='line'> 47</span>  * Returns the total amount of system memory in bytes.
+<span class='line'> 48</span>  * @return {*}
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">node.os.prototype.totalmem</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.totalmem</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="COMM">/**
+<span class='line'> 55</span>  * Returns an array of objects containing information about each CPU&#47;core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).
+<span class='line'> 56</span>  *
+<span class='line'> 57</span>  * Example inspection of os.cpus:
+<span class='line'> 58</span>  * &lt;pre>
+<span class='line'> 59</span>  *     [ { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'> 60</span>  *         speed: 2926,
+<span class='line'> 61</span>  *         times:
+<span class='line'> 62</span>  *          { user: 252020,
+<span class='line'> 63</span>  *            nice: 0,
+<span class='line'> 64</span>  *            sys: 30340,
+<span class='line'> 65</span>  *            idle: 1070356870,
+<span class='line'> 66</span>  *            irq: 0 } },
+<span class='line'> 67</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'> 68</span>  *         speed: 2926,
+<span class='line'> 69</span>  *         times:
+<span class='line'> 70</span>  *          { user: 306960,
+<span class='line'> 71</span>  *            nice: 0,
+<span class='line'> 72</span>  *            sys: 26980,
+<span class='line'> 73</span>  *            idle: 1071569080,
+<span class='line'> 74</span>  *            irq: 0 } },
+<span class='line'> 75</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'> 76</span>  *         speed: 2926,
+<span class='line'> 77</span>  *         times:
+<span class='line'> 78</span>  *          { user: 248450,
+<span class='line'> 79</span>  *            nice: 0,
+<span class='line'> 80</span>  *            sys: 21750,
+<span class='line'> 81</span>  *            idle: 1070919370,
+<span class='line'> 82</span>  *            irq: 0 } },
+<span class='line'> 83</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'> 84</span>  *         speed: 2926,
+<span class='line'> 85</span>  *         times:
+<span class='line'> 86</span>  *          { user: 256880,
+<span class='line'> 87</span>  *            nice: 0,
+<span class='line'> 88</span>  *            sys: 19430,
+<span class='line'> 89</span>  *            idle: 1070905480,
+<span class='line'> 90</span>  *            irq: 20 } },
+<span class='line'> 91</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'> 92</span>  *         speed: 2926,
+<span class='line'> 93</span>  *         times:
+<span class='line'> 94</span>  *          { user: 511580,
+<span class='line'> 95</span>  *            nice: 20,
+<span class='line'> 96</span>  *            sys: 40900,
+<span class='line'> 97</span>  *            idle: 1070842510,
+<span class='line'> 98</span>  *            irq: 0 } },
+<span class='line'> 99</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'>100</span>  *         speed: 2926,
+<span class='line'>101</span>  *         times:
+<span class='line'>102</span>  *          { user: 291660,
+<span class='line'>103</span>  *            nice: 0,
+<span class='line'>104</span>  *            sys: 34360,
+<span class='line'>105</span>  *            idle: 1070888000,
+<span class='line'>106</span>  *            irq: 10 } },
+<span class='line'>107</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'>108</span>  *         speed: 2926,
+<span class='line'>109</span>  *         times:
+<span class='line'>110</span>  *          { user: 308260,
+<span class='line'>111</span>  *            nice: 0,
+<span class='line'>112</span>  *            sys: 55410,
+<span class='line'>113</span>  *            idle: 1071129970,
+<span class='line'>114</span>  *            irq: 880 } },
+<span class='line'>115</span>  *       { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
+<span class='line'>116</span>  *         speed: 2926,
+<span class='line'>117</span>  *         times:
+<span class='line'>118</span>  *          { user: 266450,
+<span class='line'>119</span>  *            nice: 1480,
+<span class='line'>120</span>  *            sys: 34920,
+<span class='line'>121</span>  *            idle: 1072572010,
+<span class='line'>122</span>  *            irq: 30 } } ]
+<span class='line'>123</span>  * @return {*}
+<span class='line'>124</span>  */</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="NAME">node.os.prototype.cpus</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.cpus</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>128</span> 
+<span class='line'>129</span> </span><span class="COMM">/**
+<span class='line'>130</span>  * Returns the operating system name.
+<span class='line'>131</span>  * @return {*}
+<span class='line'>132</span>  */</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="NAME">node.os.prototype.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.type</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>136</span> 
+<span class='line'>137</span> </span><span class="COMM">/**
+<span class='line'>138</span>  * Returns the operating system release.
+<span class='line'>139</span>  * @return {*}
+<span class='line'>140</span>  */</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="NAME">node.os.prototype.release</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.os.core_.release</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> 
+<span class='line'>145</span> 
+<span class='line'>146</span> </span><span class="COMM">/**
+<span class='line'>147</span>  * @private
+<span class='line'>148</span>  * @type {*}
+<span class='line'>149</span>  */</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="NAME">node.os.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"os"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

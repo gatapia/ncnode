@@ -7,6 +7,12 @@ goog.provide("node.path");
  */
 
 /**
+ * @constructor
+ * path
+ */
+node.path = function() {};
+
+/**
  * Resolves `to` to an absolute path.
  *
  * If `to` isn't already absolute `from` arguments are prepended in right to left

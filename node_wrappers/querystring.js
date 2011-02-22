@@ -7,6 +7,12 @@ goog.provide("node.querystring");
  */
 
 /**
+ * @constructor
+ * querystring
+ */
+node.querystring = function() {};
+
+/**
  * @param {*} s
  * @param {*} decodeSpaces
  * @return {*}

@@ -10,6 +10,12 @@ goog.provide("node.vm");
  */
 
 /**
+ * @constructor
+ * vm
+ */
+node.vm = function() {};
+
+/**
  * `createScript` compiles `code` as if it were loaded from `filename`,
  * but does not run it. Instead, it returns a `vm.Script` object representing this compiled code.
  * This script can be run later many times using methods below.

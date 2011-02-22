@@ -1,6 +1,12 @@
 
 goog.provide("node.http.Agent");
 
+/**
+ * @constructor
+ * http.Agent
+ */
+node.http.Agent = function() {};
+
 
 /**
  * @private

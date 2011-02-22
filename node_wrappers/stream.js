@@ -1,6 +1,12 @@
 
 goog.provide("node.stream");
 
+/**
+ * @constructor
+ * stream
+ */
+node.stream = function() {};
+
 
 /**
  * @private

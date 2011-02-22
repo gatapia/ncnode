@@ -1,5 +1,16 @@
+/**
+ * @name node
+ * @namespace The core Node.js library jsdoc`ed
+ *
+ */
 
 goog.provide("node.global");
+
+/**
+ * @constructor
+ * global
+ */
+node.global = function() {};
 
 /**
  * @type {*}

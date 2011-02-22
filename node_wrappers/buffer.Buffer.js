@@ -2,6 +2,12 @@
 goog.provide("node.buffer.Buffer");
 
 /**
+ * @constructor
+ * buffer.Buffer
+ */
+node.buffer.Buffer = function() {};
+
+/**
  * @type {*}
  */
 node.buffer.Buffer.prototype.poolSize;

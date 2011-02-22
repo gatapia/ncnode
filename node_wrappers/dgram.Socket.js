@@ -1,6 +1,12 @@
 
 goog.provide("node.dgram.Socket");
 
+/**
+ * @constructor
+ * dgram.Socket
+ */
+node.dgram.Socket = function() {};
+
 
 /**
  * @private

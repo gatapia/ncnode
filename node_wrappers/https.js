@@ -7,6 +7,12 @@ goog.provide("node.https");
  */
 
 /**
+ * @constructor
+ * https
+ */
+node.https = function() {};
+
+/**
  * @param {*} opts
  * @param {*} requestListener
  * @return {*}

@@ -1,6 +1,12 @@
 
 goog.provide("node.crypto.Credentials");
 
+/**
+ * @constructor
+ * crypto.Credentials
+ */
+node.crypto.Credentials = function() {};
+
 
 /**
  * @private

@@ -1,6 +1,12 @@
 
 goog.provide("node.fs.FileWriteStream");
 
+/**
+ * @constructor
+ * fs.FileWriteStream
+ */
+node.fs.FileWriteStream = function() {};
+
 
 /**
  * @private

@@ -2,6 +2,12 @@
 goog.provide("node.console");
 
 /**
+ * @constructor
+ * console
+ */
+node.console = function() {};
+
+/**
  * @return {*}
  */
 node.console.prototype.log = function() {

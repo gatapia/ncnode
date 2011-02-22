@@ -13,6 +13,12 @@ goog.provide("node.fs.Stats");
  *  - `stats.isSocket()`
  */
 
+/**
+ * @constructor
+ * fs.Stats
+ */
+node.fs.Stats = function() {};
+
 
 /**
  * @private

@@ -1,6 +1,12 @@
 
 goog.provide("node.tty_win32");
 
+/**
+ * @constructor
+ * tty_win32
+ */
+node.tty_win32 = function() {};
+
 
 /**
  * @private

@@ -56,6 +56,12 @@ goog.provide("node.fs");
  */
 
 /**
+ * @constructor
+ * fs
+ */
+node.fs = function() {};
+
+/**
  * Asynchronously reads the entire contents of a file. Example:
  * <pre>
  *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {

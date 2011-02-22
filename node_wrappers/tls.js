@@ -30,6 +30,12 @@ goog.provide("node.tls");
  */
 
 /**
+ * @constructor
+ * tls
+ */
+node.tls = function() {};
+
+/**
  * @param {*} credentials
  * @param {*} isServer
  * @param {*} requestCert

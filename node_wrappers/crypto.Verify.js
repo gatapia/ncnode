@@ -1,6 +1,12 @@
 
 goog.provide("node.crypto.Verify");
 
+/**
+ * @constructor
+ * crypto.Verify
+ */
+node.crypto.Verify = function() {};
+
 
 /**
  * @private

@@ -14,6 +14,12 @@ goog.provide("node.events");
  * is emitted. These functions are called _listeners_.
  */
 
+/**
+ * @constructor
+ * events
+ */
+node.events = function() {};
+
 
 /**
  * @private
