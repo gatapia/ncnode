@@ -111,15 +111,15 @@ node.fs.prototype.closeSync = function(fd) {
 
 /**
  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
- * or 'a+'. The callback gets two arguments `(err, fd)`.
+ * or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
  * @param {*} path
  * @param {*} flags
- * @param {*} mode_
+ * @param {*} mode
  * @param {*} callback
  * @return {*}
  */
-node.fs.prototype.open = function(path, flags, mode_, callback) {
-  return node.fs.core_.open(path, flags, mode_, callback);
+node.fs.prototype.open = function(path, flags, mode, callback) {
+  return node.fs.core_.open(path, flags, mode, callback);
 };
 
 /**
@@ -613,11 +613,11 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
 
 /**
  * Watch for changes on `filename`. The callback `listener` will be called each
- * time the file changes.
+ * time the file is accessed.
  *
  * The second argument is optional. The `options` if provided should be an object
  * containing two members a boolean, `persistent`, and `interval`, a polling
- * value in milliseconds. The default is `{persistent: true, interval: 0}`.
+ * value in milliseconds. The default is `{ persistent: true, interval: 0 }`.
  *
  * The `listener` gets two arguments the current stat object and the previous
  * stat object:
@@ -628,6 +628,9 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
  *     });
  * </pre>
  * These stat objects are instances of `fs.Stat`.
+ *
+ * If you want to be notified when the file was modified, not just accessed
+ * you need to compare `curr.mtime` and `prev.mtime.
  * @param {*} filename
  * @return {*}
  */
@@ -647,21 +650,23 @@ node.fs.prototype.unwatchFile = function(filename) {
 /**
  * Synchronous realpath(2). Returns the resolved path.
  * @param {*} p
+ * @param {*} cache
  * @return {*}
  */
-node.fs.prototype.realpathSync = function(p) {
-  return node.fs.core_.realpathSync(p);
+node.fs.prototype.realpathSync = function(p, cache) {
+  return node.fs.core_.realpathSync(p, cache);
 };
 
 /**
  * Asynchronous realpath(2).  The callback gets two arguments `(err,
  * resolvedPath)`.
  * @param {*} p
+ * @param {*} cache
  * @param {*} cb
  * @return {*}
  */
-node.fs.prototype.realpath = function(p, cb) {
-  return node.fs.core_.realpath(p, cb);
+node.fs.prototype.realpath = function(p, cache, cb) {
+  return node.fs.core_.realpath(p, cache, cb);
 };
 
 /**

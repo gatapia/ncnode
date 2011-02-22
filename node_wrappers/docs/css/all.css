@@ -113,6 +113,7 @@ body,
 input,
 select,
 textarea {
+	color: #000;
 	font-family: Arial, Geneva, sans-serif;
 }
 
