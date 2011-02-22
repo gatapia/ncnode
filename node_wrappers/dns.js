@@ -5,7 +5,7 @@
  *
  * Here is an example which resolves `'www.google.com'` then reverse
  * resolves the IP addresses which are returned.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var dns = require('dns');
  *
  *     dns.resolve4('www.google.com', function (err, addresses) {

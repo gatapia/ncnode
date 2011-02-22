@@ -24,7 +24,7 @@ node.util.prototype.puts = function() {
 /**
  * A synchronous output function. Will block the process and
  * output `string` immediately to `stderr`.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     require('util').debug('message on stderr');
  * </pre>
  * @param {*} x
@@ -55,7 +55,7 @@ node.util.prototype.error = function(x) {
  * in `null` for `depth`.
  *
  * Example of inspecting all properties of the `util` object:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var util = require('util');
  *
  *     console.log(util.inspect(util, true, null));
@@ -79,7 +79,7 @@ node.util.prototype.p = function() {
 
 /**
  * Output with timestamp on `stdout`.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     require('util').log('Timestmaped message.');
  * </pre>
  * @param {*} msg
@@ -121,7 +121,7 @@ node.util.prototype.pump = function(readStream, writeStream, callback) {
  *
  * As an additional convenience, `superConstructor` will be accessible
  * through the `constructor.super_` property.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var util = require("util");
  *     var events = require("events");
  *

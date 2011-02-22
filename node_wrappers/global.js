@@ -1,6 +1,7 @@
 /**
  * @name node.global
  * @namespace
+ * These object are available in the global scope and can be accessed from anywhere.
  */
 
 goog.provide("node.global");

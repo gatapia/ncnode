@@ -8,18 +8,18 @@
  *
  * TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
  * server must have a private key. A private key is created like this
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     openssl genrsa -out ryans-key.pem 1024
  * </pre>
  * All severs and some clients need to have a certificate. Certificates are public
  * keys signed by a Certificate Authority or self-signed. The first step to
  * getting a certificate is to create a "Certificate Signing Request" (CSR)
  * file. This is done with:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     openssl req -new -key ryans-key.pem -out ryans-csr.pem
  * </pre>
  * To create a self-signed certificate with the CSR, do this:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
  * </pre>
  * Alternatively you can send the CSR to a Certificate Authority for signing.

@@ -3,7 +3,7 @@
  * @namespace
  * An example of a [web server](http.html) written with Node which responds with 'Hello
 World':
-<pre>
+<pre class="code prettyprint lang-js">
     var http = require('http');
 
     http.createServer(function (request, response) {
@@ -15,7 +15,7 @@ World':
 </pre>
 To run the server, put the code into a file called `example.js` and execute
 it with the node program
-<pre>
+<pre class="code prettyprint lang-js">
     > node example.js
     Server running at http:&#47;&#47;127.0.0.1:8124&#47;
 </pre>

@@ -15,18 +15,18 @@
 <span class='line'>  8</span>  *
 <span class='line'>  9</span>  * TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
 <span class='line'> 10</span>  * server must have a private key. A private key is created like this
-<span class='line'> 11</span>  * &lt;pre>
+<span class='line'> 11</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 12</span>  *     openssl genrsa -out ryans-key.pem 1024
 <span class='line'> 13</span>  * &lt;/pre>
 <span class='line'> 14</span>  * All severs and some clients need to have a certificate. Certificates are public
 <span class='line'> 15</span>  * keys signed by a Certificate Authority or self-signed. The first step to
 <span class='line'> 16</span>  * getting a certificate is to create a "Certificate Signing Request" (CSR)
 <span class='line'> 17</span>  * file. This is done with:
-<span class='line'> 18</span>  * &lt;pre>
+<span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 19</span>  *     openssl req -new -key ryans-key.pem -out ryans-csr.pem
 <span class='line'> 20</span>  * &lt;/pre>
 <span class='line'> 21</span>  * To create a self-signed certificate with the CSR, do this:
-<span class='line'> 22</span>  * &lt;pre>
+<span class='line'> 22</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 23</span>  *     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 <span class='line'> 24</span>  * &lt;/pre>
 <span class='line'> 25</span>  * Alternatively you can send the CSR to a Certificate Authority for signing.

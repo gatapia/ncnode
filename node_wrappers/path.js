@@ -17,11 +17,11 @@ goog.provide("node.path");
  * gets resolved to the root directory.
  *
  * Another way to think of it is as a sequence of `cd` commands in a shell.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
  * </pre>
  * Is similar to:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     cd foo&#47;bar
  *     cd &#47;tmp&#47;file&#47;
  *     cd ..
@@ -32,7 +32,7 @@ goog.provide("node.path");
  * files.
  *
  * Examples:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.resolve('&#47;foo&#47;bar', '.&#47;baz')
  *     &#47;&#47; returns
  *     '&#47;foo&#47;bar&#47;baz'
@@ -59,7 +59,7 @@ node.path.prototype.resolve = function() {
  * On windows backslashes are used.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.normalize('&#47;foo&#47;bar&#47;&#47;baz&#47;asdf&#47;quux&#47;..')
  *     &#47;&#47; returns
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -75,7 +75,7 @@ node.path.prototype.normalize = function(path) {
  * Join all arguments together and normalize the resulting path.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     node> require('path').join(
  *     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -90,7 +90,7 @@ node.path.prototype.join = function() {
  * Return the directory name of a path.  Similar to the Unix `dirname` command.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.dirname('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux')
  *     &#47;&#47; returns
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -106,7 +106,7 @@ node.path.prototype.dirname = function(path) {
  * Return the last portion of a path.  Similar to the Unix `basename` command.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html')
  *     &#47;&#47; returns
  *     'quux.html'
@@ -127,7 +127,7 @@ node.path.prototype.basename = function(path, ext) {
  * Return the extension of the path.  Everything after the last '.' in the last portion
  * of the path.  If there is no '.' in the last portion of the path or the only '.' is
  * the first character, then it returns an empty string.  Examples:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.extname('index.html')
  *     &#47;&#47; returns
  *     '.html'
@@ -146,7 +146,7 @@ node.path.prototype.extname = function(path) {
 /**
  * Test whether or not the given path exists.  Then, call the `callback` argument
  * with either true or false. Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     path.exists('&#47;etc&#47;passwd', function (exists) {
  *       util.debug(exists ? "it's there" : "no passwd!");
  *     });

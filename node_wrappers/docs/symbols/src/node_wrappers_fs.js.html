@@ -18,7 +18,7 @@
 <span class='line'> 11</span>  * completed successfully, then the first argument will be `null` or `undefined`.
 <span class='line'> 12</span>  *
 <span class='line'> 13</span>  * Here is an example of the asynchronous version:
-<span class='line'> 14</span>  * &lt;pre>
+<span class='line'> 14</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 15</span>  *     var fs = require('fs');
 <span class='line'> 16</span>  *
 <span class='line'> 17</span>  *     fs.unlink('&#47;tmp&#47;hello', function (err) {
@@ -27,7 +27,7 @@
 <span class='line'> 20</span>  *     });
 <span class='line'> 21</span>  * &lt;/pre>
 <span class='line'> 22</span>  * Here is the synchronous version:
-<span class='line'> 23</span>  * &lt;pre>
+<span class='line'> 23</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 24</span>  *     var fs = require('fs');
 <span class='line'> 25</span>  *
 <span class='line'> 26</span>  *     fs.unlinkSync('&#47;tmp&#47;hello')
@@ -35,7 +35,7 @@
 <span class='line'> 28</span>  * &lt;/pre>
 <span class='line'> 29</span>  * With the asynchronous methods there is no guaranteed ordering. So the
 <span class='line'> 30</span>  * following is prone to error:
-<span class='line'> 31</span>  * &lt;pre>
+<span class='line'> 31</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 32</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
 <span class='line'> 33</span>  *       if (err) throw err;
 <span class='line'> 34</span>  *       console.log('renamed complete');
@@ -47,7 +47,7 @@
 <span class='line'> 40</span>  * &lt;/pre>
 <span class='line'> 41</span>  * It could be that `fs.stat` is executed before `fs.rename`.
 <span class='line'> 42</span>  * The correct way to do this is to chain the callbacks.
-<span class='line'> 43</span>  * &lt;pre>
+<span class='line'> 43</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 44</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
 <span class='line'> 45</span>  *       if (err) throw err;
 <span class='line'> 46</span>  *       fs.stat('&#47;tmp&#47;world', function (err, stats) {
@@ -65,7 +65,7 @@
 <span class='line'> 58</span> 
 <span class='line'> 59</span> </span><span class="COMM">/**
 <span class='line'> 60</span>  * Asynchronously reads the entire contents of a file. Example:
-<span class='line'> 61</span>  * &lt;pre>
+<span class='line'> 61</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 62</span>  *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
 <span class='line'> 63</span>  *       if (err) throw err;
 <span class='line'> 64</span>  *       console.log(data);
@@ -409,7 +409,7 @@
 <span class='line'>402</span> </span><span class="COMM">/**
 <span class='line'>403</span>  * Asynchronous stat(2). The callback gets two arguments `(err, stats)` where
 <span class='line'>404</span>  * `stats` is a `fs.Stats` object. It looks like this:
-<span class='line'>405</span>  * &lt;pre>
+<span class='line'>405</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>406</span>  *     { dev: 2049,
 <span class='line'>407</span>  *       ino: 305352,
 <span class='line'>408</span>  *       mode: 16877,
@@ -591,7 +591,7 @@
 <span class='line'>584</span>  * Asynchronously writes data to a file. `data` can be a string or a buffer.
 <span class='line'>585</span>  *
 <span class='line'>586</span>  * Example:
-<span class='line'>587</span>  * &lt;pre>
+<span class='line'>587</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>588</span>  *     fs.writeFile('message.txt', 'Hello Node', function (err) {
 <span class='line'>589</span>  *       if (err) throw err;
 <span class='line'>590</span>  *       console.log('It\'s saved!');
@@ -628,7 +628,7 @@
 <span class='line'>621</span>  *
 <span class='line'>622</span>  * The `listener` gets two arguments the current stat object and the previous
 <span class='line'>623</span>  * stat object:
-<span class='line'>624</span>  * &lt;pre>
+<span class='line'>624</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>625</span>  *     fs.watchFile(f, function (curr, prev) {
 <span class='line'>626</span>  *       console.log('the current mtime is: ' + curr.mtime);
 <span class='line'>627</span>  *       console.log('the previous mtime was: ' + prev.mtime);

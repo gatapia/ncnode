@@ -11,7 +11,7 @@
  * completed successfully, then the first argument will be `null` or `undefined`.
  *
  * Here is an example of the asynchronous version:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var fs = require('fs');
  *
  *     fs.unlink('&#47;tmp&#47;hello', function (err) {
@@ -20,7 +20,7 @@
  *     });
  * </pre>
  * Here is the synchronous version:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var fs = require('fs');
  *
  *     fs.unlinkSync('&#47;tmp&#47;hello')
@@ -28,7 +28,7 @@
  * </pre>
  * With the asynchronous methods there is no guaranteed ordering. So the
  * following is prone to error:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
  *       if (err) throw err;
  *       console.log('renamed complete');
@@ -40,7 +40,7 @@
  * </pre>
  * It could be that `fs.stat` is executed before `fs.rename`.
  * The correct way to do this is to chain the callbacks.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
  *       if (err) throw err;
  *       fs.stat('&#47;tmp&#47;world', function (err, stats) {
@@ -58,7 +58,7 @@ goog.provide("node.fs");
 
 /**
  * Asynchronously reads the entire contents of a file. Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
  *       if (err) throw err;
  *       console.log(data);
@@ -402,7 +402,7 @@ node.fs.prototype.lstat = function(path, callback) {
 /**
  * Asynchronous stat(2). The callback gets two arguments `(err, stats)` where
  * `stats` is a `fs.Stats` object. It looks like this:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     { dev: 2049,
  *       ino: 305352,
  *       mode: 16877,
@@ -584,7 +584,7 @@ node.fs.prototype.chownSync = function(path, uid, gid) {
  * Asynchronously writes data to a file. `data` can be a string or a buffer.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     fs.writeFile('message.txt', 'Hello Node', function (err) {
  *       if (err) throw err;
  *       console.log('It\'s saved!');
@@ -621,7 +621,7 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
  *
  * The `listener` gets two arguments the current stat object and the previous
  * stat object:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     fs.watchFile(f, function (curr, prev) {
  *       console.log('the current mtime is: ' + curr.mtime);
  *       console.log('the previous mtime was: ' + prev.mtime);

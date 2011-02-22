@@ -10,7 +10,7 @@
  * user is able to stream data.
  *
  * HTTP message headers are represented by an object like this:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     { 'content-length': '123',
  *       'content-type': 'text&#47;plain',
  *       'connection': 'keep-alive',

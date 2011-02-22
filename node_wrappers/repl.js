@@ -8,7 +8,7 @@
  *
  * By executing `node` without any arguments from the command-line you will be
  * dropped into the REPL. It has simplistic emacs line-editing.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     mjr:~$ node
  *     Type '.help' for options.
  *     > a = [ 1, 2, 3];
@@ -24,7 +24,7 @@
  * This will start the REPL in canonical terminal settings which will allow you to use with `rlwrap`.
  *
  * For example, you could add this to your bashrc file:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     alias node="env NODE_NO_READLINE=1 rlwrap node"
  * </pre>
  */
@@ -51,7 +51,7 @@ node.repl.prototype.writer = function(obj, showHidden, depth, colors) {
  * will share the same global object but will have unique I&#47;O.
  *
  * Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var net = require("net"),
  *         repl = require("repl");
  *

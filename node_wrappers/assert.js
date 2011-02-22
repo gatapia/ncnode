@@ -101,7 +101,7 @@ node.assert.prototype.notStrictEqual = function(actual, expected, message) {
  * validation function.
  *
  * Validate instanceof using constructor:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     assert.throws(
  *       function() {
  *         throw new Error("Wrong value");
@@ -110,7 +110,7 @@ node.assert.prototype.notStrictEqual = function(actual, expected, message) {
  *     );
  * </pre>
  * Validate error message using RegExp:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     assert.throws(
  *       function() {
  *         throw new Error("Wrong value");
@@ -119,7 +119,7 @@ node.assert.prototype.notStrictEqual = function(actual, expected, message) {
  *     );
  * </pre>
  * Custom error validation:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     assert.throws(
  *       function() {
  *         throw new Error("Wrong value");

@@ -15,7 +15,7 @@ node.process.prototype.title;
 
 /**
  * A compiled-in property that exposes `NODE_VERSION`.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Version: ' + process.version);
  * </pre>
  * @type {*}
@@ -24,7 +24,7 @@ node.process.prototype.version;
 
 /**
  * A compiled-in property that exposes `NODE_PREFIX`.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Prefix: ' + process.installPrefix);
  * </pre>
  * @type {*}
@@ -38,7 +38,7 @@ node.process.prototype.versions;
 
 /**
  * What platform you're running on. `'linux2'`, `'darwin'`, etc.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('This platform is ' + process.platform);
  * </pre>
  * @type {*}
@@ -54,14 +54,14 @@ node.process.prototype.ARGV;
  * An array containing the command line arguments.  The first element will be
  * 'node', the second element will be the name of the JavaScript file.  The
  * next elements will be any additional command line arguments.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     &#47;&#47; print process.argv
  *     process.argv.forEach(function (val, index, array) {
  *       console.log(index + ': ' + val);
  *     });
  * </pre>
  * This will generate:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     $ node process-2.js one two=three four
  *     0: node
  *     1: &#47;Users&#47;mjr&#47;work&#47;node&#47;process-2.js
@@ -86,7 +86,7 @@ node.process.prototype.ENV;
 
 /**
  * The PID of the process.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('This process is pid ' + process.pid);
  * </pre>
  * @type {*}
@@ -97,7 +97,7 @@ node.process.prototype.pid;
  * This is the absolute pathname of the executable that started the process.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     &#47;usr&#47;local&#47;bin&#47;node
  * </pre>
  * @type {*}
@@ -108,7 +108,7 @@ node.process.prototype.execPath;
  * A `Writable Stream` to `stdout`.
  *
  * Example: the definition of `console.log`
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log = function (d) {
  *       process.stdout.write(d + '\n');
  *     };
@@ -122,7 +122,7 @@ node.process.prototype.stdout;
  * must call `process.stdin.resume()` to read from it.
  *
  * Example of opening standard input and listening for both events:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     process.stdin.resume();
  *     process.stdin.setEncoding('utf8');
  *
@@ -159,7 +159,7 @@ node.process.prototype.reallyExit = function() {
 
 /**
  * Changes the current working directory of the process or throws an exception if that fails.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Starting directory: ' + process.cwd());
  *     try {
  *       process.chdir('&#47;tmp');
@@ -177,7 +177,7 @@ node.process.prototype.chdir = function() {
 
 /**
  * Returns the current working directory of the process.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Current directory: ' + process.cwd());
  * </pre>
  * @return {*}
@@ -189,7 +189,7 @@ node.process.prototype.cwd = function() {
 /**
  * Gets the user identity of the process. (See getuid(2).)
  * This is the numerical userid, not the username.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Current uid: ' + process.getuid());
  * </pre>
  * @return {*}
@@ -202,7 +202,7 @@ node.process.prototype.getuid = function() {
  * Sets the user identity of the process. (See setuid(2).)  This accepts either
  * a numerical ID or a username string.  If a username is specified, this method
  * blocks while resolving it to a numerical ID.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Current uid: ' + process.getuid());
  *     try {
  *       process.setuid(501);
@@ -222,7 +222,7 @@ node.process.prototype.setuid = function() {
  * Sets the group identity of the process. (See setgid(2).)  This accepts either
  * a numerical ID or a groupname string. If a groupname is specified, this method
  * blocks while resolving it to a numerical ID.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Current gid: ' + process.getgid());
  *     try {
  *       process.setgid(501);
@@ -241,7 +241,7 @@ node.process.prototype.setgid = function() {
 /**
  * Gets the group identity of the process. (See getgid(2).)
  * This is the numerical group id, not the group name.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     console.log('Current gid: ' + process.getgid());
  * </pre>
  * @return {*}
@@ -254,7 +254,7 @@ node.process.prototype.getgid = function() {
  * Sets or reads the process's file mode creation mask. Child processes inherit
  * the mask from the parent process. Returns the old mask if `mask` argument is
  * given, otherwise returns the current mask.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var oldmask, newmask = 0644;
  *
  *     oldmask = process.umask(newmask);
@@ -276,13 +276,13 @@ node.process.prototype.dlopen = function() {
 
 /**
  * Returns an object describing the memory usage of the Node process.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var util = require('util');
  *
  *     console.log(util.inspect(process.memoryUsage()));
  * </pre>
  * This will generate:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     { rss: 4935680,
  *       vsize: 41893888,
  *       heapTotal: 1826816,
@@ -313,7 +313,7 @@ node.process.prototype.assert = function() {
  * On the next loop around the event loop call this callback.
  * This is *not* a simple alias to `setTimeout(fn, 0)`, it's much more
  * efficient.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     process.nextTick(function () {
  *       console.log('nextTick callback');
  *     });
@@ -337,7 +337,7 @@ node.process.prototype.openStdin = function() {
  * 'success' code `0`.
  *
  * To exit with a 'failure' code:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     process.exit(1);
  * </pre>
  * The shell that executed node should see the exit code as 1.
@@ -359,7 +359,7 @@ node.process.prototype.exit = function(code) {
  * may do something other than kill the target process.
  *
  * Example of sending a signal to yourself:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     process.on('SIGHUP', function () {
  *       console.log('Got SIGHUP signal.');
  *     });

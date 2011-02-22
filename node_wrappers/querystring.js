@@ -53,7 +53,7 @@ node.querystring.prototype.encode = function(obj, sep, eq, name) {
  * Optionally override the default separator and assignment characters.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     querystring.stringify({foo: 'bar'})
  *     &#47;&#47; returns
  *     'foo=bar'
@@ -87,7 +87,7 @@ node.querystring.prototype.decode = function(qs, sep, eq) {
  * Optionally override the default separator and assignment characters.
  *
  * Example:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     querystring.parse('a=b&b=c')
  *     &#47;&#47; returns
  *     { a: 'b', b: 'c' }

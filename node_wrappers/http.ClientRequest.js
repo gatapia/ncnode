@@ -16,7 +16,7 @@
  * body. As long as a listener for `'data'` is added during the `'response'`
  * event, the entire body will be caught.
  *
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     &#47;&#47; Good
  *     request.on('response', function (response) {
  *       response.on('data', function (chunk) {

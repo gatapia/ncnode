@@ -24,11 +24,11 @@
 <span class='line'> 17</span>  * gets resolved to the root directory.
 <span class='line'> 18</span>  *
 <span class='line'> 19</span>  * Another way to think of it is as a sequence of `cd` commands in a shell.
-<span class='line'> 20</span>  * &lt;pre>
+<span class='line'> 20</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 21</span>  *     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
 <span class='line'> 22</span>  * &lt;/pre>
 <span class='line'> 23</span>  * Is similar to:
-<span class='line'> 24</span>  * &lt;pre>
+<span class='line'> 24</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 25</span>  *     cd foo&#47;bar
 <span class='line'> 26</span>  *     cd &#47;tmp&#47;file&#47;
 <span class='line'> 27</span>  *     cd ..
@@ -39,7 +39,7 @@
 <span class='line'> 32</span>  * files.
 <span class='line'> 33</span>  *
 <span class='line'> 34</span>  * Examples:
-<span class='line'> 35</span>  * &lt;pre>
+<span class='line'> 35</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 36</span>  *     path.resolve('&#47;foo&#47;bar', '.&#47;baz')
 <span class='line'> 37</span>  *     &#47;&#47; returns
 <span class='line'> 38</span>  *     '&#47;foo&#47;bar&#47;baz'
@@ -66,7 +66,7 @@
 <span class='line'> 59</span>  * On windows backslashes are used.
 <span class='line'> 60</span>  *
 <span class='line'> 61</span>  * Example:
-<span class='line'> 62</span>  * &lt;pre>
+<span class='line'> 62</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 63</span>  *     path.normalize('&#47;foo&#47;bar&#47;&#47;baz&#47;asdf&#47;quux&#47;..')
 <span class='line'> 64</span>  *     &#47;&#47; returns
 <span class='line'> 65</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -82,7 +82,7 @@
 <span class='line'> 75</span>  * Join all arguments together and normalize the resulting path.
 <span class='line'> 76</span>  *
 <span class='line'> 77</span>  * Example:
-<span class='line'> 78</span>  * &lt;pre>
+<span class='line'> 78</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 79</span>  *     node> require('path').join(
 <span class='line'> 80</span>  *     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
 <span class='line'> 81</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -97,7 +97,7 @@
 <span class='line'> 90</span>  * Return the directory name of a path.  Similar to the Unix `dirname` command.
 <span class='line'> 91</span>  *
 <span class='line'> 92</span>  * Example:
-<span class='line'> 93</span>  * &lt;pre>
+<span class='line'> 93</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 94</span>  *     path.dirname('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux')
 <span class='line'> 95</span>  *     &#47;&#47; returns
 <span class='line'> 96</span>  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -113,7 +113,7 @@
 <span class='line'>106</span>  * Return the last portion of a path.  Similar to the Unix `basename` command.
 <span class='line'>107</span>  *
 <span class='line'>108</span>  * Example:
-<span class='line'>109</span>  * &lt;pre>
+<span class='line'>109</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>110</span>  *     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html')
 <span class='line'>111</span>  *     &#47;&#47; returns
 <span class='line'>112</span>  *     'quux.html'
@@ -134,7 +134,7 @@
 <span class='line'>127</span>  * Return the extension of the path.  Everything after the last '.' in the last portion
 <span class='line'>128</span>  * of the path.  If there is no '.' in the last portion of the path or the only '.' is
 <span class='line'>129</span>  * the first character, then it returns an empty string.  Examples:
-<span class='line'>130</span>  * &lt;pre>
+<span class='line'>130</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>131</span>  *     path.extname('index.html')
 <span class='line'>132</span>  *     &#47;&#47; returns
 <span class='line'>133</span>  *     '.html'
@@ -153,7 +153,7 @@
 <span class='line'>146</span> </span><span class="COMM">/**
 <span class='line'>147</span>  * Test whether or not the given path exists.  Then, call the `callback` argument
 <span class='line'>148</span>  * with either true or false. Example:
-<span class='line'>149</span>  * &lt;pre>
+<span class='line'>149</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>150</span>  *     path.exists('&#47;etc&#47;passwd', function (exists) {
 <span class='line'>151</span>  *       util.debug(exists ? "it's there" : "no passwd!");
 <span class='line'>152</span>  *     });

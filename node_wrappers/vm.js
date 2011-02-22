@@ -2,7 +2,7 @@
  * @name node.vm
  * @namespace
  * You can access this module with:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var vm = require('vm');
  * </pre>
  * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
@@ -49,7 +49,7 @@ node.vm.prototype.runInContext = function() {
  * (v8: in actual context).
  *
  * Example of using `script.runInThisContext` to compile code once and run it multiple times:
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var vm = require('vm');
  *
  *     globalVar = 0;
@@ -77,7 +77,7 @@ node.vm.prototype.runInThisContext = function() {
  *
  * Example: compile code that increments a global variable and sets one, then execute this code multiple times.
  * These globals are contained in the sandbox.
- * <pre>
+ * <pre class="code prettyprint lang-js">
  *     var util = require('util'),
  *         vm = require('vm'),
  *         sandbox = {
