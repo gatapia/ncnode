@@ -4,7 +4,7 @@
 This project is still in the 'do not use, crazy thoughts being flung around
 the room' stage.
 
-For a demo of what nclosure can do see the generated docs for the [node core libraries](https://gatapia.github.com/ncnode/).
+For a demo of what nclosure can do see the generated docs for the [node core libraries](http://gatapia.github.com/ncnode/).
 
 ## Goal
 To generate wrappers for the Node.js core libs that are fully closure annotated
