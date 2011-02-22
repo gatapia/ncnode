@@ -1,11 +1,9 @@
+/**
+ * @name node.console
+ * @namespace
+ */
 
 goog.provide("node.console");
-
-/**
- * @constructor
- * console
- */
-node.console = function() {};
 
 /**
  * @return {*}

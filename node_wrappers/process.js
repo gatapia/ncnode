@@ -1,16 +1,11 @@
-
-goog.provide("node.process");
-
 /**
- * @fileoverview The `process` object is a global object and can be accessed from anywhere.
+ * @name node.process
+ * @namespace
+ * The `process` object is a global object and can be accessed from anywhere.
  * It is an instance of `EventEmitter`.
  */
 
-/**
- * @constructor
- * process
- */
-node.process = function() {};
+goog.provide("node.process");
 
 /**
  * Getter&#47;setter to set what is displayed in 'ps'.

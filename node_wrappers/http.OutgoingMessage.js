@@ -1,11 +1,9 @@
+/**
+ * @name node.http.OutgoingMessage
+ * @namespace
+ */
 
 goog.provide("node.http.OutgoingMessage");
-
-/**
- * @constructor
- * http.OutgoingMessage
- */
-node.http.OutgoingMessage = function() {};
 
 
 /**

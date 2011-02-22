@@ -1,8 +1,7 @@
-
-goog.provide("node.http.ClientRequest");
-
 /**
- * @fileoverview This object is created internally and returned from `http.request()`.  It
+ * @name node.http.ClientRequest
+ * @namespace
+ * This object is created internally and returned from `http.request()`.  It
  * represents an _in-progress_ request whose header has already been sent.
  *
  * To get the response, add a listener for `'response'` to the request object.
@@ -39,11 +38,7 @@ goog.provide("node.http.ClientRequest");
  * This is an `EventEmitter` with the following events:
  */
 
-/**
- * @constructor
- * http.ClientRequest
- */
-node.http.ClientRequest = function() {};
+goog.provide("node.http.ClientRequest");
 
 
 /**

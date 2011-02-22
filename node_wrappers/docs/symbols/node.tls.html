@@ -193,7 +193,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 4:06
+		Generated on: 2011-1-22 5:23
 	</div>
 </div>
 
@@ -203,12 +203,36 @@
 	<div class="innerContent">
 		<h1 class="classTitle">
 			
-			Class <span>node.tls</span>
+			Namespace <span>node.tls</span>
 		</h1>
 		
 		<div class="intro">
 			<p class="description summary">
-				
+				Use `require('tls')` to access this module.
+
+The `tls` module uses OpenSSL to provide Transport Layer Security and&#47;or
+Secure Socket Layer: encrypted stream communication.
+
+TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
+server must have a private key. A private key is created like this
+<pre>
+    openssl genrsa -out ryans-key.pem 1024
+</pre>
+All severs and some clients need to have a certificate. Certificates are public
+keys signed by a Certificate Authority or self-signed. The first step to
+getting a certificate is to create a "Certificate Signing Request" (CSR)
+file. This is done with:
+<pre>
+    openssl req -new -key ryans-key.pem -out ryans-csr.pem
+</pre>
+To create a self-signed certificate with the CSR, do this:
+<pre>
+    openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
+</pre>
+Alternatively you can send the CSR to a Certificate Authority for signing.
+
+(TODO: docs on creating a CA, for now interested users should just look at
+`test&#47;fixtures&#47;keys&#47;Makefile` in the Node source code)
 			</p>
 				
 			
@@ -226,7 +250,7 @@
 		
 			<div class="props">
 				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.tls.">
-					<caption class="sectionTitle">Class Summary</caption>
+					<caption class="sectionTitle">Namespace Summary</caption>
 					<thead>
 						<tr>
 							<th scope="col">Constructor Attributes</th>
@@ -238,7 +262,7 @@
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription" >
 								<div class="fixedFont">
-									<b><a href="../symbols/node.tls.html#constructor">node.tls</a></b>()
+									<b><a href="../symbols/node.tls.html#constructor">node.tls</a></b>
 								</div>
 								<div class="description"></div>
 							</td>
@@ -248,6 +272,11 @@
 			</div>
 		
 		
+		
+			
+			
+			
+			
 		
 <!--
 #### METHODS SUMMARY
@@ -311,11 +340,11 @@
 			<div class="details props">
 				<div class="innerProps">
 					<h2 class="sectionTitle" id="constructor">
-						Class Detail
+						Namespace Detail
 					</h2>
 					
 					<div class="fixedFont">
-						<b>node.tls</b>()
+						<b>node.tls</b>
 					</div>
 					
 					<div class="description">

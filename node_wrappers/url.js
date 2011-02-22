@@ -1,8 +1,7 @@
-
-goog.provide("node.url");
-
 /**
- * @fileoverview This module has utilities for URL resolution and parsing.
+ * @name node.url
+ * @namespace
+ * This module has utilities for URL resolution and parsing.
  * Call `require('url')` to use it.
  *
  * Parsed URL objects have some or all of the following fields, depending on
@@ -45,11 +44,7 @@ goog.provide("node.url");
  * The following methods are provided by the URL module:
  */
 
-/**
- * @constructor
- * url
- */
-node.url = function() {};
+goog.provide("node.url");
 
 /**
  * Take a URL string, and return an object.  Pass `true` as the second argument to also parse

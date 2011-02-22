@@ -1,8 +1,7 @@
-
-goog.provide("node.fs.Stats");
-
 /**
- * @fileoverview Objects returned from `fs.stat()` and `fs.lstat()` are of this type.
+ * @name node.fs.Stats
+ * @namespace
+ * Objects returned from `fs.stat()` and `fs.lstat()` are of this type.
  *
  *  - `stats.isFile()`
  *  - `stats.isDirectory()`
@@ -13,11 +12,7 @@ goog.provide("node.fs.Stats");
  *  - `stats.isSocket()`
  */
 
-/**
- * @constructor
- * fs.Stats
- */
-node.fs.Stats = function() {};
+goog.provide("node.fs.Stats");
 
 
 /**

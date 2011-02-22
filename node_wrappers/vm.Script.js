@@ -1,11 +1,9 @@
+/**
+ * @name node.vm.Script
+ * @namespace
+ */
 
 goog.provide("node.vm.Script");
-
-/**
- * @constructor
- * vm.Script
- */
-node.vm.Script = function() {};
 
 /**
  * @return {*}

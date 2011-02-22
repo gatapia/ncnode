@@ -1,19 +1,14 @@
-
-goog.provide("node.vm");
-
 /**
- * @fileoverview You can access this module with:
+ * @name node.vm
+ * @namespace
+ * You can access this module with:
  * <pre>
  *     var vm = require('vm');
  * </pre>
  * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
  */
 
-/**
- * @constructor
- * vm
- */
-node.vm = function() {};
+goog.provide("node.vm");
 
 /**
  * `createScript` compiles `code` as if it were loaded from `filename`,

@@ -1,11 +1,9 @@
+/**
+ * @name node.crypto.Cipher
+ * @namespace
+ */
 
 goog.provide("node.crypto.Cipher");
-
-/**
- * @constructor
- * crypto.Cipher
- */
-node.crypto.Cipher = function() {};
 
 
 /**

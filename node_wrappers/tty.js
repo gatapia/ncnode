@@ -1,15 +1,10 @@
+/**
+ * @name node.tty
+ * @namespace
+ * Use `require('tty')` to access this module.
+ */
 
 goog.provide("node.tty");
-
-/**
- * @fileoverview Use `require('tty')` to access this module.
- */
-
-/**
- * @constructor
- * tty
- */
-node.tty = function() {};
 
 
 /**

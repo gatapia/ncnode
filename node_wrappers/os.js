@@ -1,15 +1,10 @@
+/**
+ * @name node.os
+ * @namespace
+ * Use `require('os')` to access this module.
+ */
 
 goog.provide("node.os");
-
-/**
- * @fileoverview Use `require('os')` to access this module.
- */
-
-/**
- * @constructor
- * os
- */
-node.os = function() {};
 
 /**
  * Returns the hostname of the operating system.

@@ -1,8 +1,7 @@
-
-goog.provide("node.events");
-
 /**
- * @fileoverview Many objects in Node emit events: a `net.Server` emits an event each time
+ * @name node.events
+ * @namespace
+ * Many objects in Node emit events: a `net.Server` emits an event each time
  * a peer connects to it, a `fs.readStream` emits an event when the file is
  * opened. All objects which emit events are instances of `events.EventEmitter`.
  * You can access this module by doing: `require("events");`
@@ -14,11 +13,7 @@ goog.provide("node.events");
  * is emitted. These functions are called _listeners_.
  */
 
-/**
- * @constructor
- * events
- */
-node.events = function() {};
+goog.provide("node.events");
 
 
 /**

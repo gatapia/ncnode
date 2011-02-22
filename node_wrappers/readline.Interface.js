@@ -1,11 +1,9 @@
+/**
+ * @name node.readline.Interface
+ * @namespace
+ */
 
 goog.provide("node.readline.Interface");
-
-/**
- * @constructor
- * readline.Interface
- */
-node.readline.Interface = function() {};
 
 
 /**

@@ -1,11 +1,9 @@
+/**
+ * @name node.tty_win32.WriteStream
+ * @namespace
+ */
 
 goog.provide("node.tty_win32.WriteStream");
-
-/**
- * @constructor
- * tty_win32.WriteStream
- */
-node.tty_win32.WriteStream = function() {};
 
 
 /**

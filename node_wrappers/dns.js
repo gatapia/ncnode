@@ -1,8 +1,7 @@
-
-goog.provide("node.dns");
-
 /**
- * @fileoverview Use `require('dns')` to access this module.
+ * @name node.dns
+ * @namespace
+ * Use `require('dns')` to access this module.
  *
  * Here is an example which resolves `'www.google.com'` then reverse
  * resolves the IP addresses which are returned.
@@ -29,11 +28,7 @@ goog.provide("node.dns");
  * </pre>
  */
 
-/**
- * @constructor
- * dns
- */
-node.dns = function() {};
+goog.provide("node.dns");
 
 /**
  * @type {*}

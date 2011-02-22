@@ -1,0 +1,3 @@
+- Handle markdown links. i.e. [Name](url)
+- Handle markdown inline `code samples`
+- Prettify code <pre>s

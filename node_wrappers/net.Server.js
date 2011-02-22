@@ -1,11 +1,9 @@
+/**
+ * @name node.net.Server
+ * @namespace
+ */
 
 goog.provide("node.net.Server");
-
-/**
- * @constructor
- * net.Server
- */
-node.net.Server = function() {};
 
 
 /**

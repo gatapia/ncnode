@@ -1,11 +1,9 @@
+/**
+ * @name node.buffer.SlowBuffer
+ * @namespace
+ */
 
 goog.provide("node.buffer.SlowBuffer");
-
-/**
- * @constructor
- * buffer.SlowBuffer
- */
-node.buffer.SlowBuffer = function() {};
 
 /**
  * @return {*}

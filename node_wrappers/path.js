@@ -1,16 +1,11 @@
-
-goog.provide("node.path");
-
 /**
- * @fileoverview This module contains utilities for dealing with file paths.  Use
+ * @name node.path
+ * @namespace
+ * This module contains utilities for dealing with file paths.  Use
  * `require('path')` to use it.  It provides the following methods:
  */
 
-/**
- * @constructor
- * path
- */
-node.path = function() {};
+goog.provide("node.path");
 
 /**
  * Resolves `to` to an absolute path.

@@ -1,16 +1,11 @@
-
-goog.provide("node.querystring");
-
 /**
- * @fileoverview This module provides utilities for dealing with query strings.
+ * @name node.querystring
+ * @namespace
+ * This module provides utilities for dealing with query strings.
  * It provides the following methods:
  */
 
-/**
- * @constructor
- * querystring
- */
-node.querystring = function() {};
+goog.provide("node.querystring");
 
 /**
  * @param {*} s

@@ -193,7 +193,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 4:06
+		Generated on: 2011-1-22 5:23
 	</div>
 </div>
 
@@ -203,12 +203,52 @@
 	<div class="innerContent">
 		<h1 class="classTitle">
 			
-			Class <span>node.url</span>
+			Namespace <span>node.url</span>
 		</h1>
 		
 		<div class="intro">
 			<p class="description summary">
-				
+				This module has utilities for URL resolution and parsing.
+Call `require('url')` to use it.
+
+Parsed URL objects have some or all of the following fields, depending on
+whether or not they exist in the URL string. Any parts that are not in the URL
+string will not be in the parsed object. Examples are shown for the URL
+
+`'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'`
+
+* `href`: The full URL that was originally parsed.
+
+  Example: `'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'`
+* `protocol`: The request protocol.
+
+  Example: `'http:'`
+* `host`: The full host portion of the URL, including port and authentication information.
+
+  Example: `'user:pass@host.com:8080'`
+* `auth`: The authentication information portion of a URL.
+
+  Example: `'user:pass'`
+* `hostname`: Just the hostname portion of the host.
+
+  Example: `'host.com'`
+* `port`: The port number portion of the host.
+
+  Example: `'8080'`
+* `pathname`: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
+
+  Example: `'&#47;p&#47;a&#47;t&#47;h'`
+* `search`: The 'query string' portion of the URL, including the leading question mark.
+
+  Example: `'?query=string'`
+* `query`: Either the 'params' portion of the query string, or a querystring-parsed object.
+
+  Example: `'query=string'` or `{'query':'string'}`
+* `hash`: The 'fragment' portion of the URL including the pound-sign.
+
+  Example: `'#hash'`
+
+The following methods are provided by the URL module:
 			</p>
 				
 			
@@ -226,7 +266,7 @@
 		
 			<div class="props">
 				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.url.">
-					<caption class="sectionTitle">Class Summary</caption>
+					<caption class="sectionTitle">Namespace Summary</caption>
 					<thead>
 						<tr>
 							<th scope="col">Constructor Attributes</th>
@@ -238,7 +278,7 @@
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription" >
 								<div class="fixedFont">
-									<b><a href="../symbols/node.url.html#constructor">node.url</a></b>()
+									<b><a href="../symbols/node.url.html#constructor">node.url</a></b>
 								</div>
 								<div class="description"></div>
 							</td>
@@ -333,11 +373,11 @@
 			<div class="details props">
 				<div class="innerProps">
 					<h2 class="sectionTitle" id="constructor">
-						Class Detail
+						Namespace Detail
 					</h2>
 					
 					<div class="fixedFont">
-						<b>node.url</b>()
+						<b>node.url</b>
 					</div>
 					
 					<div class="description">

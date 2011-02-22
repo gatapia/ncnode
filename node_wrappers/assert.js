@@ -1,16 +1,11 @@
-
-goog.provide("node.assert");
-
 /**
- * @fileoverview This module is used for writing unit tests for your applications, you can
+ * @name node.assert
+ * @namespace
+ * This module is used for writing unit tests for your applications, you can
  * access it with `require('assert')`.
  */
 
-/**
- * @constructor
- * assert
- */
-node.assert = function() {};
+goog.provide("node.assert");
 
 /**
  * Tests if `actual` is equal to `expected` using the operator provided.

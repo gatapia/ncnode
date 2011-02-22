@@ -1,11 +1,9 @@
+/**
+ * @name node.tty_posix
+ * @namespace
+ */
 
 goog.provide("node.tty_posix");
-
-/**
- * @constructor
- * tty_posix
- */
-node.tty_posix = function() {};
 
 /**
  * @param {*} path

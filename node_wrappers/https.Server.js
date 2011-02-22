@@ -1,11 +1,9 @@
+/**
+ * @name node.https.Server
+ * @namespace
+ */
 
 goog.provide("node.https.Server");
-
-/**
- * @constructor
- * https.Server
- */
-node.https.Server = function() {};
 
 
 /**

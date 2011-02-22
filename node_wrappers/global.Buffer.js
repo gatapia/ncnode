@@ -1,11 +1,9 @@
+/**
+ * @name node.global.Buffer
+ * @namespace
+ */
 
 goog.provide("node.global.Buffer");
-
-/**
- * @constructor
- * global.Buffer
- */
-node.global.Buffer = function() {};
 
 /**
  * @type {*}

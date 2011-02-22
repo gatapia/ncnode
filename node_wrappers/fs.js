@@ -1,8 +1,7 @@
-
-goog.provide("node.fs");
-
 /**
- * @fileoverview File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
+ * @name node.fs
+ * @namespace
+ * File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
  * use this module do `require('fs')`. All the methods have asynchronous and
  * synchronous forms.
  *
@@ -55,11 +54,7 @@ goog.provide("node.fs");
  * the entire process until they complete--halting all connections.
  */
 
-/**
- * @constructor
- * fs
- */
-node.fs = function() {};
+goog.provide("node.fs");
 
 /**
  * Asynchronously reads the entire contents of a file. Example:

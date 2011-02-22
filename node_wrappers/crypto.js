@@ -1,8 +1,7 @@
-
-goog.provide("node.crypto");
-
 /**
- * @fileoverview Use `require('crypto')` to access this module.
+ * @name node.crypto
+ * @namespace
+ * Use `require('crypto')` to access this module.
  *
  * The crypto module requires OpenSSL to be available on the underlying platform.
  * It offers a way of encapsulating secure credentials to be used as part
@@ -11,11 +10,7 @@ goog.provide("node.crypto");
  * It also offers a set of wrappers for OpenSSL's hash, hmac, cipher, decipher, sign and verify methods.
  */
 
-/**
- * @constructor
- * crypto
- */
-node.crypto = function() {};
+goog.provide("node.crypto");
 
 /**
  * Creates a credentials object, with the optional details being a dictionary with keys:

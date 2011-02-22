@@ -1,16 +1,11 @@
-
-goog.provide("node.util");
-
 /**
- * @fileoverview These functions are in the module `'util'`. Use `require('util')` to access
+ * @name node.util
+ * @namespace
+ * These functions are in the module `'util'`. Use `require('util')` to access
  * them.
  */
 
-/**
- * @constructor
- * util
- */
-node.util = function() {};
+goog.provide("node.util");
 
 /**
  * @return {*}

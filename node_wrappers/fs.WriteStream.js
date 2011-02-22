@@ -1,15 +1,10 @@
+/**
+ * @name node.fs.WriteStream
+ * @namespace
+ * `WriteStream` is a `Writable Stream`.
+ */
 
 goog.provide("node.fs.WriteStream");
-
-/**
- * @fileoverview `WriteStream` is a `Writable Stream`.
- */
-
-/**
- * @constructor
- * fs.WriteStream
- */
-node.fs.WriteStream = function() {};
 
 
 /**

@@ -1,11 +1,9 @@
+/**
+ * @name node.sys
+ * @namespace
+ */
 
 goog.provide("node.sys");
-
-/**
- * @constructor
- * sys
- */
-node.sys = function() {};
 
 /**
  * @return {*}

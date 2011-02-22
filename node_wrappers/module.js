@@ -1,11 +1,9 @@
+/**
+ * @name node.module
+ * @namespace
+ */
 
 goog.provide("node.module");
-
-/**
- * @constructor
- * module
- */
-node.module = function() {};
 
 
 /**

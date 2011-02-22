@@ -1,11 +1,9 @@
+/**
+ * @name node.stream
+ * @namespace
+ */
 
 goog.provide("node.stream");
-
-/**
- * @constructor
- * stream
- */
-node.stream = function() {};
 
 
 /**

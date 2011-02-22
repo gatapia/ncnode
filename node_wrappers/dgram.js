@@ -1,16 +1,11 @@
-
-goog.provide("node.dgram");
-
 /**
- * @fileoverview Datagram sockets are available through `require('dgram')`.  Datagrams are most commonly
+ * @name node.dgram
+ * @namespace
+ * Datagram sockets are available through `require('dgram')`.  Datagrams are most commonly
  * handled as IP&#47;UDP messages but they can also be used over Unix domain sockets.
  */
 
-/**
- * @constructor
- * dgram
- */
-node.dgram = function() {};
+goog.provide("node.dgram");
 
 /**
  * Creates a datagram socket of the specified types.  Valid types are:

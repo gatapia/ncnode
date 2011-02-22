@@ -1,8 +1,7 @@
-
-goog.provide("node.http");
-
 /**
- * @fileoverview To use the HTTP server and client one must `require('http')`.
+ * @name node.http
+ * @namespace
+ * To use the HTTP server and client one must `require('http')`.
  *
  * The HTTP interfaces in Node are designed to support many features
  * of the protocol which have been traditionally difficult to use.
@@ -25,11 +24,7 @@ goog.provide("node.http");
  * parse the actual headers or the body.
  */
 
-/**
- * @constructor
- * http
- */
-node.http = function() {};
+goog.provide("node.http");
 
 /**
  * @type {*}

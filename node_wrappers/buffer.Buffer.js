@@ -1,11 +1,9 @@
+/**
+ * @name node.buffer.Buffer
+ * @namespace
+ */
 
 goog.provide("node.buffer.Buffer");
-
-/**
- * @constructor
- * buffer.Buffer
- */
-node.buffer.Buffer = function() {};
 
 /**
  * @type {*}

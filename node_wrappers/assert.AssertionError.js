@@ -1,11 +1,9 @@
+/**
+ * @name node.assert.AssertionError
+ * @namespace
+ */
 
 goog.provide("node.assert.AssertionError");
-
-/**
- * @constructor
- * assert.AssertionError
- */
-node.assert.AssertionError = function() {};
 
 /**
  * @type {*}

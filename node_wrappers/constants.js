@@ -1,11 +1,9 @@
+/**
+ * @name node.constants
+ * @namespace
+ */
 
 goog.provide("node.constants");
-
-/**
- * @constructor
- * constants
- */
-node.constants = function() {};
 
 
 /**

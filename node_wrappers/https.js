@@ -1,16 +1,11 @@
-
-goog.provide("node.https");
-
 /**
- * @fileoverview HTTPS is the HTTP protocol over TLS&#47;SSL. In Node this is implemented as a
+ * @name node.https
+ * @namespace
+ * HTTPS is the HTTP protocol over TLS&#47;SSL. In Node this is implemented as a
  * separate module.
  */
 
-/**
- * @constructor
- * https
- */
-node.https = function() {};
+goog.provide("node.https");
 
 /**
  * @param {*} opts

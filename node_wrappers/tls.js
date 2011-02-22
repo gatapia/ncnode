@@ -1,8 +1,7 @@
-
-goog.provide("node.tls");
-
 /**
- * @fileoverview Use `require('tls')` to access this module.
+ * @name node.tls
+ * @namespace
+ * Use `require('tls')` to access this module.
  *
  * The `tls` module uses OpenSSL to provide Transport Layer Security and&#47;or
  * Secure Socket Layer: encrypted stream communication.
@@ -29,11 +28,7 @@ goog.provide("node.tls");
  * `test&#47;fixtures&#47;keys&#47;Makefile` in the Node source code)
  */
 
-/**
- * @constructor
- * tls
- */
-node.tls = function() {};
+goog.provide("node.tls");
 
 /**
  * @param {*} credentials

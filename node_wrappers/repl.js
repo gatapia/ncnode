@@ -1,8 +1,7 @@
-
-goog.provide("node.repl");
-
 /**
- * @fileoverview A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
+ * @name node.repl
+ * @namespace
+ * A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
  * includable in other programs.  REPL provides a way to interactively run
  * JavaScript and see the results.  It can be used for debugging, testing, or
  * just trying things out.
@@ -30,11 +29,7 @@ goog.provide("node.repl");
  * </pre>
  */
 
-/**
- * @constructor
- * repl
- */
-node.repl = function() {};
+goog.provide("node.repl");
 
 /**
  * @param {*} obj

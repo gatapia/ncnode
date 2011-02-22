@@ -5,85 +5,83 @@
 	.STRN {color: #393;}
 	.REGX {color: #339;}
 	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="WHIT">
-<span class='line'>  2</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.timers"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  3</span> 
-<span class='line'>  4</span> </span><span class="COMM">/**
-<span class='line'>  5</span>  * @constructor
-<span class='line'>  6</span>  * timers
-<span class='line'>  7</span>  */</span><span class="WHIT">
-<span class='line'>  8</span> </span><span class="NAME">node.timers</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  9</span> 
-<span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * @param {*} item
-<span class='line'> 12</span>  * @return {*}
-<span class='line'> 13</span>  */</span><span class="WHIT">
-<span class='line'> 14</span> </span><span class="NAME">node.timers.prototype.unenroll</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 15</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.unenroll</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 16</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 17</span> 
-<span class='line'> 18</span> </span><span class="COMM">/**
-<span class='line'> 19</span>  * @param {*} item
-<span class='line'> 20</span>  * @param {*} msecs
-<span class='line'> 21</span>  * @return {*}
-<span class='line'> 22</span>  */</span><span class="WHIT">
-<span class='line'> 23</span> </span><span class="NAME">node.timers.prototype.enroll</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">msecs</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 24</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.enroll</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">msecs</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 25</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 26</span> 
-<span class='line'> 27</span> </span><span class="COMM">/**
-<span class='line'> 28</span>  * @param {*} item
-<span class='line'> 29</span>  * @return {*}
-<span class='line'> 30</span>  */</span><span class="WHIT">
-<span class='line'> 31</span> </span><span class="NAME">node.timers.prototype.active</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.active</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 34</span> 
-<span class='line'> 35</span> </span><span class="COMM">/**
-<span class='line'> 36</span>  * To schedule execution of `callback` after `delay` milliseconds. Returns a
-<span class='line'> 37</span>  * `timeoutId` for possible use with `clearTimeout()`. Optionally, you can
-<span class='line'> 38</span>  * also pass arguments to the callback.
-<span class='line'> 39</span>  * @param {*} callback
-<span class='line'> 40</span>  * @param {*} after
-<span class='line'> 41</span>  * @return {*}
-<span class='line'> 42</span>  */</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="NAME">node.timers.prototype.setTimeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">after</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.setTimeout</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">after</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 46</span> 
-<span class='line'> 47</span> </span><span class="COMM">/**
-<span class='line'> 48</span>  * Prevents a timeout from triggering.
-<span class='line'> 49</span>  * @param {*} timer
-<span class='line'> 50</span>  * @return {*}
-<span class='line'> 51</span>  */</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="NAME">node.timers.prototype.clearTimeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.clearTimeout</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 55</span> 
-<span class='line'> 56</span> </span><span class="COMM">/**
-<span class='line'> 57</span>  * To schedule the repeated execution of `callback` every `delay` milliseconds.
-<span class='line'> 58</span>  * Returns a `intervalId` for possible use with `clearInterval()`. Optionally,
-<span class='line'> 59</span>  * you can also pass arguments to the callback.
-<span class='line'> 60</span>  * @param {*} callback
-<span class='line'> 61</span>  * @param {*} repeat
-<span class='line'> 62</span>  * @return {*}
-<span class='line'> 63</span>  */</span><span class="WHIT">
-<span class='line'> 64</span> </span><span class="NAME">node.timers.prototype.setInterval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">repeat</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 65</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.setInterval</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">repeat</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 66</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 67</span> 
-<span class='line'> 68</span> </span><span class="COMM">/**
-<span class='line'> 69</span>  * Stops a interval from triggering.
-<span class='line'> 70</span>  * @param {*} timer
-<span class='line'> 71</span>  * @return {*}
-<span class='line'> 72</span>  */</span><span class="WHIT">
-<span class='line'> 73</span> </span><span class="NAME">node.timers.prototype.clearInterval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 74</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.clearInterval</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 75</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 76</span> 
-<span class='line'> 77</span> 
-<span class='line'> 78</span> </span><span class="COMM">/**
-<span class='line'> 79</span>  * @private
-<span class='line'> 80</span>  * @type {*}
-<span class='line'> 81</span>  */</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="NAME">node.timers.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"timers"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @name node.timers
+<span class='line'>  3</span>  * @namespace
+<span class='line'>  4</span>  */</span><span class="WHIT">
+<span class='line'>  5</span> 
+<span class='line'>  6</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.timers"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  7</span> 
+<span class='line'>  8</span> </span><span class="COMM">/**
+<span class='line'>  9</span>  * @param {*} item
+<span class='line'> 10</span>  * @return {*}
+<span class='line'> 11</span>  */</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="NAME">node.timers.prototype.unenroll</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.unenroll</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 15</span> 
+<span class='line'> 16</span> </span><span class="COMM">/**
+<span class='line'> 17</span>  * @param {*} item
+<span class='line'> 18</span>  * @param {*} msecs
+<span class='line'> 19</span>  * @return {*}
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="NAME">node.timers.prototype.enroll</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">msecs</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.enroll</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">msecs</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>  * @param {*} item
+<span class='line'> 27</span>  * @return {*}
+<span class='line'> 28</span>  */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="NAME">node.timers.prototype.active</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.active</span><span class="PUNC">(</span><span class="NAME">item</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="COMM">/**
+<span class='line'> 34</span>  * To schedule execution of `callback` after `delay` milliseconds. Returns a
+<span class='line'> 35</span>  * `timeoutId` for possible use with `clearTimeout()`. Optionally, you can
+<span class='line'> 36</span>  * also pass arguments to the callback.
+<span class='line'> 37</span>  * @param {*} callback
+<span class='line'> 38</span>  * @param {*} after
+<span class='line'> 39</span>  * @return {*}
+<span class='line'> 40</span>  */</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="NAME">node.timers.prototype.setTimeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">after</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.setTimeout</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">after</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> 
+<span class='line'> 45</span> </span><span class="COMM">/**
+<span class='line'> 46</span>  * Prevents a timeout from triggering.
+<span class='line'> 47</span>  * @param {*} timer
+<span class='line'> 48</span>  * @return {*}
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">node.timers.prototype.clearTimeout</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.clearTimeout</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="COMM">/**
+<span class='line'> 55</span>  * To schedule the repeated execution of `callback` every `delay` milliseconds.
+<span class='line'> 56</span>  * Returns a `intervalId` for possible use with `clearInterval()`. Optionally,
+<span class='line'> 57</span>  * you can also pass arguments to the callback.
+<span class='line'> 58</span>  * @param {*} callback
+<span class='line'> 59</span>  * @param {*} repeat
+<span class='line'> 60</span>  * @return {*}
+<span class='line'> 61</span>  */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="NAME">node.timers.prototype.setInterval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">repeat</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.setInterval</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">repeat</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * Stops a interval from triggering.
+<span class='line'> 68</span>  * @param {*} timer
+<span class='line'> 69</span>  * @return {*}
+<span class='line'> 70</span>  */</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="NAME">node.timers.prototype.clearInterval</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.timers.core_.clearInterval</span><span class="PUNC">(</span><span class="NAME">timer</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 74</span> 
+<span class='line'> 75</span> 
+<span class='line'> 76</span> </span><span class="COMM">/**
+<span class='line'> 77</span>  * @private
+<span class='line'> 78</span>  * @type {*}
+<span class='line'> 79</span>  */</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="NAME">node.timers.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"timers"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

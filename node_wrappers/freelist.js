@@ -1,11 +1,9 @@
+/**
+ * @name node.freelist
+ * @namespace
+ */
 
 goog.provide("node.freelist");
-
-/**
- * @constructor
- * freelist
- */
-node.freelist = function() {};
 
 
 /**

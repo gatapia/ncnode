@@ -1,11 +1,9 @@
+/**
+ * @name node.repl.REPLServer
+ * @namespace
+ */
 
 goog.provide("node.repl.REPLServer");
-
-/**
- * @constructor
- * repl.REPLServer
- */
-node.repl.REPLServer = function() {};
 
 
 /**

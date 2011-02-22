@@ -1,16 +1,11 @@
-
-goog.provide("node.http.ServerResponse");
-
 /**
- * @fileoverview This object is created internally by a HTTP server--not by the user. It is
+ * @name node.http.ServerResponse
+ * @namespace
+ * This object is created internally by a HTTP server--not by the user. It is
  * passed as the second parameter to the `'request'` event. It is a `Writable Stream`.
  */
 
-/**
- * @constructor
- * http.ServerResponse
- */
-node.http.ServerResponse = function() {};
+goog.provide("node.http.ServerResponse");
 
 
 /**
