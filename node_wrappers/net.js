@@ -1,9 +1,9 @@
 /**
  * @name node.net
  * @namespace
- * The `net` module provides you with an asynchronous network wrapper. It contains
+ * The <code class="code prettyprint lang-js">net</code> module provides you with an asynchronous network wrapper. It contains
  * methods for creating both servers and clients (called streams). You can include
- * this module with `require("net");`
+ * this module with <code class="code prettyprint lang-js">require("net");</code>
  */
 
 goog.provide("node.net");
@@ -47,18 +47,18 @@ node.net.prototype.isIPv6 = function(input) {
 
 /**
  * Construct a new socket object and opens a socket to the given location. When
- * the socket is established the `'connect'` event will be emitted.
+ * the socket is established the <code class="code prettyprint lang-js">'connect'</code> event will be emitted.
  *
  * The arguments for this method change the type of connection:
  *
- * * `net.createConnection(port, [host])`
+ * * <code class="code prettyprint lang-js">net.createConnection(port, [host])</code>
  *
- *   Creates a TCP connection to `port` on `host`. If `host` is omitted, `localhost`
+ *   Creates a TCP connection to <code class="code prettyprint lang-js">port</code> on <code class="code prettyprint lang-js">host</code>. If <code class="code prettyprint lang-js">host</code> is omitted, <code class="code prettyprint lang-js">localhost</code>
  *   will be assumed.
  *
- * * `net.createConnection(path)`
+ * * <code class="code prettyprint lang-js">net.createConnection(path)</code>
  *
- *   Creates unix socket connection to `path`
+ *   Creates unix socket connection to <code class="code prettyprint lang-js">path</code>
  *
  * ---
  * @param {*} port
@@ -70,8 +70,8 @@ node.net.prototype.createConnection = function(port, host) {
 };
 
 /**
- * Creates a new TCP server. The `connectionListener` argument is
- * automatically set as a listener for the `'connection'` event.
+ * Creates a new TCP server. The <code class="code prettyprint lang-js">connectionListener</code> argument is
+ * automatically set as a listener for the <code class="code prettyprint lang-js">'connection'</code> event.
  * @return {*}
  */
 node.net.prototype.createServer = function() {

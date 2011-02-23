@@ -2,13 +2,13 @@
  * @name node.assert
  * @namespace
  * This module is used for writing unit tests for your applications, you can
- * access it with `require('assert')`.
+ * access it with <code class="code prettyprint lang-js">require('assert')</code>.
  */
 
 goog.provide("node.assert");
 
 /**
- * Tests if `actual` is equal to `expected` using the operator provided.
+ * Tests if <code class="code prettyprint lang-js">actual</code> is equal to <code class="code prettyprint lang-js">expected</code> using the operator provided.
  * @param {*} actual
  * @param {*} expected
  * @param {*} message
@@ -21,7 +21,7 @@ node.assert.prototype.fail = function(actual, expected, message, operator, stack
 };
 
 /**
- * Tests if value is a `true` value, it is equivalent to `assert.equal(true, value, message);`
+ * Tests if value is a <code class="code prettyprint lang-js">true</code> value, it is equivalent to <code class="code prettyprint lang-js">assert.equal(true, value, message);</code>
  * @param {*} value
  * @param {*} message
  * @return {*}
@@ -31,7 +31,7 @@ node.assert.prototype.ok = function(value, message) {
 };
 
 /**
- * Tests shallow, coercive equality with the equal comparison operator ( `==` ).
+ * Tests shallow, coercive equality with the equal comparison operator ( <code class="code prettyprint lang-js">==</code> ).
  * @param {*} actual
  * @param {*} expected
  * @param {*} message
@@ -42,7 +42,7 @@ node.assert.prototype.equal = function(actual, expected, message) {
 };
 
 /**
- * Tests shallow, coercive non-equality with the not equal comparison operator ( `!=` ).
+ * Tests shallow, coercive non-equality with the not equal comparison operator ( <code class="code prettyprint lang-js">!=</code> ).
  * @param {*} actual
  * @param {*} expected
  * @param {*} message
@@ -75,7 +75,7 @@ node.assert.prototype.notDeepEqual = function(actual, expected, message) {
 };
 
 /**
- * Tests strict equality, as determined by the strict equality operator ( `===` )
+ * Tests strict equality, as determined by the strict equality operator ( <code class="code prettyprint lang-js">===</code> )
  * @param {*} actual
  * @param {*} expected
  * @param {*} message
@@ -86,7 +86,7 @@ node.assert.prototype.strictEqual = function(actual, expected, message) {
 };
 
 /**
- * Tests strict non-equality, as determined by the strict not equal operator ( `!==` )
+ * Tests strict non-equality, as determined by the strict not equal operator ( <code class="code prettyprint lang-js">!==</code> )
  * @param {*} actual
  * @param {*} expected
  * @param {*} message
@@ -97,7 +97,7 @@ node.assert.prototype.notStrictEqual = function(actual, expected, message) {
 };
 
 /**
- * Expects `block` to throw an error. `error` can be constructor, regexp or
+ * Expects <code class="code prettyprint lang-js">block</code> to throw an error. <code class="code prettyprint lang-js">error</code> can be constructor, regexp or
  * validation function.
  *
  * Validate instanceof using constructor:
@@ -142,7 +142,7 @@ node.assert.prototype.throws = function(block, error, message) {
 };
 
 /**
- * Expects `block` not to throw an error, see assert.throws for details.
+ * Expects <code class="code prettyprint lang-js">block</code> not to throw an error, see assert.throws for details.
  * @param {*} block
  * @param {*=} error
  * @param {*=} message
@@ -154,7 +154,7 @@ node.assert.prototype.doesNotThrow = function(block, error, message) {
 
 /**
  * Tests if value is not a false value, throws if it is a true value. Useful when
- * testing the first argument, `error` in callbacks.
+ * testing the first argument, <code class="code prettyprint lang-js">error</code> in callbacks.
  * @param {*} err
  * @return {*}
  */

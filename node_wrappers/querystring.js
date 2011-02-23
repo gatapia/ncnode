@@ -17,7 +17,7 @@ node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
 };
 
 /**
- * The unescape function used by `querystring.parse`,
+ * The unescape function used by <code class="code prettyprint lang-js">querystring.parse</code>,
  * provided so that it could be overridden if necessary.
  * @param {*} s
  * @param {*} decodeSpaces
@@ -28,7 +28,7 @@ node.querystring.prototype.unescape = function(s, decodeSpaces) {
 };
 
 /**
- * The escape function used by `querystring.stringify`,
+ * The escape function used by <code class="code prettyprint lang-js">querystring.stringify</code>,
  * provided so that it could be overridden if necessary.
  * @param {*} str
  * @return {*}

@@ -8,9 +8,9 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.net
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * The `net` module provides you with an asynchronous network wrapper. It contains
+<span class='line'>  4</span>  * The &lt;code class="code prettyprint lang-js">net&lt;/code> module provides you with an asynchronous network wrapper. It contains
 <span class='line'>  5</span>  * methods for creating both servers and clients (called streams). You can include
-<span class='line'>  6</span>  * this module with `require("net");`
+<span class='line'>  6</span>  * this module with &lt;code class="code prettyprint lang-js">require("net");&lt;/code>
 <span class='line'>  7</span>  */</span><span class="WHIT">
 <span class='line'>  8</span> 
 <span class='line'>  9</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.net"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -54,18 +54,18 @@
 <span class='line'> 47</span> 
 <span class='line'> 48</span> </span><span class="COMM">/**
 <span class='line'> 49</span>  * Construct a new socket object and opens a socket to the given location. When
-<span class='line'> 50</span>  * the socket is established the `'connect'` event will be emitted.
+<span class='line'> 50</span>  * the socket is established the &lt;code class="code prettyprint lang-js">'connect'&lt;/code> event will be emitted.
 <span class='line'> 51</span>  *
 <span class='line'> 52</span>  * The arguments for this method change the type of connection:
 <span class='line'> 53</span>  *
-<span class='line'> 54</span>  * * `net.createConnection(port, [host])`
+<span class='line'> 54</span>  * * &lt;code class="code prettyprint lang-js">net.createConnection(port, [host])&lt;/code>
 <span class='line'> 55</span>  *
-<span class='line'> 56</span>  *   Creates a TCP connection to `port` on `host`. If `host` is omitted, `localhost`
+<span class='line'> 56</span>  *   Creates a TCP connection to &lt;code class="code prettyprint lang-js">port&lt;/code> on &lt;code class="code prettyprint lang-js">host&lt;/code>. If &lt;code class="code prettyprint lang-js">host&lt;/code> is omitted, &lt;code class="code prettyprint lang-js">localhost&lt;/code>
 <span class='line'> 57</span>  *   will be assumed.
 <span class='line'> 58</span>  *
-<span class='line'> 59</span>  * * `net.createConnection(path)`
+<span class='line'> 59</span>  * * &lt;code class="code prettyprint lang-js">net.createConnection(path)&lt;/code>
 <span class='line'> 60</span>  *
-<span class='line'> 61</span>  *   Creates unix socket connection to `path`
+<span class='line'> 61</span>  *   Creates unix socket connection to &lt;code class="code prettyprint lang-js">path&lt;/code>
 <span class='line'> 62</span>  *
 <span class='line'> 63</span>  * ---
 <span class='line'> 64</span>  * @param {*} port
@@ -77,8 +77,8 @@
 <span class='line'> 70</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 71</span> 
 <span class='line'> 72</span> </span><span class="COMM">/**
-<span class='line'> 73</span>  * Creates a new TCP server. The `connectionListener` argument is
-<span class='line'> 74</span>  * automatically set as a listener for the `'connection'` event.
+<span class='line'> 73</span>  * Creates a new TCP server. The &lt;code class="code prettyprint lang-js">connectionListener&lt;/code> argument is
+<span class='line'> 74</span>  * automatically set as a listener for the &lt;code class="code prettyprint lang-js">'connection'&lt;/code> event.
 <span class='line'> 75</span>  * @return {*}
 <span class='line'> 76</span>  */</span><span class="WHIT">
 <span class='line'> 77</span> </span><span class="NAME">node.net.prototype.createServer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">

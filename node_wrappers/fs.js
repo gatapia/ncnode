@@ -2,13 +2,13 @@
  * @name node.fs
  * @namespace
  * File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
- * use this module do `require('fs')`. All the methods have asynchronous and
+ * use this module do <code class="code prettyprint lang-js">require('fs')</code>. All the methods have asynchronous and
  * synchronous forms.
  *
  * The asynchronous form always take a completion callback as its last argument.
  * The arguments passed to the completion callback depend on the method, but the
  * first argument is always reserved for an exception. If the operation was
- * completed successfully, then the first argument will be `null` or `undefined`.
+ * completed successfully, then the first argument will be <code class="code prettyprint lang-js">null</code> or <code class="code prettyprint lang-js">undefined</code>.
  *
  * Here is an example of the asynchronous version:
  * <pre class="code prettyprint lang-js">
@@ -38,7 +38,7 @@
  *       console.log('stats: ' + JSON.stringify(stats));
  *     });
  * </pre>
- * It could be that `fs.stat` is executed before `fs.rename`.
+ * It could be that <code class="code prettyprint lang-js">fs.stat</code> is executed before <code class="code prettyprint lang-js">fs.rename</code>.
  * The correct way to do this is to chain the callbacks.
  * <pre class="code prettyprint lang-js">
  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
@@ -49,7 +49,7 @@
  *       });
  *     });
  * </pre>
- * In busy processes, the programmer is _strongly encouraged_ to use the
+ * In busy processes, the programmer is <em>strongly encouraged</em> to use the
  * asynchronous versions of these calls. The synchronous versions will block
  * the entire process until they complete--halting all connections.
  */
@@ -64,7 +64,7 @@ goog.provide("node.fs");
  *       console.log(data);
  *     });
  * </pre>
- * The callback is passed two arguments `(err, data)`, where `data` is the
+ * The callback is passed two arguments <code class="code prettyprint lang-js">(err, data)</code>, where <code class="code prettyprint lang-js">data</code> is the
  * contents of the file.
  *
  * If no encoding is specified, then the raw buffer is returned.
@@ -77,9 +77,9 @@ node.fs.prototype.readFile = function(path, encoding_) {
 };
 
 /**
- * Synchronous version of `fs.readFile`. Returns the contents of the `filename`.
+ * Synchronous version of <code class="code prettyprint lang-js">fs.readFile</code>. Returns the contents of the <code class="code prettyprint lang-js">filename</code>.
  *
- * If `encoding` is specified then this function returns a string. Otherwise it
+ * If <code class="code prettyprint lang-js">encoding</code> is specified then this function returns a string. Otherwise it
  * returns a buffer.
  * @param {*} path
  * @param {*} encoding
@@ -111,15 +111,15 @@ node.fs.prototype.closeSync = function(fd) {
 
 /**
  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
- * or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
+ * or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
  * @param {*} path
  * @param {*} flags
- * @param {*} mode
+ * @param {*} mode_
  * @param {*} callback
  * @return {*}
  */
-node.fs.prototype.open = function(path, flags, mode, callback) {
-  return node.fs.core_.open(path, flags, mode, callback);
+node.fs.prototype.open = function(path, flags, mode_, callback) {
+  return node.fs.core_.open(path, flags, mode_, callback);
 };
 
 /**
@@ -134,18 +134,18 @@ node.fs.prototype.openSync = function(path, flags, mode) {
 };
 
 /**
- * Read data from the file specified by `fd`.
+ * Read data from the file specified by <code class="code prettyprint lang-js">fd</code>.
  *
- * `buffer` is the buffer that the data will be written to.
+ * <code class="code prettyprint lang-js">buffer</code> is the buffer that the data will be written to.
  *
- * `offset` is offset within the buffer where writing will start.
+ * <code class="code prettyprint lang-js">offset</code> is offset within the buffer where writing will start.
  *
- * `length` is an integer specifying the number of bytes to read.
+ * <code class="code prettyprint lang-js">length</code> is an integer specifying the number of bytes to read.
  *
- * `position` is an integer specifying where to begin reading from in the file.
- * If `position` is `null`, data will be read from the current file position.
+ * <code class="code prettyprint lang-js">position</code> is an integer specifying where to begin reading from in the file.
+ * If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, data will be read from the current file position.
  *
- * The callback is given the two arguments, `(err, bytesRead)`.
+ * The callback is given the two arguments, <code class="code prettyprint lang-js">(err, bytesRead)</code>.
  * @param {*} fd
  * @param {*} buffer
  * @param {*} offset
@@ -159,8 +159,8 @@ node.fs.prototype.read = function(fd, buffer, offset, length, position, callback
 };
 
 /**
- * Synchronous version of string-based `fs.read`. Returns the number of
- * `bytesRead`.
+ * Synchronous version of string-based <code class="code prettyprint lang-js">fs.read</code>. Returns the number of
+ * <code class="code prettyprint lang-js">bytesRead</code>.
  * @param {*} fd
  * @param {*} buffer
  * @param {*} offset
@@ -173,17 +173,17 @@ node.fs.prototype.readSync = function(fd, buffer, offset, length, position) {
 };
 
 /**
- * Write `buffer` to the file specified by `fd`.
+ * Write <code class="code prettyprint lang-js">buffer</code> to the file specified by <code class="code prettyprint lang-js">fd</code>.
  *
- * `offset` and `length` determine the part of the buffer to be written.
+ * <code class="code prettyprint lang-js">offset</code> and <code class="code prettyprint lang-js">length</code> determine the part of the buffer to be written.
  *
- * `position` refers to the offset from the beginning of the file where this data
- * should be written. If `position` is `null`, the data will be written at the
+ * <code class="code prettyprint lang-js">position</code> refers to the offset from the beginning of the file where this data
+ * should be written. If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, the data will be written at the
  * current position.
  * See pwrite(2).
  *
- * The callback will be given two arguments `(err, written)` where `written`
- * specifies how many _bytes_ were written.
+ * The callback will be given two arguments <code class="code prettyprint lang-js">(err, written)</code> where <code class="code prettyprint lang-js">written</code>
+ * specifies how many <em>bytes</em> were written.
  * @param {*} fd
  * @param {*} buffer
  * @param {*} offset
@@ -197,7 +197,7 @@ node.fs.prototype.write = function(fd, buffer, offset, length, position, callbac
 };
 
 /**
- * Synchronous version of string-based `fs.write()`. Returns the number of bytes
+ * Synchronous version of string-based <code class="code prettyprint lang-js">fs.write()</code>. Returns the number of bytes
  * written.
  * @param {*} fd
  * @param {*} buffer
@@ -355,8 +355,8 @@ node.fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
 
 /**
  * Asynchronous readdir(3).  Reads the contents of a directory.
- * The callback gets two arguments `(err, files)` where `files` is an array of
- * the names of the files in the directory excluding `'.'` and `'..'`.
+ * The callback gets two arguments <code class="code prettyprint lang-js">(err, files)</code> where <code class="code prettyprint lang-js">files</code> is an array of
+ * the names of the files in the directory excluding <code class="code prettyprint lang-js">'.'</code> and <code class="code prettyprint lang-js">'..'</code>.
  * @param {*} path
  * @param {*} callback
  * @return {*}
@@ -366,8 +366,8 @@ node.fs.prototype.readdir = function(path, callback) {
 };
 
 /**
- * Synchronous readdir(3). Returns an array of filenames excluding `'.'` and
- * `'..'`.
+ * Synchronous readdir(3). Returns an array of filenames excluding <code class="code prettyprint lang-js">'.'</code> and
+ * <code class="code prettyprint lang-js">'..'</code>.
  * @param {*} path
  * @return {*}
  */
@@ -376,8 +376,8 @@ node.fs.prototype.readdirSync = function(path) {
 };
 
 /**
- * Asynchronous fstat(2). The callback gets two arguments `(err, stats)` where
- * `stats` is a `fs.Stats` object.
+ * Asynchronous fstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+ * <code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object.
  * @param {*} fd
  * @param {*} callback
  * @return {*}
@@ -387,8 +387,8 @@ node.fs.prototype.fstat = function(fd, callback) {
 };
 
 /**
- * Asynchronous lstat(2). The callback gets two arguments `(err, stats)` where
- * `stats` is a `fs.Stats` object. lstat() is identical to stat(), except that if
+ * Asynchronous lstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+ * <code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. lstat() is identical to stat(), except that if
  * path is a symbolic link, then the link itself is stat-ed, not the file that it
  * refers to.
  * @param {*} path
@@ -400,8 +400,8 @@ node.fs.prototype.lstat = function(path, callback) {
 };
 
 /**
- * Asynchronous stat(2). The callback gets two arguments `(err, stats)` where
- * `stats` is a `fs.Stats` object. It looks like this:
+ * Asynchronous stat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+ * <code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. It looks like this:
  * <pre class="code prettyprint lang-js">
  *     { dev: 2049,
  *       ino: 305352,
@@ -417,7 +417,7 @@ node.fs.prototype.lstat = function(path, callback) {
  *       mtime: '2009-06-29T11:11:40Z',
  *       ctime: '2009-06-29T11:11:40Z' }
  * </pre>
- * See the `fs.Stats` section below for more information.
+ * See the <code class="code prettyprint lang-js">fs.Stats</code> section below for more information.
  * @param {*} path
  * @param {*} callback
  * @return {*}
@@ -427,7 +427,7 @@ node.fs.prototype.stat = function(path, callback) {
 };
 
 /**
- * Synchronous fstat(2). Returns an instance of `fs.Stats`.
+ * Synchronous fstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
  * @param {*} fd
  * @return {*}
  */
@@ -436,7 +436,7 @@ node.fs.prototype.fstatSync = function(fd) {
 };
 
 /**
- * Synchronous lstat(2). Returns an instance of `fs.Stats`.
+ * Synchronous lstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
  * @param {*} path
  * @return {*}
  */
@@ -445,7 +445,7 @@ node.fs.prototype.lstatSync = function(path) {
 };
 
 /**
- * Synchronous stat(2). Returns an instance of `fs.Stats`.
+ * Synchronous stat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
  * @param {*} path
  * @return {*}
  */
@@ -454,8 +454,8 @@ node.fs.prototype.statSync = function(path) {
 };
 
 /**
- * Asynchronous readlink(2). The callback gets two arguments `(err,
- * resolvedPath)`.
+ * Asynchronous readlink(2). The callback gets two arguments <code class="code prettyprint lang-js">(err,
+ * resolvedPath)</code>.
  * @param {*} path
  * @param {*} callback
  * @return {*}
@@ -581,7 +581,7 @@ node.fs.prototype.chownSync = function(path, uid, gid) {
 };
 
 /**
- * Asynchronously writes data to a file. `data` can be a string or a buffer.
+ * Asynchronously writes data to a file. <code class="code prettyprint lang-js">data</code> can be a string or a buffer.
  *
  * Example:
  * <pre class="code prettyprint lang-js">
@@ -601,7 +601,7 @@ node.fs.prototype.writeFile = function(path, data, encoding_, callback) {
 };
 
 /**
- * The synchronous version of `fs.writeFile`.
+ * The synchronous version of <code class="code prettyprint lang-js">fs.writeFile</code>.
  * @param {*} path
  * @param {*} data
  * @param {*} encoding
@@ -612,14 +612,14 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
 };
 
 /**
- * Watch for changes on `filename`. The callback `listener` will be called each
- * time the file is accessed.
+ * Watch for changes on <code class="code prettyprint lang-js">filename</code>. The callback <code class="code prettyprint lang-js">listener</code> will be called each
+ * time the file changes.
  *
- * The second argument is optional. The `options` if provided should be an object
- * containing two members a boolean, `persistent`, and `interval`, a polling
- * value in milliseconds. The default is `{ persistent: true, interval: 0 }`.
+ * The second argument is optional. The <code class="code prettyprint lang-js">options</code> if provided should be an object
+ * containing two members a boolean, <code class="code prettyprint lang-js">persistent</code>, and <code class="code prettyprint lang-js">interval</code>, a polling
+ * value in milliseconds. The default is <code class="code prettyprint lang-js">{persistent: true, interval: 0}</code>.
  *
- * The `listener` gets two arguments the current stat object and the previous
+ * The <code class="code prettyprint lang-js">listener</code> gets two arguments the current stat object and the previous
  * stat object:
  * <pre class="code prettyprint lang-js">
  *     fs.watchFile(f, function (curr, prev) {
@@ -627,10 +627,7 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
  *       console.log('the previous mtime was: ' + prev.mtime);
  *     });
  * </pre>
- * These stat objects are instances of `fs.Stat`.
- *
- * If you want to be notified when the file was modified, not just accessed
- * you need to compare `curr.mtime` and `prev.mtime.
+ * These stat objects are instances of <code class="code prettyprint lang-js">fs.Stat</code>.
  * @param {*} filename
  * @return {*}
  */
@@ -639,7 +636,7 @@ node.fs.prototype.watchFile = function(filename) {
 };
 
 /**
- * Stop watching for changes on `filename`.
+ * Stop watching for changes on <code class="code prettyprint lang-js">filename</code>.
  * @param {*} filename
  * @return {*}
  */
@@ -650,23 +647,21 @@ node.fs.prototype.unwatchFile = function(filename) {
 /**
  * Synchronous realpath(2). Returns the resolved path.
  * @param {*} p
- * @param {*} cache
  * @return {*}
  */
-node.fs.prototype.realpathSync = function(p, cache) {
-  return node.fs.core_.realpathSync(p, cache);
+node.fs.prototype.realpathSync = function(p) {
+  return node.fs.core_.realpathSync(p);
 };
 
 /**
- * Asynchronous realpath(2).  The callback gets two arguments `(err,
- * resolvedPath)`.
+ * Asynchronous realpath(2).  The callback gets two arguments <code class="code prettyprint lang-js">(err,
+ * resolvedPath)</code>.
  * @param {*} p
- * @param {*} cache
  * @param {*} cb
  * @return {*}
  */
-node.fs.prototype.realpath = function(p, cache, cb) {
-  return node.fs.core_.realpath(p, cache, cb);
+node.fs.prototype.realpath = function(p, cb) {
+  return node.fs.core_.realpath(p, cb);
 };
 
 /**

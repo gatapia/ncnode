@@ -1,7 +1,7 @@
 /**
  * @name node
  * @namespace
- * An example of a [web server](http.html) written with Node which responds with 'Hello
+ * An example of a <a href="node.http.html">web server</a> written with Node which responds with 'Hello
 World':
 <pre class="code prettyprint lang-js">
     var http = require('http');
@@ -13,7 +13,7 @@ World':
 
     console.log('Server running at http:&#47;&#47;127.0.0.1:8124&#47;');
 </pre>
-To run the server, put the code into a file called `example.js` and execute
+To run the server, put the code into a file called <code class="code prettyprint lang-js">example.js</code> and execute
 it with the node program
 <pre class="code prettyprint lang-js">
     > node example.js

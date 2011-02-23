@@ -1,7 +1,7 @@
 /**
  * @name node.http
  * @namespace
- * To use the HTTP server and client one must `require('http')`.
+ * To use the HTTP server and client one must <code class="code prettyprint lang-js">require('http')</code>.
  *
  * The HTTP interfaces in Node are designed to support many features
  * of the protocol which have been traditionally difficult to use.

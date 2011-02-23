@@ -31,8 +31,8 @@ node.timers.prototype.active = function(item) {
 };
 
 /**
- * To schedule execution of `callback` after `delay` milliseconds. Returns a
- * `timeoutId` for possible use with `clearTimeout()`. Optionally, you can
+ * To schedule execution of <code class="code prettyprint lang-js">callback</code> after <code class="code prettyprint lang-js">delay</code> milliseconds. Returns a
+ * <code class="code prettyprint lang-js">timeoutId</code> for possible use with <code class="code prettyprint lang-js">clearTimeout()</code>. Optionally, you can
  * also pass arguments to the callback.
  * @param {*} callback
  * @param {*} after
@@ -52,8 +52,8 @@ node.timers.prototype.clearTimeout = function(timer) {
 };
 
 /**
- * To schedule the repeated execution of `callback` every `delay` milliseconds.
- * Returns a `intervalId` for possible use with `clearInterval()`. Optionally,
+ * To schedule the repeated execution of <code class="code prettyprint lang-js">callback</code> every <code class="code prettyprint lang-js">delay</code> milliseconds.
+ * Returns a <code class="code prettyprint lang-js">intervalId</code> for possible use with <code class="code prettyprint lang-js">clearInterval()</code>. Optionally,
  * you can also pass arguments to the callback.
  * @param {*} callback
  * @param {*} repeat

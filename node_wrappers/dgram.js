@@ -1,7 +1,7 @@
 /**
  * @name node.dgram
  * @namespace
- * Datagram sockets are available through `require('dgram')`.  Datagrams are most commonly
+ * Datagram sockets are available through <code class="code prettyprint lang-js">require('dgram')</code>.  Datagrams are most commonly
  * handled as IP&#47;UDP messages but they can also be used over Unix domain sockets.
  */
 
@@ -9,9 +9,9 @@ goog.provide("node.dgram");
 
 /**
  * Creates a datagram socket of the specified types.  Valid types are:
- * `udp4`, `udp6`, and `unix_dgram`.
+ * <code class="code prettyprint lang-js">udp4</code>, <code class="code prettyprint lang-js">udp6</code>, and <code class="code prettyprint lang-js">unix_dgram</code>.
  *
- * Takes an optional callback which is added as a listener for `message` events.
+ * Takes an optional callback which is added as a listener for <code class="code prettyprint lang-js">message</code> events.
  * @param {*} type
  * @param {*} listener
  * @return {*}

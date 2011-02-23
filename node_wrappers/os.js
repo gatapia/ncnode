@@ -1,7 +1,7 @@
 /**
  * @name node.os
  * @namespace
- * Use `require('os')` to access this module.
+ * Use <code class="code prettyprint lang-js">require('os')</code> to access this module.
  */
 
 goog.provide("node.os");

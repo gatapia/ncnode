@@ -8,8 +8,8 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.process
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * The `process` object is a global object and can be accessed from anywhere.
-<span class='line'>  5</span>  * It is an instance of `EventEmitter`.
+<span class='line'>  4</span>  * The &lt;code class="code prettyprint lang-js">process&lt;/code> object is a global object and can be accessed from anywhere.
+<span class='line'>  5</span>  * It is an instance of &lt;code class="code prettyprint lang-js">EventEmitter&lt;/code>.
 <span class='line'>  6</span>  */</span><span class="WHIT">
 <span class='line'>  7</span> 
 <span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.process"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -21,7 +21,7 @@
 <span class='line'> 14</span> </span><span class="NAME">node.process.prototype.title</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 15</span> 
 <span class='line'> 16</span> </span><span class="COMM">/**
-<span class='line'> 17</span>  * A compiled-in property that exposes `NODE_VERSION`.
+<span class='line'> 17</span>  * A compiled-in property that exposes &lt;code class="code prettyprint lang-js">NODE_VERSION&lt;/code>.
 <span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 19</span>  *     console.log('Version: ' + process.version);
 <span class='line'> 20</span>  * &lt;/pre>
@@ -30,7 +30,7 @@
 <span class='line'> 23</span> </span><span class="NAME">node.process.prototype.version</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 24</span> 
 <span class='line'> 25</span> </span><span class="COMM">/**
-<span class='line'> 26</span>  * A compiled-in property that exposes `NODE_PREFIX`.
+<span class='line'> 26</span>  * A compiled-in property that exposes &lt;code class="code prettyprint lang-js">NODE_PREFIX&lt;/code>.
 <span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 28</span>  *     console.log('Prefix: ' + process.installPrefix);
 <span class='line'> 29</span>  * &lt;/pre>
@@ -44,7 +44,7 @@
 <span class='line'> 37</span> </span><span class="NAME">node.process.prototype.versions</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 38</span> 
 <span class='line'> 39</span> </span><span class="COMM">/**
-<span class='line'> 40</span>  * What platform you're running on. `'linux2'`, `'darwin'`, etc.
+<span class='line'> 40</span>  * What platform you're running on. &lt;code class="code prettyprint lang-js">'linux2'&lt;/code>, &lt;code class="code prettyprint lang-js">'darwin'&lt;/code>, etc.
 <span class='line'> 41</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 42</span>  *     console.log('This platform is ' + process.platform);
 <span class='line'> 43</span>  * &lt;/pre>
@@ -112,9 +112,9 @@
 <span class='line'>105</span> </span><span class="NAME">node.process.prototype.execPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>106</span> 
 <span class='line'>107</span> </span><span class="COMM">/**
-<span class='line'>108</span>  * A `Writable Stream` to `stdout`.
+<span class='line'>108</span>  * A &lt;code class="code prettyprint lang-js">Writable Stream&lt;/code> to &lt;code class="code prettyprint lang-js">stdout&lt;/code>.
 <span class='line'>109</span>  *
-<span class='line'>110</span>  * Example: the definition of `console.log`
+<span class='line'>110</span>  * Example: the definition of &lt;code class="code prettyprint lang-js">console.log&lt;/code>
 <span class='line'>111</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>112</span>  *     console.log = function (d) {
 <span class='line'>113</span>  *       process.stdout.write(d + '\n');
@@ -125,8 +125,8 @@
 <span class='line'>118</span> </span><span class="NAME">node.process.prototype.stdout</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>119</span> 
 <span class='line'>120</span> </span><span class="COMM">/**
-<span class='line'>121</span>  * A `Readable Stream` for stdin. The stdin stream is paused by default, so one
-<span class='line'>122</span>  * must call `process.stdin.resume()` to read from it.
+<span class='line'>121</span>  * A &lt;code class="code prettyprint lang-js">Readable Stream&lt;/code> for stdin. The stdin stream is paused by default, so one
+<span class='line'>122</span>  * must call &lt;code class="code prettyprint lang-js">process.stdin.resume()&lt;/code> to read from it.
 <span class='line'>123</span>  *
 <span class='line'>124</span>  * Example of opening standard input and listening for both events:
 <span class='line'>125</span>  * &lt;pre class="code prettyprint lang-js">
@@ -259,7 +259,7 @@
 <span class='line'>252</span> 
 <span class='line'>253</span> </span><span class="COMM">/**
 <span class='line'>254</span>  * Sets or reads the process's file mode creation mask. Child processes inherit
-<span class='line'>255</span>  * the mask from the parent process. Returns the old mask if `mask` argument is
+<span class='line'>255</span>  * the mask from the parent process. Returns the old mask if &lt;code class="code prettyprint lang-js">mask&lt;/code> argument is
 <span class='line'>256</span>  * given, otherwise returns the current mask.
 <span class='line'>257</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>258</span>  *     var oldmask, newmask = 0644;
@@ -295,7 +295,7 @@
 <span class='line'>288</span>  *       heapTotal: 1826816,
 <span class='line'>289</span>  *       heapUsed: 650472 }
 <span class='line'>290</span>  * &lt;/pre>
-<span class='line'>291</span>  * `heapTotal` and `heapUsed` refer to V8's memory usage.
+<span class='line'>291</span>  * &lt;code class="code prettyprint lang-js">heapTotal&lt;/code> and &lt;code class="code prettyprint lang-js">heapUsed&lt;/code> refer to V8's memory usage.
 <span class='line'>292</span>  * @return {*}
 <span class='line'>293</span>  */</span><span class="WHIT">
 <span class='line'>294</span> </span><span class="NAME">node.process.prototype.memoryUsage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -318,7 +318,7 @@
 <span class='line'>311</span> 
 <span class='line'>312</span> </span><span class="COMM">/**
 <span class='line'>313</span>  * On the next loop around the event loop call this callback.
-<span class='line'>314</span>  * This is *not* a simple alias to `setTimeout(fn, 0)`, it's much more
+<span class='line'>314</span>  * This is *not* a simple alias to &lt;code class="code prettyprint lang-js">setTimeout(fn, 0)&lt;/code>, it's much more
 <span class='line'>315</span>  * efficient.
 <span class='line'>316</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>317</span>  *     process.nextTick(function () {
@@ -340,8 +340,8 @@
 <span class='line'>333</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>334</span> 
 <span class='line'>335</span> </span><span class="COMM">/**
-<span class='line'>336</span>  * Ends the process with the specified `code`.  If omitted, exit uses the
-<span class='line'>337</span>  * 'success' code `0`.
+<span class='line'>336</span>  * Ends the process with the specified &lt;code class="code prettyprint lang-js">code&lt;/code>.  If omitted, exit uses the
+<span class='line'>337</span>  * 'success' code &lt;code class="code prettyprint lang-js">0&lt;/code>.
 <span class='line'>338</span>  *
 <span class='line'>339</span>  * To exit with a 'failure' code:
 <span class='line'>340</span>  * &lt;pre class="code prettyprint lang-js">
@@ -356,13 +356,13 @@
 <span class='line'>349</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>350</span> 
 <span class='line'>351</span> </span><span class="COMM">/**
-<span class='line'>352</span>  * Send a signal to a process. `pid` is the process id and `signal` is the
+<span class='line'>352</span>  * Send a signal to a process. &lt;code class="code prettyprint lang-js">pid&lt;/code> is the process id and &lt;code class="code prettyprint lang-js">signal&lt;/code> is the
 <span class='line'>353</span>  * string describing the signal to send.  Signal names are strings like
 <span class='line'>354</span>  * 'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
 <span class='line'>355</span>  * See kill(2) for more information.
 <span class='line'>356</span>  *
-<span class='line'>357</span>  * Note that just because the name of this function is `process.kill`, it is
-<span class='line'>358</span>  * really just a signal sender, like the `kill` system call.  The signal sent
+<span class='line'>357</span>  * Note that just because the name of this function is &lt;code class="code prettyprint lang-js">process.kill&lt;/code>, it is
+<span class='line'>358</span>  * really just a signal sender, like the &lt;code class="code prettyprint lang-js">kill&lt;/code> system call.  The signal sent
 <span class='line'>359</span>  * may do something other than kill the target process.
 <span class='line'>360</span>  *
 <span class='line'>361</span>  * Example of sending a signal to yourself:

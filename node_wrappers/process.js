@@ -1,8 +1,8 @@
 /**
  * @name node.process
  * @namespace
- * The `process` object is a global object and can be accessed from anywhere.
- * It is an instance of `EventEmitter`.
+ * The <code class="code prettyprint lang-js">process</code> object is a global object and can be accessed from anywhere.
+ * It is an instance of <code class="code prettyprint lang-js">EventEmitter</code>.
  */
 
 goog.provide("node.process");
@@ -14,7 +14,7 @@ goog.provide("node.process");
 node.process.prototype.title;
 
 /**
- * A compiled-in property that exposes `NODE_VERSION`.
+ * A compiled-in property that exposes <code class="code prettyprint lang-js">NODE_VERSION</code>.
  * <pre class="code prettyprint lang-js">
  *     console.log('Version: ' + process.version);
  * </pre>
@@ -23,7 +23,7 @@ node.process.prototype.title;
 node.process.prototype.version;
 
 /**
- * A compiled-in property that exposes `NODE_PREFIX`.
+ * A compiled-in property that exposes <code class="code prettyprint lang-js">NODE_PREFIX</code>.
  * <pre class="code prettyprint lang-js">
  *     console.log('Prefix: ' + process.installPrefix);
  * </pre>
@@ -37,7 +37,7 @@ node.process.prototype.installPrefix;
 node.process.prototype.versions;
 
 /**
- * What platform you're running on. `'linux2'`, `'darwin'`, etc.
+ * What platform you're running on. <code class="code prettyprint lang-js">'linux2'</code>, <code class="code prettyprint lang-js">'darwin'</code>, etc.
  * <pre class="code prettyprint lang-js">
  *     console.log('This platform is ' + process.platform);
  * </pre>
@@ -105,9 +105,9 @@ node.process.prototype.pid;
 node.process.prototype.execPath;
 
 /**
- * A `Writable Stream` to `stdout`.
+ * A <code class="code prettyprint lang-js">Writable Stream</code> to <code class="code prettyprint lang-js">stdout</code>.
  *
- * Example: the definition of `console.log`
+ * Example: the definition of <code class="code prettyprint lang-js">console.log</code>
  * <pre class="code prettyprint lang-js">
  *     console.log = function (d) {
  *       process.stdout.write(d + '\n');
@@ -118,8 +118,8 @@ node.process.prototype.execPath;
 node.process.prototype.stdout;
 
 /**
- * A `Readable Stream` for stdin. The stdin stream is paused by default, so one
- * must call `process.stdin.resume()` to read from it.
+ * A <code class="code prettyprint lang-js">Readable Stream</code> for stdin. The stdin stream is paused by default, so one
+ * must call <code class="code prettyprint lang-js">process.stdin.resume()</code> to read from it.
  *
  * Example of opening standard input and listening for both events:
  * <pre class="code prettyprint lang-js">
@@ -252,7 +252,7 @@ node.process.prototype.getgid = function() {
 
 /**
  * Sets or reads the process's file mode creation mask. Child processes inherit
- * the mask from the parent process. Returns the old mask if `mask` argument is
+ * the mask from the parent process. Returns the old mask if <code class="code prettyprint lang-js">mask</code> argument is
  * given, otherwise returns the current mask.
  * <pre class="code prettyprint lang-js">
  *     var oldmask, newmask = 0644;
@@ -288,7 +288,7 @@ node.process.prototype.dlopen = function() {
  *       heapTotal: 1826816,
  *       heapUsed: 650472 }
  * </pre>
- * `heapTotal` and `heapUsed` refer to V8's memory usage.
+ * <code class="code prettyprint lang-js">heapTotal</code> and <code class="code prettyprint lang-js">heapUsed</code> refer to V8's memory usage.
  * @return {*}
  */
 node.process.prototype.memoryUsage = function() {
@@ -311,7 +311,7 @@ node.process.prototype.assert = function() {
 
 /**
  * On the next loop around the event loop call this callback.
- * This is *not* a simple alias to `setTimeout(fn, 0)`, it's much more
+ * This is *not* a simple alias to <code class="code prettyprint lang-js">setTimeout(fn, 0)</code>, it's much more
  * efficient.
  * <pre class="code prettyprint lang-js">
  *     process.nextTick(function () {
@@ -333,8 +333,8 @@ node.process.prototype.openStdin = function() {
 };
 
 /**
- * Ends the process with the specified `code`.  If omitted, exit uses the
- * 'success' code `0`.
+ * Ends the process with the specified <code class="code prettyprint lang-js">code</code>.  If omitted, exit uses the
+ * 'success' code <code class="code prettyprint lang-js">0</code>.
  *
  * To exit with a 'failure' code:
  * <pre class="code prettyprint lang-js">
@@ -349,13 +349,13 @@ node.process.prototype.exit = function(code) {
 };
 
 /**
- * Send a signal to a process. `pid` is the process id and `signal` is the
+ * Send a signal to a process. <code class="code prettyprint lang-js">pid</code> is the process id and <code class="code prettyprint lang-js">signal</code> is the
  * string describing the signal to send.  Signal names are strings like
  * 'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
  * See kill(2) for more information.
  *
- * Note that just because the name of this function is `process.kill`, it is
- * really just a signal sender, like the `kill` system call.  The signal sent
+ * Note that just because the name of this function is <code class="code prettyprint lang-js">process.kill</code>, it is
+ * really just a signal sender, like the <code class="code prettyprint lang-js">kill</code> system call.  The signal sent
  * may do something other than kill the target process.
  *
  * Example of sending a signal to yourself:

@@ -197,7 +197,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
+		Generated on: 2011-1-23 21:52
 	</div>
 </div>
 
@@ -213,44 +213,44 @@
 		<div class="intro">
 			<p class="description summary">
 				This module has utilities for URL resolution and parsing.
-Call `require('url')` to use it.
+Call <code class="code prettyprint lang-js">require('url')</code> to use it.
 
 Parsed URL objects have some or all of the following fields, depending on
 whether or not they exist in the URL string. Any parts that are not in the URL
 string will not be in the parsed object. Examples are shown for the URL
 
-`'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'`
+<code class="code prettyprint lang-js">'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
 
-* `href`: The full URL that was originally parsed.
+* <code class="code prettyprint lang-js">href</code>: The full URL that was originally parsed.
 
-  Example: `'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'`
-* `protocol`: The request protocol.
+  Example: <code class="code prettyprint lang-js">'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
+* <code class="code prettyprint lang-js">protocol</code>: The request protocol.
 
-  Example: `'http:'`
-* `host`: The full host portion of the URL, including port and authentication information.
+  Example: <code class="code prettyprint lang-js">'http:'</code>
+* <code class="code prettyprint lang-js">host</code>: The full host portion of the URL, including port and authentication information.
 
-  Example: `'user:pass@host.com:8080'`
-* `auth`: The authentication information portion of a URL.
+  Example: <code class="code prettyprint lang-js">'user:pass@host.com:8080'</code>
+* <code class="code prettyprint lang-js">auth</code>: The authentication information portion of a URL.
 
-  Example: `'user:pass'`
-* `hostname`: Just the hostname portion of the host.
+  Example: <code class="code prettyprint lang-js">'user:pass'</code>
+* <code class="code prettyprint lang-js">hostname</code>: Just the hostname portion of the host.
 
-  Example: `'host.com'`
-* `port`: The port number portion of the host.
+  Example: <code class="code prettyprint lang-js">'host.com'</code>
+* <code class="code prettyprint lang-js">port</code>: The port number portion of the host.
 
-  Example: `'8080'`
-* `pathname`: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
+  Example: <code class="code prettyprint lang-js">'8080'</code>
+* <code class="code prettyprint lang-js">pathname</code>: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
 
-  Example: `'&#47;p&#47;a&#47;t&#47;h'`
-* `search`: The 'query string' portion of the URL, including the leading question mark.
+  Example: <code class="code prettyprint lang-js">'&#47;p&#47;a&#47;t&#47;h'</code>
+* <code class="code prettyprint lang-js">search</code>: The 'query string' portion of the URL, including the leading question mark.
 
-  Example: `'?query=string'`
-* `query`: Either the 'params' portion of the query string, or a querystring-parsed object.
+  Example: <code class="code prettyprint lang-js">'?query=string'</code>
+* <code class="code prettyprint lang-js">query</code>: Either the 'params' portion of the query string, or a querystring-parsed object.
 
-  Example: `'query=string'` or `{'query':'string'}`
-* `hash`: The 'fragment' portion of the URL including the pound-sign.
+  Example: <code class="code prettyprint lang-js">'query=string'</code> or <code class="code prettyprint lang-js">{'query':'string'}</code>
+* <code class="code prettyprint lang-js">hash</code>: The 'fragment' portion of the URL including the pound-sign.
 
-  Example: `'#hash'`
+  Example: <code class="code prettyprint lang-js">'#hash'</code>
 
 The following methods are provided by the URL module:
 			</p>
@@ -489,8 +489,8 @@ The following methods are provided by the URL module:
 								</div>
 								
 								<div class="description">
-									Take a URL string, and return an object.  Pass `true` as the second argument to also parse
-the query string using the `querystring` module.
+									Take a URL string, and return an object.  Pass <code class="code prettyprint lang-js">true</code> as the second argument to also parse
+the query string using the <code class="code prettyprint lang-js">querystring</code> module.
 									
 									
 									

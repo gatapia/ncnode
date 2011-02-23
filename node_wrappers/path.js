@@ -2,21 +2,21 @@
  * @name node.path
  * @namespace
  * This module contains utilities for dealing with file paths.  Use
- * `require('path')` to use it.  It provides the following methods:
+ * <code class="code prettyprint lang-js">require('path')</code> to use it.  It provides the following methods:
  */
 
 goog.provide("node.path");
 
 /**
- * Resolves `to` to an absolute path.
+ * Resolves <code class="code prettyprint lang-js">to</code> to an absolute path.
  *
- * If `to` isn't already absolute `from` arguments are prepended in right to left
- * order, until an absolute path is found. If after using all `from` paths still
+ * If <code class="code prettyprint lang-js">to</code> isn't already absolute <code class="code prettyprint lang-js">from</code> arguments are prepended in right to left
+ * order, until an absolute path is found. If after using all <code class="code prettyprint lang-js">from</code> paths still
  * no absolute path is found, the current working directory is used as well. The
  * resulting path is normalized, and trailing slashes are removed unless the path
  * gets resolved to the root directory.
  *
- * Another way to think of it is as a sequence of `cd` commands in a shell.
+ * Another way to think of it is as a sequence of <code class="code prettyprint lang-js">cd</code> commands in a shell.
  * <pre class="code prettyprint lang-js">
  *     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
  * </pre>
@@ -41,9 +41,9 @@ goog.provide("node.path");
  *     &#47;&#47; returns
  *     '&#47;tmp&#47;file'
  *
- *     path.resolve('wwwroot', 'static_files&#47;png&#47;', '..&#47;gif&#47;image.gif')
+ *     path.resolve('wwwroot', 'static<em>files&#47;png&#47;', '..&#47;gif&#47;image.gif')
  *     &#47;&#47; if currently in &#47;home&#47;myself&#47;node, it returns
- *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static_files&#47;gif&#47;image.gif'
+ *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static</em>files&#47;gif&#47;image.gif'
  * </pre>
  * @return {*}
  */
@@ -52,7 +52,7 @@ node.path.prototype.resolve = function() {
 };
 
 /**
- * Normalize a string path, taking care of `'..'` and `'.'` parts.
+ * Normalize a string path, taking care of <code class="code prettyprint lang-js">'..'</code> and <code class="code prettyprint lang-js">'.'</code> parts.
  *
  * When multiple slashes are found, they're replaces by a single one;
  * when the path contains a trailing slash, it is preserved.
@@ -87,7 +87,7 @@ node.path.prototype.join = function() {
 };
 
 /**
- * Return the directory name of a path.  Similar to the Unix `dirname` command.
+ * Return the directory name of a path.  Similar to the Unix <code class="code prettyprint lang-js">dirname</code> command.
  *
  * Example:
  * <pre class="code prettyprint lang-js">
@@ -103,7 +103,7 @@ node.path.prototype.dirname = function(path) {
 };
 
 /**
- * Return the last portion of a path.  Similar to the Unix `basename` command.
+ * Return the last portion of a path.  Similar to the Unix <code class="code prettyprint lang-js">basename</code> command.
  *
  * Example:
  * <pre class="code prettyprint lang-js">
@@ -144,7 +144,7 @@ node.path.prototype.extname = function(path) {
 };
 
 /**
- * Test whether or not the given path exists.  Then, call the `callback` argument
+ * Test whether or not the given path exists.  Then, call the <code class="code prettyprint lang-js">callback</code> argument
  * with either true or false. Example:
  * <pre class="code prettyprint lang-js">
  *     path.exists('&#47;etc&#47;passwd', function (exists) {

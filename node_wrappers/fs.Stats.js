@@ -1,15 +1,15 @@
 /**
  * @name node.fs.Stats
  * @namespace
- * Objects returned from `fs.stat()` and `fs.lstat()` are of this type.
+ * Objects returned from <code class="code prettyprint lang-js">fs.stat()</code> and <code class="code prettyprint lang-js">fs.lstat()</code> are of this type.
  *
- *  - `stats.isFile()`
- *  - `stats.isDirectory()`
- *  - `stats.isBlockDevice()`
- *  - `stats.isCharacterDevice()`
- *  - `stats.isSymbolicLink()` (only valid with  `fs.lstat()`)
- *  - `stats.isFIFO()`
- *  - `stats.isSocket()`
+ *  - <code class="code prettyprint lang-js">stats.isFile()</code>
+ *  - <code class="code prettyprint lang-js">stats.isDirectory()</code>
+ *  - <code class="code prettyprint lang-js">stats.isBlockDevice()</code>
+ *  - <code class="code prettyprint lang-js">stats.isCharacterDevice()</code>
+ *  - <code class="code prettyprint lang-js">stats.isSymbolicLink()</code> (only valid with  <code class="code prettyprint lang-js">fs.lstat()</code>)
+ *  - <code class="code prettyprint lang-js">stats.isFIFO()</code>
+ *  - <code class="code prettyprint lang-js">stats.isSocket()</code>
  */
 
 goog.provide("node.fs.Stats");

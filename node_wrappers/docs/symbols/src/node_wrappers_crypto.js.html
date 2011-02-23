@@ -8,7 +8,7 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.crypto
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * Use `require('crypto')` to access this module.
+<span class='line'>  4</span>  * Use &lt;code class="code prettyprint lang-js">require('crypto')&lt;/code> to access this module.
 <span class='line'>  5</span>  *
 <span class='line'>  6</span>  * The crypto module requires OpenSSL to be available on the underlying platform.
 <span class='line'>  7</span>  * It offers a way of encapsulating secure credentials to be used as part
@@ -22,9 +22,9 @@
 <span class='line'> 15</span> </span><span class="COMM">/**
 <span class='line'> 16</span>  * Creates a credentials object, with the optional details being a dictionary with keys:
 <span class='line'> 17</span>  *
-<span class='line'> 18</span>  * * `key` : a string holding the PEM encoded private key
-<span class='line'> 19</span>  * * `cert` : a string holding the PEM encoded certificate
-<span class='line'> 20</span>  * * `ca` : either a string or list of strings of PEM encoded CA certificates to trust.
+<span class='line'> 18</span>  * * &lt;code class="code prettyprint lang-js">key&lt;/code> : a string holding the PEM encoded private key
+<span class='line'> 19</span>  * * &lt;code class="code prettyprint lang-js">cert&lt;/code> : a string holding the PEM encoded certificate
+<span class='line'> 20</span>  * * &lt;code class="code prettyprint lang-js">ca&lt;/code> : either a string or list of strings of PEM encoded CA certificates to trust.
 <span class='line'> 21</span>  *
 <span class='line'> 22</span>  * If no 'ca' details are given, then node.js will use the default publicly trusted list of CAs as given in
 <span class='line'> 23</span>  * &lt;http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
@@ -39,9 +39,9 @@
 <span class='line'> 32</span>  * Creates and returns a hash object, a cryptographic hash with the given algorithm
 <span class='line'> 33</span>  * which can be used to generate hash digests.
 <span class='line'> 34</span>  *
-<span class='line'> 35</span>  * `algorithm` is dependent on the available algorithms supported by the version
-<span class='line'> 36</span>  * of OpenSSL on the platform. Examples are `'sha1'`, `'md5'`, `'sha256'`, `'sha512'`, etc.
-<span class='line'> 37</span>  * On recent releases, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+<span class='line'> 35</span>  * &lt;code class="code prettyprint lang-js">algorithm&lt;/code> is dependent on the available algorithms supported by the version
+<span class='line'> 36</span>  * of OpenSSL on the platform. Examples are &lt;code class="code prettyprint lang-js">'sha1'&lt;/code>, &lt;code class="code prettyprint lang-js">'md5'&lt;/code>, &lt;code class="code prettyprint lang-js">'sha256'&lt;/code>, &lt;code class="code prettyprint lang-js">'sha512'&lt;/code>, etc.
+<span class='line'> 37</span>  * On recent releases, &lt;code class="code prettyprint lang-js">openssl list-message-digest-algorithms&lt;/code> will display the available digest algorithms.
 <span class='line'> 38</span>  * @param {*} hash
 <span class='line'> 39</span>  * @return {*}
 <span class='line'> 40</span>  */</span><span class="WHIT">
@@ -52,8 +52,8 @@
 <span class='line'> 45</span> </span><span class="COMM">/**
 <span class='line'> 46</span>  * Creates and returns a hmac object, a cryptographic hmac with the given algorithm and key.
 <span class='line'> 47</span>  *
-<span class='line'> 48</span>  * `algorithm` is dependent on the available algorithms supported by OpenSSL - see createHash above.
-<span class='line'> 49</span>  * `key` is the hmac key to be used.
+<span class='line'> 48</span>  * &lt;code class="code prettyprint lang-js">algorithm&lt;/code> is dependent on the available algorithms supported by OpenSSL - see createHash above.
+<span class='line'> 49</span>  * &lt;code class="code prettyprint lang-js">key&lt;/code> is the hmac key to be used.
 <span class='line'> 50</span>  * @param {*} hmac
 <span class='line'> 51</span>  * @param {*} key
 <span class='line'> 52</span>  * @return {*}
@@ -65,8 +65,8 @@
 <span class='line'> 58</span> </span><span class="COMM">/**
 <span class='line'> 59</span>  * Creates and returns a cipher object, with the given algorithm and key.
 <span class='line'> 60</span>  *
-<span class='line'> 61</span>  * `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc.
-<span class='line'> 62</span>  * On recent releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+<span class='line'> 61</span>  * &lt;code class="code prettyprint lang-js">algorithm&lt;/code> is dependent on OpenSSL, examples are &lt;code class="code prettyprint lang-js">'aes192'&lt;/code>, etc.
+<span class='line'> 62</span>  * On recent releases, &lt;code class="code prettyprint lang-js">openssl list-cipher-algorithms&lt;/code> will display the available cipher algorithms.
 <span class='line'> 63</span>  * @param {*} cipher
 <span class='line'> 64</span>  * @param {*} key
 <span class='line'> 65</span>  * @return {*}
@@ -108,8 +108,8 @@
 <span class='line'>101</span> 
 <span class='line'>102</span> </span><span class="COMM">/**
 <span class='line'>103</span>  * Creates and returns a signing object, with the given algorithm.
-<span class='line'>104</span>  * On recent OpenSSL releases, `openssl list-public-key-algorithms` will display
-<span class='line'>105</span>  * the available signing algorithms. Examples are `'RSA-SHA256'`.
+<span class='line'>104</span>  * On recent OpenSSL releases, &lt;code class="code prettyprint lang-js">openssl list-public-key-algorithms&lt;/code> will display
+<span class='line'>105</span>  * the available signing algorithms. Examples are &lt;code class="code prettyprint lang-js">'RSA-SHA256'&lt;/code>.
 <span class='line'>106</span>  * @param {*} algorithm
 <span class='line'>107</span>  * @return {*}
 <span class='line'>108</span>  */</span><span class="WHIT">

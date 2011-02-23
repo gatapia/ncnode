@@ -197,7 +197,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
+		Generated on: 2011-1-23 21:52
 	</div>
 </div>
 
@@ -212,9 +212,9 @@
 		
 		<div class="intro">
 			<p class="description summary">
-				Use `require('dns')` to access this module.
+				Use <code class="code prettyprint lang-js">require('dns')</code> to access this module.
 
-Here is an example which resolves `'www.google.com'` then reverse
+Here is an example which resolves <code class="code prettyprint lang-js">'www.google.com'</code> then reverse
 resolves the IP addresses which are returned.
 <pre class="code prettyprint lang-js">
     var dns = require('dns');
@@ -309,6 +309,61 @@ resolves the IP addresses which are returned.
 									</td>
 								</tr>
 							
+								<tr
+									 class='item1'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.dns.html#resolveCname">resolveCname</a></b>(domain, callback)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item2'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.dns.html#resolveNs">resolveNs</a></b>(domain, callback)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item3'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.dns.html#resolveSrv">resolveSrv</a></b>(domain, callback)
+										</div>
+										<div class="description">The same as <code class="code prettyprint lang-js">dns.resolve()</code>, but only for service records (<code class="code prettyprint lang-js">SRV</code> records).</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item4'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.dns.html#resolveTxt">resolveTxt</a></b>(domain, callback)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item5'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.dns.html#reverse">reverse</a></b>(domain, callback)
+										</div>
+										<div class="description">Reverse resolves an ip address to an array of domain names.</div>
+									</td>
+								</tr>
+							
 						</tbody>
 					</table>
 				
@@ -379,17 +434,17 @@ resolves the IP addresses which are returned.
 								</div>
 								
 								<div class="description">
-									Resolves a domain (e.g. `'google.com'`) into an array of the record types
-specified by rrtype. Valid rrtypes are `A` (IPV4 addresses), `AAAA` (IPV6
-addresses), `MX` (mail exchange records), `TXT` (text records), `SRV` (SRV
-records), and `PTR` (used for reverse IP lookups).
+									Resolves a domain (e.g. <code class="code prettyprint lang-js">'google.com'</code>) into an array of the record types
+specified by rrtype. Valid rrtypes are <code class="code prettyprint lang-js">A</code> (IPV4 addresses), <code class="code prettyprint lang-js">AAAA</code> (IPV6
+addresses), <code class="code prettyprint lang-js">MX</code> (mail exchange records), <code class="code prettyprint lang-js">TXT</code> (text records), <code class="code prettyprint lang-js">SRV</code> (SRV
+records), and <code class="code prettyprint lang-js">PTR</code> (used for reverse IP lookups).
 
-The callback has arguments `(err, addresses)`.  The type of each item
-in `addresses` is determined by the record type, and described in the
+The callback has arguments <code class="code prettyprint lang-js">(err, addresses)</code>.  The type of each item
+in <code class="code prettyprint lang-js">addresses</code> is determined by the record type, and described in the
 documentation for the corresponding lookup methods below.
 
-On error, `err` would be an instanceof `Error` object, where `err.errno` is
-one of the error codes listed below and `err.message` is a string describing
+On error, <code class="code prettyprint lang-js">err</code> would be an instanceof <code class="code prettyprint lang-js">Error</code> object, where <code class="code prettyprint lang-js">err.errno</code> is
+one of the error codes listed below and <code class="code prettyprint lang-js">err.message</code> is a string describing
 the error in English.
 									
 									
@@ -417,6 +472,337 @@ the error in English.
 										
 											<dt>
 												<span class="light fixedFont">{*}</span> <b>callback_</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item1'
+							>
+								<div class="fixedFont heading" id="resolveCname">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>resolveCname</b>(domain, callback)
+								</div>
+								
+								<div class="description">
+									
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>domain</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>callback</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item2'
+							>
+								<div class="fixedFont heading" id="resolveNs">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>resolveNs</b>(domain, callback)
+								</div>
+								
+								<div class="description">
+									
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>domain</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>callback</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item3'
+							>
+								<div class="fixedFont heading" id="resolveSrv">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>resolveSrv</b>(domain, callback)
+								</div>
+								
+								<div class="description">
+									The same as <code class="code prettyprint lang-js">dns.resolve()</code>, but only for service records (<code class="code prettyprint lang-js">SRV</code> records).
+<code class="code prettyprint lang-js">addresses</code> is an array of the SRV records available for <code class="code prettyprint lang-js">domain</code>. Properties
+of SRV records are priority, weight, port, and name (e.g.,
+<code class="code prettyprint lang-js">[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>domain</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>callback</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item4'
+							>
+								<div class="fixedFont heading" id="resolveTxt">
+									<span class='lighter'>
+									
+									</span>
+									
+									
+									
+									<b>resolveTxt</b>(domain, callback)
+								</div>
+								
+								<div class="description">
+									
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<b>domain</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<b>callback</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item5'
+							>
+								<div class="fixedFont heading" id="reverse">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>reverse</b>(domain, callback)
+								</div>
+								
+								<div class="description">
+									Reverse resolves an ip address to an array of domain names.
+
+The callback has arguments <code class="code prettyprint lang-js">(err, domains)</code>.
+
+If there an an error, <code class="code prettyprint lang-js">err</code> will be non-null and an instanceof the Error
+object.
+
+Each DNS query can return an error code.
+
+- <code class="code prettyprint lang-js">dns.TEMPFAIL</code>: timeout, SERVFAIL or similar.
+- <code class="code prettyprint lang-js">dns.PROTOCOL</code>: got garbled reply.
+- <code class="code prettyprint lang-js">dns.NXDOMAIN</code>: domain does not exists.
+- <code class="code prettyprint lang-js">dns.NODATA</code>: domain exists but no data of reqd type.
+- <code class="code prettyprint lang-js">dns.NOMEM</code>: out of memory while processing.
+- <code class="code prettyprint lang-js">dns.BADQUERY</code>: the query is malformed.
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>domain</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>

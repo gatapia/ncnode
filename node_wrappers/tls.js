@@ -1,9 +1,9 @@
 /**
  * @name node.tls
  * @namespace
- * Use `require('tls')` to access this module.
+ * Use <code class="code prettyprint lang-js">require('tls')</code> to access this module.
  *
- * The `tls` module uses OpenSSL to provide Transport Layer Security and&#47;or
+ * The <code class="code prettyprint lang-js">tls</code> module uses OpenSSL to provide Transport Layer Security and&#47;or
  * Secure Socket Layer: encrypted stream communication.
  *
  * TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
@@ -25,7 +25,7 @@
  * Alternatively you can send the CSR to a Certificate Authority for signing.
  *
  * (TODO: docs on creating a CA, for now interested users should just look at
- * `test&#47;fixtures&#47;keys&#47;Makefile` in the Node source code)
+ * <code class="code prettyprint lang-js">test&#47;fixtures&#47;keys&#47;Makefile</code> in the Node source code)
  */
 
 goog.provide("node.tls");
@@ -51,26 +51,26 @@ node.tls.prototype.createServer = function(options, listener) {
 };
 
 /**
- * Creates a new client connection to the given `port` and `host`. (If `host`
- * defaults to `localhost`.) `options` should be an object which specifies
+ * Creates a new client connection to the given <code class="code prettyprint lang-js">port</code> and <code class="code prettyprint lang-js">host</code>. (If <code class="code prettyprint lang-js">host</code>
+ * defaults to <code class="code prettyprint lang-js">localhost</code>.) <code class="code prettyprint lang-js">options</code> should be an object which specifies
  *
- *   - `key`: A string or `Buffer` containing the private key of the server in
+ *   - <code class="code prettyprint lang-js">key</code>: A string or <code class="code prettyprint lang-js">Buffer</code> containing the private key of the server in
  *     PEM format. (Required)
  *
- *   - `cert`: A string or `Buffer` containing the certificate key of the server in
+ *   - <code class="code prettyprint lang-js">cert</code>: A string or <code class="code prettyprint lang-js">Buffer</code> containing the certificate key of the server in
  *     PEM format.
  *
- *   - `ca`: An array of strings or `Buffer`s of trusted certificates. If this is
+ *   - <code class="code prettyprint lang-js">ca</code>: An array of strings or <code class="code prettyprint lang-js">Buffer</code>s of trusted certificates. If this is
  *     omitted several well known "root" CAs will be used, like VeriSign.
  *     These are used to authorize connections.
  *
- * `tls.connect()` returns a cleartext `CryptoStream` object.
+ * <code class="code prettyprint lang-js">tls.connect()</code> returns a cleartext <code class="code prettyprint lang-js">CryptoStream</code> object.
  *
- * After the TLS&#47;SSL handshake the `callback` is called. The `callback` will be
+ * After the TLS&#47;SSL handshake the <code class="code prettyprint lang-js">callback</code> is called. The <code class="code prettyprint lang-js">callback</code> will be
  * called no matter if the server's certificate was authorized or not. It is up
- * to the user to test `s.authorized` to see if the server certificate was
- * signed by one of the specified CAs. If `s.authorized === false` then the error
- * can be found in `s.authorizationError`.
+ * to the user to test <code class="code prettyprint lang-js">s.authorized</code> to see if the server certificate was
+ * signed by one of the specified CAs. If <code class="code prettyprint lang-js">s.authorized === false</code> then the error
+ * can be found in <code class="code prettyprint lang-js">s.authorizationError</code>.
  * @param {*} port /* host
  * @param {*} options
  * @param {*} cb */

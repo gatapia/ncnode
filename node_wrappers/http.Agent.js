@@ -5,11 +5,6 @@
 
 goog.provide("node.http.Agent");
 
-/**
- * @type {*}
- */
-node.http.Agent.prototype.defaultMaxSockets;
-
 
 /**
  * @private

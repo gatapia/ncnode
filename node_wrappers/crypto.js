@@ -1,7 +1,7 @@
 /**
  * @name node.crypto
  * @namespace
- * Use `require('crypto')` to access this module.
+ * Use <code class="code prettyprint lang-js">require('crypto')</code> to access this module.
  *
  * The crypto module requires OpenSSL to be available on the underlying platform.
  * It offers a way of encapsulating secure credentials to be used as part
@@ -15,9 +15,9 @@ goog.provide("node.crypto");
 /**
  * Creates a credentials object, with the optional details being a dictionary with keys:
  *
- * * `key` : a string holding the PEM encoded private key
- * * `cert` : a string holding the PEM encoded certificate
- * * `ca` : either a string or list of strings of PEM encoded CA certificates to trust.
+ * * <code class="code prettyprint lang-js">key</code> : a string holding the PEM encoded private key
+ * * <code class="code prettyprint lang-js">cert</code> : a string holding the PEM encoded certificate
+ * * <code class="code prettyprint lang-js">ca</code> : either a string or list of strings of PEM encoded CA certificates to trust.
  *
  * If no 'ca' details are given, then node.js will use the default publicly trusted list of CAs as given in
  * <http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
@@ -32,9 +32,9 @@ node.crypto.prototype.createCredentials = function(options) {
  * Creates and returns a hash object, a cryptographic hash with the given algorithm
  * which can be used to generate hash digests.
  *
- * `algorithm` is dependent on the available algorithms supported by the version
- * of OpenSSL on the platform. Examples are `'sha1'`, `'md5'`, `'sha256'`, `'sha512'`, etc.
- * On recent releases, `openssl list-message-digest-algorithms` will display the available digest algorithms.
+ * <code class="code prettyprint lang-js">algorithm</code> is dependent on the available algorithms supported by the version
+ * of OpenSSL on the platform. Examples are <code class="code prettyprint lang-js">'sha1'</code>, <code class="code prettyprint lang-js">'md5'</code>, <code class="code prettyprint lang-js">'sha256'</code>, <code class="code prettyprint lang-js">'sha512'</code>, etc.
+ * On recent releases, <code class="code prettyprint lang-js">openssl list-message-digest-algorithms</code> will display the available digest algorithms.
  * @param {*} hash
  * @return {*}
  */
@@ -45,8 +45,8 @@ node.crypto.prototype.createHash = function(hash) {
 /**
  * Creates and returns a hmac object, a cryptographic hmac with the given algorithm and key.
  *
- * `algorithm` is dependent on the available algorithms supported by OpenSSL - see createHash above.
- * `key` is the hmac key to be used.
+ * <code class="code prettyprint lang-js">algorithm</code> is dependent on the available algorithms supported by OpenSSL - see createHash above.
+ * <code class="code prettyprint lang-js">key</code> is the hmac key to be used.
  * @param {*} hmac
  * @param {*} key
  * @return {*}
@@ -58,8 +58,8 @@ node.crypto.prototype.createHmac = function(hmac, key) {
 /**
  * Creates and returns a cipher object, with the given algorithm and key.
  *
- * `algorithm` is dependent on OpenSSL, examples are `'aes192'`, etc.
- * On recent releases, `openssl list-cipher-algorithms` will display the available cipher algorithms.
+ * <code class="code prettyprint lang-js">algorithm</code> is dependent on OpenSSL, examples are <code class="code prettyprint lang-js">'aes192'</code>, etc.
+ * On recent releases, <code class="code prettyprint lang-js">openssl list-cipher-algorithms</code> will display the available cipher algorithms.
  * @param {*} cipher
  * @param {*} key
  * @return {*}
@@ -101,8 +101,8 @@ node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
 
 /**
  * Creates and returns a signing object, with the given algorithm.
- * On recent OpenSSL releases, `openssl list-public-key-algorithms` will display
- * the available signing algorithms. Examples are `'RSA-SHA256'`.
+ * On recent OpenSSL releases, <code class="code prettyprint lang-js">openssl list-public-key-algorithms</code> will display
+ * the available signing algorithms. Examples are <code class="code prettyprint lang-js">'RSA-SHA256'</code>.
  * @param {*} algorithm
  * @return {*}
  */
