@@ -197,7 +197,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
+		Generated on: 2011-1-23 21:52
 	</div>
 </div>
 
@@ -212,8 +212,8 @@
 		
 		<div class="intro">
 			<p class="description summary">
-				The `process` object is a global object and can be accessed from anywhere.
-It is an instance of `EventEmitter`.
+				The <code class="code prettyprint lang-js">process</code> object is a global object and can be accessed from anywhere.
+It is an instance of <code class="code prettyprint lang-js">EventEmitter</code>.
 			</p>
 				
 			
@@ -408,7 +408,7 @@ It is an instance of `EventEmitter`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.process.html#exit">exit</a></b>(code)
 										</div>
-										<div class="description">Ends the process with the specified `code`.</div>
+										<div class="description">Ends the process with the specified <code class="code prettyprint lang-js">code</code>.</div>
 									</td>
 								</tr>
 							
@@ -1293,8 +1293,8 @@ It is an instance of `EventEmitter`.
 								</div>
 								
 								<div class="description">
-									Ends the process with the specified `code`.  If omitted, exit uses the
-'success' code `0`.
+									Ends the process with the specified <code class="code prettyprint lang-js">code</code>.  If omitted, exit uses the
+'success' code <code class="code prettyprint lang-js">0</code>.
 
 To exit with a 'failure' code:
 <pre class="code prettyprint lang-js">
@@ -1519,13 +1519,13 @@ This is the numerical userid, not the username.
 								</div>
 								
 								<div class="description">
-									Send a signal to a process. `pid` is the process id and `signal` is the
+									Send a signal to a process. <code class="code prettyprint lang-js">pid</code> is the process id and <code class="code prettyprint lang-js">signal</code> is the
 string describing the signal to send.  Signal names are strings like
 'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
 See kill(2) for more information.
 
-Note that just because the name of this function is `process.kill`, it is
-really just a signal sender, like the `kill` system call.  The signal sent
+Note that just because the name of this function is <code class="code prettyprint lang-js">process.kill</code>, it is
+really just a signal sender, like the <code class="code prettyprint lang-js">kill</code> system call.  The signal sent
 may do something other than kill the target process.
 
 Example of sending a signal to yourself:
@@ -1681,7 +1681,7 @@ This will generate:
       heapTotal: 1826816,
       heapUsed: 650472 }
 </pre>
-`heapTotal` and `heapUsed` refer to V8's memory usage.
+<code class="code prettyprint lang-js">heapTotal</code> and <code class="code prettyprint lang-js">heapUsed</code> refer to V8's memory usage.
 									
 									
 									
@@ -1782,7 +1782,7 @@ This will generate:
 								
 								<div class="description">
 									On the next loop around the event loop call this callback.
-This is *not* a simple alias to `setTimeout(fn, 0)`, it's much more
+This is *not* a simple alias to <code class="code prettyprint lang-js">setTimeout(fn, 0)</code>, it's much more
 efficient.
 <pre class="code prettyprint lang-js">
     process.nextTick(function () {
@@ -2397,7 +2397,7 @@ blocks while resolving it to a numerical ID.
 								
 								<div class="description">
 									Sets or reads the process's file mode creation mask. Child processes inherit
-the mask from the parent process. Returns the old mask if `mask` argument is
+the mask from the parent process. Returns the old mask if <code class="code prettyprint lang-js">mask</code> argument is
 given, otherwise returns the current mask.
 <pre class="code prettyprint lang-js">
     var oldmask, newmask = 0644;

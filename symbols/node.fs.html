@@ -197,7 +197,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
+		Generated on: 2011-1-23 21:52
 	</div>
 </div>
 
@@ -213,13 +213,13 @@
 		<div class="intro">
 			<p class="description summary">
 				File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
-use this module do `require('fs')`. All the methods have asynchronous and
+use this module do <code class="code prettyprint lang-js">require('fs')</code>. All the methods have asynchronous and
 synchronous forms.
 
 The asynchronous form always take a completion callback as its last argument.
 The arguments passed to the completion callback depend on the method, but the
 first argument is always reserved for an exception. If the operation was
-completed successfully, then the first argument will be `null` or `undefined`.
+completed successfully, then the first argument will be <code class="code prettyprint lang-js">null</code> or <code class="code prettyprint lang-js">undefined</code>.
 
 Here is an example of the asynchronous version:
 <pre class="code prettyprint lang-js">
@@ -249,7 +249,7 @@ following is prone to error:
       console.log('stats: ' + JSON.stringify(stats));
     });
 </pre>
-It could be that `fs.stat` is executed before `fs.rename`.
+It could be that <code class="code prettyprint lang-js">fs.stat</code> is executed before <code class="code prettyprint lang-js">fs.rename</code>.
 The correct way to do this is to chain the callbacks.
 <pre class="code prettyprint lang-js">
     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
@@ -260,7 +260,7 @@ The correct way to do this is to chain the callbacks.
       });
     });
 </pre>
-In busy processes, the programmer is _strongly encouraged_ to use the
+In busy processes, the programmer is <em>strongly encouraged</em> to use the
 asynchronous versions of these calls. The synchronous versions will block
 the entire process until they complete--halting all connections.
 			</p>
@@ -554,7 +554,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode, callback)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode_, callback)
 										</div>
 										<div class="description">Asynchronous file open.</div>
 									</td>
@@ -578,7 +578,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#read">read</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Read data from the file specified by `fd`.</div>
+										<div class="description">Read data from the file specified by <code class="code prettyprint lang-js">fd</code>.</div>
 									</td>
 								</tr>
 							
@@ -622,7 +622,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readFileSync">readFileSync</a></b>(path, encoding)
 										</div>
-										<div class="description">Synchronous version of `fs.readFile`.</div>
+										<div class="description">Synchronous version of <code class="code prettyprint lang-js">fs.readFile</code>.</div>
 									</td>
 								</tr>
 							
@@ -655,7 +655,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readSync">readSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based `fs.read`.</div>
+										<div class="description">Synchronous version of string-based <code class="code prettyprint lang-js">fs.read</code>.</div>
 									</td>
 								</tr>
 							
@@ -664,7 +664,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cache, cb)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cb)
 										</div>
 										<div class="description">Asynchronous realpath(2).</div>
 									</td>
@@ -675,7 +675,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p, cache)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p)
 										</div>
 										<div class="description">Synchronous realpath(2).</div>
 									</td>
@@ -842,7 +842,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#unwatchFile">unwatchFile</a></b>(filename)
 										</div>
-										<div class="description">Stop watching for changes on `filename`.</div>
+										<div class="description">Stop watching for changes on <code class="code prettyprint lang-js">filename</code>.</div>
 									</td>
 								</tr>
 							
@@ -853,7 +853,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#watchFile">watchFile</a></b>(filename)
 										</div>
-										<div class="description">Watch for changes on `filename`.</div>
+										<div class="description">Watch for changes on <code class="code prettyprint lang-js">filename</code>.</div>
 									</td>
 								</tr>
 							
@@ -864,7 +864,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#write">write</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Write `buffer` to the file specified by `fd`.</div>
+										<div class="description">Write <code class="code prettyprint lang-js">buffer</code> to the file specified by <code class="code prettyprint lang-js">fd</code>.</div>
 									</td>
 								</tr>
 							
@@ -886,7 +886,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeFileSync">writeFileSync</a></b>(path, data, encoding)
 										</div>
-										<div class="description">The synchronous version of `fs.writeFile`.</div>
+										<div class="description">The synchronous version of <code class="code prettyprint lang-js">fs.writeFile</code>.</div>
 									</td>
 								</tr>
 							
@@ -897,7 +897,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeSync">writeSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based `fs.write()`.</div>
+										<div class="description">Synchronous version of string-based <code class="code prettyprint lang-js">fs.write()</code>.</div>
 									</td>
 								</tr>
 							
@@ -1655,8 +1655,8 @@ to the completion callback.
 								</div>
 								
 								<div class="description">
-									Asynchronous fstat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object.
+									Asynchronous fstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object.
 									
 									
 									
@@ -1723,7 +1723,7 @@ to the completion callback.
 								</div>
 								
 								<div class="description">
-									Synchronous fstat(2). Returns an instance of `fs.Stats`.
+									Synchronous fstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
 									
 									
 									
@@ -2053,8 +2053,8 @@ the completion callback.
 								</div>
 								
 								<div class="description">
-									Asynchronous lstat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object. lstat() is identical to stat(), except that if
+									Asynchronous lstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. lstat() is identical to stat(), except that if
 path is a symbolic link, then the link itself is stat-ed, not the file that it
 refers to.
 									
@@ -2123,7 +2123,7 @@ refers to.
 								</div>
 								
 								<div class="description">
-									Synchronous lstat(2). Returns an instance of `fs.Stats`.
+									Synchronous lstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
 									
 									
 									
@@ -2321,12 +2321,12 @@ to the completion callback.
 									
 									<span class="light">{*}</span>
 									
-									<b>open</b>(path, flags, mode, callback)
+									<b>open</b>(path, flags, mode_, callback)
 								</div>
 								
 								<div class="description">
 									Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
+or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
 									
 									
 									
@@ -2352,7 +2352,7 @@ or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{*}</span> <b>mode_</b>
 												
 											</dt>
 											<dd></dd>
@@ -2478,18 +2478,18 @@ or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
 								</div>
 								
 								<div class="description">
-									Read data from the file specified by `fd`.
+									Read data from the file specified by <code class="code prettyprint lang-js">fd</code>.
 
-`buffer` is the buffer that the data will be written to.
+<code class="code prettyprint lang-js">buffer</code> is the buffer that the data will be written to.
 
-`offset` is offset within the buffer where writing will start.
+<code class="code prettyprint lang-js">offset</code> is offset within the buffer where writing will start.
 
-`length` is an integer specifying the number of bytes to read.
+<code class="code prettyprint lang-js">length</code> is an integer specifying the number of bytes to read.
 
-`position` is an integer specifying where to begin reading from in the file.
-If `position` is `null`, data will be read from the current file position.
+<code class="code prettyprint lang-js">position</code> is an integer specifying where to begin reading from in the file.
+If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, data will be read from the current file position.
 
-The callback is given the two arguments, `(err, bytesRead)`.
+The callback is given the two arguments, <code class="code prettyprint lang-js">(err, bytesRead)</code>.
 									
 									
 									
@@ -2581,8 +2581,8 @@ The callback is given the two arguments, `(err, bytesRead)`.
 								
 								<div class="description">
 									Asynchronous readdir(3).  Reads the contents of a directory.
-The callback gets two arguments `(err, files)` where `files` is an array of
-the names of the files in the directory excluding `'.'` and `'..'`.
+The callback gets two arguments <code class="code prettyprint lang-js">(err, files)</code> where <code class="code prettyprint lang-js">files</code> is an array of
+the names of the files in the directory excluding <code class="code prettyprint lang-js">'.'</code> and <code class="code prettyprint lang-js">'..'</code>.
 									
 									
 									
@@ -2649,8 +2649,8 @@ the names of the files in the directory excluding `'.'` and `'..'`.
 								</div>
 								
 								<div class="description">
-									Synchronous readdir(3). Returns an array of filenames excluding `'.'` and
-`'..'`.
+									Synchronous readdir(3). Returns an array of filenames excluding <code class="code prettyprint lang-js">'.'</code> and
+<code class="code prettyprint lang-js">'..'</code>.
 									
 									
 									
@@ -2718,7 +2718,7 @@ the names of the files in the directory excluding `'.'` and `'..'`.
       console.log(data);
     });
 </pre>
-The callback is passed two arguments `(err, data)`, where `data` is the
+The callback is passed two arguments <code class="code prettyprint lang-js">(err, data)</code>, where <code class="code prettyprint lang-js">data</code> is the
 contents of the file.
 
 If no encoding is specified, then the raw buffer is returned.
@@ -2788,9 +2788,9 @@ If no encoding is specified, then the raw buffer is returned.
 								</div>
 								
 								<div class="description">
-									Synchronous version of `fs.readFile`. Returns the contents of the `filename`.
+									Synchronous version of <code class="code prettyprint lang-js">fs.readFile</code>. Returns the contents of the <code class="code prettyprint lang-js">filename</code>.
 
-If `encoding` is specified then this function returns a string. Otherwise it
+If <code class="code prettyprint lang-js">encoding</code> is specified then this function returns a string. Otherwise it
 returns a buffer.
 									
 									
@@ -2858,8 +2858,8 @@ returns a buffer.
 								</div>
 								
 								<div class="description">
-									Asynchronous readlink(2). The callback gets two arguments `(err,
-resolvedPath)`.
+									Asynchronous readlink(2). The callback gets two arguments <code class="code prettyprint lang-js">(err,
+resolvedPath)</code>.
 									
 									
 									
@@ -2987,8 +2987,8 @@ resolvedPath)`.
 								</div>
 								
 								<div class="description">
-									Synchronous version of string-based `fs.read`. Returns the number of
-`bytesRead`.
+									Synchronous version of string-based <code class="code prettyprint lang-js">fs.read</code>. Returns the number of
+<code class="code prettyprint lang-js">bytesRead</code>.
 									
 									
 									
@@ -3069,12 +3069,12 @@ resolvedPath)`.
 									
 									<span class="light">{*}</span>
 									
-									<b>realpath</b>(p, cache, cb)
+									<b>realpath</b>(p, cb)
 								</div>
 								
 								<div class="description">
-									Asynchronous realpath(2).  The callback gets two arguments `(err,
-resolvedPath)`.
+									Asynchronous realpath(2).  The callback gets two arguments <code class="code prettyprint lang-js">(err,
+resolvedPath)</code>.
 									
 									
 									
@@ -3089,12 +3089,6 @@ resolvedPath)`.
 										
 											<dt>
 												<span class="light fixedFont">{*}</span> <b>p</b>
-												
-											</dt>
-											<dd></dd>
-										
-											<dt>
-												<span class="light fixedFont">{*}</span> <b>cache</b>
 												
 											</dt>
 											<dd></dd>
@@ -3143,7 +3137,7 @@ resolvedPath)`.
 									
 									<span class="light">{*}</span>
 									
-									<b>realpathSync</b>(p, cache)
+									<b>realpathSync</b>(p)
 								</div>
 								
 								<div class="description">
@@ -3162,12 +3156,6 @@ resolvedPath)`.
 										
 											<dt>
 												<span class="light fixedFont">{*}</span> <b>p</b>
-												
-											</dt>
-											<dd></dd>
-										
-											<dt>
-												<span class="light fixedFont">{*}</span> <b>cache</b>
 												
 											</dt>
 											<dd></dd>
@@ -3648,8 +3636,8 @@ to the completion callback.
 								</div>
 								
 								<div class="description">
-									Asynchronous stat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object. It looks like this:
+									Asynchronous stat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
+<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. It looks like this:
 <pre class="code prettyprint lang-js">
     { dev: 2049,
       ino: 305352,
@@ -3665,7 +3653,7 @@ to the completion callback.
       mtime: '2009-06-29T11:11:40Z',
       ctime: '2009-06-29T11:11:40Z' }
 </pre>
-See the `fs.Stats` section below for more information.
+See the <code class="code prettyprint lang-js">fs.Stats</code> section below for more information.
 									
 									
 									
@@ -3732,7 +3720,7 @@ See the `fs.Stats` section below for more information.
 								</div>
 								
 								<div class="description">
-									Synchronous stat(2). Returns an instance of `fs.Stats`.
+									Synchronous stat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
 									
 									
 									
@@ -4204,7 +4192,7 @@ to the completion callback.
 								</div>
 								
 								<div class="description">
-									Stop watching for changes on `filename`.
+									Stop watching for changes on <code class="code prettyprint lang-js">filename</code>.
 									
 									
 									
@@ -4265,14 +4253,14 @@ to the completion callback.
 								</div>
 								
 								<div class="description">
-									Watch for changes on `filename`. The callback `listener` will be called each
-time the file is accessed.
+									Watch for changes on <code class="code prettyprint lang-js">filename</code>. The callback <code class="code prettyprint lang-js">listener</code> will be called each
+time the file changes.
 
-The second argument is optional. The `options` if provided should be an object
-containing two members a boolean, `persistent`, and `interval`, a polling
-value in milliseconds. The default is `{ persistent: true, interval: 0 }`.
+The second argument is optional. The <code class="code prettyprint lang-js">options</code> if provided should be an object
+containing two members a boolean, <code class="code prettyprint lang-js">persistent</code>, and <code class="code prettyprint lang-js">interval</code>, a polling
+value in milliseconds. The default is <code class="code prettyprint lang-js">{persistent: true, interval: 0}</code>.
 
-The `listener` gets two arguments the current stat object and the previous
+The <code class="code prettyprint lang-js">listener</code> gets two arguments the current stat object and the previous
 stat object:
 <pre class="code prettyprint lang-js">
     fs.watchFile(f, function (curr, prev) {
@@ -4280,10 +4268,7 @@ stat object:
       console.log('the previous mtime was: ' + prev.mtime);
     });
 </pre>
-These stat objects are instances of `fs.Stat`.
-
-If you want to be notified when the file was modified, not just accessed
-you need to compare `curr.mtime` and `prev.mtime.
+These stat objects are instances of <code class="code prettyprint lang-js">fs.Stat</code>.
 									
 									
 									
@@ -4344,17 +4329,17 @@ you need to compare `curr.mtime` and `prev.mtime.
 								</div>
 								
 								<div class="description">
-									Write `buffer` to the file specified by `fd`.
+									Write <code class="code prettyprint lang-js">buffer</code> to the file specified by <code class="code prettyprint lang-js">fd</code>.
 
-`offset` and `length` determine the part of the buffer to be written.
+<code class="code prettyprint lang-js">offset</code> and <code class="code prettyprint lang-js">length</code> determine the part of the buffer to be written.
 
-`position` refers to the offset from the beginning of the file where this data
-should be written. If `position` is `null`, the data will be written at the
+<code class="code prettyprint lang-js">position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, the data will be written at the
 current position.
 See pwrite(2).
 
-The callback will be given two arguments `(err, written)` where `written`
-specifies how many _bytes_ were written.
+The callback will be given two arguments <code class="code prettyprint lang-js">(err, written)</code> where <code class="code prettyprint lang-js">written</code>
+specifies how many <em>bytes</em> were written.
 									
 									
 									
@@ -4445,7 +4430,7 @@ specifies how many _bytes_ were written.
 								</div>
 								
 								<div class="description">
-									Asynchronously writes data to a file. `data` can be a string or a buffer.
+									Asynchronously writes data to a file. <code class="code prettyprint lang-js">data</code> can be a string or a buffer.
 
 Example:
 <pre class="code prettyprint lang-js">
@@ -4532,7 +4517,7 @@ Example:
 								</div>
 								
 								<div class="description">
-									The synchronous version of `fs.writeFile`.
+									The synchronous version of <code class="code prettyprint lang-js">fs.writeFile</code>.
 									
 									
 									
@@ -4605,7 +4590,7 @@ Example:
 								</div>
 								
 								<div class="description">
-									Synchronous version of string-based `fs.write()`. Returns the number of bytes
+									Synchronous version of string-based <code class="code prettyprint lang-js">fs.write()</code>. Returns the number of bytes
 written.
 									
 									

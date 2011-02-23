@@ -197,7 +197,7 @@
 		
 		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
 		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
+		Generated on: 2011-1-23 21:52
 	</div>
 </div>
 
@@ -217,7 +217,7 @@ includable in other programs.  REPL provides a way to interactively run
 JavaScript and see the results.  It can be used for debugging, testing, or
 just trying things out.
 
-By executing `node` without any arguments from the command-line you will be
+By executing <code class="code prettyprint lang-js">node</code> without any arguments from the command-line you will be
 dropped into the REPL. It has simplistic emacs line-editing.
 <pre class="code prettyprint lang-js">
     mjr:~$ node
@@ -231,12 +231,12 @@ dropped into the REPL. It has simplistic emacs line-editing.
     2
     3
 </pre>
-For advanced line-editors, start node with the environmental variable `NODE_NO_READLINE=1`.
-This will start the REPL in canonical terminal settings which will allow you to use with `rlwrap`.
+For advanced line-editors, start node with the environmental variable <code class="code prettyprint lang-js">NODE<em>NO</em>READLINE=1</code>.
+This will start the REPL in canonical terminal settings which will allow you to use with <code class="code prettyprint lang-js">rlwrap</code>.
 
 For example, you could add this to your bashrc file:
 <pre class="code prettyprint lang-js">
-    alias node="env NODE_NO_READLINE=1 rlwrap node"
+    alias node="env NODE<em>NO</em>READLINE=1 rlwrap node"
 </pre>
 			</p>
 				
@@ -287,6 +287,52 @@ For example, you could add this to your bashrc file:
 #### METHODS SUMMARY
 -->
 		
+			
+			
+			<div class="props">
+				<h2 class="sectionTitle">Method Summary</h2>
+				
+				
+					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class node.repl.">
+						<thead>
+							<tr>
+								<th scope="col">Method Attributes</th>
+								<th scope="col">Method Name and Description</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							
+							
+								<tr
+									 class='item0'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.repl.html#start">start</a></b>(prompt, source)
+										</div>
+										<div class="description">Starts a REPL with <code class="code prettyprint lang-js">prompt</code> as the prompt and <code class="code prettyprint lang-js">stream</code> for all I&#47;O.</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item1'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.repl.html#writer">writer</a></b>(obj, showHidden, depth, colors)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+						</tbody>
+					</table>
+				
+			
+				
+			</div>
+		
 		
 <!--
 #### EVENTS SUMMARY
@@ -326,6 +372,197 @@ For example, you could add this to your bashrc file:
 <!--
 #### METHOD DETAILS
 -->		
+		
+			<div class="details props">
+				<div class="innerProps">
+					<h2 class="sectionTitle">
+						Method Detail
+					</h2>
+					
+					<ul class="methodDetail" id="MethodDetail">
+						
+						
+							<li 
+								 class='item0'
+							>
+								<div class="fixedFont heading" id="start">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>start</b>(prompt, source)
+								</div>
+								
+								<div class="description">
+									Starts a REPL with <code class="code prettyprint lang-js">prompt</code> as the prompt and <code class="code prettyprint lang-js">stream</code> for all I&#47;O.  <code class="code prettyprint lang-js">prompt</code>
+is optional and defaults to <code class="code prettyprint lang-js">> </code>.  <code class="code prettyprint lang-js">stream</code> is optional and defaults to
+<code class="code prettyprint lang-js">process.stdin</code>.
+
+Multiple REPLs may be started against the same running instance of node.  Each
+will share the same global object but will have unique I&#47;O.
+
+Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
+<pre class="code prettyprint lang-js">
+    var net = require("net"),
+        repl = require("repl");
+
+    connections = 0;
+
+    repl.start("node via stdin> ");
+
+    net.createServer(function (socket) {
+      connections += 1;
+      repl.start("node via Unix socket> ", socket);
+    }).listen("&#47;tmp&#47;node-repl-sock");
+
+    net.createServer(function (socket) {
+      connections += 1;
+      repl.start("node via TCP socket> ", socket);
+    }).listen(5001);
+</pre>
+Running this program from the command line will start a REPL on stdin.  Other
+REPL clients may connect through the Unix socket or TCP socket. <code class="code prettyprint lang-js">telnet</code> is useful
+for connecting to TCP sockets, and <code class="code prettyprint lang-js">socat</code> can be used to connect to both Unix and
+TCP sockets.
+
+By starting a REPL from a Unix socket-based server instead of stdin, you can
+connect to a long-running node process without restarting it.
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>prompt</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>source</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li 
+								 class='item1'
+							>
+								<div class="fixedFont heading" id="writer">
+									<span class='lighter'>
+									
+									</span>
+									
+									<span class="light">{*}</span>
+									
+									<b>writer</b>(obj, showHidden, depth, colors)
+								</div>
+								
+								<div class="description">
+									
+									
+									
+									
+									
+								</div>
+								
+								
+								
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>obj</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>showHidden</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>depth</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>colors</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+								
+								
+									<dl class="detailList nomargin">
+									
+										
+										
+										
+										
+										
+										
+										
+											<dt class="heading">Returns:</dt>
+											
+												<dd><span class="light fixedFont">{*}</span> </dd>
+											
+										
+										
+										
+										
+										
+									
+									</dl>
+								
+								
+							</li>
+						
+					</ul>
+				</div>
+			</div>
 		
 		
 <!--

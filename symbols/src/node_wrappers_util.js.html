@@ -8,7 +8,7 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.util
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * These functions are in the module `'util'`. Use `require('util')` to access
+<span class='line'>  4</span>  * These functions are in the module &lt;code class="code prettyprint lang-js">'util'&lt;/code>. Use &lt;code class="code prettyprint lang-js">require('util')&lt;/code> to access
 <span class='line'>  5</span>  * them.
 <span class='line'>  6</span>  */</span><span class="WHIT">
 <span class='line'>  7</span> 
@@ -30,7 +30,7 @@
 <span class='line'> 23</span> 
 <span class='line'> 24</span> </span><span class="COMM">/**
 <span class='line'> 25</span>  * A synchronous output function. Will block the process and
-<span class='line'> 26</span>  * output `string` immediately to `stderr`.
+<span class='line'> 26</span>  * output &lt;code class="code prettyprint lang-js">string&lt;/code> immediately to &lt;code class="code prettyprint lang-js">stderr&lt;/code>.
 <span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 28</span>  *     require('util').debug('message on stderr');
 <span class='line'> 29</span>  * &lt;/pre>
@@ -50,18 +50,18 @@
 <span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 44</span> 
 <span class='line'> 45</span> </span><span class="COMM">/**
-<span class='line'> 46</span>  * Return a string representation of `object`, which is useful for debugging.
+<span class='line'> 46</span>  * Return a string representation of &lt;code class="code prettyprint lang-js">object&lt;/code>, which is useful for debugging.
 <span class='line'> 47</span>  *
-<span class='line'> 48</span>  * If `showHidden` is `true`, then the object's non-enumerable properties will be
+<span class='line'> 48</span>  * If &lt;code class="code prettyprint lang-js">showHidden&lt;/code> is &lt;code class="code prettyprint lang-js">true&lt;/code>, then the object's non-enumerable properties will be
 <span class='line'> 49</span>  * shown too.
 <span class='line'> 50</span>  *
-<span class='line'> 51</span>  * If `depth` is provided, it tells `inspect` how many times to recurse while
+<span class='line'> 51</span>  * If &lt;code class="code prettyprint lang-js">depth&lt;/code> is provided, it tells &lt;code class="code prettyprint lang-js">inspect&lt;/code> how many times to recurse while
 <span class='line'> 52</span>  * formatting the object. This is useful for inspecting large complicated objects.
 <span class='line'> 53</span>  *
 <span class='line'> 54</span>  * The default is to only recurse twice.  To make it recurse indefinitely, pass
-<span class='line'> 55</span>  * in `null` for `depth`.
+<span class='line'> 55</span>  * in &lt;code class="code prettyprint lang-js">null&lt;/code> for &lt;code class="code prettyprint lang-js">depth&lt;/code>.
 <span class='line'> 56</span>  *
-<span class='line'> 57</span>  * Example of inspecting all properties of the `util` object:
+<span class='line'> 57</span>  * Example of inspecting all properties of the &lt;code class="code prettyprint lang-js">util&lt;/code> object:
 <span class='line'> 58</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 59</span>  *     var util = require('util');
 <span class='line'> 60</span>  *
@@ -85,7 +85,7 @@
 <span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 79</span> 
 <span class='line'> 80</span> </span><span class="COMM">/**
-<span class='line'> 81</span>  * Output with timestamp on `stdout`.
+<span class='line'> 81</span>  * Output with timestamp on &lt;code class="code prettyprint lang-js">stdout&lt;/code>.
 <span class='line'> 82</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 83</span>  *     require('util').log('Timestmaped message.');
 <span class='line'> 84</span>  * &lt;/pre>
@@ -106,10 +106,10 @@
 <span class='line'> 99</span> </span><span class="COMM">/**
 <span class='line'>100</span>  * Experimental
 <span class='line'>101</span>  *
-<span class='line'>102</span>  * Read the data from `readableStream` and send it to the `writableStream`.
-<span class='line'>103</span>  * When `writableStream.write(data)` returns `false` `readableStream` will be
-<span class='line'>104</span>  * paused until the `drain` event occurs on the `writableStream`. `callback` gets
-<span class='line'>105</span>  * an error as its only argument and is called when `writableStream` is closed or
+<span class='line'>102</span>  * Read the data from &lt;code class="code prettyprint lang-js">readableStream&lt;/code> and send it to the &lt;code class="code prettyprint lang-js">writableStream&lt;/code>.
+<span class='line'>103</span>  * When &lt;code class="code prettyprint lang-js">writableStream.write(data)&lt;/code> returns &lt;code class="code prettyprint lang-js">false&lt;/code> &lt;code class="code prettyprint lang-js">readableStream&lt;/code> will be
+<span class='line'>104</span>  * paused until the &lt;code class="code prettyprint lang-js">drain&lt;/code> event occurs on the &lt;code class="code prettyprint lang-js">writableStream&lt;/code>. &lt;code class="code prettyprint lang-js">callback&lt;/code> gets
+<span class='line'>105</span>  * an error as its only argument and is called when &lt;code class="code prettyprint lang-js">writableStream&lt;/code> is closed or
 <span class='line'>106</span>  * when an error occurs.
 <span class='line'>107</span>  * @param {*} readStream
 <span class='line'>108</span>  * @param {*} writeStream
@@ -122,12 +122,12 @@
 <span class='line'>115</span> 
 <span class='line'>116</span> </span><span class="COMM">/**
 <span class='line'>117</span>  * Inherit the prototype methods from one
-<span class='line'>118</span>  * [constructor](https:&#47;&#47;developer.mozilla.org&#47;en&#47;JavaScript&#47;Reference&#47;Global_Objects&#47;Object&#47;constructor)
-<span class='line'>119</span>  * into another.  The prototype of `constructor` will be set to a new
-<span class='line'>120</span>  * object created from `superConstructor`.
+<span class='line'>118</span>  * &lt;a href="node.https:&#47;&#47;developer.mozilla.org&#47;en&#47;JavaScript&#47;Reference&#47;Global&lt;em>Objects&#47;Object&#47;constructor">constructor&lt;/a>
+<span class='line'>119</span>  * into another.  The prototype of &lt;code class="code prettyprint lang-js">constructor&lt;/code> will be set to a new
+<span class='line'>120</span>  * object created from &lt;code class="code prettyprint lang-js">superConstructor&lt;/code>.
 <span class='line'>121</span>  *
-<span class='line'>122</span>  * As an additional convenience, `superConstructor` will be accessible
-<span class='line'>123</span>  * through the `constructor.super_` property.
+<span class='line'>122</span>  * As an additional convenience, &lt;code class="code prettyprint lang-js">superConstructor&lt;/code> will be accessible
+<span class='line'>123</span>  * through the &lt;code class="code prettyprint lang-js">constructor.super&lt;/em>&lt;/code> property.
 <span class='line'>124</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>125</span>  *     var util = require("util");
 <span class='line'>126</span>  *     var events = require("events");

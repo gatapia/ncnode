@@ -9,21 +9,21 @@
 <span class='line'>  2</span>  * @name node.path
 <span class='line'>  3</span>  * @namespace
 <span class='line'>  4</span>  * This module contains utilities for dealing with file paths.  Use
-<span class='line'>  5</span>  * `require('path')` to use it.  It provides the following methods:
+<span class='line'>  5</span>  * &lt;code class="code prettyprint lang-js">require('path')&lt;/code> to use it.  It provides the following methods:
 <span class='line'>  6</span>  */</span><span class="WHIT">
 <span class='line'>  7</span> 
 <span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.path"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>  9</span> 
 <span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * Resolves `to` to an absolute path.
+<span class='line'> 11</span>  * Resolves &lt;code class="code prettyprint lang-js">to&lt;/code> to an absolute path.
 <span class='line'> 12</span>  *
-<span class='line'> 13</span>  * If `to` isn't already absolute `from` arguments are prepended in right to left
-<span class='line'> 14</span>  * order, until an absolute path is found. If after using all `from` paths still
+<span class='line'> 13</span>  * If &lt;code class="code prettyprint lang-js">to&lt;/code> isn't already absolute &lt;code class="code prettyprint lang-js">from&lt;/code> arguments are prepended in right to left
+<span class='line'> 14</span>  * order, until an absolute path is found. If after using all &lt;code class="code prettyprint lang-js">from&lt;/code> paths still
 <span class='line'> 15</span>  * no absolute path is found, the current working directory is used as well. The
 <span class='line'> 16</span>  * resulting path is normalized, and trailing slashes are removed unless the path
 <span class='line'> 17</span>  * gets resolved to the root directory.
 <span class='line'> 18</span>  *
-<span class='line'> 19</span>  * Another way to think of it is as a sequence of `cd` commands in a shell.
+<span class='line'> 19</span>  * Another way to think of it is as a sequence of &lt;code class="code prettyprint lang-js">cd&lt;/code> commands in a shell.
 <span class='line'> 20</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 21</span>  *     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
 <span class='line'> 22</span>  * &lt;/pre>
@@ -48,9 +48,9 @@
 <span class='line'> 41</span>  *     &#47;&#47; returns
 <span class='line'> 42</span>  *     '&#47;tmp&#47;file'
 <span class='line'> 43</span>  *
-<span class='line'> 44</span>  *     path.resolve('wwwroot', 'static_files&#47;png&#47;', '..&#47;gif&#47;image.gif')
+<span class='line'> 44</span>  *     path.resolve('wwwroot', 'static&lt;em>files&#47;png&#47;', '..&#47;gif&#47;image.gif')
 <span class='line'> 45</span>  *     &#47;&#47; if currently in &#47;home&#47;myself&#47;node, it returns
-<span class='line'> 46</span>  *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static_files&#47;gif&#47;image.gif'
+<span class='line'> 46</span>  *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static&lt;/em>files&#47;gif&#47;image.gif'
 <span class='line'> 47</span>  * &lt;/pre>
 <span class='line'> 48</span>  * @return {*}
 <span class='line'> 49</span>  */</span><span class="WHIT">
@@ -59,7 +59,7 @@
 <span class='line'> 52</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 53</span> 
 <span class='line'> 54</span> </span><span class="COMM">/**
-<span class='line'> 55</span>  * Normalize a string path, taking care of `'..'` and `'.'` parts.
+<span class='line'> 55</span>  * Normalize a string path, taking care of &lt;code class="code prettyprint lang-js">'..'&lt;/code> and &lt;code class="code prettyprint lang-js">'.'&lt;/code> parts.
 <span class='line'> 56</span>  *
 <span class='line'> 57</span>  * When multiple slashes are found, they're replaces by a single one;
 <span class='line'> 58</span>  * when the path contains a trailing slash, it is preserved.
@@ -94,7 +94,7 @@
 <span class='line'> 87</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 88</span> 
 <span class='line'> 89</span> </span><span class="COMM">/**
-<span class='line'> 90</span>  * Return the directory name of a path.  Similar to the Unix `dirname` command.
+<span class='line'> 90</span>  * Return the directory name of a path.  Similar to the Unix &lt;code class="code prettyprint lang-js">dirname&lt;/code> command.
 <span class='line'> 91</span>  *
 <span class='line'> 92</span>  * Example:
 <span class='line'> 93</span>  * &lt;pre class="code prettyprint lang-js">
@@ -110,7 +110,7 @@
 <span class='line'>103</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>104</span> 
 <span class='line'>105</span> </span><span class="COMM">/**
-<span class='line'>106</span>  * Return the last portion of a path.  Similar to the Unix `basename` command.
+<span class='line'>106</span>  * Return the last portion of a path.  Similar to the Unix &lt;code class="code prettyprint lang-js">basename&lt;/code> command.
 <span class='line'>107</span>  *
 <span class='line'>108</span>  * Example:
 <span class='line'>109</span>  * &lt;pre class="code prettyprint lang-js">
@@ -151,7 +151,7 @@
 <span class='line'>144</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>145</span> 
 <span class='line'>146</span> </span><span class="COMM">/**
-<span class='line'>147</span>  * Test whether or not the given path exists.  Then, call the `callback` argument
+<span class='line'>147</span>  * Test whether or not the given path exists.  Then, call the &lt;code class="code prettyprint lang-js">callback&lt;/code> argument
 <span class='line'>148</span>  * with either true or false. Example:
 <span class='line'>149</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>150</span>  *     path.exists('&#47;etc&#47;passwd', function (exists) {
