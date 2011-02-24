@@ -7,62 +7,62 @@
 goog.provide("node.global");
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.global;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.process;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.GLOBAL;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.root;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.console;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.nclosure;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.opts;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.COMPILED;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.goog;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.top;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.window;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.global.prototype.ncnode;
 

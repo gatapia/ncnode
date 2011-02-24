@@ -6,7 +6,7 @@
 goog.provide("node.buffer.Buffer");
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.buffer.Buffer.prototype.poolSize;
 

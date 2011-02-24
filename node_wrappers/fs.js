@@ -92,8 +92,8 @@ node.fs.prototype.readFileSync = function(path, encoding) {
 /**
  * Asynchronous close(2).  No arguments other than a possible exception are given
  * to the completion callback.
- * @param {*} fd
- * @param {*} callback
+ * @param {string} fd
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
  * @return {*}
  */
 node.fs.prototype.close = function(fd, callback) {
@@ -102,7 +102,7 @@ node.fs.prototype.close = function(fd, callback) {
 
 /**
  * Synchronous close(2).
- * @param {*} fd
+ * @param {string} fd
  * @return {*}
  */
 node.fs.prototype.closeSync = function(fd) {
@@ -379,7 +379,7 @@ node.fs.prototype.readdirSync = function(path) {
  * Asynchronous fstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
  * <code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object.
  * @param {*} fd
- * @param {*} callback
+ * @param {function(Error,node.fs.Stats)=} callback
  * @return {*}
  */
 node.fs.prototype.fstat = function(fd, callback) {
@@ -429,7 +429,7 @@ node.fs.prototype.stat = function(path, callback) {
 /**
  * Synchronous fstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
  * @param {*} fd
- * @return {*}
+ * @return {fs.Stats}
  */
 node.fs.prototype.fstatSync = function(fd) {
   return node.fs.core_.fstatSync(fd);
@@ -540,9 +540,9 @@ node.fs.prototype.unlinkSync = function(path) {
 /**
  * Asynchronous chmod(2). No arguments other than a possible exception are given
  * to the completion callback.
- * @param {*} path
- * @param {*} mode
- * @param {*} callback
+ * @param {string} path The path to change mode on
+ * @param {string=} mode mode defaults to 0666
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
  * @return {*}
  */
 node.fs.prototype.chmod = function(path, mode, callback) {
@@ -551,8 +551,8 @@ node.fs.prototype.chmod = function(path, mode, callback) {
 
 /**
  * Synchronous chmod(2).
- * @param {*} path
- * @param {*} mode
+ * @param {string} path The path to change mode on
+ * @param {string} mode mode defaults to 0666
  * @return {*}
  */
 node.fs.prototype.chmodSync = function(path, mode) {
@@ -560,10 +560,10 @@ node.fs.prototype.chmodSync = function(path, mode) {
 };
 
 /**
- * @param {*} path
- * @param {*} uid
- * @param {*} gid
- * @param {*} callback
+ * @param {string} path The path to change owners on
+ * @param {string} uid The user id
+ * @param {string} gid The group id
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
  * @return {*}
  */
 node.fs.prototype.chown = function(path, uid, gid, callback) {
@@ -571,9 +571,9 @@ node.fs.prototype.chown = function(path, uid, gid, callback) {
 };
 
 /**
- * @param {*} path
- * @param {*} uid
- * @param {*} gid
+ * @param {string} path
+ * @param {string} uid
+ * @param {string} gid
  * @return {*}
  */
 node.fs.prototype.chownSync = function(path, uid, gid) {
@@ -665,18 +665,18 @@ node.fs.prototype.realpath = function(p, cb) {
 };
 
 /**
- * @param {*} path
- * @param {*} options
- * @return {*}
+ * @param {string} path
+ * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+ * @return {node.fs.ReadStream}
  */
 node.fs.prototype.createReadStream = function(path, options) {
   return node.fs.core_.createReadStream(path, options);
 };
 
 /**
- * @param {*} path
- * @param {*} options
- * @return {*}
+ * @param {string} path
+ * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+ * @return {node.fs.WriteStream}
  */
 node.fs.prototype.createWriteStream = function(path, options) {
   return node.fs.core_.createWriteStream(path, options);

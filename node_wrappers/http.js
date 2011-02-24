@@ -27,12 +27,12 @@
 goog.provide("node.http");
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.http.prototype.parsers;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.http.prototype.STATUS_CODES;
 

@@ -31,62 +31,62 @@
 goog.provide("node.dns");
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.NODATA;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.FORMERR;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.BADRESP;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.NOTFOUND;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.BADNAME;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.TIMEOUT;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.CONNREFUSED;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.NOMEM;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.DESTRUCTION;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.NOTIMP;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.EREFUSED;
 
 /**
- * @type {*}
+ * @type {[object Object]}
  */
 node.dns.prototype.SERVFAIL;
 
