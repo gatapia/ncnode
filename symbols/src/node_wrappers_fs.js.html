@@ -99,8 +99,8 @@
 <span class='line'> 92</span> </span><span class="COMM">/**
 <span class='line'> 93</span>  * Asynchronous close(2).  No arguments other than a possible exception are given
 <span class='line'> 94</span>  * to the completion callback.
-<span class='line'> 95</span>  * @param {*} fd
-<span class='line'> 96</span>  * @param {*} callback
+<span class='line'> 95</span>  * @param {string} fd
+<span class='line'> 96</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
 <span class='line'> 97</span>  * @return {*}
 <span class='line'> 98</span>  */</span><span class="WHIT">
 <span class='line'> 99</span> </span><span class="NAME">node.fs.prototype.close</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -109,7 +109,7 @@
 <span class='line'>102</span> 
 <span class='line'>103</span> </span><span class="COMM">/**
 <span class='line'>104</span>  * Synchronous close(2).
-<span class='line'>105</span>  * @param {*} fd
+<span class='line'>105</span>  * @param {string} fd
 <span class='line'>106</span>  * @return {*}
 <span class='line'>107</span>  */</span><span class="WHIT">
 <span class='line'>108</span> </span><span class="NAME">node.fs.prototype.closeSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -386,7 +386,7 @@
 <span class='line'>379</span>  * Asynchronous fstat(2). The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, stats)&lt;/code> where
 <span class='line'>380</span>  * &lt;code class="code prettyprint lang-js">stats&lt;/code> is a &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code> object.
 <span class='line'>381</span>  * @param {*} fd
-<span class='line'>382</span>  * @param {*} callback
+<span class='line'>382</span>  * @param {function(Error,node.fs.Stats)=} callback
 <span class='line'>383</span>  * @return {*}
 <span class='line'>384</span>  */</span><span class="WHIT">
 <span class='line'>385</span> </span><span class="NAME">node.fs.prototype.fstat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -436,7 +436,7 @@
 <span class='line'>429</span> </span><span class="COMM">/**
 <span class='line'>430</span>  * Synchronous fstat(2). Returns an instance of &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code>.
 <span class='line'>431</span>  * @param {*} fd
-<span class='line'>432</span>  * @return {*}
+<span class='line'>432</span>  * @return {fs.Stats}
 <span class='line'>433</span>  */</span><span class="WHIT">
 <span class='line'>434</span> </span><span class="NAME">node.fs.prototype.fstatSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>435</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fstatSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -547,9 +547,9 @@
 <span class='line'>540</span> </span><span class="COMM">/**
 <span class='line'>541</span>  * Asynchronous chmod(2). No arguments other than a possible exception are given
 <span class='line'>542</span>  * to the completion callback.
-<span class='line'>543</span>  * @param {*} path
-<span class='line'>544</span>  * @param {*} mode
-<span class='line'>545</span>  * @param {*} callback
+<span class='line'>543</span>  * @param {string} path The path to change mode on
+<span class='line'>544</span>  * @param {string=} mode mode defaults to 0666
+<span class='line'>545</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
 <span class='line'>546</span>  * @return {*}
 <span class='line'>547</span>  */</span><span class="WHIT">
 <span class='line'>548</span> </span><span class="NAME">node.fs.prototype.chmod</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -558,8 +558,8 @@
 <span class='line'>551</span> 
 <span class='line'>552</span> </span><span class="COMM">/**
 <span class='line'>553</span>  * Synchronous chmod(2).
-<span class='line'>554</span>  * @param {*} path
-<span class='line'>555</span>  * @param {*} mode
+<span class='line'>554</span>  * @param {string} path The path to change mode on
+<span class='line'>555</span>  * @param {string} mode mode defaults to 0666
 <span class='line'>556</span>  * @return {*}
 <span class='line'>557</span>  */</span><span class="WHIT">
 <span class='line'>558</span> </span><span class="NAME">node.fs.prototype.chmodSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -567,10 +567,10 @@
 <span class='line'>560</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>561</span> 
 <span class='line'>562</span> </span><span class="COMM">/**
-<span class='line'>563</span>  * @param {*} path
-<span class='line'>564</span>  * @param {*} uid
-<span class='line'>565</span>  * @param {*} gid
-<span class='line'>566</span>  * @param {*} callback
+<span class='line'>563</span>  * @param {string} path The path to change owners on
+<span class='line'>564</span>  * @param {string} uid The user id
+<span class='line'>565</span>  * @param {string} gid The group id
+<span class='line'>566</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
 <span class='line'>567</span>  * @return {*}
 <span class='line'>568</span>  */</span><span class="WHIT">
 <span class='line'>569</span> </span><span class="NAME">node.fs.prototype.chown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -578,9 +578,9 @@
 <span class='line'>571</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>572</span> 
 <span class='line'>573</span> </span><span class="COMM">/**
-<span class='line'>574</span>  * @param {*} path
-<span class='line'>575</span>  * @param {*} uid
-<span class='line'>576</span>  * @param {*} gid
+<span class='line'>574</span>  * @param {string} path
+<span class='line'>575</span>  * @param {string} uid
+<span class='line'>576</span>  * @param {string} gid
 <span class='line'>577</span>  * @return {*}
 <span class='line'>578</span>  */</span><span class="WHIT">
 <span class='line'>579</span> </span><span class="NAME">node.fs.prototype.chownSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -672,18 +672,18 @@
 <span class='line'>665</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>666</span> 
 <span class='line'>667</span> </span><span class="COMM">/**
-<span class='line'>668</span>  * @param {*} path
-<span class='line'>669</span>  * @param {*} options
-<span class='line'>670</span>  * @return {*}
+<span class='line'>668</span>  * @param {string} path
+<span class='line'>669</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+<span class='line'>670</span>  * @return {node.fs.ReadStream}
 <span class='line'>671</span>  */</span><span class="WHIT">
 <span class='line'>672</span> </span><span class="NAME">node.fs.prototype.createReadStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>673</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createReadStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>674</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>675</span> 
 <span class='line'>676</span> </span><span class="COMM">/**
-<span class='line'>677</span>  * @param {*} path
-<span class='line'>678</span>  * @param {*} options
-<span class='line'>679</span>  * @return {*}
+<span class='line'>677</span>  * @param {string} path
+<span class='line'>678</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+<span class='line'>679</span>  * @return {node.fs.WriteStream}
 <span class='line'>680</span>  */</span><span class="WHIT">
 <span class='line'>681</span> </span><span class="NAME">node.fs.prototype.createWriteStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>682</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createWriteStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
