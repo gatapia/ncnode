@@ -1,119 +1,120 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.vm
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * You can access this module with:
-<span class='line'>  5</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>  6</span>  *     var vm = require('vm');
-<span class='line'>  7</span>  * &lt;/pre>
-<span class='line'>  8</span>  * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
-<span class='line'>  9</span>  */</span><span class="WHIT">
-<span class='line'> 10</span> 
-<span class='line'> 11</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.vm"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 12</span> 
-<span class='line'> 13</span> </span><span class="COMM">/**
-<span class='line'> 14</span>  * `createScript` compiles `code` as if it were loaded from `filename`,
-<span class='line'> 15</span>  * but does not run it. Instead, it returns a `vm.Script` object representing this compiled code.
-<span class='line'> 16</span>  * This script can be run later many times using methods below.
-<span class='line'> 17</span>  * The returned script is not bound to any global object.
-<span class='line'> 18</span>  * It is bound before each run, just for that run. `filename` is optional.
-<span class='line'> 19</span>  *
-<span class='line'> 20</span>  * In case of syntax error in `code`, `createScript` prints the syntax error to stderr
-<span class='line'> 21</span>  * and throws an exception.
-<span class='line'> 22</span>  * @param {*} code
-<span class='line'> 23</span>  * @param {*} ctx
-<span class='line'> 24</span>  * @param {*} name
-<span class='line'> 25</span>  * @return {*}
-<span class='line'> 26</span>  */</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="NAME">node.vm.prototype.createScript</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.vm.core_.createScript</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">ctx</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 29</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 30</span> 
-<span class='line'> 31</span> </span><span class="COMM">/**
-<span class='line'> 32</span>  * @return {*}
-<span class='line'> 33</span>  */</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="NAME">node.vm.prototype.createContext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.vm.core_.createContext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 37</span> 
-<span class='line'> 38</span> </span><span class="COMM">/**
-<span class='line'> 39</span>  * @return {*}
-<span class='line'> 40</span>  */</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="NAME">node.vm.prototype.runInContext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.vm.core_.runInContext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 44</span> 
-<span class='line'> 45</span> </span><span class="COMM">/**
-<span class='line'> 46</span>  * Similar to `vm.runInThisContext` but a method of a precompiled `Script` object.
-<span class='line'> 47</span>  * `script.runInThisContext` runs the code of `script` and returns the result.
-<span class='line'> 48</span>  * Running code does not have access to local scope, but does have access to the `global` object
-<span class='line'> 49</span>  * (v8: in actual context).
-<span class='line'> 50</span>  *
-<span class='line'> 51</span>  * Example of using `script.runInThisContext` to compile code once and run it multiple times:
-<span class='line'> 52</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 53</span>  *     var vm = require('vm');
-<span class='line'> 54</span>  *
-<span class='line'> 55</span>  *     globalVar = 0;
-<span class='line'> 56</span>  *
-<span class='line'> 57</span>  *     var script = vm.createScript('globalVar += 1', 'myfile.vm');
-<span class='line'> 58</span>  *
-<span class='line'> 59</span>  *     for (var i = 0; i &lt; 1000 ; i += 1) {
-<span class='line'> 60</span>  *       script.runInThisContext();
-<span class='line'> 61</span>  *     }
-<span class='line'> 62</span>  *
-<span class='line'> 63</span>  *     console.log(globalVar);
-<span class='line'> 64</span>  *
-<span class='line'> 65</span>  *     &#47;&#47; 1000
-<span class='line'> 66</span>  * &lt;/pre>
-<span class='line'> 67</span>  * @return {*}
-<span class='line'> 68</span>  */</span><span class="WHIT">
-<span class='line'> 69</span> </span><span class="NAME">node.vm.prototype.runInThisContext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.vm.core_.runInThisContext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> 
-<span class='line'> 73</span> </span><span class="COMM">/**
-<span class='line'> 74</span>  * Similar to `vm.runInNewContext` a method of a precompiled `Script` object.
-<span class='line'> 75</span>  * `script.runInNewContext` runs the code of `script` with `sandbox` as the global object and returns the result.
-<span class='line'> 76</span>  * Running code does not have access to local scope. `sandbox` is optional.
-<span class='line'> 77</span>  *
-<span class='line'> 78</span>  * Example: compile code that increments a global variable and sets one, then execute this code multiple times.
-<span class='line'> 79</span>  * These globals are contained in the sandbox.
-<span class='line'> 80</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 81</span>  *     var util = require('util'),
-<span class='line'> 82</span>  *         vm = require('vm'),
-<span class='line'> 83</span>  *         sandbox = {
-<span class='line'> 84</span>  *           animal: 'cat',
-<span class='line'> 85</span>  *           count: 2
-<span class='line'> 86</span>  *         };
-<span class='line'> 87</span>  *
-<span class='line'> 88</span>  *     var script = vm.createScript('count += 1; name = "kitty"', 'myfile.vm');
-<span class='line'> 89</span>  *
-<span class='line'> 90</span>  *     for (var i = 0; i &lt; 10 ; i += 1) {
-<span class='line'> 91</span>  *       script.runInNewContext(sandbox);
-<span class='line'> 92</span>  *     }
-<span class='line'> 93</span>  *
-<span class='line'> 94</span>  *     console.log(util.inspect(sandbox));
-<span class='line'> 95</span>  *
-<span class='line'> 96</span>  *     &#47;&#47; { animal: 'cat', count: 12, name: 'kitty' }
-<span class='line'> 97</span>  * &lt;/pre>
-<span class='line'> 98</span>  * Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
-<span class='line'> 99</span>  * global variable leakage, `script.runInNewContext` is quite useful, but safely running untrusted code
-<span class='line'>100</span>  * requires a separate process.
-<span class='line'>101</span>  * @return {*}
-<span class='line'>102</span>  */</span><span class="WHIT">
-<span class='line'>103</span> </span><span class="NAME">node.vm.prototype.runInNewContext</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>104</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.vm.core_.runInNewContext</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>105</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>106</span> 
-<span class='line'>107</span> 
-<span class='line'>108</span> </span><span class="COMM">/**
-<span class='line'>109</span>  * @private
-<span class='line'>110</span>  * @type {*}
-<span class='line'>111</span>  */</span><span class="WHIT">
-<span class='line'>112</span> </span><span class="NAME">node.vm.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"vm"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_vm.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.vm
+ * @namespace
+ * You can access this module with:
+ * &lt;pre>
+ *     var vm = require('vm');
+ * &lt;/pre>
+ * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
+ */
+
+goog.provide("node.vm");
+
+/**
+ * &lt;code>createScript&lt;/code> compiles &lt;code>code&lt;/code> as if it were loaded from &lt;code>filename&lt;/code>,
+ * but does not run it. Instead, it returns a &lt;code>vm.Script&lt;/code> object representing this compiled code.
+ * This script can be run later many times using methods below.
+ * The returned script is not bound to any global object.
+ * It is bound before each run, just for that run. &lt;code>filename&lt;/code> is optional.
+ *
+ * In case of syntax error in &lt;code>code&lt;/code>, &lt;code>createScript&lt;/code> prints the syntax error to stderr
+ * and throws an exception.
+ * @param {*} code
+ * @param {*} ctx
+ * @param {*} name
+ * @return {*}
+ */
+node.vm.prototype.createScript = function(code, ctx, name) {
+  return node.vm.core_.createScript(code, ctx, name);
+};
+
+/**
+ * @return {*}
+ */
+node.vm.prototype.createContext = function() {
+  return node.vm.core_.createContext();
+};
+
+/**
+ * @return {*}
+ */
+node.vm.prototype.runInContext = function() {
+  return node.vm.core_.runInContext();
+};
+
+/**
+ * Similar to &lt;code>vm.runInThisContext&lt;/code> but a method of a precompiled &lt;code>Script&lt;/code> object.
+ * &lt;code>script.runInThisContext&lt;/code> runs the code of &lt;code>script&lt;/code> and returns the result.
+ * Running code does not have access to local scope, but does have access to the &lt;code>global&lt;/code> object
+ * (v8: in actual context).
+ *
+ * Example of using &lt;code>script.runInThisContext&lt;/code> to compile code once and run it multiple times:
+ * &lt;pre>
+ *     var vm = require('vm');
+ *
+ *     globalVar = 0;
+ *
+ *     var script = vm.createScript('globalVar += 1', 'myfile.vm');
+ *
+ *     for (var i = 0; i &lt; 1000 ; i += 1) {
+ *       script.runInThisContext();
+ *     }
+ *
+ *     console.log(globalVar);
+ *
+ *     &#47;&#47; 1000
+ * &lt;/pre>
+ * @return {*}
+ */
+node.vm.prototype.runInThisContext = function() {
+  return node.vm.core_.runInThisContext();
+};
+
+/**
+ * Similar to &lt;code>vm.runInNewContext&lt;/code> a method of a precompiled &lt;code>Script&lt;/code> object.
+ * &lt;code>script.runInNewContext&lt;/code> runs the code of &lt;code>script&lt;/code> with &lt;code>sandbox&lt;/code> as the global object and returns the result.
+ * Running code does not have access to local scope. &lt;code>sandbox&lt;/code> is optional.
+ *
+ * Example: compile code that increments a global variable and sets one, then execute this code multiple times.
+ * These globals are contained in the sandbox.
+ * &lt;pre>
+ *     var util = require('util'),
+ *         vm = require('vm'),
+ *         sandbox = {
+ *           animal: 'cat',
+ *           count: 2
+ *         };
+ *
+ *     var script = vm.createScript('count += 1; name = "kitty"', 'myfile.vm');
+ *
+ *     for (var i = 0; i &lt; 10 ; i += 1) {
+ *       script.runInNewContext(sandbox);
+ *     }
+ *
+ *     console.log(util.inspect(sandbox));
+ *
+ *     &#47;&#47; { animal: 'cat', count: 12, name: 'kitty' }
+ * &lt;/pre>
+ * Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
+ * global variable leakage, &lt;code>script.runInNewContext&lt;/code> is quite useful, but safely running untrusted code
+ * requires a separate process.
+ * @return {*}
+ */
+node.vm.prototype.runInNewContext = function() {
+  return node.vm.core_.runInNewContext();
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.vm.core_ = require("vm");</pre></body></html>

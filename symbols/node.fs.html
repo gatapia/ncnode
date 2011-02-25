@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="../index.html">Classes</a>
 			<a href="../files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -209,20 +206,20 @@
 			
 			Namespace <span>node.fs</span>
 		</h1>
-		
+
 		<div class="intro">
 			<p class="description summary">
 				File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
-use this module do `require('fs')`. All the methods have asynchronous and
+use this module do <code>require('fs')</code>. All the methods have asynchronous and
 synchronous forms.
 
 The asynchronous form always take a completion callback as its last argument.
 The arguments passed to the completion callback depend on the method, but the
 first argument is always reserved for an exception. If the operation was
-completed successfully, then the first argument will be `null` or `undefined`.
+completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.
 
 Here is an example of the asynchronous version:
-<pre class="code prettyprint lang-js">
+<pre>
     var fs = require('fs');
 
     fs.unlink('&#47;tmp&#47;hello', function (err) {
@@ -231,7 +228,7 @@ Here is an example of the asynchronous version:
     });
 </pre>
 Here is the synchronous version:
-<pre class="code prettyprint lang-js">
+<pre>
     var fs = require('fs');
 
     fs.unlinkSync('&#47;tmp&#47;hello')
@@ -239,7 +236,7 @@ Here is the synchronous version:
 </pre>
 With the asynchronous methods there is no guaranteed ordering. So the
 following is prone to error:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
       if (err) throw err;
       console.log('renamed complete');
@@ -249,9 +246,9 @@ following is prone to error:
       console.log('stats: ' + JSON.stringify(stats));
     });
 </pre>
-It could be that `fs.stat` is executed before `fs.rename`.
+It could be that <code>fs.stat</code> is executed before <code>fs.rename</code>.
 The correct way to do this is to chain the callbacks.
-<pre class="code prettyprint lang-js">
+<pre>
     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
       if (err) throw err;
       fs.stat('&#47;tmp&#47;world', function (err, stats) {
@@ -260,15 +257,15 @@ The correct way to do this is to chain the callbacks.
       });
     });
 </pre>
-In busy processes, the programmer is _strongly encouraged_ to use the
+In busy processes, the programmer is <em>strongly encouraged</em> to use the
 asynchronous versions of these calls. The synchronous versions will block
 the entire process until they complete--halting all connections.
 			</p>
-				
+
 			
 				<ul class="summary">
 					
-					
+
 					
 						<li>Defined in: <a href="../symbols/src/node_wrappers_fs.js.html">fs.js</a></li>
 					
@@ -276,36 +273,13 @@ the entire process until they complete--halting all connections.
 				</ul>
 			
 		</div>
+
 		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.fs.">
-					<caption class="sectionTitle">Namespace Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/node.fs.html#constructor">node.fs</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		
+
 		
 			
 			
-			
+
 			
 		
 <!--
@@ -313,10 +287,10 @@ the entire process until they complete--halting all connections.
 -->
 		
 			
-			
+
 			<div class="props">
 				<h2 class="sectionTitle">Method Summary</h2>
-				
+
 				
 					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class node.fs.">
 						<thead>
@@ -325,7 +299,7 @@ the entire process until they complete--halting all connections.
 								<th scope="col">Method Name and Description</th>
 							</tr>
 						</thead>
-						
+
 						<tbody>
 							
 							
@@ -578,7 +552,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#read">read</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Read data from the file specified by `fd`.</div>
+										<div class="description">Read data from the file specified by <code>fd</code>.</div>
 									</td>
 								</tr>
 							
@@ -622,7 +596,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readFileSync">readFileSync</a></b>(path, encoding)
 										</div>
-										<div class="description">Synchronous version of `fs.readFile`.</div>
+										<div class="description">Synchronous version of <code>fs.readFile</code>.</div>
 									</td>
 								</tr>
 							
@@ -655,7 +629,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readSync">readSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based `fs.read`.</div>
+										<div class="description">Synchronous version of string-based <code>fs.read</code>.</div>
 									</td>
 								</tr>
 							
@@ -842,7 +816,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#unwatchFile">unwatchFile</a></b>(filename)
 										</div>
-										<div class="description">Stop watching for changes on `filename`.</div>
+										<div class="description">Stop watching for changes on <code>filename</code>.</div>
 									</td>
 								</tr>
 							
@@ -853,7 +827,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#watchFile">watchFile</a></b>(filename)
 										</div>
-										<div class="description">Watch for changes on `filename`.</div>
+										<div class="description">Watch for changes on <code>filename</code>.</div>
 									</td>
 								</tr>
 							
@@ -864,7 +838,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#write">write</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Write `buffer` to the file specified by `fd`.</div>
+										<div class="description">Write <code>buffer</code> to the file specified by <code>fd</code>.</div>
 									</td>
 								</tr>
 							
@@ -886,7 +860,7 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeFileSync">writeFileSync</a></b>(path, data, encoding)
 										</div>
-										<div class="description">The synchronous version of `fs.writeFile`.</div>
+										<div class="description">The synchronous version of <code>fs.writeFile</code>.</div>
 									</td>
 								</tr>
 							
@@ -897,18 +871,18 @@ the entire process until they complete--halting all connections.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeSync">writeSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based `fs.write()`.</div>
+										<div class="description">Synchronous version of string-based <code>fs.write()</code>.</div>
 									</td>
 								</tr>
 							
 						</tbody>
 					</table>
 				
-			
+
 				
 			</div>
 		
-		
+
 <!--
 #### EVENTS SUMMARY
 -->
@@ -922,20 +896,20 @@ the entire process until they complete--halting all connections.
 					<h2 class="sectionTitle" id="constructor">
 						Namespace Detail
 					</h2>
-					
+
 					<div class="fixedFont">
 						<b>node.fs</b>
 					</div>
-					
+
 					<div class="description">
 						
 						
 					</div>
+
 					
+
 					
-				
-					
-					
+
 					
 				</div>
 			</div>
@@ -946,596 +920,596 @@ the entire process until they complete--halting all connections.
 		
 <!--
 #### METHOD DETAILS
--->		
+-->
 		
 			<div class="details props">
 				<div class="innerProps">
 					<h2 class="sectionTitle">
 						Method Detail
 					</h2>
-					
+
 					<ul class="methodDetail" id="MethodDetail">
 						
 						
-							<li 
+							<li
 								 class='item0'
 							>
 								<div class="fixedFont heading" id="chmod">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>chmod</b>(path, mode, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous chmod(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The path to change mode on</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{string=}</span> <b>mode</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>mode defaults to 0666</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=)}</span> <b>callback</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The callback gets one argument (err). Which is undefined if no error occurred.</dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item1'
 							>
 								<div class="fixedFont heading" id="chmodSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>chmodSync</b>(path, mode)
 								</div>
-								
+
 								<div class="description">
 									Synchronous chmod(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The path to change mode on</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{string}</span> <b>mode</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>mode defaults to 0666</dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item2'
 							>
 								<div class="fixedFont heading" id="chown">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>chown</b>(path, uid, gid, callback)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The path to change owners on</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>uid</b>
+												<span class="light fixedFont">{string}</span> <b>uid</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The user id</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>gid</b>
+												<span class="light fixedFont">{string}</span> <b>gid</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The group id</dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=)}</span> <b>callback</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The callback gets one argument (err). Which is undefined if no error occurred.</dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item3'
 							>
 								<div class="fixedFont heading" id="chownSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>chownSync</b>(path, uid, gid)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>uid</b>
+												<span class="light fixedFont">{string}</span> <b>uid</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>gid</b>
+												<span class="light fixedFont">{string}</span> <b>gid</b>
 												
 											</dt>
 											<dd></dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item4'
 							>
 								<div class="fixedFont heading" id="close">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>close</b>(fd, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous close(2).  No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=)}</span> <b>callback</b>
 												
 											</dt>
-											<dd></dd>
+											<dd>The callback gets one argument (err). Which is undefined if no error occurred.</dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item5'
 							>
 								<div class="fixedFont heading" id="closeSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>closeSync</b>(fd)
 								</div>
-								
+
 								<div class="description">
 									Synchronous close(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item6'
 							>
 								<div class="fixedFont heading" id="createReadStream">
 									<span class='lighter'>
 									
 									</span>
-									
-									<span class="light">{*}</span>
-									
+
+									<span class="light">{<a href="../symbols/node.fs.ReadStream.html">node.fs.ReadStream</a>}</span>
+
 									<b>createReadStream</b>(path, options)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{{flags:string|encoding:string|mode:string|bufferSize:number}=}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
-												<dd><span class="light fixedFont">{*}</span> </dd>
+												<dd><span class="light fixedFont">{<a href="../symbols/node.fs.ReadStream.html">node.fs.ReadStream</a>}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item7'
 							>
 								<div class="fixedFont heading" id="createWriteStream">
 									<span class='lighter'>
 									
 									</span>
-									
-									<span class="light">{*}</span>
-									
+
+									<span class="light">{<a href="../symbols/node.fs.WriteStream.html">node.fs.WriteStream</a>}</span>
+
 									<b>createWriteStream</b>(path, options)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{{flags:string|encoding:string|mode:string|bufferSize:number}=}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
-												<dd><span class="light fixedFont">{*}</span> </dd>
+												<dd><span class="light fixedFont">{<a href="../symbols/node.fs.WriteStream.html">node.fs.WriteStream</a>}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item8'
 							>
 								<div class="fixedFont heading" id="fdatasync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fdatasync</b>(fd, callback)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1554,55 +1528,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item9'
 							>
 								<div class="fixedFont heading" id="fdatasyncSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fdatasyncSync</b>(fd)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1615,56 +1589,56 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item10'
 							>
 								<div class="fixedFont heading" id="fstat">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fstat</b>(fd, callback)
 								</div>
-								
+
 								<div class="description">
-									Asynchronous fstat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object.
+									Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1676,62 +1650,62 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error|node.fs.Stats)=}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item11'
 							>
 								<div class="fixedFont heading" id="fstatSync">
 									<span class='lighter'>
 									
 									</span>
-									
-									<span class="light">{*}</span>
-									
+
+									<span class="light">{fs.Stats}</span>
+
 									<b>fstatSync</b>(fd)
 								</div>
-								
+
 								<div class="description">
-									Synchronous fstat(2). Returns an instance of `fs.Stats`.
+									Synchronous fstat(2). Returns an instance of <code>fs.Stats</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1744,55 +1718,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
-												<dd><span class="light fixedFont">{*}</span> </dd>
+												<dd><span class="light fixedFont">{fs.Stats}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item12'
 							>
 								<div class="fixedFont heading" id="fsync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fsync</b>(fd, callback)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1811,55 +1785,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item13'
 							>
 								<div class="fixedFont heading" id="fsyncSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fsyncSync</b>(fd)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1872,56 +1846,56 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item14'
 							>
 								<div class="fixedFont heading" id="link">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>link</b>(srcpath, dstpath, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous link(2). No arguments other than a possible exception are given to
 the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1946,55 +1920,55 @@ the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item15'
 							>
 								<div class="fixedFont heading" id="linkSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>linkSync</b>(srcpath, dstpath)
 								</div>
-								
+
 								<div class="description">
 									Synchronous link(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2013,58 +1987,58 @@ the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item16'
 							>
 								<div class="fixedFont heading" id="lstat">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>lstat</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
-									Asynchronous lstat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object. lstat() is identical to stat(), except that if
+									Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. lstat() is identical to stat(), except that if
 path is a symbolic link, then the link itself is stat-ed, not the file that it
 refers to.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2083,55 +2057,55 @@ refers to.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item17'
 							>
 								<div class="fixedFont heading" id="lstatSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>lstatSync</b>(path)
 								</div>
-								
+
 								<div class="description">
-									Synchronous lstat(2). Returns an instance of `fs.Stats`.
+									Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2144,56 +2118,56 @@ refers to.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item18'
 							>
 								<div class="fixedFont heading" id="mkdir">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>mkdir</b>(path, mode, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous mkdir(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2218,55 +2192,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item19'
 							>
 								<div class="fixedFont heading" id="mkdirSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>mkdirSync</b>(path, mode)
 								</div>
-								
+
 								<div class="description">
 									Synchronous mkdir(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2285,56 +2259,56 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item20'
 							>
 								<div class="fixedFont heading" id="open">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>open</b>(path, flags, mode, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
+or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <code>(err, fd)</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2365,55 +2339,55 @@ or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item21'
 							>
 								<div class="fixedFont heading" id="openSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>openSync</b>(path, flags, mode)
 								</div>
-								
+
 								<div class="description">
 									Synchronous open(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2438,66 +2412,66 @@ or 'a+'. `mode` defaults to 0666. The callback gets two arguments `(err, fd)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item22'
 							>
 								<div class="fixedFont heading" id="read">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>read</b>(fd, buffer, offset, length, position, callback)
 								</div>
-								
+
 								<div class="description">
-									Read data from the file specified by `fd`.
+									Read data from the file specified by <code>fd</code>.
 
-`buffer` is the buffer that the data will be written to.
+<code>buffer</code> is the buffer that the data will be written to.
 
-`offset` is offset within the buffer where writing will start.
+<code>offset</code> is offset within the buffer where writing will start.
 
-`length` is an integer specifying the number of bytes to read.
+<code>length</code> is an integer specifying the number of bytes to read.
 
-`position` is an integer specifying where to begin reading from in the file.
-If `position` is `null`, data will be read from the current file position.
+<code>position</code> is an integer specifying where to begin reading from in the file.
+If <code>position</code> is <code>null</code>, data will be read from the current file position.
 
-The callback is given the two arguments, `(err, bytesRead)`.
+The callback is given the two arguments, <code>(err, bytesRead)</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2540,57 +2514,57 @@ The callback is given the two arguments, `(err, bytesRead)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item23'
 							>
 								<div class="fixedFont heading" id="readdir">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readdir</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous readdir(3).  Reads the contents of a directory.
-The callback gets two arguments `(err, files)` where `files` is an array of
-the names of the files in the directory excluding `'.'` and `'..'`.
+The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
+the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2609,56 +2583,56 @@ the names of the files in the directory excluding `'.'` and `'..'`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item24'
 							>
 								<div class="fixedFont heading" id="readdirSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readdirSync</b>(path)
 								</div>
-								
+
 								<div class="description">
-									Synchronous readdir(3). Returns an array of filenames excluding `'.'` and
-`'..'`.
+									Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and
+<code>'..'</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2671,65 +2645,65 @@ the names of the files in the directory excluding `'.'` and `'..'`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item25'
 							>
 								<div class="fixedFont heading" id="readFile">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readFile</b>(path, encoding_)
 								</div>
-								
+
 								<div class="description">
 									Asynchronously reads the entire contents of a file. Example:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
       if (err) throw err;
       console.log(data);
     });
 </pre>
-The callback is passed two arguments `(err, data)`, where `data` is the
+The callback is passed two arguments <code>(err, data)</code>, where <code>data</code> is the
 contents of the file.
 
 If no encoding is specified, then the raw buffer is returned.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2748,58 +2722,58 @@ If no encoding is specified, then the raw buffer is returned.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item26'
 							>
 								<div class="fixedFont heading" id="readFileSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readFileSync</b>(path, encoding)
 								</div>
-								
-								<div class="description">
-									Synchronous version of `fs.readFile`. Returns the contents of the `filename`.
 
-If `encoding` is specified then this function returns a string. Otherwise it
+								<div class="description">
+									Synchronous version of <code>fs.readFile</code>. Returns the contents of the <code>filename</code>.
+
+If <code>encoding</code> is specified then this function returns a string. Otherwise it
 returns a buffer.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2818,56 +2792,56 @@ returns a buffer.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item27'
 							>
 								<div class="fixedFont heading" id="readlink">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readlink</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
-									Asynchronous readlink(2). The callback gets two arguments `(err,
-resolvedPath)`.
+									Asynchronous readlink(2). The callback gets two arguments <code>(err,
+resolvedPath)</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2886,55 +2860,55 @@ resolvedPath)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item28'
 							>
 								<div class="fixedFont heading" id="readlinkSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readlinkSync</b>(path)
 								</div>
-								
+
 								<div class="description">
 									Synchronous readlink(2). Returns the resolved path.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -2947,56 +2921,56 @@ resolvedPath)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item29'
 							>
 								<div class="fixedFont heading" id="readSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>readSync</b>(fd, buffer, offset, length, position)
 								</div>
-								
+
 								<div class="description">
-									Synchronous version of string-based `fs.read`. Returns the number of
-`bytesRead`.
+									Synchronous version of string-based <code>fs.read</code>. Returns the number of
+<code>bytesRead</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3033,56 +3007,56 @@ resolvedPath)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item30'
 							>
 								<div class="fixedFont heading" id="realpath">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>realpath</b>(p, cache, cb)
 								</div>
-								
+
 								<div class="description">
-									Asynchronous realpath(2).  The callback gets two arguments `(err,
-resolvedPath)`.
+									Asynchronous realpath(2).  The callback gets two arguments <code>(err,
+resolvedPath)</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3107,55 +3081,55 @@ resolvedPath)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item31'
 							>
 								<div class="fixedFont heading" id="realpathSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>realpathSync</b>(p, cache)
 								</div>
-								
+
 								<div class="description">
 									Synchronous realpath(2). Returns the resolved path.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3174,56 +3148,56 @@ resolvedPath)`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item32'
 							>
 								<div class="fixedFont heading" id="rename">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>rename</b>(oldPath, newPath, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous rename(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3248,55 +3222,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item33'
 							>
 								<div class="fixedFont heading" id="renameSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>renameSync</b>(oldPath, newPath)
 								</div>
-								
+
 								<div class="description">
 									Synchronous rename(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3315,56 +3289,56 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item34'
 							>
 								<div class="fixedFont heading" id="rmdir">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>rmdir</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous rmdir(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3383,55 +3357,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item35'
 							>
 								<div class="fixedFont heading" id="rmdirSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>rmdirSync</b>(path)
 								</div>
-								
+
 								<div class="description">
 									Synchronous rmdir(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3444,55 +3418,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item36'
 							>
 								<div class="fixedFont heading" id="sendfile">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>sendfile</b>(outFd, inFd, inOffset, length, callback)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3529,55 +3503,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item37'
 							>
 								<div class="fixedFont heading" id="sendfileSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>sendfileSync</b>(outFd, inFd, inOffset, length)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3608,49 +3582,49 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item38'
 							>
 								<div class="fixedFont heading" id="stat">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>stat</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
-									Asynchronous stat(2). The callback gets two arguments `(err, stats)` where
-`stats` is a `fs.Stats` object. It looks like this:
-<pre class="code prettyprint lang-js">
+									Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. It looks like this:
+<pre>
     { dev: 2049,
       ino: 305352,
       mode: 16877,
@@ -3665,15 +3639,15 @@ to the completion callback.
       mtime: '2009-06-29T11:11:40Z',
       ctime: '2009-06-29T11:11:40Z' }
 </pre>
-See the `fs.Stats` section below for more information.
+See the <code>fs.Stats</code> section below for more information.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3692,55 +3666,55 @@ See the `fs.Stats` section below for more information.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item39'
 							>
 								<div class="fixedFont heading" id="statSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>statSync</b>(path)
 								</div>
-								
+
 								<div class="description">
-									Synchronous stat(2). Returns an instance of `fs.Stats`.
+									Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3753,56 +3727,56 @@ See the `fs.Stats` section below for more information.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item40'
 							>
 								<div class="fixedFont heading" id="symlink">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>symlink</b>(destination, path, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous symlink(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3827,55 +3801,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item41'
 							>
 								<div class="fixedFont heading" id="symlinkSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>symlinkSync</b>(destination, path)
 								</div>
-								
+
 								<div class="description">
 									Synchronous symlink(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3894,56 +3868,56 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item42'
 							>
 								<div class="fixedFont heading" id="truncate">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>truncate</b>(fd, len, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous ftruncate(2). No arguments other than a possible exception are
 given to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -3968,55 +3942,55 @@ given to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item43'
 							>
 								<div class="fixedFont heading" id="truncateSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>truncateSync</b>(fd, len)
 								</div>
-								
+
 								<div class="description">
 									Synchronous ftruncate(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4035,56 +4009,56 @@ given to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item44'
 							>
 								<div class="fixedFont heading" id="unlink">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>unlink</b>(path, callback)
 								</div>
-								
+
 								<div class="description">
 									Asynchronous unlink(2). No arguments other than a possible exception are given
 to the completion callback.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4103,55 +4077,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item45'
 							>
 								<div class="fixedFont heading" id="unlinkSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>unlinkSync</b>(path)
 								</div>
-								
+
 								<div class="description">
 									Synchronous unlink(2).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4164,55 +4138,55 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item46'
 							>
 								<div class="fixedFont heading" id="unwatchFile">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>unwatchFile</b>(filename)
 								</div>
-								
+
 								<div class="description">
-									Stop watching for changes on `filename`.
+									Stop watching for changes on <code>filename</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4225,73 +4199,73 @@ to the completion callback.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item47'
 							>
 								<div class="fixedFont heading" id="watchFile">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>watchFile</b>(filename)
 								</div>
-								
+
 								<div class="description">
-									Watch for changes on `filename`. The callback `listener` will be called each
+									Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
 time the file is accessed.
 
-The second argument is optional. The `options` if provided should be an object
-containing two members a boolean, `persistent`, and `interval`, a polling
-value in milliseconds. The default is `{ persistent: true, interval: 0 }`.
+The second argument is optional. The <code>options</code> if provided should be an object
+containing two members a boolean, <code>persistent</code>, and <code>interval</code>, a polling
+value in milliseconds. The default is <code>{ persistent: true, interval: 0 }</code>.
 
-The `listener` gets two arguments the current stat object and the previous
+The <code>listener</code> gets two arguments the current stat object and the previous
 stat object:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.watchFile(f, function (curr, prev) {
       console.log('the current mtime is: ' + curr.mtime);
       console.log('the previous mtime was: ' + prev.mtime);
     });
 </pre>
-These stat objects are instances of `fs.Stat`.
+These stat objects are instances of <code>fs.Stat</code>.
 
 If you want to be notified when the file was modified, not just accessed
-you need to compare `curr.mtime` and `prev.mtime.
+you need to compare <code>curr.mtime</code> and `prev.mtime.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4304,65 +4278,65 @@ you need to compare `curr.mtime` and `prev.mtime.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item48'
 							>
 								<div class="fixedFont heading" id="write">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>write</b>(fd, buffer, offset, length, position, callback)
 								</div>
-								
+
 								<div class="description">
-									Write `buffer` to the file specified by `fd`.
+									Write <code>buffer</code> to the file specified by <code>fd</code>.
 
-`offset` and `length` determine the part of the buffer to be written.
+<code>offset</code> and <code>length</code> determine the part of the buffer to be written.
 
-`position` refers to the offset from the beginning of the file where this data
-should be written. If `position` is `null`, the data will be written at the
+<code>position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code>position</code> is <code>null</code>, the data will be written at the
 current position.
 See pwrite(2).
 
-The callback will be given two arguments `(err, written)` where `written`
-specifies how many _bytes_ were written.
+The callback will be given two arguments <code>(err, written)</code> where <code>written</code>
+specifies how many <em>bytes</em> were written.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4405,63 +4379,63 @@ specifies how many _bytes_ were written.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item49'
 							>
 								<div class="fixedFont heading" id="writeFile">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>writeFile</b>(path, data, encoding_, callback)
 								</div>
-								
+
 								<div class="description">
-									Asynchronously writes data to a file. `data` can be a string or a buffer.
+									Asynchronously writes data to a file. <code>data</code> can be a string or a buffer.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.writeFile('message.txt', 'Hello Node', function (err) {
       if (err) throw err;
       console.log('It\'s saved!');
     });
 </pre>
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4492,55 +4466,55 @@ Example:
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item50'
 							>
 								<div class="fixedFont heading" id="writeFileSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>writeFileSync</b>(path, data, encoding)
 								</div>
-								
+
 								<div class="description">
-									The synchronous version of `fs.writeFile`.
+									The synchronous version of <code>fs.writeFile</code>.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4565,56 +4539,56 @@ Example:
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item51'
 							>
 								<div class="fixedFont heading" id="writeSync">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>writeSync</b>(fd, buffer, offset, length, position)
 								</div>
-								
+
 								<div class="description">
-									Synchronous version of string-based `fs.write()`. Returns the number of bytes
+									Synchronous version of string-based <code>fs.write()</code>. Returns the number of bytes
 written.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -4651,27 +4625,27 @@ written.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								
@@ -4681,17 +4655,17 @@ written.
 				</div>
 			</div>
 		
-		
+
 <!--
 #### EVENT DETAILS
--->		
+-->
 		
 	</div>
 </div>
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

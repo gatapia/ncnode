@@ -1,116 +1,117 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.querystring
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * This module provides utilities for dealing with query strings.
-<span class='line'>  5</span>  * It provides the following methods:
-<span class='line'>  6</span>  */</span><span class="WHIT">
-<span class='line'>  7</span> 
-<span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.querystring"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  9</span> 
-<span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * @param {*} s
-<span class='line'> 12</span>  * @param {*} decodeSpaces
-<span class='line'> 13</span>  * @return {*}
-<span class='line'> 14</span>  */</span><span class="WHIT">
-<span class='line'> 15</span> </span><span class="NAME">node.querystring.prototype.unescapeBuffer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">decodeSpaces</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 16</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.unescapeBuffer</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">decodeSpaces</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 17</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 18</span> 
-<span class='line'> 19</span> </span><span class="COMM">/**
-<span class='line'> 20</span>  * The unescape function used by `querystring.parse`,
-<span class='line'> 21</span>  * provided so that it could be overridden if necessary.
-<span class='line'> 22</span>  * @param {*} s
-<span class='line'> 23</span>  * @param {*} decodeSpaces
-<span class='line'> 24</span>  * @return {*}
-<span class='line'> 25</span>  */</span><span class="WHIT">
-<span class='line'> 26</span> </span><span class="NAME">node.querystring.prototype.unescape</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">decodeSpaces</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.unescape</span><span class="PUNC">(</span><span class="NAME">s</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">decodeSpaces</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 28</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 29</span> 
-<span class='line'> 30</span> </span><span class="COMM">/**
-<span class='line'> 31</span>  * The escape function used by `querystring.stringify`,
-<span class='line'> 32</span>  * provided so that it could be overridden if necessary.
-<span class='line'> 33</span>  * @param {*} str
-<span class='line'> 34</span>  * @return {*}
-<span class='line'> 35</span>  */</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="NAME">node.querystring.prototype.escape</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.escape</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 39</span> 
-<span class='line'> 40</span> </span><span class="COMM">/**
-<span class='line'> 41</span>  * @param {*} obj
-<span class='line'> 42</span>  * @param {*} sep
-<span class='line'> 43</span>  * @param {*} eq
-<span class='line'> 44</span>  * @param {*} name
-<span class='line'> 45</span>  * @return {*}
-<span class='line'> 46</span>  */</span><span class="WHIT">
-<span class='line'> 47</span> </span><span class="NAME">node.querystring.prototype.encode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 48</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.encode</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 50</span> 
-<span class='line'> 51</span> </span><span class="COMM">/**
-<span class='line'> 52</span>  * Serialize an object to a query string.
-<span class='line'> 53</span>  * Optionally override the default separator and assignment characters.
-<span class='line'> 54</span>  *
-<span class='line'> 55</span>  * Example:
-<span class='line'> 56</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 57</span>  *     querystring.stringify({foo: 'bar'})
-<span class='line'> 58</span>  *     &#47;&#47; returns
-<span class='line'> 59</span>  *     'foo=bar'
-<span class='line'> 60</span>  *
-<span class='line'> 61</span>  *     querystring.stringify({foo: 'bar', baz: 'bob'}, ';', ':')
-<span class='line'> 62</span>  *     &#47;&#47; returns
-<span class='line'> 63</span>  *     'foo:bar;baz:bob'
-<span class='line'> 64</span>  * &lt;/pre>
-<span class='line'> 65</span>  * @param {*} obj
-<span class='line'> 66</span>  * @param {*} sep
-<span class='line'> 67</span>  * @param {*} eq
-<span class='line'> 68</span>  * @param {*} name
-<span class='line'> 69</span>  * @return {*}
-<span class='line'> 70</span>  */</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="NAME">node.querystring.prototype.stringify</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.stringify</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">name</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 73</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 74</span> 
-<span class='line'> 75</span> </span><span class="COMM">/**
-<span class='line'> 76</span>  * @param {*} qs
-<span class='line'> 77</span>  * @param {*} sep
-<span class='line'> 78</span>  * @param {*} eq
-<span class='line'> 79</span>  * @return {*}
-<span class='line'> 80</span>  */</span><span class="WHIT">
-<span class='line'> 81</span> </span><span class="NAME">node.querystring.prototype.decode</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">qs</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.decode</span><span class="PUNC">(</span><span class="NAME">qs</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 83</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 84</span> 
-<span class='line'> 85</span> </span><span class="COMM">/**
-<span class='line'> 86</span>  * Deserialize a query string to an object.
-<span class='line'> 87</span>  * Optionally override the default separator and assignment characters.
-<span class='line'> 88</span>  *
-<span class='line'> 89</span>  * Example:
-<span class='line'> 90</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 91</span>  *     querystring.parse('a=b&b=c')
-<span class='line'> 92</span>  *     &#47;&#47; returns
-<span class='line'> 93</span>  *     { a: 'b', b: 'c' }
-<span class='line'> 94</span>  * &lt;/pre>
-<span class='line'> 95</span>  * @param {*} qs
-<span class='line'> 96</span>  * @param {*} sep
-<span class='line'> 97</span>  * @param {*} eq
-<span class='line'> 98</span>  * @return {*}
-<span class='line'> 99</span>  */</span><span class="WHIT">
-<span class='line'>100</span> </span><span class="NAME">node.querystring.prototype.parse</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">qs</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>101</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.querystring.core_.parse</span><span class="PUNC">(</span><span class="NAME">qs</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sep</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">eq</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>102</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>103</span> 
-<span class='line'>104</span> 
-<span class='line'>105</span> </span><span class="COMM">/**
-<span class='line'>106</span>  * @private
-<span class='line'>107</span>  * @type {*}
-<span class='line'>108</span>  */</span><span class="WHIT">
-<span class='line'>109</span> </span><span class="NAME">node.querystring.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"querystring"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_querystring.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.querystring
+ * @namespace
+ * This module provides utilities for dealing with query strings.
+ * It provides the following methods:
+ */
+
+goog.provide("node.querystring");
+
+/**
+ * @param {*} s
+ * @param {*} decodeSpaces
+ * @return {*}
+ */
+node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
+  return node.querystring.core_.unescapeBuffer(s, decodeSpaces);
+};
+
+/**
+ * The unescape function used by &lt;code>querystring.parse&lt;/code>,
+ * provided so that it could be overridden if necessary.
+ * @param {*} s
+ * @param {*} decodeSpaces
+ * @return {*}
+ */
+node.querystring.prototype.unescape = function(s, decodeSpaces) {
+  return node.querystring.core_.unescape(s, decodeSpaces);
+};
+
+/**
+ * The escape function used by &lt;code>querystring.stringify&lt;/code>,
+ * provided so that it could be overridden if necessary.
+ * @param {*} str
+ * @return {*}
+ */
+node.querystring.prototype.escape = function(str) {
+  return node.querystring.core_.escape(str);
+};
+
+/**
+ * @param {*} obj
+ * @param {*} sep
+ * @param {*} eq
+ * @param {*} name
+ * @return {*}
+ */
+node.querystring.prototype.encode = function(obj, sep, eq, name) {
+  return node.querystring.core_.encode(obj, sep, eq, name);
+};
+
+/**
+ * Serialize an object to a query string.
+ * Optionally override the default separator and assignment characters.
+ *
+ * Example:
+ * &lt;pre>
+ *     querystring.stringify({foo: 'bar'})
+ *     &#47;&#47; returns
+ *     'foo=bar'
+ *
+ *     querystring.stringify({foo: 'bar', baz: 'bob'}, ';', ':')
+ *     &#47;&#47; returns
+ *     'foo:bar;baz:bob'
+ * &lt;/pre>
+ * @param {*} obj
+ * @param {*} sep
+ * @param {*} eq
+ * @param {*} name
+ * @return {*}
+ */
+node.querystring.prototype.stringify = function(obj, sep, eq, name) {
+  return node.querystring.core_.stringify(obj, sep, eq, name);
+};
+
+/**
+ * @param {*} qs
+ * @param {*} sep
+ * @param {*} eq
+ * @return {*}
+ */
+node.querystring.prototype.decode = function(qs, sep, eq) {
+  return node.querystring.core_.decode(qs, sep, eq);
+};
+
+/**
+ * Deserialize a query string to an object.
+ * Optionally override the default separator and assignment characters.
+ *
+ * Example:
+ * &lt;pre>
+ *     querystring.parse('a=b&b=c')
+ *     &#47;&#47; returns
+ *     { a: 'b', b: 'c' }
+ * &lt;/pre>
+ * @param {*} qs
+ * @param {*} sep
+ * @param {*} eq
+ * @return {*}
+ */
+node.querystring.prototype.parse = function(qs, sep, eq) {
+  return node.querystring.core_.parse(qs, sep, eq);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.querystring.core_ = require("querystring");</pre></body></html>

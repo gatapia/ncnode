@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="../index.html">Classes</a>
 			<a href="../files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -209,28 +206,28 @@
 			
 			Namespace <span>node.http.ClientRequest</span>
 		</h1>
-		
+
 		<div class="intro">
 			<p class="description summary">
-				This object is created internally and returned from `http.request()`.  It
-represents an _in-progress_ request whose header has already been queued.  The
-header is still mutable using the `setHeader(name, value)`, `getHeader(name)`,
-`removeHeader(name)` API.  The actual header will be sent along with the first
+				This object is created internally and returned from <code>http.request()</code>.  It
+represents an <em>in-progress</em> request whose header has already been queued.  The
+header is still mutable using the <code>setHeader(name, value)</code>, <code>getHeader(name)</code>,
+<code>removeHeader(name)</code> API.  The actual header will be sent along with the first
 data chunk or when closing the connection.
 
-To get the response, add a listener for `'response'` to the request object.
-`'response'` will be emitted from the request object when the response
-headers have been received.  The `'response'` event is executed with one
-argument which is an instance of `http.ClientResponse`.
+To get the response, add a listener for <code>'response'</code> to the request object.
+<code>'response'</code> will be emitted from the request object when the response
+headers have been received.  The <code>'response'</code> event is executed with one
+argument which is an instance of <code>http.ClientResponse</code>.
 
-During the `'response'` event, one can add listeners to the
-response object; particularly to listen for the `'data'` event. Note that
-the `'response'` event is called before any part of the response body is received,
+During the <code>'response'</code> event, one can add listeners to the
+response object; particularly to listen for the <code>'data'</code> event. Note that
+the <code>'response'</code> event is called before any part of the response body is received,
 so there is no need to worry about racing to catch the first part of the
-body. As long as a listener for `'data'` is added during the `'response'`
+body. As long as a listener for <code>'data'</code> is added during the <code>'response'</code>
 event, the entire body will be caught.
 
-<pre class="code prettyprint lang-js">
+<pre>
     &#47;&#47; Good
     request.on('response', function (response) {
       response.on('data', function (chunk) {
@@ -247,15 +244,15 @@ event, the entire body will be caught.
       }, 10);
     });
 </pre>
-This is a `Writable Stream`.
+This is a <code>Writable Stream</code>.
 
-This is an `EventEmitter` with the following events:
+This is an <code>EventEmitter</code> with the following events:
 			</p>
-				
+
 			
 				<ul class="summary">
 					
-					
+
 					
 						<li>Defined in: <a href="../symbols/src/node_wrappers_http.ClientRequest.js.html">http.ClientRequest.js</a></li>
 					
@@ -263,38 +260,15 @@ This is an `EventEmitter` with the following events:
 				</ul>
 			
 		</div>
+
 		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.http.ClientRequest.">
-					<caption class="sectionTitle">Namespace Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/node.http.ClientRequest.html#constructor">node.http.ClientRequest</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		
+
 		
 <!--
 #### METHODS SUMMARY
 -->
 		
-		
+
 <!--
 #### EVENTS SUMMARY
 -->
@@ -308,20 +282,20 @@ This is an `EventEmitter` with the following events:
 					<h2 class="sectionTitle" id="constructor">
 						Namespace Detail
 					</h2>
-					
+
 					<div class="fixedFont">
 						<b>node.http.ClientRequest</b>
 					</div>
-					
+
 					<div class="description">
 						
 						
 					</div>
+
 					
+
 					
-				
-					
-					
+
 					
 				</div>
 			</div>
@@ -332,19 +306,19 @@ This is an `EventEmitter` with the following events:
 		
 <!--
 #### METHOD DETAILS
--->		
+-->
 		
-		
+
 <!--
 #### EVENT DETAILS
--->		
+-->
 		
 	</div>
 </div>
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

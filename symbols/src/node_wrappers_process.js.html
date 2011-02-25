@@ -1,511 +1,512 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.process
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * The `process` object is a global object and can be accessed from anywhere.
-<span class='line'>  5</span>  * It is an instance of `EventEmitter`.
-<span class='line'>  6</span>  */</span><span class="WHIT">
-<span class='line'>  7</span> 
-<span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.process"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  9</span> 
-<span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * Getter&#47;setter to set what is displayed in 'ps'.
-<span class='line'> 12</span>  * @type {*}
-<span class='line'> 13</span>  */</span><span class="WHIT">
-<span class='line'> 14</span> </span><span class="NAME">node.process.prototype.title</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 15</span> 
-<span class='line'> 16</span> </span><span class="COMM">/**
-<span class='line'> 17</span>  * A compiled-in property that exposes `NODE_VERSION`.
-<span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 19</span>  *     console.log('Version: ' + process.version);
-<span class='line'> 20</span>  * &lt;/pre>
-<span class='line'> 21</span>  * @type {*}
-<span class='line'> 22</span>  */</span><span class="WHIT">
-<span class='line'> 23</span> </span><span class="NAME">node.process.prototype.version</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 24</span> 
-<span class='line'> 25</span> </span><span class="COMM">/**
-<span class='line'> 26</span>  * A compiled-in property that exposes `NODE_PREFIX`.
-<span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 28</span>  *     console.log('Prefix: ' + process.installPrefix);
-<span class='line'> 29</span>  * &lt;/pre>
-<span class='line'> 30</span>  * @type {*}
-<span class='line'> 31</span>  */</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="NAME">node.process.prototype.installPrefix</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 33</span> 
-<span class='line'> 34</span> </span><span class="COMM">/**
-<span class='line'> 35</span>  * @type {*}
-<span class='line'> 36</span>  */</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="NAME">node.process.prototype.versions</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 38</span> 
-<span class='line'> 39</span> </span><span class="COMM">/**
-<span class='line'> 40</span>  * What platform you're running on. `'linux2'`, `'darwin'`, etc.
-<span class='line'> 41</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 42</span>  *     console.log('This platform is ' + process.platform);
-<span class='line'> 43</span>  * &lt;/pre>
-<span class='line'> 44</span>  * @type {*}
-<span class='line'> 45</span>  */</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="NAME">node.process.prototype.platform</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * @type {*}
-<span class='line'> 50</span>  */</span><span class="WHIT">
-<span class='line'> 51</span> </span><span class="NAME">node.process.prototype.ARGV</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 52</span> 
-<span class='line'> 53</span> </span><span class="COMM">/**
-<span class='line'> 54</span>  * An array containing the command line arguments.  The first element will be
-<span class='line'> 55</span>  * 'node', the second element will be the name of the JavaScript file.  The
-<span class='line'> 56</span>  * next elements will be any additional command line arguments.
-<span class='line'> 57</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 58</span>  *     &#47;&#47; print process.argv
-<span class='line'> 59</span>  *     process.argv.forEach(function (val, index, array) {
-<span class='line'> 60</span>  *       console.log(index + ': ' + val);
-<span class='line'> 61</span>  *     });
-<span class='line'> 62</span>  * &lt;/pre>
-<span class='line'> 63</span>  * This will generate:
-<span class='line'> 64</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 65</span>  *     $ node process-2.js one two=three four
-<span class='line'> 66</span>  *     0: node
-<span class='line'> 67</span>  *     1: &#47;Users&#47;mjr&#47;work&#47;node&#47;process-2.js
-<span class='line'> 68</span>  *     2: one
-<span class='line'> 69</span>  *     3: two=three
-<span class='line'> 70</span>  *     4: four
-<span class='line'> 71</span>  * &lt;/pre>
-<span class='line'> 72</span>  * @type {*}
-<span class='line'> 73</span>  */</span><span class="WHIT">
-<span class='line'> 74</span> </span><span class="NAME">node.process.prototype.argv</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 75</span> 
-<span class='line'> 76</span> </span><span class="COMM">/**
-<span class='line'> 77</span>  * An object containing the user environment. See environ(7).
-<span class='line'> 78</span>  * @type {*}
-<span class='line'> 79</span>  */</span><span class="WHIT">
-<span class='line'> 80</span> </span><span class="NAME">node.process.prototype.env</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 81</span> 
-<span class='line'> 82</span> </span><span class="COMM">/**
-<span class='line'> 83</span>  * @type {*}
-<span class='line'> 84</span>  */</span><span class="WHIT">
-<span class='line'> 85</span> </span><span class="NAME">node.process.prototype.ENV</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 86</span> 
-<span class='line'> 87</span> </span><span class="COMM">/**
-<span class='line'> 88</span>  * The PID of the process.
-<span class='line'> 89</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 90</span>  *     console.log('This process is pid ' + process.pid);
-<span class='line'> 91</span>  * &lt;/pre>
-<span class='line'> 92</span>  * @type {*}
-<span class='line'> 93</span>  */</span><span class="WHIT">
-<span class='line'> 94</span> </span><span class="NAME">node.process.prototype.pid</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 95</span> 
-<span class='line'> 96</span> </span><span class="COMM">/**
-<span class='line'> 97</span>  * This is the absolute pathname of the executable that started the process.
-<span class='line'> 98</span>  *
-<span class='line'> 99</span>  * Example:
-<span class='line'>100</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>101</span>  *     &#47;usr&#47;local&#47;bin&#47;node
-<span class='line'>102</span>  * &lt;/pre>
-<span class='line'>103</span>  * @type {*}
-<span class='line'>104</span>  */</span><span class="WHIT">
-<span class='line'>105</span> </span><span class="NAME">node.process.prototype.execPath</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>106</span> 
-<span class='line'>107</span> </span><span class="COMM">/**
-<span class='line'>108</span>  * A `Writable Stream` to `stdout`.
-<span class='line'>109</span>  *
-<span class='line'>110</span>  * Example: the definition of `console.log`
-<span class='line'>111</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>112</span>  *     console.log = function (d) {
-<span class='line'>113</span>  *       process.stdout.write(d + '\n');
-<span class='line'>114</span>  *     };
-<span class='line'>115</span>  * &lt;/pre>
-<span class='line'>116</span>  * @type {*}
-<span class='line'>117</span>  */</span><span class="WHIT">
-<span class='line'>118</span> </span><span class="NAME">node.process.prototype.stdout</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>119</span> 
-<span class='line'>120</span> </span><span class="COMM">/**
-<span class='line'>121</span>  * A `Readable Stream` for stdin. The stdin stream is paused by default, so one
-<span class='line'>122</span>  * must call `process.stdin.resume()` to read from it.
-<span class='line'>123</span>  *
-<span class='line'>124</span>  * Example of opening standard input and listening for both events:
-<span class='line'>125</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>126</span>  *     process.stdin.resume();
-<span class='line'>127</span>  *     process.stdin.setEncoding('utf8');
-<span class='line'>128</span>  *
-<span class='line'>129</span>  *     process.stdin.on('data', function (chunk) {
-<span class='line'>130</span>  *       process.stdout.write('data: ' + chunk);
-<span class='line'>131</span>  *     });
-<span class='line'>132</span>  *
-<span class='line'>133</span>  *     process.stdin.on('end', function () {
-<span class='line'>134</span>  *       process.stdout.write('end');
-<span class='line'>135</span>  *     });
-<span class='line'>136</span>  * &lt;/pre>
-<span class='line'>137</span>  * @type {*}
-<span class='line'>138</span>  */</span><span class="WHIT">
-<span class='line'>139</span> </span><span class="NAME">node.process.prototype.stdin</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>140</span> 
-<span class='line'>141</span> </span><span class="COMM">/**
-<span class='line'>142</span>  * @type {*}
-<span class='line'>143</span>  */</span><span class="WHIT">
-<span class='line'>144</span> </span><span class="NAME">node.process.prototype.mainModule</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>145</span> 
-<span class='line'>146</span> </span><span class="COMM">/**
-<span class='line'>147</span>  * @return {*}
-<span class='line'>148</span>  */</span><span class="WHIT">
-<span class='line'>149</span> </span><span class="NAME">node.process.prototype.compile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>150</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.compile</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>151</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>152</span> 
-<span class='line'>153</span> </span><span class="COMM">/**
-<span class='line'>154</span>  * @return {*}
-<span class='line'>155</span>  */</span><span class="WHIT">
-<span class='line'>156</span> </span><span class="NAME">node.process.prototype.reallyExit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.reallyExit</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>158</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>159</span> 
-<span class='line'>160</span> </span><span class="COMM">/**
-<span class='line'>161</span>  * Changes the current working directory of the process or throws an exception if that fails.
-<span class='line'>162</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>163</span>  *     console.log('Starting directory: ' + process.cwd());
-<span class='line'>164</span>  *     try {
-<span class='line'>165</span>  *       process.chdir('&#47;tmp');
-<span class='line'>166</span>  *       console.log('New directory: ' + process.cwd());
-<span class='line'>167</span>  *     }
-<span class='line'>168</span>  *     catch (err) {
-<span class='line'>169</span>  *       console.log('chdir: ' + err);
-<span class='line'>170</span>  *     }
-<span class='line'>171</span>  * &lt;/pre>
-<span class='line'>172</span>  * @return {*}
-<span class='line'>173</span>  */</span><span class="WHIT">
-<span class='line'>174</span> </span><span class="NAME">node.process.prototype.chdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.chdir</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>176</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>177</span> 
-<span class='line'>178</span> </span><span class="COMM">/**
-<span class='line'>179</span>  * Returns the current working directory of the process.
-<span class='line'>180</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>181</span>  *     console.log('Current directory: ' + process.cwd());
-<span class='line'>182</span>  * &lt;/pre>
-<span class='line'>183</span>  * @return {*}
-<span class='line'>184</span>  */</span><span class="WHIT">
-<span class='line'>185</span> </span><span class="NAME">node.process.prototype.cwd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>186</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.cwd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>187</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>188</span> 
-<span class='line'>189</span> </span><span class="COMM">/**
-<span class='line'>190</span>  * Gets the user identity of the process. (See getuid(2).)
-<span class='line'>191</span>  * This is the numerical userid, not the username.
-<span class='line'>192</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>193</span>  *     console.log('Current uid: ' + process.getuid());
-<span class='line'>194</span>  * &lt;/pre>
-<span class='line'>195</span>  * @return {*}
-<span class='line'>196</span>  */</span><span class="WHIT">
-<span class='line'>197</span> </span><span class="NAME">node.process.prototype.getuid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>198</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.getuid</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>199</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>200</span> 
-<span class='line'>201</span> </span><span class="COMM">/**
-<span class='line'>202</span>  * Sets the user identity of the process. (See setuid(2).)  This accepts either
-<span class='line'>203</span>  * a numerical ID or a username string.  If a username is specified, this method
-<span class='line'>204</span>  * blocks while resolving it to a numerical ID.
-<span class='line'>205</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>206</span>  *     console.log('Current uid: ' + process.getuid());
-<span class='line'>207</span>  *     try {
-<span class='line'>208</span>  *       process.setuid(501);
-<span class='line'>209</span>  *       console.log('New uid: ' + process.getuid());
-<span class='line'>210</span>  *     }
-<span class='line'>211</span>  *     catch (err) {
-<span class='line'>212</span>  *       console.log('Failed to set uid: ' + err);
-<span class='line'>213</span>  *     }
-<span class='line'>214</span>  * &lt;/pre>
-<span class='line'>215</span>  * @return {*}
-<span class='line'>216</span>  */</span><span class="WHIT">
-<span class='line'>217</span> </span><span class="NAME">node.process.prototype.setuid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>218</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.setuid</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>219</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>220</span> 
-<span class='line'>221</span> </span><span class="COMM">/**
-<span class='line'>222</span>  * Sets the group identity of the process. (See setgid(2).)  This accepts either
-<span class='line'>223</span>  * a numerical ID or a groupname string. If a groupname is specified, this method
-<span class='line'>224</span>  * blocks while resolving it to a numerical ID.
-<span class='line'>225</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>226</span>  *     console.log('Current gid: ' + process.getgid());
-<span class='line'>227</span>  *     try {
-<span class='line'>228</span>  *       process.setgid(501);
-<span class='line'>229</span>  *       console.log('New gid: ' + process.getgid());
-<span class='line'>230</span>  *     }
-<span class='line'>231</span>  *     catch (err) {
-<span class='line'>232</span>  *       console.log('Failed to set gid: ' + err);
-<span class='line'>233</span>  *     }
-<span class='line'>234</span>  * &lt;/pre>
-<span class='line'>235</span>  * @return {*}
-<span class='line'>236</span>  */</span><span class="WHIT">
-<span class='line'>237</span> </span><span class="NAME">node.process.prototype.setgid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>238</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.setgid</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>239</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>240</span> 
-<span class='line'>241</span> </span><span class="COMM">/**
-<span class='line'>242</span>  * Gets the group identity of the process. (See getgid(2).)
-<span class='line'>243</span>  * This is the numerical group id, not the group name.
-<span class='line'>244</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>245</span>  *     console.log('Current gid: ' + process.getgid());
-<span class='line'>246</span>  * &lt;/pre>
-<span class='line'>247</span>  * @return {*}
-<span class='line'>248</span>  */</span><span class="WHIT">
-<span class='line'>249</span> </span><span class="NAME">node.process.prototype.getgid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>250</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.getgid</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>251</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>252</span> 
-<span class='line'>253</span> </span><span class="COMM">/**
-<span class='line'>254</span>  * Sets or reads the process's file mode creation mask. Child processes inherit
-<span class='line'>255</span>  * the mask from the parent process. Returns the old mask if `mask` argument is
-<span class='line'>256</span>  * given, otherwise returns the current mask.
-<span class='line'>257</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>258</span>  *     var oldmask, newmask = 0644;
-<span class='line'>259</span>  *
-<span class='line'>260</span>  *     oldmask = process.umask(newmask);
-<span class='line'>261</span>  *     console.log('Changed umask from: ' + oldmask.toString(8) +
-<span class='line'>262</span>  *                 ' to ' + newmask.toString(8));
-<span class='line'>263</span>  * &lt;/pre>
-<span class='line'>264</span>  * @return {*}
-<span class='line'>265</span>  */</span><span class="WHIT">
-<span class='line'>266</span> </span><span class="NAME">node.process.prototype.umask</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>267</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.umask</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>268</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>269</span> 
-<span class='line'>270</span> </span><span class="COMM">/**
-<span class='line'>271</span>  * @return {*}
-<span class='line'>272</span>  */</span><span class="WHIT">
-<span class='line'>273</span> </span><span class="NAME">node.process.prototype.dlopen</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>274</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.dlopen</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>275</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>276</span> 
-<span class='line'>277</span> </span><span class="COMM">/**
-<span class='line'>278</span>  * Returns an object describing the memory usage of the Node process.
-<span class='line'>279</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>280</span>  *     var util = require('util');
-<span class='line'>281</span>  *
-<span class='line'>282</span>  *     console.log(util.inspect(process.memoryUsage()));
-<span class='line'>283</span>  * &lt;/pre>
-<span class='line'>284</span>  * This will generate:
-<span class='line'>285</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>286</span>  *     { rss: 4935680,
-<span class='line'>287</span>  *       vsize: 41893888,
-<span class='line'>288</span>  *       heapTotal: 1826816,
-<span class='line'>289</span>  *       heapUsed: 650472 }
-<span class='line'>290</span>  * &lt;/pre>
-<span class='line'>291</span>  * `heapTotal` and `heapUsed` refer to V8's memory usage.
-<span class='line'>292</span>  * @return {*}
-<span class='line'>293</span>  */</span><span class="WHIT">
-<span class='line'>294</span> </span><span class="NAME">node.process.prototype.memoryUsage</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>295</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.memoryUsage</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>296</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>297</span> 
-<span class='line'>298</span> </span><span class="COMM">/**
-<span class='line'>299</span>  * @return {*}
-<span class='line'>300</span>  */</span><span class="WHIT">
-<span class='line'>301</span> </span><span class="NAME">node.process.prototype.binding</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>302</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.binding</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>303</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>304</span> 
-<span class='line'>305</span> </span><span class="COMM">/**
-<span class='line'>306</span>  * @return {*}
-<span class='line'>307</span>  */</span><span class="WHIT">
-<span class='line'>308</span> </span><span class="NAME">node.process.prototype.assert</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>309</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.assert</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>310</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>311</span> 
-<span class='line'>312</span> </span><span class="COMM">/**
-<span class='line'>313</span>  * On the next loop around the event loop call this callback.
-<span class='line'>314</span>  * This is *not* a simple alias to `setTimeout(fn, 0)`, it's much more
-<span class='line'>315</span>  * efficient.
-<span class='line'>316</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>317</span>  *     process.nextTick(function () {
-<span class='line'>318</span>  *       console.log('nextTick callback');
-<span class='line'>319</span>  *     });
-<span class='line'>320</span>  * &lt;/pre>
-<span class='line'>321</span>  * @param {*} callback
-<span class='line'>322</span>  * @return {*}
-<span class='line'>323</span>  */</span><span class="WHIT">
-<span class='line'>324</span> </span><span class="NAME">node.process.prototype.nextTick</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>325</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.nextTick</span><span class="PUNC">(</span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>326</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>327</span> 
-<span class='line'>328</span> </span><span class="COMM">/**
-<span class='line'>329</span>  * @return {*}
-<span class='line'>330</span>  */</span><span class="WHIT">
-<span class='line'>331</span> </span><span class="NAME">node.process.prototype.openStdin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>332</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.openStdin</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>333</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>334</span> 
-<span class='line'>335</span> </span><span class="COMM">/**
-<span class='line'>336</span>  * Ends the process with the specified `code`.  If omitted, exit uses the
-<span class='line'>337</span>  * 'success' code `0`.
-<span class='line'>338</span>  *
-<span class='line'>339</span>  * To exit with a 'failure' code:
-<span class='line'>340</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>341</span>  *     process.exit(1);
-<span class='line'>342</span>  * &lt;/pre>
-<span class='line'>343</span>  * The shell that executed node should see the exit code as 1.
-<span class='line'>344</span>  * @param {*} code
-<span class='line'>345</span>  * @return {*}
-<span class='line'>346</span>  */</span><span class="WHIT">
-<span class='line'>347</span> </span><span class="NAME">node.process.prototype.exit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>348</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.exit</span><span class="PUNC">(</span><span class="NAME">code</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>349</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>350</span> 
-<span class='line'>351</span> </span><span class="COMM">/**
-<span class='line'>352</span>  * Send a signal to a process. `pid` is the process id and `signal` is the
-<span class='line'>353</span>  * string describing the signal to send.  Signal names are strings like
-<span class='line'>354</span>  * 'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
-<span class='line'>355</span>  * See kill(2) for more information.
-<span class='line'>356</span>  *
-<span class='line'>357</span>  * Note that just because the name of this function is `process.kill`, it is
-<span class='line'>358</span>  * really just a signal sender, like the `kill` system call.  The signal sent
-<span class='line'>359</span>  * may do something other than kill the target process.
-<span class='line'>360</span>  *
-<span class='line'>361</span>  * Example of sending a signal to yourself:
-<span class='line'>362</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>363</span>  *     process.on('SIGHUP', function () {
-<span class='line'>364</span>  *       console.log('Got SIGHUP signal.');
-<span class='line'>365</span>  *     });
-<span class='line'>366</span>  *
-<span class='line'>367</span>  *     setTimeout(function () {
-<span class='line'>368</span>  *       console.log('Exiting.');
-<span class='line'>369</span>  *       process.exit(0);
-<span class='line'>370</span>  *     }, 100);
-<span class='line'>371</span>  *
-<span class='line'>372</span>  *     process.kill(process.pid, 'SIGHUP');
-<span class='line'>373</span>  * &lt;/pre>
-<span class='line'>374</span>  * @param {*} pid
-<span class='line'>375</span>  * @param {*} sig
-<span class='line'>376</span>  * @return {*}
-<span class='line'>377</span>  */</span><span class="WHIT">
-<span class='line'>378</span> </span><span class="NAME">node.process.prototype.kill</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">pid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sig</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>379</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.kill</span><span class="PUNC">(</span><span class="NAME">pid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sig</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>380</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>381</span> 
-<span class='line'>382</span> </span><span class="COMM">/**
-<span class='line'>383</span>  * @param {*} type
-<span class='line'>384</span>  * @param {*} listener
-<span class='line'>385</span>  * @return {*}
-<span class='line'>386</span>  */</span><span class="WHIT">
-<span class='line'>387</span> </span><span class="NAME">node.process.prototype.addListener</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>388</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.addListener</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>389</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>390</span> 
-<span class='line'>391</span> </span><span class="COMM">/**
-<span class='line'>392</span>  * @param {*} type
-<span class='line'>393</span>  * @param {*} listener
-<span class='line'>394</span>  * @return {*}
-<span class='line'>395</span>  */</span><span class="WHIT">
-<span class='line'>396</span> </span><span class="NAME">node.process.prototype.on</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>397</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.on</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>398</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>399</span> 
-<span class='line'>400</span> </span><span class="COMM">/**
-<span class='line'>401</span>  * @param {*} type
-<span class='line'>402</span>  * @param {*} listener
-<span class='line'>403</span>  * @return {*}
-<span class='line'>404</span>  */</span><span class="WHIT">
-<span class='line'>405</span> </span><span class="NAME">node.process.prototype.removeListener</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>406</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.removeListener</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>407</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>408</span> 
-<span class='line'>409</span> </span><span class="COMM">/**
-<span class='line'>410</span>  * @return {*}
-<span class='line'>411</span>  */</span><span class="WHIT">
-<span class='line'>412</span> </span><span class="NAME">node.process.prototype.debug</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>413</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.debug</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>414</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>415</span> 
-<span class='line'>416</span> </span><span class="COMM">/**
-<span class='line'>417</span>  * @return {*}
-<span class='line'>418</span>  */</span><span class="WHIT">
-<span class='line'>419</span> </span><span class="NAME">node.process.prototype.error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>420</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>421</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>422</span> 
-<span class='line'>423</span> </span><span class="COMM">/**
-<span class='line'>424</span>  * @return {*}
-<span class='line'>425</span>  */</span><span class="WHIT">
-<span class='line'>426</span> </span><span class="NAME">node.process.prototype.watchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>427</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.watchFile</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>428</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>429</span> 
-<span class='line'>430</span> </span><span class="COMM">/**
-<span class='line'>431</span>  * @return {*}
-<span class='line'>432</span>  */</span><span class="WHIT">
-<span class='line'>433</span> </span><span class="NAME">node.process.prototype.unwatchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>434</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.unwatchFile</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>435</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>436</span> 
-<span class='line'>437</span> </span><span class="COMM">/**
-<span class='line'>438</span>  * @return {*}
-<span class='line'>439</span>  */</span><span class="WHIT">
-<span class='line'>440</span> </span><span class="NAME">node.process.prototype.mixin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>441</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.mixin</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>442</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>443</span> 
-<span class='line'>444</span> </span><span class="COMM">/**
-<span class='line'>445</span>  * @return {*}
-<span class='line'>446</span>  */</span><span class="WHIT">
-<span class='line'>447</span> </span><span class="NAME">node.process.prototype.createChildProcess</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>448</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.createChildProcess</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>449</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>450</span> 
-<span class='line'>451</span> </span><span class="COMM">/**
-<span class='line'>452</span>  * @return {*}
-<span class='line'>453</span>  */</span><span class="WHIT">
-<span class='line'>454</span> </span><span class="NAME">node.process.prototype.inherits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>455</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.inherits</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>456</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>457</span> 
-<span class='line'>458</span> </span><span class="COMM">/**
-<span class='line'>459</span>  * @param {*} n
-<span class='line'>460</span>  * @return {*}
-<span class='line'>461</span>  */</span><span class="WHIT">
-<span class='line'>462</span> </span><span class="NAME">node.process.prototype.setMaxListeners</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>463</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.setMaxListeners</span><span class="PUNC">(</span><span class="NAME">n</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>464</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>465</span> 
-<span class='line'>466</span> </span><span class="COMM">/**
-<span class='line'>467</span>  * @param {*} type
-<span class='line'>468</span>  * @return {*}
-<span class='line'>469</span>  */</span><span class="WHIT">
-<span class='line'>470</span> </span><span class="NAME">node.process.prototype.emit</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>471</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.emit</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>472</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>473</span> 
-<span class='line'>474</span> </span><span class="COMM">/**
-<span class='line'>475</span>  * @param {*} type
-<span class='line'>476</span>  * @param {*} listener
-<span class='line'>477</span>  * @return {*}
-<span class='line'>478</span>  */</span><span class="WHIT">
-<span class='line'>479</span> </span><span class="NAME">node.process.prototype.once</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>480</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.once</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">listener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>481</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>482</span> 
-<span class='line'>483</span> </span><span class="COMM">/**
-<span class='line'>484</span>  * @param {*} type
-<span class='line'>485</span>  * @return {*}
-<span class='line'>486</span>  */</span><span class="WHIT">
-<span class='line'>487</span> </span><span class="NAME">node.process.prototype.removeAllListeners</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>488</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.removeAllListeners</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>489</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>490</span> 
-<span class='line'>491</span> </span><span class="COMM">/**
-<span class='line'>492</span>  * @param {*} type
-<span class='line'>493</span>  * @return {*}
-<span class='line'>494</span>  */</span><span class="WHIT">
-<span class='line'>495</span> </span><span class="NAME">node.process.prototype.listeners</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>496</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.process.core_.listeners</span><span class="PUNC">(</span><span class="NAME">type</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>497</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>498</span> 
-<span class='line'>499</span> 
-<span class='line'>500</span> </span><span class="COMM">/**
-<span class='line'>501</span>  * @private
-<span class='line'>502</span>  * @type {*}
-<span class='line'>503</span>  */</span><span class="WHIT">
-<span class='line'>504</span> </span><span class="NAME">node.process.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">process</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_process.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.process
+ * @namespace
+ * The &lt;code>process&lt;/code> object is a global object and can be accessed from anywhere.
+ * It is an instance of &lt;code>EventEmitter&lt;/code>.
+ */
+
+goog.provide("node.process");
+
+/**
+ * Getter&#47;setter to set what is displayed in 'ps'.
+ * @type {*}
+ */
+node.process.prototype.title;
+
+/**
+ * A compiled-in property that exposes &lt;code>NODE_VERSION&lt;/code>.
+ * &lt;pre>
+ *     console.log('Version: ' + process.version);
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.version;
+
+/**
+ * A compiled-in property that exposes &lt;code>NODE_PREFIX&lt;/code>.
+ * &lt;pre>
+ *     console.log('Prefix: ' + process.installPrefix);
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.installPrefix;
+
+/**
+ * @type {*}
+ */
+node.process.prototype.versions;
+
+/**
+ * What platform you're running on. &lt;code>'linux2'&lt;/code>, &lt;code>'darwin'&lt;/code>, etc.
+ * &lt;pre>
+ *     console.log('This platform is ' + process.platform);
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.platform;
+
+/**
+ * @type {*}
+ */
+node.process.prototype.ARGV;
+
+/**
+ * An array containing the command line arguments.  The first element will be
+ * 'node', the second element will be the name of the JavaScript file.  The
+ * next elements will be any additional command line arguments.
+ * &lt;pre>
+ *     &#47;&#47; print process.argv
+ *     process.argv.forEach(function (val, index, array) {
+ *       console.log(index + ': ' + val);
+ *     });
+ * &lt;/pre>
+ * This will generate:
+ * &lt;pre>
+ *     $ node process-2.js one two=three four
+ *     0: node
+ *     1: &#47;Users&#47;mjr&#47;work&#47;node&#47;process-2.js
+ *     2: one
+ *     3: two=three
+ *     4: four
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.argv;
+
+/**
+ * An object containing the user environment. See environ(7).
+ * @type {*}
+ */
+node.process.prototype.env;
+
+/**
+ * @type {*}
+ */
+node.process.prototype.ENV;
+
+/**
+ * The PID of the process.
+ * &lt;pre>
+ *     console.log('This process is pid ' + process.pid);
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.pid;
+
+/**
+ * This is the absolute pathname of the executable that started the process.
+ *
+ * Example:
+ * &lt;pre>
+ *     &#47;usr&#47;local&#47;bin&#47;node
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.execPath;
+
+/**
+ * A &lt;code>Writable Stream&lt;/code> to &lt;code>stdout&lt;/code>.
+ *
+ * Example: the definition of &lt;code>console.log&lt;/code>
+ * &lt;pre>
+ *     console.log = function (d) {
+ *       process.stdout.write(d + '\n');
+ *     };
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.stdout;
+
+/**
+ * A &lt;code>Readable Stream&lt;/code> for stdin. The stdin stream is paused by default, so one
+ * must call &lt;code>process.stdin.resume()&lt;/code> to read from it.
+ *
+ * Example of opening standard input and listening for both events:
+ * &lt;pre>
+ *     process.stdin.resume();
+ *     process.stdin.setEncoding('utf8');
+ *
+ *     process.stdin.on('data', function (chunk) {
+ *       process.stdout.write('data: ' + chunk);
+ *     });
+ *
+ *     process.stdin.on('end', function () {
+ *       process.stdout.write('end');
+ *     });
+ * &lt;/pre>
+ * @type {*}
+ */
+node.process.prototype.stdin;
+
+/**
+ * @type {*}
+ */
+node.process.prototype.mainModule;
+
+/**
+ * @return {*}
+ */
+node.process.prototype.compile = function() {
+  return node.process.core_.compile();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.reallyExit = function() {
+  return node.process.core_.reallyExit();
+};
+
+/**
+ * Changes the current working directory of the process or throws an exception if that fails.
+ * &lt;pre>
+ *     console.log('Starting directory: ' + process.cwd());
+ *     try {
+ *       process.chdir('&#47;tmp');
+ *       console.log('New directory: ' + process.cwd());
+ *     }
+ *     catch (err) {
+ *       console.log('chdir: ' + err);
+ *     }
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.chdir = function() {
+  return node.process.core_.chdir();
+};
+
+/**
+ * Returns the current working directory of the process.
+ * &lt;pre>
+ *     console.log('Current directory: ' + process.cwd());
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.cwd = function() {
+  return node.process.core_.cwd();
+};
+
+/**
+ * Gets the user identity of the process. (See getuid(2).)
+ * This is the numerical userid, not the username.
+ * &lt;pre>
+ *     console.log('Current uid: ' + process.getuid());
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.getuid = function() {
+  return node.process.core_.getuid();
+};
+
+/**
+ * Sets the user identity of the process. (See setuid(2).)  This accepts either
+ * a numerical ID or a username string.  If a username is specified, this method
+ * blocks while resolving it to a numerical ID.
+ * &lt;pre>
+ *     console.log('Current uid: ' + process.getuid());
+ *     try {
+ *       process.setuid(501);
+ *       console.log('New uid: ' + process.getuid());
+ *     }
+ *     catch (err) {
+ *       console.log('Failed to set uid: ' + err);
+ *     }
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.setuid = function() {
+  return node.process.core_.setuid();
+};
+
+/**
+ * Sets the group identity of the process. (See setgid(2).)  This accepts either
+ * a numerical ID or a groupname string. If a groupname is specified, this method
+ * blocks while resolving it to a numerical ID.
+ * &lt;pre>
+ *     console.log('Current gid: ' + process.getgid());
+ *     try {
+ *       process.setgid(501);
+ *       console.log('New gid: ' + process.getgid());
+ *     }
+ *     catch (err) {
+ *       console.log('Failed to set gid: ' + err);
+ *     }
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.setgid = function() {
+  return node.process.core_.setgid();
+};
+
+/**
+ * Gets the group identity of the process. (See getgid(2).)
+ * This is the numerical group id, not the group name.
+ * &lt;pre>
+ *     console.log('Current gid: ' + process.getgid());
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.getgid = function() {
+  return node.process.core_.getgid();
+};
+
+/**
+ * Sets or reads the process's file mode creation mask. Child processes inherit
+ * the mask from the parent process. Returns the old mask if &lt;code>mask&lt;/code> argument is
+ * given, otherwise returns the current mask.
+ * &lt;pre>
+ *     var oldmask, newmask = 0644;
+ *
+ *     oldmask = process.umask(newmask);
+ *     console.log('Changed umask from: ' + oldmask.toString(8) +
+ *                 ' to ' + newmask.toString(8));
+ * &lt;/pre>
+ * @return {*}
+ */
+node.process.prototype.umask = function() {
+  return node.process.core_.umask();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.dlopen = function() {
+  return node.process.core_.dlopen();
+};
+
+/**
+ * Returns an object describing the memory usage of the Node process.
+ * &lt;pre>
+ *     var util = require('util');
+ *
+ *     console.log(util.inspect(process.memoryUsage()));
+ * &lt;/pre>
+ * This will generate:
+ * &lt;pre>
+ *     { rss: 4935680,
+ *       vsize: 41893888,
+ *       heapTotal: 1826816,
+ *       heapUsed: 650472 }
+ * &lt;/pre>
+ * &lt;code>heapTotal&lt;/code> and &lt;code>heapUsed&lt;/code> refer to V8's memory usage.
+ * @return {*}
+ */
+node.process.prototype.memoryUsage = function() {
+  return node.process.core_.memoryUsage();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.binding = function() {
+  return node.process.core_.binding();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.assert = function() {
+  return node.process.core_.assert();
+};
+
+/**
+ * On the next loop around the event loop call this callback.
+ * This is *not* a simple alias to &lt;code>setTimeout(fn, 0)&lt;/code>, it's much more
+ * efficient.
+ * &lt;pre>
+ *     process.nextTick(function () {
+ *       console.log('nextTick callback');
+ *     });
+ * &lt;/pre>
+ * @param {*} callback
+ * @return {*}
+ */
+node.process.prototype.nextTick = function(callback) {
+  return node.process.core_.nextTick(callback);
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.openStdin = function() {
+  return node.process.core_.openStdin();
+};
+
+/**
+ * Ends the process with the specified &lt;code>code&lt;/code>.  If omitted, exit uses the
+ * 'success' code &lt;code>0&lt;/code>.
+ *
+ * To exit with a 'failure' code:
+ * &lt;pre>
+ *     process.exit(1);
+ * &lt;/pre>
+ * The shell that executed node should see the exit code as 1.
+ * @param {*} code
+ * @return {*}
+ */
+node.process.prototype.exit = function(code) {
+  return node.process.core_.exit(code);
+};
+
+/**
+ * Send a signal to a process. &lt;code>pid&lt;/code> is the process id and &lt;code>signal&lt;/code> is the
+ * string describing the signal to send.  Signal names are strings like
+ * 'SIGINT' or 'SIGUSR1'.  If omitted, the signal will be 'SIGTERM'.
+ * See kill(2) for more information.
+ *
+ * Note that just because the name of this function is &lt;code>process.kill&lt;/code>, it is
+ * really just a signal sender, like the &lt;code>kill&lt;/code> system call.  The signal sent
+ * may do something other than kill the target process.
+ *
+ * Example of sending a signal to yourself:
+ * &lt;pre>
+ *     process.on('SIGHUP', function () {
+ *       console.log('Got SIGHUP signal.');
+ *     });
+ *
+ *     setTimeout(function () {
+ *       console.log('Exiting.');
+ *       process.exit(0);
+ *     }, 100);
+ *
+ *     process.kill(process.pid, 'SIGHUP');
+ * &lt;/pre>
+ * @param {*} pid
+ * @param {*} sig
+ * @return {*}
+ */
+node.process.prototype.kill = function(pid, sig) {
+  return node.process.core_.kill(pid, sig);
+};
+
+/**
+ * @param {*} type
+ * @param {*} listener
+ * @return {*}
+ */
+node.process.prototype.addListener = function(type, listener) {
+  return node.process.core_.addListener(type, listener);
+};
+
+/**
+ * @param {*} type
+ * @param {*} listener
+ * @return {*}
+ */
+node.process.prototype.on = function(type, listener) {
+  return node.process.core_.on(type, listener);
+};
+
+/**
+ * @param {*} type
+ * @param {*} listener
+ * @return {*}
+ */
+node.process.prototype.removeListener = function(type, listener) {
+  return node.process.core_.removeListener(type, listener);
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.debug = function() {
+  return node.process.core_.debug();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.error = function() {
+  return node.process.core_.error();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.watchFile = function() {
+  return node.process.core_.watchFile();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.unwatchFile = function() {
+  return node.process.core_.unwatchFile();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.mixin = function() {
+  return node.process.core_.mixin();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.createChildProcess = function() {
+  return node.process.core_.createChildProcess();
+};
+
+/**
+ * @return {*}
+ */
+node.process.prototype.inherits = function() {
+  return node.process.core_.inherits();
+};
+
+/**
+ * @param {*} n
+ * @return {*}
+ */
+node.process.prototype.setMaxListeners = function(n) {
+  return node.process.core_.setMaxListeners(n);
+};
+
+/**
+ * @param {*} type
+ * @return {*}
+ */
+node.process.prototype.emit = function(type) {
+  return node.process.core_.emit(type);
+};
+
+/**
+ * @param {*} type
+ * @param {*} listener
+ * @return {*}
+ */
+node.process.prototype.once = function(type, listener) {
+  return node.process.core_.once(type, listener);
+};
+
+/**
+ * @param {*} type
+ * @return {*}
+ */
+node.process.prototype.removeAllListeners = function(type) {
+  return node.process.core_.removeAllListeners(type);
+};
+
+/**
+ * @param {*} type
+ * @return {*}
+ */
+node.process.prototype.listeners = function(type) {
+  return node.process.core_.listeners(type);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.process.core_ = process;</pre></body></html>

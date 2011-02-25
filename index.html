@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="javascript/all.js"></script>
-    	<script src="javascript/prettify.js"></script>
+    <script src="javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="index.html">Classes</a>
 			<a href="files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -211,9 +208,9 @@
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.html">node</a></h2>
-					<p>An example of a [web server](http.html) written with Node which responds with 'Hello
+					<p>An example of a <a href="node.http.html">web server</a> written with Node which responds with 'Hello
 World':
-<pre class="code prettyprint lang-js">
+<pre>
     var http = require('http');
 
     http.createServer(function (request, response) {
@@ -223,9 +220,9 @@ World':
 
     console.log('Server running at http:&#47;&#47;127.0.0.1:8124&#47;');
 </pre>
-To run the server, put the code into a file called `example.js` and execute
+To run the server, put the code into a file called <code>example.js</code> and execute
 it with the node program
-<pre class="code prettyprint lang-js">
+<pre>
     > node example.js
     Server running at http:&#47;&#47;127.0.0.1:8124&#47;
 </pre>
@@ -235,7 +232,7 @@ All of the examples in the documentation can be run similarly.</p>
 				<li>
 					<h2 class="classname"><a href="symbols/node.assert.html">node.assert</a></h2>
 					<p>This module is used for writing unit tests for your applications, you can
-access it with `require('assert')`.</p>
+access it with <code>require('assert')</code>.</p>
 				</li>
 			
 				<li>
@@ -275,7 +272,7 @@ access it with `require('assert')`.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.crypto.html">node.crypto</a></h2>
-					<p>Use `require('crypto')` to access this module.</p>
+					<p>Use <code>require('crypto')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -315,7 +312,7 @@ access it with `require('assert')`.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.dgram.html">node.dgram</a></h2>
-					<p>Datagram sockets are available through `require('dgram')`.</p>
+					<p>Datagram sockets are available through <code>require('dgram')</code>.</p>
 				</li>
 			
 				<li>
@@ -325,13 +322,13 @@ access it with `require('assert')`.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.dns.html">node.dns</a></h2>
-					<p>Use `require('dns')` to access this module.</p>
+					<p>Use <code>require('dns')</code> to access this module.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.events.html">node.events</a></h2>
-					<p>Many objects in Node emit events: a `net.Server` emits an event each time
-a peer connects to it, a `fs.readStream` emits an event when the file is
+					<p>Many objects in Node emit events: a <code>net.Server</code> emits an event each time
+a peer connects to it, a <code>fs.readStream</code> emits an event when the file is
 opened.</p>
 				</li>
 			
@@ -367,17 +364,17 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.fs.ReadStream.html">node.fs.ReadStream</a></h2>
-					<p>`ReadStream` is a `Readable Stream`.</p>
+					<p><code>ReadStream</code> is a <code>Readable Stream</code>.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.fs.Stats.html">node.fs.Stats</a></h2>
-					<p>Objects returned from `fs.stat()` and `fs.lstat()` are of this type.</p>
+					<p>Objects returned from <code>fs.stat()</code> and <code>fs.lstat()</code> are of this type.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.fs.WriteStream.html">node.fs.WriteStream</a></h2>
-					<p>`WriteStream` is a `Writable Stream`.</p>
+					<p><code>WriteStream</code> is a <code>Writable Stream</code>.</p>
 				</li>
 			
 				<li>
@@ -392,7 +389,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.html">node.http</a></h2>
-					<p>To use the HTTP server and client one must `require('http')`.</p>
+					<p>To use the HTTP server and client one must <code>require('http')</code>.</p>
 				</li>
 			
 				<li>
@@ -407,7 +404,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.ClientRequest.html">node.http.ClientRequest</a></h2>
-					<p>This object is created internally and returned from `http.request()`.</p>
+					<p>This object is created internally and returned from <code>http.request()</code>.</p>
 				</li>
 			
 				<li>
@@ -422,7 +419,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.Server.html">node.http.Server</a></h2>
-					<p>This is an `EventEmitter` with the following events:</p>
+					<p>This is an <code>EventEmitter</code> with the following events:</p>
 				</li>
 			
 				<li>
@@ -447,7 +444,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.net.html">node.net</a></h2>
-					<p>The `net` module provides you with an asynchronous network wrapper.</p>
+					<p>The <code>net</code> module provides you with an asynchronous network wrapper.</p>
 				</li>
 			
 				<li>
@@ -467,7 +464,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.os.html">node.os</a></h2>
-					<p>Use `require('os')` to access this module.</p>
+					<p>Use <code>require('os')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -477,7 +474,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.process.html">node.process</a></h2>
-					<p>The `process` object is a global object and can be accessed from anywhere.</p>
+					<p>The <code>process</code> object is a global object and can be accessed from anywhere.</p>
 				</li>
 			
 				<li>
@@ -543,7 +540,7 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.tls.html">node.tls</a></h2>
-					<p>Use `require('tls')` to access this module.</p>
+					<p>Use <code>require('tls')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -553,7 +550,7 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.tty.html">node.tty</a></h2>
-					<p>Use `require('tty')` to access this module.</p>
+					<p>Use <code>require('tty')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -593,13 +590,13 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.util.html">node.util</a></h2>
-					<p>These functions are in the module `'util'`.</p>
+					<p>These functions are in the module <code>'util'</code>.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.vm.html">node.vm</a></h2>
 					<p>You can access this module with:
-<pre class="code prettyprint lang-js">
+<pre>
     var vm = require('vm');
 </pre>
 JavaScript code can be compiled and run immediately or compiled, saved, and run later.</p>
@@ -616,7 +613,7 @@ JavaScript code can be compiled and run immediately or compiled, saved, and run 
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('css/screen.css', 'css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

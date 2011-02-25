@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="../index.html">Classes</a>
 			<a href="../files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -209,7 +206,7 @@
 			
 			Namespace <span>node.repl</span>
 		</h1>
-		
+
 		<div class="intro">
 			<p class="description summary">
 				A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
@@ -217,9 +214,9 @@ includable in other programs.  REPL provides a way to interactively run
 JavaScript and see the results.  It can be used for debugging, testing, or
 just trying things out.
 
-By executing `node` without any arguments from the command-line you will be
+By executing <code>node</code> without any arguments from the command-line you will be
 dropped into the REPL. It has simplistic emacs line-editing.
-<pre class="code prettyprint lang-js">
+<pre>
     mjr:~$ node
     Type '.help' for options.
     > a = [ 1, 2, 3];
@@ -231,19 +228,19 @@ dropped into the REPL. It has simplistic emacs line-editing.
     2
     3
 </pre>
-For advanced line-editors, start node with the environmental variable `NODE_NO_READLINE=1`.
-This will start the REPL in canonical terminal settings which will allow you to use with `rlwrap`.
+For advanced line-editors, start node with the environmental variable <code>NODE<em>NO</em>READLINE=1</code>.
+This will start the REPL in canonical terminal settings which will allow you to use with <code>rlwrap</code>.
 
 For example, you could add this to your bashrc file:
-<pre class="code prettyprint lang-js">
-    alias node="env NODE_NO_READLINE=1 rlwrap node"
+<pre>
+    alias node="env NODE<em>NO</em>READLINE=1 rlwrap node"
 </pre>
 			</p>
-				
+
 			
 				<ul class="summary">
 					
-					
+
 					
 						<li>Defined in: <a href="../symbols/src/node_wrappers_repl.js.html">repl.js</a></li>
 					
@@ -251,43 +248,20 @@ For example, you could add this to your bashrc file:
 				</ul>
 			
 		</div>
+
 		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.repl.">
-					<caption class="sectionTitle">Namespace Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/node.repl.html#constructor">node.repl</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		
+
 		
 			
 			
-			
+
 			
 		
 <!--
 #### METHODS SUMMARY
 -->
 		
-		
+
 <!--
 #### EVENTS SUMMARY
 -->
@@ -301,20 +275,20 @@ For example, you could add this to your bashrc file:
 					<h2 class="sectionTitle" id="constructor">
 						Namespace Detail
 					</h2>
-					
+
 					<div class="fixedFont">
 						<b>node.repl</b>
 					</div>
-					
+
 					<div class="description">
 						
 						
 					</div>
+
 					
+
 					
-				
-					
-					
+
 					
 				</div>
 			</div>
@@ -325,19 +299,19 @@ For example, you could add this to your bashrc file:
 		
 <!--
 #### METHOD DETAILS
--->		
+-->
 		
-		
+
 <!--
 #### EVENT DETAILS
--->		
+-->
 		
 	</div>
 </div>
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

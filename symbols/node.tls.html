@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="../index.html">Classes</a>
 			<a href="../files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -209,40 +206,40 @@
 			
 			Namespace <span>node.tls</span>
 		</h1>
-		
+
 		<div class="intro">
 			<p class="description summary">
-				Use `require('tls')` to access this module.
+				Use <code>require('tls')</code> to access this module.
 
-The `tls` module uses OpenSSL to provide Transport Layer Security and&#47;or
+The <code>tls</code> module uses OpenSSL to provide Transport Layer Security and&#47;or
 Secure Socket Layer: encrypted stream communication.
 
 TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
 server must have a private key. A private key is created like this
-<pre class="code prettyprint lang-js">
+<pre>
     openssl genrsa -out ryans-key.pem 1024
 </pre>
 All severs and some clients need to have a certificate. Certificates are public
 keys signed by a Certificate Authority or self-signed. The first step to
 getting a certificate is to create a "Certificate Signing Request" (CSR)
 file. This is done with:
-<pre class="code prettyprint lang-js">
+<pre>
     openssl req -new -key ryans-key.pem -out ryans-csr.pem
 </pre>
 To create a self-signed certificate with the CSR, do this:
-<pre class="code prettyprint lang-js">
+<pre>
     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 </pre>
 Alternatively you can send the CSR to a Certificate Authority for signing.
 
 (TODO: docs on creating a CA, for now interested users should just look at
-`test&#47;fixtures&#47;keys&#47;Makefile` in the Node source code)
+<code>test&#47;fixtures&#47;keys&#47;Makefile</code> in the Node source code)
 			</p>
-				
+
 			
 				<ul class="summary">
 					
-					
+
 					
 						<li>Defined in: <a href="../symbols/src/node_wrappers_tls.js.html">tls.js</a></li>
 					
@@ -250,36 +247,13 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 				</ul>
 			
 		</div>
+
 		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.tls.">
-					<caption class="sectionTitle">Namespace Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/node.tls.html#constructor">node.tls</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		
+
 		
 			
 			
-			
+
 			
 		
 <!--
@@ -287,10 +261,10 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 -->
 		
 			
-			
+
 			<div class="props">
 				<h2 class="sectionTitle">Method Summary</h2>
-				
+
 				
 					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class node.tls.">
 						<thead>
@@ -299,7 +273,7 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								<th scope="col">Method Name and Description</th>
 							</tr>
 						</thead>
-						
+
 						<tbody>
 							
 							
@@ -328,11 +302,11 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 						</tbody>
 					</table>
 				
-			
+
 				
 			</div>
 		
-		
+
 <!--
 #### EVENTS SUMMARY
 -->
@@ -346,20 +320,20 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 					<h2 class="sectionTitle" id="constructor">
 						Namespace Detail
 					</h2>
-					
+
 					<div class="fixedFont">
 						<b>node.tls</b>
 					</div>
-					
+
 					<div class="description">
 						
 						
 					</div>
+
 					
+
 					
-				
-					
-					
+
 					
 				</div>
 			</div>
@@ -370,40 +344,40 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 		
 <!--
 #### METHOD DETAILS
--->		
+-->
 		
 			<div class="details props">
 				<div class="innerProps">
 					<h2 class="sectionTitle">
 						Method Detail
 					</h2>
-					
+
 					<ul class="methodDetail" id="MethodDetail">
 						
 						
-							<li 
+							<li
 								 class='item0'
 							>
 								<div class="fixedFont heading" id="createSecurePair">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>createSecurePair</b>(credentials, isServer, requestCert, rejectUnauthorized)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -434,55 +408,55 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item1'
 							>
 								<div class="fixedFont heading" id="createServer">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>createServer</b>(options, listener)
 								</div>
-								
+
 								<div class="description">
 									
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -501,27 +475,27 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								
@@ -531,17 +505,17 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 				</div>
 			</div>
 		
-		
+
 <!--
 #### EVENT DETAILS
--->		
+-->
 		
 	</div>
 </div>
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

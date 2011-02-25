@@ -1,265 +1,267 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.dns
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * Use `require('dns')` to access this module.
-<span class='line'>  5</span>  *
-<span class='line'>  6</span>  * Here is an example which resolves `'www.google.com'` then reverse
-<span class='line'>  7</span>  * resolves the IP addresses which are returned.
-<span class='line'>  8</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>  9</span>  *     var dns = require('dns');
-<span class='line'> 10</span>  *
-<span class='line'> 11</span>  *     dns.resolve4('www.google.com', function (err, addresses) {
-<span class='line'> 12</span>  *       if (err) throw err;
-<span class='line'> 13</span>  *
-<span class='line'> 14</span>  *       console.log('addresses: ' + JSON.stringify(addresses));
-<span class='line'> 15</span>  *
-<span class='line'> 16</span>  *       addresses.forEach(function (a) {
-<span class='line'> 17</span>  *         dns.reverse(a, function (err, domains) {
-<span class='line'> 18</span>  *           if (err) {
-<span class='line'> 19</span>  *             console.log('reverse for ' + a + ' failed: ' +
-<span class='line'> 20</span>  *               err.message);
-<span class='line'> 21</span>  *           } else {
-<span class='line'> 22</span>  *             console.log('reverse for ' + a + ': ' +
-<span class='line'> 23</span>  *               JSON.stringify(domains));
-<span class='line'> 24</span>  *           }
-<span class='line'> 25</span>  *         });
-<span class='line'> 26</span>  *       });
-<span class='line'> 27</span>  *     });
-<span class='line'> 28</span>  * &lt;/pre>
-<span class='line'> 29</span>  */</span><span class="WHIT">
-<span class='line'> 30</span> 
-<span class='line'> 31</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.dns"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 32</span> 
-<span class='line'> 33</span> </span><span class="COMM">/**
-<span class='line'> 34</span>  * @type {*}
-<span class='line'> 35</span>  */</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="NAME">node.dns.prototype.NODATA</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 37</span> 
-<span class='line'> 38</span> </span><span class="COMM">/**
-<span class='line'> 39</span>  * @type {*}
-<span class='line'> 40</span>  */</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="NAME">node.dns.prototype.FORMERR</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 42</span> 
-<span class='line'> 43</span> </span><span class="COMM">/**
-<span class='line'> 44</span>  * @type {*}
-<span class='line'> 45</span>  */</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="NAME">node.dns.prototype.BADRESP</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * @type {*}
-<span class='line'> 50</span>  */</span><span class="WHIT">
-<span class='line'> 51</span> </span><span class="NAME">node.dns.prototype.NOTFOUND</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 52</span> 
-<span class='line'> 53</span> </span><span class="COMM">/**
-<span class='line'> 54</span>  * @type {*}
-<span class='line'> 55</span>  */</span><span class="WHIT">
-<span class='line'> 56</span> </span><span class="NAME">node.dns.prototype.BADNAME</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 57</span> 
-<span class='line'> 58</span> </span><span class="COMM">/**
-<span class='line'> 59</span>  * @type {*}
-<span class='line'> 60</span>  */</span><span class="WHIT">
-<span class='line'> 61</span> </span><span class="NAME">node.dns.prototype.TIMEOUT</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 62</span> 
-<span class='line'> 63</span> </span><span class="COMM">/**
-<span class='line'> 64</span>  * @type {*}
-<span class='line'> 65</span>  */</span><span class="WHIT">
-<span class='line'> 66</span> </span><span class="NAME">node.dns.prototype.CONNREFUSED</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 67</span> 
-<span class='line'> 68</span> </span><span class="COMM">/**
-<span class='line'> 69</span>  * @type {*}
-<span class='line'> 70</span>  */</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="NAME">node.dns.prototype.NOMEM</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> 
-<span class='line'> 73</span> </span><span class="COMM">/**
-<span class='line'> 74</span>  * @type {*}
-<span class='line'> 75</span>  */</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="NAME">node.dns.prototype.DESTRUCTION</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 77</span> 
-<span class='line'> 78</span> </span><span class="COMM">/**
-<span class='line'> 79</span>  * @type {*}
-<span class='line'> 80</span>  */</span><span class="WHIT">
-<span class='line'> 81</span> </span><span class="NAME">node.dns.prototype.NOTIMP</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 82</span> 
-<span class='line'> 83</span> </span><span class="COMM">/**
-<span class='line'> 84</span>  * @type {*}
-<span class='line'> 85</span>  */</span><span class="WHIT">
-<span class='line'> 86</span> </span><span class="NAME">node.dns.prototype.EREFUSED</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 87</span> 
-<span class='line'> 88</span> </span><span class="COMM">/**
-<span class='line'> 89</span>  * @type {*}
-<span class='line'> 90</span>  */</span><span class="WHIT">
-<span class='line'> 91</span> </span><span class="NAME">node.dns.prototype.SERVFAIL</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 92</span> 
-<span class='line'> 93</span> </span><span class="COMM">/**
-<span class='line'> 94</span>  * Resolves a domain (e.g. `'google.com'`) into an array of the record types
-<span class='line'> 95</span>  * specified by rrtype. Valid rrtypes are `A` (IPV4 addresses), `AAAA` (IPV6
-<span class='line'> 96</span>  * addresses), `MX` (mail exchange records), `TXT` (text records), `SRV` (SRV
-<span class='line'> 97</span>  * records), and `PTR` (used for reverse IP lookups).
-<span class='line'> 98</span>  *
-<span class='line'> 99</span>  * The callback has arguments `(err, addresses)`.  The type of each item
-<span class='line'>100</span>  * in `addresses` is determined by the record type, and described in the
-<span class='line'>101</span>  * documentation for the corresponding lookup methods below.
-<span class='line'>102</span>  *
-<span class='line'>103</span>  * On error, `err` would be an instanceof `Error` object, where `err.errno` is
-<span class='line'>104</span>  * one of the error codes listed below and `err.message` is a string describing
-<span class='line'>105</span>  * the error in English.
-<span class='line'>106</span>  * @param {*} domain
-<span class='line'>107</span>  * @param {*} type_
-<span class='line'>108</span>  * @param {*} callback_
-<span class='line'>109</span>  * @return {*}
-<span class='line'>110</span>  */</span><span class="WHIT">
-<span class='line'>111</span> </span><span class="NAME">node.dns.prototype.resolve</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">domain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback_</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>112</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.dns.core_.resolve</span><span class="PUNC">(</span><span class="NAME">domain</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">type_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback_</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>113</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>114</span> 
-<span class='line'>115</span> </span><span class="COMM">/**
-<span class='line'>116</span>  * @param {*} domain
-<span class='line'>117</span>  * @param {*} family/*=4*/</span><span class="WHIT">
-<span class='line'>118</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>119</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>120</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>121</span> node.dns.prototype.getHostByName = function(domain, family/</span><span class="PUNC">*</span><span class="PUNC">=</span><span class="NUMB">4</span><span class="PUNC">*</span><span class="REGX">/, callback) {
-<span class='line'>122</span>   return node.dns.core_.getHostByName(domain, family/</span><span class="PUNC">*</span><span class="PUNC">=</span><span class="NUMB">4</span><span class="PUNC">*</span><span class="REGX">/, callback);
-<span class='line'>123</span> };
-<span class='line'>124</span> 
-<span class='line'>125</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>126</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">address</span><span class="WHIT">
-<span class='line'>127</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">family</span><span class="COMM">/*=4*/</span><span class="WHIT">
-<span class='line'>128</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>129</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>130</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>131</span> node.dns.prototype.getHostByAddr = function(address, family/</span><span class="PUNC">*</span><span class="PUNC">=</span><span class="NUMB">4</span><span class="PUNC">*</span><span class="REGX">/, callback) {
-<span class='line'>132</span>   return node.dns.core_.getHostByAddr(address, family/</span><span class="PUNC">*</span><span class="PUNC">=</span><span class="NUMB">4</span><span class="PUNC">*</span><span class="REGX">/, callback);
-<span class='line'>133</span> };
-<span class='line'>134</span> 
-<span class='line'>135</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>136</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Resolves</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.g.</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="STRN">'google.com'</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">into</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">first</span><span class="WHIT"> </span><span class="NAME">found</span><span class="WHIT"> </span><span class="NAME">A</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">IPv4</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">or</span><span class="WHIT">
-<span class='line'>137</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">AAAA</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">IPv6</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">record.</span><span class="WHIT">
-<span class='line'>138</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>139</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="NAME">has</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">address</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">family</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">.</span><span class="WHIT">  </span><span class="NAME">The</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">address</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">argument</span><span class="WHIT">
-<span class='line'>140</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="NAME">string</span><span class="WHIT"> </span><span class="NAME">representation</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="NAME">IP</span><span class="WHIT"> </span><span class="NAME">v4</span><span class="WHIT"> </span><span class="NAME">or</span><span class="WHIT"> </span><span class="NAME">v6</span><span class="WHIT"> </span><span class="NAME">address.</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">family</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">argument</span><span class="WHIT">
-<span class='line'>141</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">either</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">integer</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="WHIT"> </span><span class="NAME">or</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="WHIT"> </span><span class="NAME">and</span><span class="WHIT"> </span><span class="NAME">denotes</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">family</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">address</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">not</span><span class="WHIT">
-<span class='line'>142</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">neccessarily</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">value</span><span class="WHIT"> </span><span class="NAME">initially</span><span class="WHIT"> </span><span class="NAME">passed</span><span class="WHIT"> </span><span class="NAME">to</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">lookup</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>143</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>144</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">family</span><span class="WHIT">
-<span class='line'>145</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>146</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>147</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>148</span> node.dns.prototype.lookup = function(domain, family, callback) {
-<span class='line'>149</span>   return node.dns.core_.lookup(domain, family, callback);
-<span class='line'>150</span> };
-<span class='line'>151</span> 
-<span class='line'>152</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>153</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">same</span><span class="WHIT"> </span><span class="NAME">as</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">but</span><span class="WHIT"> </span><span class="NAME">only</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="NAME">IPv4</span><span class="WHIT"> </span><span class="NAME">queries</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="TOKN">`</span><span class="NAME">A</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">records</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>154</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">addresses</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">array</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">IPv4</span><span class="WHIT"> </span><span class="NAME">addresses</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.g.</span><span class="WHIT">
-<span class='line'>155</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">[</span><span class="STRN">'74.125.79.104'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'74.125.79.105'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'74.125.79.106'</span><span class="PUNC">]</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>156</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>158</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>159</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>160</span> node.dns.prototype.resolve4 = function(domain, callback) {
-<span class='line'>161</span>   return node.dns.core_.resolve4(domain, callback);
-<span class='line'>162</span> };
-<span class='line'>163</span> 
-<span class='line'>164</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>165</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">same</span><span class="WHIT"> </span><span class="NAME">as</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.resolve4</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">except</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="NAME">IPv6</span><span class="WHIT"> </span><span class="NAME">queries</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">an</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">AAAA</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">query</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>166</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>167</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>168</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>169</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>170</span> node.dns.prototype.resolve6 = function(domain, callback) {
-<span class='line'>171</span>   return node.dns.core_.resolve6(domain, callback);
-<span class='line'>172</span> };
-<span class='line'>173</span> 
-<span class='line'>174</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>175</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">same</span><span class="WHIT"> </span><span class="NAME">as</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">but</span><span class="WHIT"> </span><span class="NAME">only</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="NAME">mail</span><span class="WHIT"> </span><span class="NAME">exchange</span><span class="WHIT"> </span><span class="NAME">queries</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="TOKN">`</span><span class="NAME">MX</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">records</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>176</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>177</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">addresses</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">array</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">MX</span><span class="WHIT"> </span><span class="NAME">records</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">each</span><span class="WHIT"> </span><span class="KEYW">with</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="NAME">priority</span><span class="WHIT"> </span><span class="NAME">and</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">exchange</span><span class="WHIT">
-<span class='line'>178</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">attribute</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.g.</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">[</span><span class="PUNC">{</span><span class="STRN">'priority'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'exchange'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'mx.example.com'</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="PUNC">.</span><span class="PUNC">.</span><span class="PUNC">.</span><span class="PUNC">]</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>179</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>180</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>181</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>182</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>183</span> node.dns.prototype.resolveMx = function(domain, callback) {
-<span class='line'>184</span>   return node.dns.core_.resolveMx(domain, callback);
-<span class='line'>185</span> };
-<span class='line'>186</span> 
-<span class='line'>187</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>188</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">same</span><span class="WHIT"> </span><span class="NAME">as</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">but</span><span class="WHIT"> </span><span class="NAME">only</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="NAME">text</span><span class="WHIT"> </span><span class="NAME">queries</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="TOKN">`</span><span class="NAME">TXT</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">records</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>189</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">addresses</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">array</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">text</span><span class="WHIT"> </span><span class="NAME">records</span><span class="WHIT"> </span><span class="NAME">available</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">domain</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.g.</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>190</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">[</span><span class="STRN">'v=spf1 ip4:0.0.0.0 ~all'</span><span class="PUNC">]</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>191</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>192</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>193</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>194</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>195</span> node.dns.prototype.resolveTxt = function(domain, callback) {
-<span class='line'>196</span>   return node.dns.core_.resolveTxt(domain, callback);
-<span class='line'>197</span> };
-<span class='line'>198</span> 
-<span class='line'>199</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>200</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">same</span><span class="WHIT"> </span><span class="NAME">as</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.resolve</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">but</span><span class="WHIT"> </span><span class="NAME">only</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="NAME">service</span><span class="WHIT"> </span><span class="NAME">records</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="TOKN">`</span><span class="NAME">SRV</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">records</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>201</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">addresses</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">array</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">SRV</span><span class="WHIT"> </span><span class="NAME">records</span><span class="WHIT"> </span><span class="NAME">available</span><span class="WHIT"> </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">domain</span><span class="TOKN">`</span><span class="PUNC">.</span><span class="WHIT"> </span><span class="NAME">Properties</span><span class="WHIT">
-<span class='line'>202</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">SRV</span><span class="WHIT"> </span><span class="NAME">records</span><span class="WHIT"> </span><span class="NAME">are</span><span class="WHIT"> </span><span class="NAME">priority</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">weight</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">port</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">and</span><span class="WHIT"> </span><span class="NAME">name</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">e.g.</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>203</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">[</span><span class="PUNC">{</span><span class="STRN">'priority'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="STRN">'weight'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'port'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">21223</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'name'</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'service.example.com'</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">.</span><span class="PUNC">.</span><span class="PUNC">.</span><span class="PUNC">]</span><span class="TOKN">`</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>204</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>205</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>206</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>207</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>208</span> node.dns.prototype.resolveSrv = function(domain, callback) {
-<span class='line'>209</span>   return node.dns.core_.resolveSrv(domain, callback);
-<span class='line'>210</span> };
-<span class='line'>211</span> 
-<span class='line'>212</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>213</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Reverse</span><span class="WHIT"> </span><span class="NAME">resolves</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">ip</span><span class="WHIT"> </span><span class="NAME">address</span><span class="WHIT"> </span><span class="NAME">to</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">array</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT"> </span><span class="NAME">names.</span><span class="WHIT">
-<span class='line'>214</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>215</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">The</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="NAME">has</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="PUNC">(</span><span class="NAME">err</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">domains</span><span class="PUNC">)</span><span class="TOKN">`</span><span class="PUNC">.</span><span class="WHIT">
-<span class='line'>216</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>217</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">If</span><span class="WHIT"> </span><span class="NAME">there</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">error</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">err</span><span class="TOKN">`</span><span class="WHIT"> </span><span class="NAME">will</span><span class="WHIT"> </span><span class="NAME">be</span><span class="WHIT"> </span><span class="NAME">non</span><span class="PUNC">-</span><span class="KEYW">null</span><span class="WHIT"> </span><span class="NAME">and</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="KEYW">instanceof</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">Error</span><span class="WHIT">
-<span class='line'>218</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">object.</span><span class="WHIT">
-<span class='line'>219</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>220</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">Each</span><span class="WHIT"> </span><span class="NAME">DNS</span><span class="WHIT"> </span><span class="NAME">query</span><span class="WHIT"> </span><span class="NAME">can</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">an</span><span class="WHIT"> </span><span class="NAME">error</span><span class="WHIT"> </span><span class="NAME">code.</span><span class="WHIT">
-<span class='line'>221</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>222</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.TEMPFAIL</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">timeout</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">SERVFAIL</span><span class="WHIT"> </span><span class="NAME">or</span><span class="WHIT"> </span><span class="NAME">similar.</span><span class="WHIT">
-<span class='line'>223</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.PROTOCOL</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">got</span><span class="WHIT"> </span><span class="NAME">garbled</span><span class="WHIT"> </span><span class="NAME">reply.</span><span class="WHIT">
-<span class='line'>224</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.NXDOMAIN</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT"> </span><span class="NAME">does</span><span class="WHIT"> </span><span class="NAME">not</span><span class="WHIT"> </span><span class="NAME">exists.</span><span class="WHIT">
-<span class='line'>225</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.NODATA</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT"> </span><span class="NAME">exists</span><span class="WHIT"> </span><span class="NAME">but</span><span class="WHIT"> </span><span class="NAME">no</span><span class="WHIT"> </span><span class="NAME">data</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">reqd</span><span class="WHIT"> </span><span class="NAME">type.</span><span class="WHIT">
-<span class='line'>226</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.NOMEM</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">out</span><span class="WHIT"> </span><span class="NAME">of</span><span class="WHIT"> </span><span class="NAME">memory</span><span class="WHIT"> </span><span class="KEYW">while</span><span class="WHIT"> </span><span class="NAME">processing.</span><span class="WHIT">
-<span class='line'>227</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="TOKN">`</span><span class="NAME">dns.BADQUERY</span><span class="TOKN">`</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">the</span><span class="WHIT"> </span><span class="NAME">query</span><span class="WHIT"> </span><span class="NAME">is</span><span class="WHIT"> </span><span class="NAME">malformed.</span><span class="WHIT">
-<span class='line'>228</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>229</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>230</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>231</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>232</span> node.dns.prototype.reverse = function(domain, callback) {
-<span class='line'>233</span>   return node.dns.core_.reverse(domain, callback);
-<span class='line'>234</span> };
-<span class='line'>235</span> 
-<span class='line'>236</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>237</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>238</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>239</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>240</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>241</span> node.dns.prototype.resolveNs = function(domain, callback) {
-<span class='line'>242</span>   return node.dns.core_.resolveNs(domain, callback);
-<span class='line'>243</span> };
-<span class='line'>244</span> 
-<span class='line'>245</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>246</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">domain</span><span class="WHIT">
-<span class='line'>247</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT">
-<span class='line'>248</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>249</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'>250</span> node.dns.prototype.resolveCname = function(domain, callback) {
-<span class='line'>251</span>   return node.dns.core_.resolveCname(domain, callback);
-<span class='line'>252</span> };
-<span class='line'>253</span> 
-<span class='line'>254</span> 
-<span class='line'>255</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'>256</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">private</span><span class="WHIT">
-<span class='line'>257</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>258</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="TOKN"></span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_dns.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.dns
+ * @namespace
+ * Use &lt;code>require('dns')&lt;/code> to access this module.
+ *
+ * Here is an example which resolves &lt;code>'www.google.com'&lt;/code> then reverse
+ * resolves the IP addresses which are returned.
+ * &lt;pre>
+ *     var dns = require('dns');
+ *
+ *     dns.resolve4('www.google.com', function (err, addresses) {
+ *       if (err) throw err;
+ *
+ *       console.log('addresses: ' + JSON.stringify(addresses));
+ *
+ *       addresses.forEach(function (a) {
+ *         dns.reverse(a, function (err, domains) {
+ *           if (err) {
+ *             console.log('reverse for ' + a + ' failed: ' +
+ *               err.message);
+ *           } else {
+ *             console.log('reverse for ' + a + ': ' +
+ *               JSON.stringify(domains));
+ *           }
+ *         });
+ *       });
+ *     });
+ * &lt;/pre>
+ */
+
+goog.provide("node.dns");
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.NODATA;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.FORMERR;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.BADRESP;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.NOTFOUND;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.BADNAME;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.TIMEOUT;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.CONNREFUSED;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.NOMEM;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.DESTRUCTION;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.NOTIMP;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.EREFUSED;
+
+/**
+ * @type {*}
+ */
+node.dns.prototype.SERVFAIL;
+
+/**
+ * Resolves a domain (e.g. &lt;code>'google.com'&lt;/code>) into an array of the record types
+ * specified by rrtype. Valid rrtypes are &lt;code>A&lt;/code> (IPV4 addresses), &lt;code>AAAA&lt;/code> (IPV6
+ * addresses), &lt;code>MX&lt;/code> (mail exchange records), &lt;code>TXT&lt;/code> (text records), &lt;code>SRV&lt;/code> (SRV
+ * records), and &lt;code>PTR&lt;/code> (used for reverse IP lookups).
+ *
+ * The callback has arguments &lt;code>(err, addresses)&lt;/code>.  The type of each item
+ * in &lt;code>addresses&lt;/code> is determined by the record type, and described in the
+ * documentation for the corresponding lookup methods below.
+ *
+ * On error, &lt;code>err&lt;/code> would be an instanceof &lt;code>Error&lt;/code> object, where &lt;code>err.errno&lt;/code> is
+ * one of the error codes listed below and &lt;code>err.message&lt;/code> is a string describing
+ * the error in English.
+ * @param {*} domain
+ * @param {*} type_
+ * @param {*} callback_
+ * @return {*}
+ */
+node.dns.prototype.resolve = function(domain, type_, callback_) {
+  return node.dns.core_.resolve(domain, type_, callback_);
+};
+
+/**
+ * @param {*} domain
+ * @param {*} family/*=4*/
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.getHostByName = function(domain, family/*=4*/, callback) {
+  return node.dns.core_.getHostByName(domain, family/*=4*/, callback);
+};
+
+/**
+ * @param {*} address
+ * @param {*} family/*=4*/
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
+  return node.dns.core_.getHostByAddr(address, family/*=4*/, callback);
+};
+
+/**
+ * Resolves a domain (e.g. &lt;code>'google.com'&lt;/code>) into the first found A (IPv4) or
+ * AAAA (IPv6) record.
+ *
+ * The callback has arguments &lt;code>(err, address, family)&lt;/code>.  The &lt;code>address&lt;/code> argument
+ * is a string representation of a IP v4 or v6 address. The &lt;code>family&lt;/code> argument
+ * is either the integer 4 or 6 and denotes the family of &lt;code>address&lt;/code> (not
+ * neccessarily the value initially passed to &lt;code>lookup&lt;/code>).
+ * @param {*} domain
+ * @param {*} family
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.lookup = function(domain, family, callback) {
+  return node.dns.core_.lookup(domain, family, callback);
+};
+
+/**
+ * The same as &lt;code>dns.resolve()&lt;/code>, but only for IPv4 queries (&lt;code>A&lt;/code> records).
+ * &lt;code>addresses&lt;/code> is an array of IPv4 addresses (e.g.
+ * &lt;code>['74.125.79.104', '74.125.79.105', '74.125.79.106']&lt;/code>).
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolve4 = function(domain, callback) {
+  return node.dns.core_.resolve4(domain, callback);
+};
+
+/**
+ * The same as &lt;code>dns.resolve4()&lt;/code> except for IPv6 queries (an &lt;code>AAAA&lt;/code> query).
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolve6 = function(domain, callback) {
+  return node.dns.core_.resolve6(domain, callback);
+};
+
+/**
+ * The same as &lt;code>dns.resolve()&lt;/code>, but only for mail exchange queries (&lt;code>MX&lt;/code> records).
+ *
+ * &lt;code>addresses&lt;/code> is an array of MX records, each with a priority and an exchange
+ * attribute (e.g. &lt;code>[{'priority': 10, 'exchange': 'mx.example.com'},...]&lt;/code>).
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolveMx = function(domain, callback) {
+  return node.dns.core_.resolveMx(domain, callback);
+};
+
+/**
+ * The same as &lt;code>dns.resolve()&lt;/code>, but only for text queries (&lt;code>TXT&lt;/code> records).
+ * &lt;code>addresses&lt;/code> is an array of the text records available for &lt;code>domain&lt;/code> (e.g.,
+ * &lt;code>['v=spf1 ip4:0.0.0.0 ~all']&lt;/code>).
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolveTxt = function(domain, callback) {
+  return node.dns.core_.resolveTxt(domain, callback);
+};
+
+/**
+ * The same as &lt;code>dns.resolve()&lt;/code>, but only for service records (&lt;code>SRV&lt;/code> records).
+ * &lt;code>addresses&lt;/code> is an array of the SRV records available for &lt;code>domain&lt;/code>. Properties
+ * of SRV records are priority, weight, port, and name (e.g.,
+ * &lt;code>[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]&lt;/code>).
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolveSrv = function(domain, callback) {
+  return node.dns.core_.resolveSrv(domain, callback);
+};
+
+/**
+ * Reverse resolves an ip address to an array of domain names.
+ *
+ * The callback has arguments &lt;code>(err, domains)&lt;/code>.
+ *
+ * If there an an error, &lt;code>err&lt;/code> will be non-null and an instanceof the Error
+ * object.
+ *
+ * Each DNS query can return an error code.
+ *
+ * - &lt;code>dns.TEMPFAIL&lt;/code>: timeout, SERVFAIL or similar.
+ * - &lt;code>dns.PROTOCOL&lt;/code>: got garbled reply.
+ * - &lt;code>dns.NXDOMAIN&lt;/code>: domain does not exists.
+ * - &lt;code>dns.NODATA&lt;/code>: domain exists but no data of reqd type.
+ * - &lt;code>dns.NOMEM&lt;/code>: out of memory while processing.
+ * - &lt;code>dns.BADQUERY&lt;/code>: the query is malformed.
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.reverse = function(domain, callback) {
+  return node.dns.core_.reverse(domain, callback);
+};
+
+/**
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolveNs = function(domain, callback) {
+  return node.dns.core_.resolveNs(domain, callback);
+};
+
+/**
+ * @param {*} domain
+ * @param {*} callback
+ * @return {*}
+ */
+node.dns.prototype.resolveCname = function(domain, callback) {
+  return node.dns.core_.resolveCname(domain, callback);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.dns.core_ = require("dns");</pre></body></html>

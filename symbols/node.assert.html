@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -32,11 +32,11 @@
 			<a href="../index.html">Classes</a>
 			<a href="../files.html">Files</a>
 		</div>
-	
+
 		<h2 class="heading1">Classes</h2>
-		
+
 		<input type="text" name="classFilter" class="classFilter" id="ClassFilter" placeholder="Filter"></input>
-		
+
 		<nav>
 			<ul class="classList" id="ClassList">
 				
@@ -195,9 +195,6 @@
 	</div>
 	<div class="fineprint" style="clear:both">
 		
-		Documentation generator: <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0<br />
-		Template: <a href="http://www.thebrightlines.com/2010/05/06/new-template-for-jsdoctoolkit-codeview/" target="_blank">Codeview</a> 1.2<br />
-		Generated on: 2011-1-22 6:37
 	</div>
 </div>
 
@@ -209,17 +206,17 @@
 			
 			Namespace <span>node.assert</span>
 		</h1>
-		
+
 		<div class="intro">
 			<p class="description summary">
 				This module is used for writing unit tests for your applications, you can
-access it with `require('assert')`.
+access it with <code>require('assert')</code>.
 			</p>
-				
+
 			
 				<ul class="summary">
 					
-					
+
 					
 						<li>Defined in: <a href="../symbols/src/node_wrappers_assert.js.html">assert.js</a></li>
 					
@@ -227,36 +224,13 @@ access it with `require('assert')`.
 				</ul>
 			
 		</div>
+
 		
-		
-			<div class="props">
-				<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class node.assert.">
-					<caption class="sectionTitle">Namespace Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Constructor Attributes</th>
-							<th scope="col">Constructor Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription" >
-								<div class="fixedFont">
-									<b><a href="../symbols/node.assert.html#constructor">node.assert</a></b>
-								</div>
-								<div class="description"></div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		
+
 		
 			
 			
-			
+
 			
 		
 <!--
@@ -264,10 +238,10 @@ access it with `require('assert')`.
 -->
 		
 			
-			
+
 			<div class="props">
 				<h2 class="sectionTitle">Method Summary</h2>
-				
+
 				
 					<table class="summaryTable" id="MethodsList" cellspacing="0" summary="A summary of the methods documented in the class node.assert.">
 						<thead>
@@ -276,7 +250,7 @@ access it with `require('assert')`.
 								<th scope="col">Method Name and Description</th>
 							</tr>
 						</thead>
-						
+
 						<tbody>
 							
 							
@@ -298,7 +272,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#doesNotThrow">doesNotThrow</a></b>(block, error, message)
 										</div>
-										<div class="description">Expects `block` not to throw an error, see assert.throws for details.</div>
+										<div class="description">Expects <code>block</code> not to throw an error, see assert.throws for details.</div>
 									</td>
 								</tr>
 							
@@ -309,7 +283,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#equal">equal</a></b>(actual, expected, message)
 										</div>
-										<div class="description">Tests shallow, coercive equality with the equal comparison operator ( `==` ).</div>
+										<div class="description">Tests shallow, coercive equality with the equal comparison operator ( <code>==</code> ).</div>
 									</td>
 								</tr>
 							
@@ -320,7 +294,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#fail">fail</a></b>(actual, expected, message, operator, stackStartFunction)
 										</div>
-										<div class="description">Tests if `actual` is equal to `expected` using the operator provided.</div>
+										<div class="description">Tests if <code>actual</code> is equal to <code>expected</code> using the operator provided.</div>
 									</td>
 								</tr>
 							
@@ -353,7 +327,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#notEqual">notEqual</a></b>(actual, expected, message)
 										</div>
-										<div class="description">Tests shallow, coercive non-equality with the not equal comparison operator ( `!=` ).</div>
+										<div class="description">Tests shallow, coercive non-equality with the not equal comparison operator ( <code>!=</code> ).</div>
 									</td>
 								</tr>
 							
@@ -364,7 +338,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#notStrictEqual">notStrictEqual</a></b>(actual, expected, message)
 										</div>
-										<div class="description">Tests strict non-equality, as determined by the strict not equal operator ( `!==` )</div>
+										<div class="description">Tests strict non-equality, as determined by the strict not equal operator ( <code>!==</code> )</div>
 									</td>
 								</tr>
 							
@@ -375,7 +349,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#ok">ok</a></b>(value, message)
 										</div>
-										<div class="description">Tests if value is a `true` value, it is equivalent to `assert.equal(true, value, message);`</div>
+										<div class="description">Tests if value is a <code>true</code> value, it is equivalent to <code>assert.equal(true, value, message);</code></div>
 									</td>
 								</tr>
 							
@@ -386,7 +360,7 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#strictEqual">strictEqual</a></b>(actual, expected, message)
 										</div>
-										<div class="description">Tests strict equality, as determined by the strict equality operator ( `===` )</div>
+										<div class="description">Tests strict equality, as determined by the strict equality operator ( <code>===</code> )</div>
 									</td>
 								</tr>
 							
@@ -397,18 +371,18 @@ access it with `require('assert')`.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.assert.html#throws">throws</a></b>(block, error, message)
 										</div>
-										<div class="description">Expects `block` to throw an error.</div>
+										<div class="description">Expects <code>block</code> to throw an error.</div>
 									</td>
 								</tr>
 							
 						</tbody>
 					</table>
 				
-			
+
 				
 			</div>
 		
-		
+
 <!--
 #### EVENTS SUMMARY
 -->
@@ -422,20 +396,20 @@ access it with `require('assert')`.
 					<h2 class="sectionTitle" id="constructor">
 						Namespace Detail
 					</h2>
-					
+
 					<div class="fixedFont">
 						<b>node.assert</b>
 					</div>
-					
+
 					<div class="description">
 						
 						
 					</div>
+
 					
+
 					
-				
-					
-					
+
 					
 				</div>
 			</div>
@@ -446,40 +420,40 @@ access it with `require('assert')`.
 		
 <!--
 #### METHOD DETAILS
--->		
+-->
 		
 			<div class="details props">
 				<div class="innerProps">
 					<h2 class="sectionTitle">
 						Method Detail
 					</h2>
-					
+
 					<ul class="methodDetail" id="MethodDetail">
 						
 						
-							<li 
+							<li
 								 class='item0'
 							>
 								<div class="fixedFont heading" id="deepEqual">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>deepEqual</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
 									Tests for deep equality.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -504,55 +478,55 @@ access it with `require('assert')`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item1'
 							>
 								<div class="fixedFont heading" id="doesNotThrow">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>doesNotThrow</b>(block, error, message)
 								</div>
-								
+
 								<div class="description">
-									Expects `block` not to throw an error, see assert.throws for details.
+									Expects <code>block</code> not to throw an error, see assert.throws for details.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -577,55 +551,55 @@ access it with `require('assert')`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item2'
 							>
 								<div class="fixedFont heading" id="equal">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>equal</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
-									Tests shallow, coercive equality with the equal comparison operator ( `==` ).
+									Tests shallow, coercive equality with the equal comparison operator ( <code>==</code> ).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -650,55 +624,55 @@ access it with `require('assert')`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item3'
 							>
 								<div class="fixedFont heading" id="fail">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>fail</b>(actual, expected, message, operator, stackStartFunction)
 								</div>
-								
+
 								<div class="description">
-									Tests if `actual` is equal to `expected` using the operator provided.
+									Tests if <code>actual</code> is equal to <code>expected</code> using the operator provided.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -735,56 +709,56 @@ access it with `require('assert')`.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item4'
 							>
 								<div class="fixedFont heading" id="ifError">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>ifError</b>(err)
 								</div>
-								
+
 								<div class="description">
 									Tests if value is not a false value, throws if it is a true value. Useful when
-testing the first argument, `error` in callbacks.
+testing the first argument, <code>error</code> in callbacks.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -797,55 +771,55 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item5'
 							>
 								<div class="fixedFont heading" id="notDeepEqual">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>notDeepEqual</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
 									Tests for any deep inequality.
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -870,55 +844,55 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item6'
 							>
 								<div class="fixedFont heading" id="notEqual">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>notEqual</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
-									Tests shallow, coercive non-equality with the not equal comparison operator ( `!=` ).
+									Tests shallow, coercive non-equality with the not equal comparison operator ( <code>!=</code> ).
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -943,55 +917,55 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item7'
 							>
 								<div class="fixedFont heading" id="notStrictEqual">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>notStrictEqual</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
-									Tests strict non-equality, as determined by the strict not equal operator ( `!==` )
+									Tests strict non-equality, as determined by the strict not equal operator ( <code>!==</code> )
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1016,55 +990,55 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item8'
 							>
 								<div class="fixedFont heading" id="ok">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>ok</b>(value, message)
 								</div>
-								
+
 								<div class="description">
-									Tests if value is a `true` value, it is equivalent to `assert.equal(true, value, message);`
+									Tests if value is a <code>true</code> value, it is equivalent to <code>assert.equal(true, value, message);</code>
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1083,55 +1057,55 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item9'
 							>
 								<div class="fixedFont heading" id="strictEqual">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>strictEqual</b>(actual, expected, message)
 								</div>
-								
+
 								<div class="description">
-									Tests strict equality, as determined by the strict equality operator ( `===` )
+									Tests strict equality, as determined by the strict equality operator ( <code>===</code> )
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1156,51 +1130,51 @@ testing the first argument, `error` in callbacks.
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								<div class="hr"></div>
 							</li>
 						
-							<li 
+							<li
 								 class='item10'
 							>
 								<div class="fixedFont heading" id="throws">
 									<span class='lighter'>
 									
 									</span>
-									
+
 									<span class="light">{*}</span>
-									
+
 									<b>throws</b>(block, error, message)
 								</div>
-								
+
 								<div class="description">
-									Expects `block` to throw an error. `error` can be constructor, regexp or
+									Expects <code>block</code> to throw an error. <code>error</code> can be constructor, regexp or
 validation function.
 
 Validate instanceof using constructor:
-<pre class="code prettyprint lang-js">
+<pre>
     assert.throws(
       function() {
         throw new Error("Wrong value");
@@ -1209,7 +1183,7 @@ Validate instanceof using constructor:
     );
 </pre>
 Validate error message using RegExp:
-<pre class="code prettyprint lang-js">
+<pre>
     assert.throws(
       function() {
         throw new Error("Wrong value");
@@ -1218,7 +1192,7 @@ Validate error message using RegExp:
     );
 </pre>
 Custom error validation:
-<pre class="code prettyprint lang-js">
+<pre>
     assert.throws(
       function() {
         throw new Error("Wrong value");
@@ -1231,14 +1205,14 @@ Custom error validation:
       "unexpected error"
     );
 </pre>
+
 									
-									
-									
+
 									
 								</div>
+
 								
-								
-								
+
 								
 									<dl class="detailList params">
 										<dt class="heading">Parameters:</dt>
@@ -1263,27 +1237,27 @@ Custom error validation:
 										
 									</dl>
 								
-								
+
 								
 									<dl class="detailList nomargin">
-									
+
 										
+
 										
+
 										
-										
-										
-										
+
 										
 											<dt class="heading">Returns:</dt>
 											
 												<dd><span class="light fixedFont">{*}</span> </dd>
 											
 										
+
 										
+
 										
-										
-										
-									
+
 									</dl>
 								
 								
@@ -1293,17 +1267,17 @@ Custom error validation:
 				</div>
 			</div>
 		
-		
+
 <!--
 #### EVENT DETAILS
--->		
+-->
 		
 	</div>
 </div>
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>
