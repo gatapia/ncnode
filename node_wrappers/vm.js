@@ -2,7 +2,7 @@
  * @name node.vm
  * @namespace
  * You can access this module with:
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     var vm = require('vm');
  * </pre>
  * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
@@ -11,13 +11,13 @@
 goog.provide("node.vm");
 
 /**
- * <code class="code prettyprint lang-js">createScript</code> compiles <code class="code prettyprint lang-js">code</code> as if it were loaded from <code class="code prettyprint lang-js">filename</code>,
- * but does not run it. Instead, it returns a <code class="code prettyprint lang-js">vm.Script</code> object representing this compiled code.
+ * <code>createScript</code> compiles <code>code</code> as if it were loaded from <code>filename</code>,
+ * but does not run it. Instead, it returns a <code>vm.Script</code> object representing this compiled code.
  * This script can be run later many times using methods below.
  * The returned script is not bound to any global object.
- * It is bound before each run, just for that run. <code class="code prettyprint lang-js">filename</code> is optional.
+ * It is bound before each run, just for that run. <code>filename</code> is optional.
  *
- * In case of syntax error in <code class="code prettyprint lang-js">code</code>, <code class="code prettyprint lang-js">createScript</code> prints the syntax error to stderr
+ * In case of syntax error in <code>code</code>, <code>createScript</code> prints the syntax error to stderr
  * and throws an exception.
  * @param {*} code
  * @param {*} ctx
@@ -43,13 +43,13 @@ node.vm.prototype.runInContext = function() {
 };
 
 /**
- * Similar to <code class="code prettyprint lang-js">vm.runInThisContext</code> but a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.
- * <code class="code prettyprint lang-js">script.runInThisContext</code> runs the code of <code class="code prettyprint lang-js">script</code> and returns the result.
- * Running code does not have access to local scope, but does have access to the <code class="code prettyprint lang-js">global</code> object
+ * Similar to <code>vm.runInThisContext</code> but a method of a precompiled <code>Script</code> object.
+ * <code>script.runInThisContext</code> runs the code of <code>script</code> and returns the result.
+ * Running code does not have access to local scope, but does have access to the <code>global</code> object
  * (v8: in actual context).
  *
- * Example of using <code class="code prettyprint lang-js">script.runInThisContext</code> to compile code once and run it multiple times:
- * <pre class="code prettyprint lang-js">
+ * Example of using <code>script.runInThisContext</code> to compile code once and run it multiple times:
+ * <pre>
  *     var vm = require('vm');
  *
  *     globalVar = 0;
@@ -71,13 +71,13 @@ node.vm.prototype.runInThisContext = function() {
 };
 
 /**
- * Similar to <code class="code prettyprint lang-js">vm.runInNewContext</code> a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.
- * <code class="code prettyprint lang-js">script.runInNewContext</code> runs the code of <code class="code prettyprint lang-js">script</code> with <code class="code prettyprint lang-js">sandbox</code> as the global object and returns the result.
- * Running code does not have access to local scope. <code class="code prettyprint lang-js">sandbox</code> is optional.
+ * Similar to <code>vm.runInNewContext</code> a method of a precompiled <code>Script</code> object.
+ * <code>script.runInNewContext</code> runs the code of <code>script</code> with <code>sandbox</code> as the global object and returns the result.
+ * Running code does not have access to local scope. <code>sandbox</code> is optional.
  *
  * Example: compile code that increments a global variable and sets one, then execute this code multiple times.
  * These globals are contained in the sandbox.
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     var util = require('util'),
  *         vm = require('vm'),
  *         sandbox = {
@@ -96,7 +96,7 @@ node.vm.prototype.runInThisContext = function() {
  *     &#47;&#47; { animal: 'cat', count: 12, name: 'kitty' }
  * </pre>
  * Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
- * global variable leakage, <code class="code prettyprint lang-js">script.runInNewContext</code> is quite useful, but safely running untrusted code
+ * global variable leakage, <code>script.runInNewContext</code> is quite useful, but safely running untrusted code
  * requires a separate process.
  * @return {*}
  */

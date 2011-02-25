@@ -17,7 +17,7 @@ node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
 };
 
 /**
- * The unescape function used by <code class="code prettyprint lang-js">querystring.parse</code>,
+ * The unescape function used by <code>querystring.parse</code>,
  * provided so that it could be overridden if necessary.
  * @param {*} s
  * @param {*} decodeSpaces
@@ -28,7 +28,7 @@ node.querystring.prototype.unescape = function(s, decodeSpaces) {
 };
 
 /**
- * The escape function used by <code class="code prettyprint lang-js">querystring.stringify</code>,
+ * The escape function used by <code>querystring.stringify</code>,
  * provided so that it could be overridden if necessary.
  * @param {*} str
  * @return {*}
@@ -53,7 +53,7 @@ node.querystring.prototype.encode = function(obj, sep, eq, name) {
  * Optionally override the default separator and assignment characters.
  *
  * Example:
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     querystring.stringify({foo: 'bar'})
  *     &#47;&#47; returns
  *     'foo=bar'
@@ -87,7 +87,7 @@ node.querystring.prototype.decode = function(qs, sep, eq) {
  * Optionally override the default separator and assignment characters.
  *
  * Example:
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     querystring.parse('a=b&b=c')
  *     &#47;&#47; returns
  *     { a: 'b', b: 'c' }

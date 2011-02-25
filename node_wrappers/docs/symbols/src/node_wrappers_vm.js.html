@@ -9,7 +9,7 @@
 <span class='line'>  2</span>  * @name node.vm
 <span class='line'>  3</span>  * @namespace
 <span class='line'>  4</span>  * You can access this module with:
-<span class='line'>  5</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>  5</span>  * &lt;pre>
 <span class='line'>  6</span>  *     var vm = require('vm');
 <span class='line'>  7</span>  * &lt;/pre>
 <span class='line'>  8</span>  * JavaScript code can be compiled and run immediately or compiled, saved, and run later.
@@ -18,13 +18,13 @@
 <span class='line'> 11</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.vm"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 12</span> 
 <span class='line'> 13</span> </span><span class="COMM">/**
-<span class='line'> 14</span>  * &lt;code class="code prettyprint lang-js">createScript&lt;/code> compiles &lt;code class="code prettyprint lang-js">code&lt;/code> as if it were loaded from &lt;code class="code prettyprint lang-js">filename&lt;/code>,
-<span class='line'> 15</span>  * but does not run it. Instead, it returns a &lt;code class="code prettyprint lang-js">vm.Script&lt;/code> object representing this compiled code.
+<span class='line'> 14</span>  * &lt;code>createScript&lt;/code> compiles &lt;code>code&lt;/code> as if it were loaded from &lt;code>filename&lt;/code>,
+<span class='line'> 15</span>  * but does not run it. Instead, it returns a &lt;code>vm.Script&lt;/code> object representing this compiled code.
 <span class='line'> 16</span>  * This script can be run later many times using methods below.
 <span class='line'> 17</span>  * The returned script is not bound to any global object.
-<span class='line'> 18</span>  * It is bound before each run, just for that run. &lt;code class="code prettyprint lang-js">filename&lt;/code> is optional.
+<span class='line'> 18</span>  * It is bound before each run, just for that run. &lt;code>filename&lt;/code> is optional.
 <span class='line'> 19</span>  *
-<span class='line'> 20</span>  * In case of syntax error in &lt;code class="code prettyprint lang-js">code&lt;/code>, &lt;code class="code prettyprint lang-js">createScript&lt;/code> prints the syntax error to stderr
+<span class='line'> 20</span>  * In case of syntax error in &lt;code>code&lt;/code>, &lt;code>createScript&lt;/code> prints the syntax error to stderr
 <span class='line'> 21</span>  * and throws an exception.
 <span class='line'> 22</span>  * @param {*} code
 <span class='line'> 23</span>  * @param {*} ctx
@@ -50,13 +50,13 @@
 <span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 44</span> 
 <span class='line'> 45</span> </span><span class="COMM">/**
-<span class='line'> 46</span>  * Similar to &lt;code class="code prettyprint lang-js">vm.runInThisContext&lt;/code> but a method of a precompiled &lt;code class="code prettyprint lang-js">Script&lt;/code> object.
-<span class='line'> 47</span>  * &lt;code class="code prettyprint lang-js">script.runInThisContext&lt;/code> runs the code of &lt;code class="code prettyprint lang-js">script&lt;/code> and returns the result.
-<span class='line'> 48</span>  * Running code does not have access to local scope, but does have access to the &lt;code class="code prettyprint lang-js">global&lt;/code> object
+<span class='line'> 46</span>  * Similar to &lt;code>vm.runInThisContext&lt;/code> but a method of a precompiled &lt;code>Script&lt;/code> object.
+<span class='line'> 47</span>  * &lt;code>script.runInThisContext&lt;/code> runs the code of &lt;code>script&lt;/code> and returns the result.
+<span class='line'> 48</span>  * Running code does not have access to local scope, but does have access to the &lt;code>global&lt;/code> object
 <span class='line'> 49</span>  * (v8: in actual context).
 <span class='line'> 50</span>  *
-<span class='line'> 51</span>  * Example of using &lt;code class="code prettyprint lang-js">script.runInThisContext&lt;/code> to compile code once and run it multiple times:
-<span class='line'> 52</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 51</span>  * Example of using &lt;code>script.runInThisContext&lt;/code> to compile code once and run it multiple times:
+<span class='line'> 52</span>  * &lt;pre>
 <span class='line'> 53</span>  *     var vm = require('vm');
 <span class='line'> 54</span>  *
 <span class='line'> 55</span>  *     globalVar = 0;
@@ -78,13 +78,13 @@
 <span class='line'> 71</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 72</span> 
 <span class='line'> 73</span> </span><span class="COMM">/**
-<span class='line'> 74</span>  * Similar to &lt;code class="code prettyprint lang-js">vm.runInNewContext&lt;/code> a method of a precompiled &lt;code class="code prettyprint lang-js">Script&lt;/code> object.
-<span class='line'> 75</span>  * &lt;code class="code prettyprint lang-js">script.runInNewContext&lt;/code> runs the code of &lt;code class="code prettyprint lang-js">script&lt;/code> with &lt;code class="code prettyprint lang-js">sandbox&lt;/code> as the global object and returns the result.
-<span class='line'> 76</span>  * Running code does not have access to local scope. &lt;code class="code prettyprint lang-js">sandbox&lt;/code> is optional.
+<span class='line'> 74</span>  * Similar to &lt;code>vm.runInNewContext&lt;/code> a method of a precompiled &lt;code>Script&lt;/code> object.
+<span class='line'> 75</span>  * &lt;code>script.runInNewContext&lt;/code> runs the code of &lt;code>script&lt;/code> with &lt;code>sandbox&lt;/code> as the global object and returns the result.
+<span class='line'> 76</span>  * Running code does not have access to local scope. &lt;code>sandbox&lt;/code> is optional.
 <span class='line'> 77</span>  *
 <span class='line'> 78</span>  * Example: compile code that increments a global variable and sets one, then execute this code multiple times.
 <span class='line'> 79</span>  * These globals are contained in the sandbox.
-<span class='line'> 80</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 80</span>  * &lt;pre>
 <span class='line'> 81</span>  *     var util = require('util'),
 <span class='line'> 82</span>  *         vm = require('vm'),
 <span class='line'> 83</span>  *         sandbox = {
@@ -103,7 +103,7 @@
 <span class='line'> 96</span>  *     &#47;&#47; { animal: 'cat', count: 12, name: 'kitty' }
 <span class='line'> 97</span>  * &lt;/pre>
 <span class='line'> 98</span>  * Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
-<span class='line'> 99</span>  * global variable leakage, &lt;code class="code prettyprint lang-js">script.runInNewContext&lt;/code> is quite useful, but safely running untrusted code
+<span class='line'> 99</span>  * global variable leakage, &lt;code>script.runInNewContext&lt;/code> is quite useful, but safely running untrusted code
 <span class='line'>100</span>  * requires a separate process.
 <span class='line'>101</span>  * @return {*}
 <span class='line'>102</span>  */</span><span class="WHIT">

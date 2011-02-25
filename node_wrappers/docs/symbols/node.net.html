@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -209,9 +209,9 @@
 
 		<div class="intro">
 			<p class="description summary">
-				The <code class="code prettyprint lang-js">net</code> module provides you with an asynchronous network wrapper. It contains
+				The <code>net</code> module provides you with an asynchronous network wrapper. It contains
 methods for creating both servers and clients (called streams). You can include
-this module with <code class="code prettyprint lang-js">require("net");</code>
+this module with <code>require("net");</code>
 			</p>
 
 			
@@ -383,18 +383,18 @@ Tests if input is an IP address.</div>
 
 								<div class="description">
 									Construct a new socket object and opens a socket to the given location. When
-the socket is established the <code class="code prettyprint lang-js">'connect'</code> event will be emitted.
+the socket is established the <code>'connect'</code> event will be emitted.
 
 The arguments for this method change the type of connection:
 
-* <code class="code prettyprint lang-js">net.createConnection(port, [host])</code>
+* <code>net.createConnection(port, [host])</code>
 
-  Creates a TCP connection to <code class="code prettyprint lang-js">port</code> on <code class="code prettyprint lang-js">host</code>. If <code class="code prettyprint lang-js">host</code> is omitted, <code class="code prettyprint lang-js">localhost</code>
+  Creates a TCP connection to <code>port</code> on <code>host</code>. If <code>host</code> is omitted, <code>localhost</code>
   will be assumed.
 
-* <code class="code prettyprint lang-js">net.createConnection(path)</code>
+* <code>net.createConnection(path)</code>
 
-  Creates unix socket connection to <code class="code prettyprint lang-js">path</code>
+  Creates unix socket connection to <code>path</code>
 
 ---
 
@@ -463,8 +463,8 @@ The arguments for this method change the type of connection:
 								</div>
 
 								<div class="description">
-									Creates a new TCP server. The <code class="code prettyprint lang-js">connectionListener</code> argument is
-automatically set as a listener for the <code class="code prettyprint lang-js">'connection'</code> event.
+									Creates a new TCP server. The <code>connectionListener</code> argument is
+automatically set as a listener for the <code>'connection'</code> event.
 
 									
 
@@ -699,7 +699,7 @@ Returns true if input is a version 6 IP address, otherwise returns false.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

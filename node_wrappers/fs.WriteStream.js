@@ -1,7 +1,7 @@
 /**
  * @name node.fs.WriteStream
  * @namespace
- * <code class="code prettyprint lang-js">WriteStream</code> is a <code class="code prettyprint lang-js">Writable Stream</code>.
+ * <code>WriteStream</code> is a <code>Writable Stream</code>.
  */
 
 goog.provide("node.fs.WriteStream");

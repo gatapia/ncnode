@@ -9,16 +9,16 @@
 <span class='line'>  2</span>  * @name node.fs
 <span class='line'>  3</span>  * @namespace
 <span class='line'>  4</span>  * File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
-<span class='line'>  5</span>  * use this module do &lt;code class="code prettyprint lang-js">require('fs')&lt;/code>. All the methods have asynchronous and
+<span class='line'>  5</span>  * use this module do &lt;code>require('fs')&lt;/code>. All the methods have asynchronous and
 <span class='line'>  6</span>  * synchronous forms.
 <span class='line'>  7</span>  *
 <span class='line'>  8</span>  * The asynchronous form always take a completion callback as its last argument.
 <span class='line'>  9</span>  * The arguments passed to the completion callback depend on the method, but the
 <span class='line'> 10</span>  * first argument is always reserved for an exception. If the operation was
-<span class='line'> 11</span>  * completed successfully, then the first argument will be &lt;code class="code prettyprint lang-js">null&lt;/code> or &lt;code class="code prettyprint lang-js">undefined&lt;/code>.
+<span class='line'> 11</span>  * completed successfully, then the first argument will be &lt;code>null&lt;/code> or &lt;code>undefined&lt;/code>.
 <span class='line'> 12</span>  *
 <span class='line'> 13</span>  * Here is an example of the asynchronous version:
-<span class='line'> 14</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 14</span>  * &lt;pre>
 <span class='line'> 15</span>  *     var fs = require('fs');
 <span class='line'> 16</span>  *
 <span class='line'> 17</span>  *     fs.unlink('&#47;tmp&#47;hello', function (err) {
@@ -27,7 +27,7 @@
 <span class='line'> 20</span>  *     });
 <span class='line'> 21</span>  * &lt;/pre>
 <span class='line'> 22</span>  * Here is the synchronous version:
-<span class='line'> 23</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 23</span>  * &lt;pre>
 <span class='line'> 24</span>  *     var fs = require('fs');
 <span class='line'> 25</span>  *
 <span class='line'> 26</span>  *     fs.unlinkSync('&#47;tmp&#47;hello')
@@ -35,7 +35,7 @@
 <span class='line'> 28</span>  * &lt;/pre>
 <span class='line'> 29</span>  * With the asynchronous methods there is no guaranteed ordering. So the
 <span class='line'> 30</span>  * following is prone to error:
-<span class='line'> 31</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 31</span>  * &lt;pre>
 <span class='line'> 32</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
 <span class='line'> 33</span>  *       if (err) throw err;
 <span class='line'> 34</span>  *       console.log('renamed complete');
@@ -45,9 +45,9 @@
 <span class='line'> 38</span>  *       console.log('stats: ' + JSON.stringify(stats));
 <span class='line'> 39</span>  *     });
 <span class='line'> 40</span>  * &lt;/pre>
-<span class='line'> 41</span>  * It could be that &lt;code class="code prettyprint lang-js">fs.stat&lt;/code> is executed before &lt;code class="code prettyprint lang-js">fs.rename&lt;/code>.
+<span class='line'> 41</span>  * It could be that &lt;code>fs.stat&lt;/code> is executed before &lt;code>fs.rename&lt;/code>.
 <span class='line'> 42</span>  * The correct way to do this is to chain the callbacks.
-<span class='line'> 43</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 43</span>  * &lt;pre>
 <span class='line'> 44</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
 <span class='line'> 45</span>  *       if (err) throw err;
 <span class='line'> 46</span>  *       fs.stat('&#47;tmp&#47;world', function (err, stats) {
@@ -65,13 +65,13 @@
 <span class='line'> 58</span> 
 <span class='line'> 59</span> </span><span class="COMM">/**
 <span class='line'> 60</span>  * Asynchronously reads the entire contents of a file. Example:
-<span class='line'> 61</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 61</span>  * &lt;pre>
 <span class='line'> 62</span>  *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
 <span class='line'> 63</span>  *       if (err) throw err;
 <span class='line'> 64</span>  *       console.log(data);
 <span class='line'> 65</span>  *     });
 <span class='line'> 66</span>  * &lt;/pre>
-<span class='line'> 67</span>  * The callback is passed two arguments &lt;code class="code prettyprint lang-js">(err, data)&lt;/code>, where &lt;code class="code prettyprint lang-js">data&lt;/code> is the
+<span class='line'> 67</span>  * The callback is passed two arguments &lt;code>(err, data)&lt;/code>, where &lt;code>data&lt;/code> is the
 <span class='line'> 68</span>  * contents of the file.
 <span class='line'> 69</span>  *
 <span class='line'> 70</span>  * If no encoding is specified, then the raw buffer is returned.
@@ -84,9 +84,9 @@
 <span class='line'> 77</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 78</span> 
 <span class='line'> 79</span> </span><span class="COMM">/**
-<span class='line'> 80</span>  * Synchronous version of &lt;code class="code prettyprint lang-js">fs.readFile&lt;/code>. Returns the contents of the &lt;code class="code prettyprint lang-js">filename&lt;/code>.
+<span class='line'> 80</span>  * Synchronous version of &lt;code>fs.readFile&lt;/code>. Returns the contents of the &lt;code>filename&lt;/code>.
 <span class='line'> 81</span>  *
-<span class='line'> 82</span>  * If &lt;code class="code prettyprint lang-js">encoding&lt;/code> is specified then this function returns a string. Otherwise it
+<span class='line'> 82</span>  * If &lt;code>encoding&lt;/code> is specified then this function returns a string. Otherwise it
 <span class='line'> 83</span>  * returns a buffer.
 <span class='line'> 84</span>  * @param {*} path
 <span class='line'> 85</span>  * @param {*} encoding
@@ -118,7 +118,7 @@
 <span class='line'>111</span> 
 <span class='line'>112</span> </span><span class="COMM">/**
 <span class='line'>113</span>  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-<span class='line'>114</span>  * or 'a+'. &lt;code class="code prettyprint lang-js">mode&lt;/code> defaults to 0666. The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, fd)&lt;/code>.
+<span class='line'>114</span>  * or 'a+'. &lt;code>mode&lt;/code> defaults to 0666. The callback gets two arguments &lt;code>(err, fd)&lt;/code>.
 <span class='line'>115</span>  * @param {*} path
 <span class='line'>116</span>  * @param {*} flags
 <span class='line'>117</span>  * @param {*} mode
@@ -141,18 +141,18 @@
 <span class='line'>134</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>135</span> 
 <span class='line'>136</span> </span><span class="COMM">/**
-<span class='line'>137</span>  * Read data from the file specified by &lt;code class="code prettyprint lang-js">fd&lt;/code>.
+<span class='line'>137</span>  * Read data from the file specified by &lt;code>fd&lt;/code>.
 <span class='line'>138</span>  *
-<span class='line'>139</span>  * &lt;code class="code prettyprint lang-js">buffer&lt;/code> is the buffer that the data will be written to.
+<span class='line'>139</span>  * &lt;code>buffer&lt;/code> is the buffer that the data will be written to.
 <span class='line'>140</span>  *
-<span class='line'>141</span>  * &lt;code class="code prettyprint lang-js">offset&lt;/code> is offset within the buffer where writing will start.
+<span class='line'>141</span>  * &lt;code>offset&lt;/code> is offset within the buffer where writing will start.
 <span class='line'>142</span>  *
-<span class='line'>143</span>  * &lt;code class="code prettyprint lang-js">length&lt;/code> is an integer specifying the number of bytes to read.
+<span class='line'>143</span>  * &lt;code>length&lt;/code> is an integer specifying the number of bytes to read.
 <span class='line'>144</span>  *
-<span class='line'>145</span>  * &lt;code class="code prettyprint lang-js">position&lt;/code> is an integer specifying where to begin reading from in the file.
-<span class='line'>146</span>  * If &lt;code class="code prettyprint lang-js">position&lt;/code> is &lt;code class="code prettyprint lang-js">null&lt;/code>, data will be read from the current file position.
+<span class='line'>145</span>  * &lt;code>position&lt;/code> is an integer specifying where to begin reading from in the file.
+<span class='line'>146</span>  * If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, data will be read from the current file position.
 <span class='line'>147</span>  *
-<span class='line'>148</span>  * The callback is given the two arguments, &lt;code class="code prettyprint lang-js">(err, bytesRead)&lt;/code>.
+<span class='line'>148</span>  * The callback is given the two arguments, &lt;code>(err, bytesRead)&lt;/code>.
 <span class='line'>149</span>  * @param {*} fd
 <span class='line'>150</span>  * @param {*} buffer
 <span class='line'>151</span>  * @param {*} offset
@@ -166,8 +166,8 @@
 <span class='line'>159</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>160</span> 
 <span class='line'>161</span> </span><span class="COMM">/**
-<span class='line'>162</span>  * Synchronous version of string-based &lt;code class="code prettyprint lang-js">fs.read&lt;/code>. Returns the number of
-<span class='line'>163</span>  * &lt;code class="code prettyprint lang-js">bytesRead&lt;/code>.
+<span class='line'>162</span>  * Synchronous version of string-based &lt;code>fs.read&lt;/code>. Returns the number of
+<span class='line'>163</span>  * &lt;code>bytesRead&lt;/code>.
 <span class='line'>164</span>  * @param {*} fd
 <span class='line'>165</span>  * @param {*} buffer
 <span class='line'>166</span>  * @param {*} offset
@@ -180,16 +180,16 @@
 <span class='line'>173</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>174</span> 
 <span class='line'>175</span> </span><span class="COMM">/**
-<span class='line'>176</span>  * Write &lt;code class="code prettyprint lang-js">buffer&lt;/code> to the file specified by &lt;code class="code prettyprint lang-js">fd&lt;/code>.
+<span class='line'>176</span>  * Write &lt;code>buffer&lt;/code> to the file specified by &lt;code>fd&lt;/code>.
 <span class='line'>177</span>  *
-<span class='line'>178</span>  * &lt;code class="code prettyprint lang-js">offset&lt;/code> and &lt;code class="code prettyprint lang-js">length&lt;/code> determine the part of the buffer to be written.
+<span class='line'>178</span>  * &lt;code>offset&lt;/code> and &lt;code>length&lt;/code> determine the part of the buffer to be written.
 <span class='line'>179</span>  *
-<span class='line'>180</span>  * &lt;code class="code prettyprint lang-js">position&lt;/code> refers to the offset from the beginning of the file where this data
-<span class='line'>181</span>  * should be written. If &lt;code class="code prettyprint lang-js">position&lt;/code> is &lt;code class="code prettyprint lang-js">null&lt;/code>, the data will be written at the
+<span class='line'>180</span>  * &lt;code>position&lt;/code> refers to the offset from the beginning of the file where this data
+<span class='line'>181</span>  * should be written. If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, the data will be written at the
 <span class='line'>182</span>  * current position.
 <span class='line'>183</span>  * See pwrite(2).
 <span class='line'>184</span>  *
-<span class='line'>185</span>  * The callback will be given two arguments &lt;code class="code prettyprint lang-js">(err, written)&lt;/code> where &lt;code class="code prettyprint lang-js">written&lt;/code>
+<span class='line'>185</span>  * The callback will be given two arguments &lt;code>(err, written)&lt;/code> where &lt;code>written&lt;/code>
 <span class='line'>186</span>  * specifies how many &lt;em>bytes&lt;/em> were written.
 <span class='line'>187</span>  * @param {*} fd
 <span class='line'>188</span>  * @param {*} buffer
@@ -204,7 +204,7 @@
 <span class='line'>197</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>198</span> 
 <span class='line'>199</span> </span><span class="COMM">/**
-<span class='line'>200</span>  * Synchronous version of string-based &lt;code class="code prettyprint lang-js">fs.write()&lt;/code>. Returns the number of bytes
+<span class='line'>200</span>  * Synchronous version of string-based &lt;code>fs.write()&lt;/code>. Returns the number of bytes
 <span class='line'>201</span>  * written.
 <span class='line'>202</span>  * @param {*} fd
 <span class='line'>203</span>  * @param {*} buffer
@@ -362,8 +362,8 @@
 <span class='line'>355</span> 
 <span class='line'>356</span> </span><span class="COMM">/**
 <span class='line'>357</span>  * Asynchronous readdir(3).  Reads the contents of a directory.
-<span class='line'>358</span>  * The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, files)&lt;/code> where &lt;code class="code prettyprint lang-js">files&lt;/code> is an array of
-<span class='line'>359</span>  * the names of the files in the directory excluding &lt;code class="code prettyprint lang-js">'.'&lt;/code> and &lt;code class="code prettyprint lang-js">'..'&lt;/code>.
+<span class='line'>358</span>  * The callback gets two arguments &lt;code>(err, files)&lt;/code> where &lt;code>files&lt;/code> is an array of
+<span class='line'>359</span>  * the names of the files in the directory excluding &lt;code>'.'&lt;/code> and &lt;code>'..'&lt;/code>.
 <span class='line'>360</span>  * @param {*} path
 <span class='line'>361</span>  * @param {*} callback
 <span class='line'>362</span>  * @return {*}
@@ -373,8 +373,8 @@
 <span class='line'>366</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>367</span> 
 <span class='line'>368</span> </span><span class="COMM">/**
-<span class='line'>369</span>  * Synchronous readdir(3). Returns an array of filenames excluding &lt;code class="code prettyprint lang-js">'.'&lt;/code> and
-<span class='line'>370</span>  * &lt;code class="code prettyprint lang-js">'..'&lt;/code>.
+<span class='line'>369</span>  * Synchronous readdir(3). Returns an array of filenames excluding &lt;code>'.'&lt;/code> and
+<span class='line'>370</span>  * &lt;code>'..'&lt;/code>.
 <span class='line'>371</span>  * @param {*} path
 <span class='line'>372</span>  * @return {*}
 <span class='line'>373</span>  */</span><span class="WHIT">
@@ -383,8 +383,8 @@
 <span class='line'>376</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>377</span> 
 <span class='line'>378</span> </span><span class="COMM">/**
-<span class='line'>379</span>  * Asynchronous fstat(2). The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, stats)&lt;/code> where
-<span class='line'>380</span>  * &lt;code class="code prettyprint lang-js">stats&lt;/code> is a &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code> object.
+<span class='line'>379</span>  * Asynchronous fstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+<span class='line'>380</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object.
 <span class='line'>381</span>  * @param {*} fd
 <span class='line'>382</span>  * @param {function(Error,node.fs.Stats)=} callback
 <span class='line'>383</span>  * @return {*}
@@ -394,8 +394,8 @@
 <span class='line'>387</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>388</span> 
 <span class='line'>389</span> </span><span class="COMM">/**
-<span class='line'>390</span>  * Asynchronous lstat(2). The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, stats)&lt;/code> where
-<span class='line'>391</span>  * &lt;code class="code prettyprint lang-js">stats&lt;/code> is a &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code> object. lstat() is identical to stat(), except that if
+<span class='line'>390</span>  * Asynchronous lstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+<span class='line'>391</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. lstat() is identical to stat(), except that if
 <span class='line'>392</span>  * path is a symbolic link, then the link itself is stat-ed, not the file that it
 <span class='line'>393</span>  * refers to.
 <span class='line'>394</span>  * @param {*} path
@@ -407,9 +407,9 @@
 <span class='line'>400</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>401</span> 
 <span class='line'>402</span> </span><span class="COMM">/**
-<span class='line'>403</span>  * Asynchronous stat(2). The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, stats)&lt;/code> where
-<span class='line'>404</span>  * &lt;code class="code prettyprint lang-js">stats&lt;/code> is a &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code> object. It looks like this:
-<span class='line'>405</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>403</span>  * Asynchronous stat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+<span class='line'>404</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. It looks like this:
+<span class='line'>405</span>  * &lt;pre>
 <span class='line'>406</span>  *     { dev: 2049,
 <span class='line'>407</span>  *       ino: 305352,
 <span class='line'>408</span>  *       mode: 16877,
@@ -424,7 +424,7 @@
 <span class='line'>417</span>  *       mtime: '2009-06-29T11:11:40Z',
 <span class='line'>418</span>  *       ctime: '2009-06-29T11:11:40Z' }
 <span class='line'>419</span>  * &lt;/pre>
-<span class='line'>420</span>  * See the &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code> section below for more information.
+<span class='line'>420</span>  * See the &lt;code>fs.Stats&lt;/code> section below for more information.
 <span class='line'>421</span>  * @param {*} path
 <span class='line'>422</span>  * @param {*} callback
 <span class='line'>423</span>  * @return {*}
@@ -434,7 +434,7 @@
 <span class='line'>427</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>428</span> 
 <span class='line'>429</span> </span><span class="COMM">/**
-<span class='line'>430</span>  * Synchronous fstat(2). Returns an instance of &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code>.
+<span class='line'>430</span>  * Synchronous fstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
 <span class='line'>431</span>  * @param {*} fd
 <span class='line'>432</span>  * @return {fs.Stats}
 <span class='line'>433</span>  */</span><span class="WHIT">
@@ -443,7 +443,7 @@
 <span class='line'>436</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>437</span> 
 <span class='line'>438</span> </span><span class="COMM">/**
-<span class='line'>439</span>  * Synchronous lstat(2). Returns an instance of &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code>.
+<span class='line'>439</span>  * Synchronous lstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
 <span class='line'>440</span>  * @param {*} path
 <span class='line'>441</span>  * @return {*}
 <span class='line'>442</span>  */</span><span class="WHIT">
@@ -452,7 +452,7 @@
 <span class='line'>445</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>446</span> 
 <span class='line'>447</span> </span><span class="COMM">/**
-<span class='line'>448</span>  * Synchronous stat(2). Returns an instance of &lt;code class="code prettyprint lang-js">fs.Stats&lt;/code>.
+<span class='line'>448</span>  * Synchronous stat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
 <span class='line'>449</span>  * @param {*} path
 <span class='line'>450</span>  * @return {*}
 <span class='line'>451</span>  */</span><span class="WHIT">
@@ -461,7 +461,7 @@
 <span class='line'>454</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>455</span> 
 <span class='line'>456</span> </span><span class="COMM">/**
-<span class='line'>457</span>  * Asynchronous readlink(2). The callback gets two arguments &lt;code class="code prettyprint lang-js">(err,
+<span class='line'>457</span>  * Asynchronous readlink(2). The callback gets two arguments &lt;code>(err,
 <span class='line'>458</span>  * resolvedPath)&lt;/code>.
 <span class='line'>459</span>  * @param {*} path
 <span class='line'>460</span>  * @param {*} callback
@@ -588,10 +588,10 @@
 <span class='line'>581</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>582</span> 
 <span class='line'>583</span> </span><span class="COMM">/**
-<span class='line'>584</span>  * Asynchronously writes data to a file. &lt;code class="code prettyprint lang-js">data&lt;/code> can be a string or a buffer.
+<span class='line'>584</span>  * Asynchronously writes data to a file. &lt;code>data&lt;/code> can be a string or a buffer.
 <span class='line'>585</span>  *
 <span class='line'>586</span>  * Example:
-<span class='line'>587</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>587</span>  * &lt;pre>
 <span class='line'>588</span>  *     fs.writeFile('message.txt', 'Hello Node', function (err) {
 <span class='line'>589</span>  *       if (err) throw err;
 <span class='line'>590</span>  *       console.log('It\'s saved!');
@@ -608,7 +608,7 @@
 <span class='line'>601</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>602</span> 
 <span class='line'>603</span> </span><span class="COMM">/**
-<span class='line'>604</span>  * The synchronous version of &lt;code class="code prettyprint lang-js">fs.writeFile&lt;/code>.
+<span class='line'>604</span>  * The synchronous version of &lt;code>fs.writeFile&lt;/code>.
 <span class='line'>605</span>  * @param {*} path
 <span class='line'>606</span>  * @param {*} data
 <span class='line'>607</span>  * @param {*} encoding
@@ -619,25 +619,25 @@
 <span class='line'>612</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>613</span> 
 <span class='line'>614</span> </span><span class="COMM">/**
-<span class='line'>615</span>  * Watch for changes on &lt;code class="code prettyprint lang-js">filename&lt;/code>. The callback &lt;code class="code prettyprint lang-js">listener&lt;/code> will be called each
+<span class='line'>615</span>  * Watch for changes on &lt;code>filename&lt;/code>. The callback &lt;code>listener&lt;/code> will be called each
 <span class='line'>616</span>  * time the file is accessed.
 <span class='line'>617</span>  *
-<span class='line'>618</span>  * The second argument is optional. The &lt;code class="code prettyprint lang-js">options&lt;/code> if provided should be an object
-<span class='line'>619</span>  * containing two members a boolean, &lt;code class="code prettyprint lang-js">persistent&lt;/code>, and &lt;code class="code prettyprint lang-js">interval&lt;/code>, a polling
-<span class='line'>620</span>  * value in milliseconds. The default is &lt;code class="code prettyprint lang-js">{ persistent: true, interval: 0 }&lt;/code>.
+<span class='line'>618</span>  * The second argument is optional. The &lt;code>options&lt;/code> if provided should be an object
+<span class='line'>619</span>  * containing two members a boolean, &lt;code>persistent&lt;/code>, and &lt;code>interval&lt;/code>, a polling
+<span class='line'>620</span>  * value in milliseconds. The default is &lt;code>{ persistent: true, interval: 0 }&lt;/code>.
 <span class='line'>621</span>  *
-<span class='line'>622</span>  * The &lt;code class="code prettyprint lang-js">listener&lt;/code> gets two arguments the current stat object and the previous
+<span class='line'>622</span>  * The &lt;code>listener&lt;/code> gets two arguments the current stat object and the previous
 <span class='line'>623</span>  * stat object:
-<span class='line'>624</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>624</span>  * &lt;pre>
 <span class='line'>625</span>  *     fs.watchFile(f, function (curr, prev) {
 <span class='line'>626</span>  *       console.log('the current mtime is: ' + curr.mtime);
 <span class='line'>627</span>  *       console.log('the previous mtime was: ' + prev.mtime);
 <span class='line'>628</span>  *     });
 <span class='line'>629</span>  * &lt;/pre>
-<span class='line'>630</span>  * These stat objects are instances of &lt;code class="code prettyprint lang-js">fs.Stat&lt;/code>.
+<span class='line'>630</span>  * These stat objects are instances of &lt;code>fs.Stat&lt;/code>.
 <span class='line'>631</span>  *
 <span class='line'>632</span>  * If you want to be notified when the file was modified, not just accessed
-<span class='line'>633</span>  * you need to compare &lt;code class="code prettyprint lang-js">curr.mtime&lt;/code> and `prev.mtime.
+<span class='line'>633</span>  * you need to compare &lt;code>curr.mtime&lt;/code> and `prev.mtime.
 <span class='line'>634</span>  * @param {*} filename
 <span class='line'>635</span>  * @return {*}
 <span class='line'>636</span>  */</span><span class="WHIT">
@@ -646,7 +646,7 @@
 <span class='line'>639</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>640</span> 
 <span class='line'>641</span> </span><span class="COMM">/**
-<span class='line'>642</span>  * Stop watching for changes on &lt;code class="code prettyprint lang-js">filename&lt;/code>.
+<span class='line'>642</span>  * Stop watching for changes on &lt;code>filename&lt;/code>.
 <span class='line'>643</span>  * @param {*} filename
 <span class='line'>644</span>  * @return {*}
 <span class='line'>645</span>  */</span><span class="WHIT">
@@ -665,7 +665,7 @@
 <span class='line'>658</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>659</span> 
 <span class='line'>660</span> </span><span class="COMM">/**
-<span class='line'>661</span>  * Asynchronous realpath(2).  The callback gets two arguments &lt;code class="code prettyprint lang-js">(err,
+<span class='line'>661</span>  * Asynchronous realpath(2).  The callback gets two arguments &lt;code>(err,
 <span class='line'>662</span>  * resolvedPath)&lt;/code>.
 <span class='line'>663</span>  * @param {*} p
 <span class='line'>664</span>  * @param {*} cache

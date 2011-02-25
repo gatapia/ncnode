@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -278,7 +278,7 @@ It provides the following methods:
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.querystring.html#escape">escape</a></b>(str)
 										</div>
-										<div class="description">The escape function used by <code class="code prettyprint lang-js">querystring.stringify</code>,
+										<div class="description">The escape function used by <code>querystring.stringify</code>,
 provided so that it could be overridden if necessary.</div>
 									</td>
 								</tr>
@@ -312,7 +312,7 @@ provided so that it could be overridden if necessary.</div>
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.querystring.html#unescape">unescape</a></b>(s, decodeSpaces)
 										</div>
-										<div class="description">The unescape function used by <code class="code prettyprint lang-js">querystring.parse</code>,
+										<div class="description">The unescape function used by <code>querystring.parse</code>,
 provided so that it could be overridden if necessary.</div>
 									</td>
 								</tr>
@@ -550,7 +550,7 @@ provided so that it could be overridden if necessary.</div>
 								</div>
 
 								<div class="description">
-									The escape function used by <code class="code prettyprint lang-js">querystring.stringify</code>,
+									The escape function used by <code>querystring.stringify</code>,
 provided so that it could be overridden if necessary.
 
 									
@@ -616,7 +616,7 @@ provided so that it could be overridden if necessary.
 Optionally override the default separator and assignment characters.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     querystring.parse('a=b&b=c')
     &#47;&#47; returns
     { a: 'b', b: 'c' }
@@ -697,7 +697,7 @@ Example:
 Optionally override the default separator and assignment characters.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     querystring.stringify({foo: 'bar'})
     &#47;&#47; returns
     'foo=bar'
@@ -784,7 +784,7 @@ Example:
 								</div>
 
 								<div class="description">
-									The unescape function used by <code class="code prettyprint lang-js">querystring.parse</code>,
+									The unescape function used by <code>querystring.parse</code>,
 provided so that it could be overridden if necessary.
 
 									
@@ -919,7 +919,7 @@ provided so that it could be overridden if necessary.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

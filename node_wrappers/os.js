@@ -1,7 +1,7 @@
 /**
  * @name node.os
  * @namespace
- * Use <code class="code prettyprint lang-js">require('os')</code> to access this module.
+ * Use <code>require('os')</code> to access this module.
  */
 
 goog.provide("node.os");
@@ -50,7 +50,7 @@ node.os.prototype.totalmem = function() {
  * Returns an array of objects containing information about each CPU&#47;core installed: model, speed (in MHz), and times (an object containing the number of CPU ticks spent in: user, nice, sys, idle, and irq).
  *
  * Example inspection of os.cpus:
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     [ { model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
  *         speed: 2926,
  *         times:

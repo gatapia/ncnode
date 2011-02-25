@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -209,11 +209,11 @@
 
 		<div class="intro">
 			<p class="description summary">
-				Use <code class="code prettyprint lang-js">require('dns')</code> to access this module.
+				Use <code>require('dns')</code> to access this module.
 
-Here is an example which resolves <code class="code prettyprint lang-js">'www.google.com'</code> then reverse
+Here is an example which resolves <code>'www.google.com'</code> then reverse
 resolves the IP addresses which are returned.
-<pre class="code prettyprint lang-js">
+<pre>
     var dns = require('dns');
 
     dns.resolve4('www.google.com', function (err, addresses) {
@@ -312,7 +312,7 @@ resolves the IP addresses which are returned.
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.dns.html#resolveSrv">resolveSrv</a></b>(domain, callback)
 										</div>
-										<div class="description">The same as <code class="code prettyprint lang-js">dns.resolve()</code>, but only for service records (<code class="code prettyprint lang-js">SRV</code> records).</div>
+										<div class="description">The same as <code>dns.resolve()</code>, but only for service records (<code>SRV</code> records).</div>
 									</td>
 								</tr>
 							
@@ -408,17 +408,17 @@ resolves the IP addresses which are returned.
 								</div>
 
 								<div class="description">
-									Resolves a domain (e.g. <code class="code prettyprint lang-js">'google.com'</code>) into an array of the record types
-specified by rrtype. Valid rrtypes are <code class="code prettyprint lang-js">A</code> (IPV4 addresses), <code class="code prettyprint lang-js">AAAA</code> (IPV6
-addresses), <code class="code prettyprint lang-js">MX</code> (mail exchange records), <code class="code prettyprint lang-js">TXT</code> (text records), <code class="code prettyprint lang-js">SRV</code> (SRV
-records), and <code class="code prettyprint lang-js">PTR</code> (used for reverse IP lookups).
+									Resolves a domain (e.g. <code>'google.com'</code>) into an array of the record types
+specified by rrtype. Valid rrtypes are <code>A</code> (IPV4 addresses), <code>AAAA</code> (IPV6
+addresses), <code>MX</code> (mail exchange records), <code>TXT</code> (text records), <code>SRV</code> (SRV
+records), and <code>PTR</code> (used for reverse IP lookups).
 
-The callback has arguments <code class="code prettyprint lang-js">(err, addresses)</code>.  The type of each item
-in <code class="code prettyprint lang-js">addresses</code> is determined by the record type, and described in the
+The callback has arguments <code>(err, addresses)</code>.  The type of each item
+in <code>addresses</code> is determined by the record type, and described in the
 documentation for the corresponding lookup methods below.
 
-On error, <code class="code prettyprint lang-js">err</code> would be an instanceof <code class="code prettyprint lang-js">Error</code> object, where <code class="code prettyprint lang-js">err.errno</code> is
-one of the error codes listed below and <code class="code prettyprint lang-js">err.message</code> is a string describing
+On error, <code>err</code> would be an instanceof <code>Error</code> object, where <code>err.errno</code> is
+one of the error codes listed below and <code>err.message</code> is a string describing
 the error in English.
 
 									
@@ -626,10 +626,10 @@ the error in English.
 								</div>
 
 								<div class="description">
-									The same as <code class="code prettyprint lang-js">dns.resolve()</code>, but only for service records (<code class="code prettyprint lang-js">SRV</code> records).
-<code class="code prettyprint lang-js">addresses</code> is an array of the SRV records available for <code class="code prettyprint lang-js">domain</code>. Properties
+									The same as <code>dns.resolve()</code>, but only for service records (<code>SRV</code> records).
+<code>addresses</code> is an array of the SRV records available for <code>domain</code>. Properties
 of SRV records are priority, weight, port, and name (e.g.,
-<code class="code prettyprint lang-js">[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).
+<code>[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).
 
 									
 
@@ -744,19 +744,19 @@ of SRV records are priority, weight, port, and name (e.g.,
 								<div class="description">
 									Reverse resolves an ip address to an array of domain names.
 
-The callback has arguments <code class="code prettyprint lang-js">(err, domains)</code>.
+The callback has arguments <code>(err, domains)</code>.
 
-If there an an error, <code class="code prettyprint lang-js">err</code> will be non-null and an instanceof the Error
+If there an an error, <code>err</code> will be non-null and an instanceof the Error
 object.
 
 Each DNS query can return an error code.
 
-- <code class="code prettyprint lang-js">dns.TEMPFAIL</code>: timeout, SERVFAIL or similar.
-- <code class="code prettyprint lang-js">dns.PROTOCOL</code>: got garbled reply.
-- <code class="code prettyprint lang-js">dns.NXDOMAIN</code>: domain does not exists.
-- <code class="code prettyprint lang-js">dns.NODATA</code>: domain exists but no data of reqd type.
-- <code class="code prettyprint lang-js">dns.NOMEM</code>: out of memory while processing.
-- <code class="code prettyprint lang-js">dns.BADQUERY</code>: the query is malformed.
+- <code>dns.TEMPFAIL</code>: timeout, SERVFAIL or similar.
+- <code>dns.PROTOCOL</code>: got garbled reply.
+- <code>dns.NXDOMAIN</code>: domain does not exists.
+- <code>dns.NODATA</code>: domain exists but no data of reqd type.
+- <code>dns.NOMEM</code>: out of memory while processing.
+- <code>dns.BADQUERY</code>: the query is malformed.
 
 									
 
@@ -823,7 +823,7 @@ Each DNS query can return an error code.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

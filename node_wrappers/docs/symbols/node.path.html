@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -210,7 +210,7 @@
 		<div class="intro">
 			<p class="description summary">
 				This module contains utilities for dealing with file paths.  Use
-<code class="code prettyprint lang-js">require('path')</code> to use it.  It provides the following methods:
+<code>require('path')</code> to use it.  It provides the following methods:
 			</p>
 
 			
@@ -322,7 +322,7 @@
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.path.html#normalize">normalize</a></b>(path)
 										</div>
-										<div class="description">Normalize a string path, taking care of <code class="code prettyprint lang-js">'.</div>
+										<div class="description">Normalize a string path, taking care of <code>'.</div>
 									</td>
 								</tr>
 							
@@ -333,7 +333,7 @@
 									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.path.html#resolve">resolve</a></b>()
 										</div>
-										<div class="description">Resolves <code class="code prettyprint lang-js">to</code> to an absolute path.</div>
+										<div class="description">Resolves <code>to</code> to an absolute path.</div>
 									</td>
 								</tr>
 							
@@ -407,10 +407,10 @@
 								</div>
 
 								<div class="description">
-									Return the last portion of a path.  Similar to the Unix <code class="code prettyprint lang-js">basename</code> command.
+									Return the last portion of a path.  Similar to the Unix <code>basename</code> command.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html')
     &#47;&#47; returns
     'quux.html'
@@ -485,10 +485,10 @@ Example:
 								</div>
 
 								<div class="description">
-									Return the directory name of a path.  Similar to the Unix <code class="code prettyprint lang-js">dirname</code> command.
+									Return the directory name of a path.  Similar to the Unix <code>dirname</code> command.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.dirname('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -553,9 +553,9 @@ Example:
 								</div>
 
 								<div class="description">
-									Test whether or not the given path exists.  Then, call the <code class="code prettyprint lang-js">callback</code> argument
+									Test whether or not the given path exists.  Then, call the <code>callback</code> argument
 with either true or false. Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.exists('&#47;etc&#47;passwd', function (exists) {
       util.debug(exists ? "it's there" : "no passwd!");
     });
@@ -689,7 +689,7 @@ with either true or false. Example:
 									Return the extension of the path.  Everything after the last '.' in the last portion
 of the path.  If there is no '.' in the last portion of the path or the only '.' is
 the first character, then it returns an empty string.  Examples:
-<pre class="code prettyprint lang-js">
+<pre>
     path.extname('index.html')
     &#47;&#47; returns
     '.html'
@@ -761,7 +761,7 @@ the first character, then it returns an empty string.  Examples:
 									Join all arguments together and normalize the resulting path.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     node> require('path').join(
     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -815,14 +815,14 @@ Example:
 								</div>
 
 								<div class="description">
-									Normalize a string path, taking care of <code class="code prettyprint lang-js">'..'</code> and <code class="code prettyprint lang-js">'.'</code> parts.
+									Normalize a string path, taking care of <code>'..'</code> and <code>'.'</code> parts.
 
 When multiple slashes are found, they're replaces by a single one;
 when the path contains a trailing slash, it is preserved.
 On windows backslashes are used.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.normalize('&#47;foo&#47;bar&#47;&#47;baz&#47;asdf&#47;quux&#47;..')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -887,20 +887,20 @@ Example:
 								</div>
 
 								<div class="description">
-									Resolves <code class="code prettyprint lang-js">to</code> to an absolute path.
+									Resolves <code>to</code> to an absolute path.
 
-If <code class="code prettyprint lang-js">to</code> isn't already absolute <code class="code prettyprint lang-js">from</code> arguments are prepended in right to left
-order, until an absolute path is found. If after using all <code class="code prettyprint lang-js">from</code> paths still
+If <code>to</code> isn't already absolute <code>from</code> arguments are prepended in right to left
+order, until an absolute path is found. If after using all <code>from</code> paths still
 no absolute path is found, the current working directory is used as well. The
 resulting path is normalized, and trailing slashes are removed unless the path
 gets resolved to the root directory.
 
-Another way to think of it is as a sequence of <code class="code prettyprint lang-js">cd</code> commands in a shell.
-<pre class="code prettyprint lang-js">
+Another way to think of it is as a sequence of <code>cd</code> commands in a shell.
+<pre>
     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
 </pre>
 Is similar to:
-<pre class="code prettyprint lang-js">
+<pre>
     cd foo&#47;bar
     cd &#47;tmp&#47;file&#47;
     cd ..
@@ -911,7 +911,7 @@ The difference is that the different paths don't need to exist and may also be
 files.
 
 Examples:
-<pre class="code prettyprint lang-js">
+<pre>
     path.resolve('&#47;foo&#47;bar', '.&#47;baz')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz'
@@ -973,7 +973,7 @@ Examples:
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

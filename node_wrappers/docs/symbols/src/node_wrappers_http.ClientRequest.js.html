@@ -8,25 +8,25 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.http.ClientRequest
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * This object is created internally and returned from &lt;code class="code prettyprint lang-js">http.request()&lt;/code>.  It
+<span class='line'>  4</span>  * This object is created internally and returned from &lt;code>http.request()&lt;/code>.  It
 <span class='line'>  5</span>  * represents an &lt;em>in-progress&lt;/em> request whose header has already been queued.  The
-<span class='line'>  6</span>  * header is still mutable using the &lt;code class="code prettyprint lang-js">setHeader(name, value)&lt;/code>, &lt;code class="code prettyprint lang-js">getHeader(name)&lt;/code>,
-<span class='line'>  7</span>  * &lt;code class="code prettyprint lang-js">removeHeader(name)&lt;/code> API.  The actual header will be sent along with the first
+<span class='line'>  6</span>  * header is still mutable using the &lt;code>setHeader(name, value)&lt;/code>, &lt;code>getHeader(name)&lt;/code>,
+<span class='line'>  7</span>  * &lt;code>removeHeader(name)&lt;/code> API.  The actual header will be sent along with the first
 <span class='line'>  8</span>  * data chunk or when closing the connection.
 <span class='line'>  9</span>  *
-<span class='line'> 10</span>  * To get the response, add a listener for &lt;code class="code prettyprint lang-js">'response'&lt;/code> to the request object.
-<span class='line'> 11</span>  * &lt;code class="code prettyprint lang-js">'response'&lt;/code> will be emitted from the request object when the response
-<span class='line'> 12</span>  * headers have been received.  The &lt;code class="code prettyprint lang-js">'response'&lt;/code> event is executed with one
-<span class='line'> 13</span>  * argument which is an instance of &lt;code class="code prettyprint lang-js">http.ClientResponse&lt;/code>.
+<span class='line'> 10</span>  * To get the response, add a listener for &lt;code>'response'&lt;/code> to the request object.
+<span class='line'> 11</span>  * &lt;code>'response'&lt;/code> will be emitted from the request object when the response
+<span class='line'> 12</span>  * headers have been received.  The &lt;code>'response'&lt;/code> event is executed with one
+<span class='line'> 13</span>  * argument which is an instance of &lt;code>http.ClientResponse&lt;/code>.
 <span class='line'> 14</span>  *
-<span class='line'> 15</span>  * During the &lt;code class="code prettyprint lang-js">'response'&lt;/code> event, one can add listeners to the
-<span class='line'> 16</span>  * response object; particularly to listen for the &lt;code class="code prettyprint lang-js">'data'&lt;/code> event. Note that
-<span class='line'> 17</span>  * the &lt;code class="code prettyprint lang-js">'response'&lt;/code> event is called before any part of the response body is received,
+<span class='line'> 15</span>  * During the &lt;code>'response'&lt;/code> event, one can add listeners to the
+<span class='line'> 16</span>  * response object; particularly to listen for the &lt;code>'data'&lt;/code> event. Note that
+<span class='line'> 17</span>  * the &lt;code>'response'&lt;/code> event is called before any part of the response body is received,
 <span class='line'> 18</span>  * so there is no need to worry about racing to catch the first part of the
-<span class='line'> 19</span>  * body. As long as a listener for &lt;code class="code prettyprint lang-js">'data'&lt;/code> is added during the &lt;code class="code prettyprint lang-js">'response'&lt;/code>
+<span class='line'> 19</span>  * body. As long as a listener for &lt;code>'data'&lt;/code> is added during the &lt;code>'response'&lt;/code>
 <span class='line'> 20</span>  * event, the entire body will be caught.
 <span class='line'> 21</span>  *
-<span class='line'> 22</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 22</span>  * &lt;pre>
 <span class='line'> 23</span>  *     &#47;&#47; Good
 <span class='line'> 24</span>  *     request.on('response', function (response) {
 <span class='line'> 25</span>  *       response.on('data', function (chunk) {
@@ -43,9 +43,9 @@
 <span class='line'> 36</span>  *       }, 10);
 <span class='line'> 37</span>  *     });
 <span class='line'> 38</span>  * &lt;/pre>
-<span class='line'> 39</span>  * This is a &lt;code class="code prettyprint lang-js">Writable Stream&lt;/code>.
+<span class='line'> 39</span>  * This is a &lt;code>Writable Stream&lt;/code>.
 <span class='line'> 40</span>  *
-<span class='line'> 41</span>  * This is an &lt;code class="code prettyprint lang-js">EventEmitter&lt;/code> with the following events:
+<span class='line'> 41</span>  * This is an &lt;code>EventEmitter&lt;/code> with the following events:
 <span class='line'> 42</span>  */</span><span class="WHIT">
 <span class='line'> 43</span> 
 <span class='line'> 44</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.http.ClientRequest"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">

@@ -8,31 +8,31 @@
 	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
 <span class='line'>  2</span>  * @name node.tls
 <span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * Use &lt;code class="code prettyprint lang-js">require('tls')&lt;/code> to access this module.
+<span class='line'>  4</span>  * Use &lt;code>require('tls')&lt;/code> to access this module.
 <span class='line'>  5</span>  *
-<span class='line'>  6</span>  * The &lt;code class="code prettyprint lang-js">tls&lt;/code> module uses OpenSSL to provide Transport Layer Security and&#47;or
+<span class='line'>  6</span>  * The &lt;code>tls&lt;/code> module uses OpenSSL to provide Transport Layer Security and&#47;or
 <span class='line'>  7</span>  * Secure Socket Layer: encrypted stream communication.
 <span class='line'>  8</span>  *
 <span class='line'>  9</span>  * TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
 <span class='line'> 10</span>  * server must have a private key. A private key is created like this
-<span class='line'> 11</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 11</span>  * &lt;pre>
 <span class='line'> 12</span>  *     openssl genrsa -out ryans-key.pem 1024
 <span class='line'> 13</span>  * &lt;/pre>
 <span class='line'> 14</span>  * All severs and some clients need to have a certificate. Certificates are public
 <span class='line'> 15</span>  * keys signed by a Certificate Authority or self-signed. The first step to
 <span class='line'> 16</span>  * getting a certificate is to create a "Certificate Signing Request" (CSR)
 <span class='line'> 17</span>  * file. This is done with:
-<span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 18</span>  * &lt;pre>
 <span class='line'> 19</span>  *     openssl req -new -key ryans-key.pem -out ryans-csr.pem
 <span class='line'> 20</span>  * &lt;/pre>
 <span class='line'> 21</span>  * To create a self-signed certificate with the CSR, do this:
-<span class='line'> 22</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'> 22</span>  * &lt;pre>
 <span class='line'> 23</span>  *     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 <span class='line'> 24</span>  * &lt;/pre>
 <span class='line'> 25</span>  * Alternatively you can send the CSR to a Certificate Authority for signing.
 <span class='line'> 26</span>  *
 <span class='line'> 27</span>  * (TODO: docs on creating a CA, for now interested users should just look at
-<span class='line'> 28</span>  * &lt;code class="code prettyprint lang-js">test&#47;fixtures&#47;keys&#47;Makefile&lt;/code> in the Node source code)
+<span class='line'> 28</span>  * &lt;code>test&#47;fixtures&#47;keys&#47;Makefile&lt;/code> in the Node source code)
 <span class='line'> 29</span>  */</span><span class="WHIT">
 <span class='line'> 30</span> 
 <span class='line'> 31</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.tls"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
@@ -58,26 +58,26 @@
 <span class='line'> 51</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 52</span> 
 <span class='line'> 53</span> </span><span class="COMM">/**
-<span class='line'> 54</span>  * Creates a new client connection to the given &lt;code class="code prettyprint lang-js">port&lt;/code> and &lt;code class="code prettyprint lang-js">host&lt;/code>. (If &lt;code class="code prettyprint lang-js">host&lt;/code>
-<span class='line'> 55</span>  * defaults to &lt;code class="code prettyprint lang-js">localhost&lt;/code>.) &lt;code class="code prettyprint lang-js">options&lt;/code> should be an object which specifies
+<span class='line'> 54</span>  * Creates a new client connection to the given &lt;code>port&lt;/code> and &lt;code>host&lt;/code>. (If &lt;code>host&lt;/code>
+<span class='line'> 55</span>  * defaults to &lt;code>localhost&lt;/code>.) &lt;code>options&lt;/code> should be an object which specifies
 <span class='line'> 56</span>  *
-<span class='line'> 57</span>  *   - &lt;code class="code prettyprint lang-js">key&lt;/code>: A string or &lt;code class="code prettyprint lang-js">Buffer&lt;/code> containing the private key of the server in
+<span class='line'> 57</span>  *   - &lt;code>key&lt;/code>: A string or &lt;code>Buffer&lt;/code> containing the private key of the server in
 <span class='line'> 58</span>  *     PEM format. (Required)
 <span class='line'> 59</span>  *
-<span class='line'> 60</span>  *   - &lt;code class="code prettyprint lang-js">cert&lt;/code>: A string or &lt;code class="code prettyprint lang-js">Buffer&lt;/code> containing the certificate key of the server in
+<span class='line'> 60</span>  *   - &lt;code>cert&lt;/code>: A string or &lt;code>Buffer&lt;/code> containing the certificate key of the server in
 <span class='line'> 61</span>  *     PEM format.
 <span class='line'> 62</span>  *
-<span class='line'> 63</span>  *   - &lt;code class="code prettyprint lang-js">ca&lt;/code>: An array of strings or &lt;code class="code prettyprint lang-js">Buffer&lt;/code>s of trusted certificates. If this is
+<span class='line'> 63</span>  *   - &lt;code>ca&lt;/code>: An array of strings or &lt;code>Buffer&lt;/code>s of trusted certificates. If this is
 <span class='line'> 64</span>  *     omitted several well known "root" CAs will be used, like VeriSign.
 <span class='line'> 65</span>  *     These are used to authorize connections.
 <span class='line'> 66</span>  *
-<span class='line'> 67</span>  * &lt;code class="code prettyprint lang-js">tls.connect()&lt;/code> returns a cleartext &lt;code class="code prettyprint lang-js">CryptoStream&lt;/code> object.
+<span class='line'> 67</span>  * &lt;code>tls.connect()&lt;/code> returns a cleartext &lt;code>CryptoStream&lt;/code> object.
 <span class='line'> 68</span>  *
-<span class='line'> 69</span>  * After the TLS&#47;SSL handshake the &lt;code class="code prettyprint lang-js">callback&lt;/code> is called. The &lt;code class="code prettyprint lang-js">callback&lt;/code> will be
+<span class='line'> 69</span>  * After the TLS&#47;SSL handshake the &lt;code>callback&lt;/code> is called. The &lt;code>callback&lt;/code> will be
 <span class='line'> 70</span>  * called no matter if the server's certificate was authorized or not. It is up
-<span class='line'> 71</span>  * to the user to test &lt;code class="code prettyprint lang-js">s.authorized&lt;/code> to see if the server certificate was
-<span class='line'> 72</span>  * signed by one of the specified CAs. If &lt;code class="code prettyprint lang-js">s.authorized === false&lt;/code> then the error
-<span class='line'> 73</span>  * can be found in &lt;code class="code prettyprint lang-js">s.authorizationError&lt;/code>.
+<span class='line'> 71</span>  * to the user to test &lt;code>s.authorized&lt;/code> to see if the server certificate was
+<span class='line'> 72</span>  * signed by one of the specified CAs. If &lt;code>s.authorized === false&lt;/code> then the error
+<span class='line'> 73</span>  * can be found in &lt;code>s.authorizationError&lt;/code>.
 <span class='line'> 74</span>  * @param {*} port /* host
 <span class='line'> 75</span>  * @param {*} options
 <span class='line'> 76</span>  * @param {*} cb */</span><span class="WHIT">

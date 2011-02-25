@@ -9,13 +9,13 @@
 <span class='line'>  2</span>  * @name node.assert
 <span class='line'>  3</span>  * @namespace
 <span class='line'>  4</span>  * This module is used for writing unit tests for your applications, you can
-<span class='line'>  5</span>  * access it with &lt;code class="code prettyprint lang-js">require('assert')&lt;/code>.
+<span class='line'>  5</span>  * access it with &lt;code>require('assert')&lt;/code>.
 <span class='line'>  6</span>  */</span><span class="WHIT">
 <span class='line'>  7</span> 
 <span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.assert"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>  9</span> 
 <span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * Tests if &lt;code class="code prettyprint lang-js">actual&lt;/code> is equal to &lt;code class="code prettyprint lang-js">expected&lt;/code> using the operator provided.
+<span class='line'> 11</span>  * Tests if &lt;code>actual&lt;/code> is equal to &lt;code>expected&lt;/code> using the operator provided.
 <span class='line'> 12</span>  * @param {*} actual
 <span class='line'> 13</span>  * @param {*} expected
 <span class='line'> 14</span>  * @param {*} message
@@ -28,7 +28,7 @@
 <span class='line'> 21</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 22</span> 
 <span class='line'> 23</span> </span><span class="COMM">/**
-<span class='line'> 24</span>  * Tests if value is a &lt;code class="code prettyprint lang-js">true&lt;/code> value, it is equivalent to &lt;code class="code prettyprint lang-js">assert.equal(true, value, message);&lt;/code>
+<span class='line'> 24</span>  * Tests if value is a &lt;code>true&lt;/code> value, it is equivalent to &lt;code>assert.equal(true, value, message);&lt;/code>
 <span class='line'> 25</span>  * @param {*} value
 <span class='line'> 26</span>  * @param {*} message
 <span class='line'> 27</span>  * @return {*}
@@ -38,7 +38,7 @@
 <span class='line'> 31</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 32</span> 
 <span class='line'> 33</span> </span><span class="COMM">/**
-<span class='line'> 34</span>  * Tests shallow, coercive equality with the equal comparison operator ( &lt;code class="code prettyprint lang-js">==&lt;/code> ).
+<span class='line'> 34</span>  * Tests shallow, coercive equality with the equal comparison operator ( &lt;code>==&lt;/code> ).
 <span class='line'> 35</span>  * @param {*} actual
 <span class='line'> 36</span>  * @param {*} expected
 <span class='line'> 37</span>  * @param {*} message
@@ -49,7 +49,7 @@
 <span class='line'> 42</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 43</span> 
 <span class='line'> 44</span> </span><span class="COMM">/**
-<span class='line'> 45</span>  * Tests shallow, coercive non-equality with the not equal comparison operator ( &lt;code class="code prettyprint lang-js">!=&lt;/code> ).
+<span class='line'> 45</span>  * Tests shallow, coercive non-equality with the not equal comparison operator ( &lt;code>!=&lt;/code> ).
 <span class='line'> 46</span>  * @param {*} actual
 <span class='line'> 47</span>  * @param {*} expected
 <span class='line'> 48</span>  * @param {*} message
@@ -82,7 +82,7 @@
 <span class='line'> 75</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 76</span> 
 <span class='line'> 77</span> </span><span class="COMM">/**
-<span class='line'> 78</span>  * Tests strict equality, as determined by the strict equality operator ( &lt;code class="code prettyprint lang-js">===&lt;/code> )
+<span class='line'> 78</span>  * Tests strict equality, as determined by the strict equality operator ( &lt;code>===&lt;/code> )
 <span class='line'> 79</span>  * @param {*} actual
 <span class='line'> 80</span>  * @param {*} expected
 <span class='line'> 81</span>  * @param {*} message
@@ -93,7 +93,7 @@
 <span class='line'> 86</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 87</span> 
 <span class='line'> 88</span> </span><span class="COMM">/**
-<span class='line'> 89</span>  * Tests strict non-equality, as determined by the strict not equal operator ( &lt;code class="code prettyprint lang-js">!==&lt;/code> )
+<span class='line'> 89</span>  * Tests strict non-equality, as determined by the strict not equal operator ( &lt;code>!==&lt;/code> )
 <span class='line'> 90</span>  * @param {*} actual
 <span class='line'> 91</span>  * @param {*} expected
 <span class='line'> 92</span>  * @param {*} message
@@ -104,11 +104,11 @@
 <span class='line'> 97</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 98</span> 
 <span class='line'> 99</span> </span><span class="COMM">/**
-<span class='line'>100</span>  * Expects &lt;code class="code prettyprint lang-js">block&lt;/code> to throw an error. &lt;code class="code prettyprint lang-js">error&lt;/code> can be constructor, regexp or
+<span class='line'>100</span>  * Expects &lt;code>block&lt;/code> to throw an error. &lt;code>error&lt;/code> can be constructor, regexp or
 <span class='line'>101</span>  * validation function.
 <span class='line'>102</span>  *
 <span class='line'>103</span>  * Validate instanceof using constructor:
-<span class='line'>104</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>104</span>  * &lt;pre>
 <span class='line'>105</span>  *     assert.throws(
 <span class='line'>106</span>  *       function() {
 <span class='line'>107</span>  *         throw new Error("Wrong value");
@@ -117,7 +117,7 @@
 <span class='line'>110</span>  *     );
 <span class='line'>111</span>  * &lt;/pre>
 <span class='line'>112</span>  * Validate error message using RegExp:
-<span class='line'>113</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>113</span>  * &lt;pre>
 <span class='line'>114</span>  *     assert.throws(
 <span class='line'>115</span>  *       function() {
 <span class='line'>116</span>  *         throw new Error("Wrong value");
@@ -126,7 +126,7 @@
 <span class='line'>119</span>  *     );
 <span class='line'>120</span>  * &lt;/pre>
 <span class='line'>121</span>  * Custom error validation:
-<span class='line'>122</span>  * &lt;pre class="code prettyprint lang-js">
+<span class='line'>122</span>  * &lt;pre>
 <span class='line'>123</span>  *     assert.throws(
 <span class='line'>124</span>  *       function() {
 <span class='line'>125</span>  *         throw new Error("Wrong value");
@@ -149,7 +149,7 @@
 <span class='line'>142</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>143</span> 
 <span class='line'>144</span> </span><span class="COMM">/**
-<span class='line'>145</span>  * Expects &lt;code class="code prettyprint lang-js">block&lt;/code> not to throw an error, see assert.throws for details.
+<span class='line'>145</span>  * Expects &lt;code>block&lt;/code> not to throw an error, see assert.throws for details.
 <span class='line'>146</span>  * @param {*} block
 <span class='line'>147</span>  * @param {*=} error
 <span class='line'>148</span>  * @param {*=} message
@@ -161,7 +161,7 @@
 <span class='line'>154</span> 
 <span class='line'>155</span> </span><span class="COMM">/**
 <span class='line'>156</span>  * Tests if value is not a false value, throws if it is a true value. Useful when
-<span class='line'>157</span>  * testing the first argument, &lt;code class="code prettyprint lang-js">error&lt;/code> in callbacks.
+<span class='line'>157</span>  * testing the first argument, &lt;code>error&lt;/code> in callbacks.
 <span class='line'>158</span>  * @param {*} err
 <span class='line'>159</span>  * @return {*}
 <span class='line'>160</span>  */</span><span class="WHIT">

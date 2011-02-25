@@ -1,7 +1,7 @@
 /**
  * @name node.tty
  * @namespace
- * Use <code class="code prettyprint lang-js">require('tty')</code> to access this module.
+ * Use <code>require('tty')</code> to access this module.
  */
 
 goog.provide("node.tty");

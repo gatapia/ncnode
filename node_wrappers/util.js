@@ -1,7 +1,7 @@
 /**
  * @name node.util
  * @namespace
- * These functions are in the module <code class="code prettyprint lang-js">'util'</code>. Use <code class="code prettyprint lang-js">require('util')</code> to access
+ * These functions are in the module <code>'util'</code>. Use <code>require('util')</code> to access
  * them.
  */
 
@@ -23,8 +23,8 @@ node.util.prototype.puts = function() {
 
 /**
  * A synchronous output function. Will block the process and
- * output <code class="code prettyprint lang-js">string</code> immediately to <code class="code prettyprint lang-js">stderr</code>.
- * <pre class="code prettyprint lang-js">
+ * output <code>string</code> immediately to <code>stderr</code>.
+ * <pre>
  *     require('util').debug('message on stderr');
  * </pre>
  * @param {*} x
@@ -43,19 +43,19 @@ node.util.prototype.error = function(x) {
 };
 
 /**
- * Return a string representation of <code class="code prettyprint lang-js">object</code>, which is useful for debugging.
+ * Return a string representation of <code>object</code>, which is useful for debugging.
  *
- * If <code class="code prettyprint lang-js">showHidden</code> is <code class="code prettyprint lang-js">true</code>, then the object's non-enumerable properties will be
+ * If <code>showHidden</code> is <code>true</code>, then the object's non-enumerable properties will be
  * shown too.
  *
- * If <code class="code prettyprint lang-js">depth</code> is provided, it tells <code class="code prettyprint lang-js">inspect</code> how many times to recurse while
+ * If <code>depth</code> is provided, it tells <code>inspect</code> how many times to recurse while
  * formatting the object. This is useful for inspecting large complicated objects.
  *
  * The default is to only recurse twice.  To make it recurse indefinitely, pass
- * in <code class="code prettyprint lang-js">null</code> for <code class="code prettyprint lang-js">depth</code>.
+ * in <code>null</code> for <code>depth</code>.
  *
- * Example of inspecting all properties of the <code class="code prettyprint lang-js">util</code> object:
- * <pre class="code prettyprint lang-js">
+ * Example of inspecting all properties of the <code>util</code> object:
+ * <pre>
  *     var util = require('util');
  *
  *     console.log(util.inspect(util, true, null));
@@ -78,8 +78,8 @@ node.util.prototype.p = function() {
 };
 
 /**
- * Output with timestamp on <code class="code prettyprint lang-js">stdout</code>.
- * <pre class="code prettyprint lang-js">
+ * Output with timestamp on <code>stdout</code>.
+ * <pre>
  *     require('util').log('Timestmaped message.');
  * </pre>
  * @param {*} msg
@@ -99,10 +99,10 @@ node.util.prototype.exec = function() {
 /**
  * Experimental
  *
- * Read the data from <code class="code prettyprint lang-js">readableStream</code> and send it to the <code class="code prettyprint lang-js">writableStream</code>.
- * When <code class="code prettyprint lang-js">writableStream.write(data)</code> returns <code class="code prettyprint lang-js">false</code> <code class="code prettyprint lang-js">readableStream</code> will be
- * paused until the <code class="code prettyprint lang-js">drain</code> event occurs on the <code class="code prettyprint lang-js">writableStream</code>. <code class="code prettyprint lang-js">callback</code> gets
- * an error as its only argument and is called when <code class="code prettyprint lang-js">writableStream</code> is closed or
+ * Read the data from <code>readableStream</code> and send it to the <code>writableStream</code>.
+ * When <code>writableStream.write(data)</code> returns <code>false</code> <code>readableStream</code> will be
+ * paused until the <code>drain</code> event occurs on the <code>writableStream</code>. <code>callback</code> gets
+ * an error as its only argument and is called when <code>writableStream</code> is closed or
  * when an error occurs.
  * @param {*} readStream
  * @param {*} writeStream
@@ -116,12 +116,12 @@ node.util.prototype.pump = function(readStream, writeStream, callback) {
 /**
  * Inherit the prototype methods from one
  * <a href="node.https:&#47;&#47;developer.mozilla.org&#47;en&#47;JavaScript&#47;Reference&#47;Global<em>Objects&#47;Object&#47;constructor">constructor</a>
- * into another.  The prototype of <code class="code prettyprint lang-js">constructor</code> will be set to a new
- * object created from <code class="code prettyprint lang-js">superConstructor</code>.
+ * into another.  The prototype of <code>constructor</code> will be set to a new
+ * object created from <code>superConstructor</code>.
  *
- * As an additional convenience, <code class="code prettyprint lang-js">superConstructor</code> will be accessible
- * through the <code class="code prettyprint lang-js">constructor.super</em></code> property.
- * <pre class="code prettyprint lang-js">
+ * As an additional convenience, <code>superConstructor</code> will be accessible
+ * through the <code>constructor.super</em></code> property.
+ * <pre>
  *     var util = require("util");
  *     var events = require("events");
  *

@@ -1,7 +1,7 @@
 /**
  * @name node.http
  * @namespace
- * To use the HTTP server and client one must <code class="code prettyprint lang-js">require('http')</code>.
+ * To use the HTTP server and client one must <code>require('http')</code>.
  *
  * The HTTP interfaces in Node are designed to support many features
  * of the protocol which have been traditionally difficult to use.
@@ -10,7 +10,7 @@
  * user is able to stream data.
  *
  * HTTP message headers are represented by an object like this:
- * <pre class="code prettyprint lang-js">
+ * <pre>
  *     { 'content-length': '123',
  *       'content-type': 'text&#47;plain',
  *       'connection': 'keep-alive',
