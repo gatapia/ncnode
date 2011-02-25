@@ -111,15 +111,15 @@ node.fs.prototype.closeSync = function(fd) {
 
 /**
  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
- * or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
+ * or 'a+'. <code class="code prettyprint lang-js">mode</code> defaults to 0666. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
  * @param {*} path
  * @param {*} flags
- * @param {*} mode_
+ * @param {*} mode
  * @param {*} callback
  * @return {*}
  */
-node.fs.prototype.open = function(path, flags, mode_, callback) {
-  return node.fs.core_.open(path, flags, mode_, callback);
+node.fs.prototype.open = function(path, flags, mode, callback) {
+  return node.fs.core_.open(path, flags, mode, callback);
 };
 
 /**
@@ -613,11 +613,11 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
 
 /**
  * Watch for changes on <code class="code prettyprint lang-js">filename</code>. The callback <code class="code prettyprint lang-js">listener</code> will be called each
- * time the file changes.
+ * time the file is accessed.
  *
  * The second argument is optional. The <code class="code prettyprint lang-js">options</code> if provided should be an object
  * containing two members a boolean, <code class="code prettyprint lang-js">persistent</code>, and <code class="code prettyprint lang-js">interval</code>, a polling
- * value in milliseconds. The default is <code class="code prettyprint lang-js">{persistent: true, interval: 0}</code>.
+ * value in milliseconds. The default is <code class="code prettyprint lang-js">{ persistent: true, interval: 0 }</code>.
  *
  * The <code class="code prettyprint lang-js">listener</code> gets two arguments the current stat object and the previous
  * stat object:
@@ -628,6 +628,9 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
  *     });
  * </pre>
  * These stat objects are instances of <code class="code prettyprint lang-js">fs.Stat</code>.
+ *
+ * If you want to be notified when the file was modified, not just accessed
+ * you need to compare <code class="code prettyprint lang-js">curr.mtime</code> and `prev.mtime.
  * @param {*} filename
  * @return {*}
  */
@@ -647,21 +650,23 @@ node.fs.prototype.unwatchFile = function(filename) {
 /**
  * Synchronous realpath(2). Returns the resolved path.
  * @param {*} p
+ * @param {*} cache
  * @return {*}
  */
-node.fs.prototype.realpathSync = function(p) {
-  return node.fs.core_.realpathSync(p);
+node.fs.prototype.realpathSync = function(p, cache) {
+  return node.fs.core_.realpathSync(p, cache);
 };
 
 /**
  * Asynchronous realpath(2).  The callback gets two arguments <code class="code prettyprint lang-js">(err,
  * resolvedPath)</code>.
  * @param {*} p
+ * @param {*} cache
  * @param {*} cb
  * @return {*}
  */
-node.fs.prototype.realpath = function(p, cb) {
-  return node.fs.core_.realpath(p, cb);
+node.fs.prototype.realpath = function(p, cache, cb) {
+  return node.fs.core_.realpath(p, cache, cb);
 };
 
 /**

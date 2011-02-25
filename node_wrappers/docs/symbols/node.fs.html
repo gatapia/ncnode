@@ -528,7 +528,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode_, callback)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode, callback)
 										</div>
 										<div class="description">Asynchronous file open.</div>
 									</td>
@@ -638,7 +638,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cb)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cache, cb)
 										</div>
 										<div class="description">Asynchronous realpath(2).</div>
 									</td>
@@ -649,7 +649,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p, cache)
 										</div>
 										<div class="description">Synchronous realpath(2).</div>
 									</td>
@@ -2295,12 +2295,12 @@ to the completion callback.
 
 									<span class="light">{*}</span>
 
-									<b>open</b>(path, flags, mode_, callback)
+									<b>open</b>(path, flags, mode, callback)
 								</div>
 
 								<div class="description">
 									Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
+or 'a+'. <code class="code prettyprint lang-js">mode</code> defaults to 0666. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
 
 									
 
@@ -2326,7 +2326,7 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode_</b>
+												<span class="light fixedFont">{*}</span> <b>mode</b>
 												
 											</dt>
 											<dd></dd>
@@ -3043,7 +3043,7 @@ resolvedPath)</code>.
 
 									<span class="light">{*}</span>
 
-									<b>realpath</b>(p, cb)
+									<b>realpath</b>(p, cache, cb)
 								</div>
 
 								<div class="description">
@@ -3063,6 +3063,12 @@ resolvedPath)</code>.
 										
 											<dt>
 												<span class="light fixedFont">{*}</span> <b>p</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>cache</b>
 												
 											</dt>
 											<dd></dd>
@@ -3111,7 +3117,7 @@ resolvedPath)</code>.
 
 									<span class="light">{*}</span>
 
-									<b>realpathSync</b>(p)
+									<b>realpathSync</b>(p, cache)
 								</div>
 
 								<div class="description">
@@ -3130,6 +3136,12 @@ resolvedPath)</code>.
 										
 											<dt>
 												<span class="light fixedFont">{*}</span> <b>p</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{*}</span> <b>cache</b>
 												
 											</dt>
 											<dd></dd>
@@ -4228,11 +4240,11 @@ to the completion callback.
 
 								<div class="description">
 									Watch for changes on <code class="code prettyprint lang-js">filename</code>. The callback <code class="code prettyprint lang-js">listener</code> will be called each
-time the file changes.
+time the file is accessed.
 
 The second argument is optional. The <code class="code prettyprint lang-js">options</code> if provided should be an object
 containing two members a boolean, <code class="code prettyprint lang-js">persistent</code>, and <code class="code prettyprint lang-js">interval</code>, a polling
-value in milliseconds. The default is <code class="code prettyprint lang-js">{persistent: true, interval: 0}</code>.
+value in milliseconds. The default is <code class="code prettyprint lang-js">{ persistent: true, interval: 0 }</code>.
 
 The <code class="code prettyprint lang-js">listener</code> gets two arguments the current stat object and the previous
 stat object:
@@ -4243,6 +4255,9 @@ stat object:
     });
 </pre>
 These stat objects are instances of <code class="code prettyprint lang-js">fs.Stat</code>.
+
+If you want to be notified when the file was modified, not just accessed
+you need to compare <code class="code prettyprint lang-js">curr.mtime</code> and `prev.mtime.
 
 									
 

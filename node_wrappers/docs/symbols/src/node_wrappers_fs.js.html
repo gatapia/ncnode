@@ -118,15 +118,15 @@
 <span class='line'>111</span> 
 <span class='line'>112</span> </span><span class="COMM">/**
 <span class='line'>113</span>  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-<span class='line'>114</span>  * or 'a+'. The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, fd)&lt;/code>.
+<span class='line'>114</span>  * or 'a+'. &lt;code class="code prettyprint lang-js">mode&lt;/code> defaults to 0666. The callback gets two arguments &lt;code class="code prettyprint lang-js">(err, fd)&lt;/code>.
 <span class='line'>115</span>  * @param {*} path
 <span class='line'>116</span>  * @param {*} flags
-<span class='line'>117</span>  * @param {*} mode_
+<span class='line'>117</span>  * @param {*} mode
 <span class='line'>118</span>  * @param {*} callback
 <span class='line'>119</span>  * @return {*}
 <span class='line'>120</span>  */</span><span class="WHIT">
-<span class='line'>121</span> </span><span class="NAME">node.fs.prototype.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>122</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.open</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="NAME">node.fs.prototype.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.open</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>123</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>124</span> 
 <span class='line'>125</span> </span><span class="COMM">/**
@@ -620,11 +620,11 @@
 <span class='line'>613</span> 
 <span class='line'>614</span> </span><span class="COMM">/**
 <span class='line'>615</span>  * Watch for changes on &lt;code class="code prettyprint lang-js">filename&lt;/code>. The callback &lt;code class="code prettyprint lang-js">listener&lt;/code> will be called each
-<span class='line'>616</span>  * time the file changes.
+<span class='line'>616</span>  * time the file is accessed.
 <span class='line'>617</span>  *
 <span class='line'>618</span>  * The second argument is optional. The &lt;code class="code prettyprint lang-js">options&lt;/code> if provided should be an object
 <span class='line'>619</span>  * containing two members a boolean, &lt;code class="code prettyprint lang-js">persistent&lt;/code>, and &lt;code class="code prettyprint lang-js">interval&lt;/code>, a polling
-<span class='line'>620</span>  * value in milliseconds. The default is &lt;code class="code prettyprint lang-js">{persistent: true, interval: 0}&lt;/code>.
+<span class='line'>620</span>  * value in milliseconds. The default is &lt;code class="code prettyprint lang-js">{ persistent: true, interval: 0 }&lt;/code>.
 <span class='line'>621</span>  *
 <span class='line'>622</span>  * The &lt;code class="code prettyprint lang-js">listener&lt;/code> gets two arguments the current stat object and the previous
 <span class='line'>623</span>  * stat object:
@@ -635,63 +635,68 @@
 <span class='line'>628</span>  *     });
 <span class='line'>629</span>  * &lt;/pre>
 <span class='line'>630</span>  * These stat objects are instances of &lt;code class="code prettyprint lang-js">fs.Stat&lt;/code>.
-<span class='line'>631</span>  * @param {*} filename
-<span class='line'>632</span>  * @return {*}
-<span class='line'>633</span>  */</span><span class="WHIT">
-<span class='line'>634</span> </span><span class="NAME">node.fs.prototype.watchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>635</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.watchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>636</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>637</span> 
-<span class='line'>638</span> </span><span class="COMM">/**
-<span class='line'>639</span>  * Stop watching for changes on &lt;code class="code prettyprint lang-js">filename&lt;/code>.
-<span class='line'>640</span>  * @param {*} filename
-<span class='line'>641</span>  * @return {*}
-<span class='line'>642</span>  */</span><span class="WHIT">
-<span class='line'>643</span> </span><span class="NAME">node.fs.prototype.unwatchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>644</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.unwatchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>645</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>646</span> 
-<span class='line'>647</span> </span><span class="COMM">/**
-<span class='line'>648</span>  * Synchronous realpath(2). Returns the resolved path.
-<span class='line'>649</span>  * @param {*} p
-<span class='line'>650</span>  * @return {*}
-<span class='line'>651</span>  */</span><span class="WHIT">
-<span class='line'>652</span> </span><span class="NAME">node.fs.prototype.realpathSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>653</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpathSync</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>654</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>655</span> 
-<span class='line'>656</span> </span><span class="COMM">/**
-<span class='line'>657</span>  * Asynchronous realpath(2).  The callback gets two arguments &lt;code class="code prettyprint lang-js">(err,
-<span class='line'>658</span>  * resolvedPath)&lt;/code>.
-<span class='line'>659</span>  * @param {*} p
-<span class='line'>660</span>  * @param {*} cb
-<span class='line'>661</span>  * @return {*}
-<span class='line'>662</span>  */</span><span class="WHIT">
-<span class='line'>663</span> </span><span class="NAME">node.fs.prototype.realpath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>664</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpath</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>665</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>666</span> 
-<span class='line'>667</span> </span><span class="COMM">/**
-<span class='line'>668</span>  * @param {string} path
-<span class='line'>669</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
-<span class='line'>670</span>  * @return {node.fs.ReadStream}
-<span class='line'>671</span>  */</span><span class="WHIT">
-<span class='line'>672</span> </span><span class="NAME">node.fs.prototype.createReadStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>673</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createReadStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>674</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>675</span> 
-<span class='line'>676</span> </span><span class="COMM">/**
-<span class='line'>677</span>  * @param {string} path
-<span class='line'>678</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
-<span class='line'>679</span>  * @return {node.fs.WriteStream}
-<span class='line'>680</span>  */</span><span class="WHIT">
-<span class='line'>681</span> </span><span class="NAME">node.fs.prototype.createWriteStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>682</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createWriteStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>683</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>684</span> 
-<span class='line'>685</span> 
-<span class='line'>686</span> </span><span class="COMM">/**
-<span class='line'>687</span>  * @private
-<span class='line'>688</span>  * @type {*}
-<span class='line'>689</span>  */</span><span class="WHIT">
-<span class='line'>690</span> </span><span class="NAME">node.fs.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"fs"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<span class='line'>631</span>  *
+<span class='line'>632</span>  * If you want to be notified when the file was modified, not just accessed
+<span class='line'>633</span>  * you need to compare &lt;code class="code prettyprint lang-js">curr.mtime&lt;/code> and `prev.mtime.
+<span class='line'>634</span>  * @param {*} filename
+<span class='line'>635</span>  * @return {*}
+<span class='line'>636</span>  */</span><span class="WHIT">
+<span class='line'>637</span> </span><span class="NAME">node.fs.prototype.watchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>638</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.watchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>639</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>640</span> 
+<span class='line'>641</span> </span><span class="COMM">/**
+<span class='line'>642</span>  * Stop watching for changes on &lt;code class="code prettyprint lang-js">filename&lt;/code>.
+<span class='line'>643</span>  * @param {*} filename
+<span class='line'>644</span>  * @return {*}
+<span class='line'>645</span>  */</span><span class="WHIT">
+<span class='line'>646</span> </span><span class="NAME">node.fs.prototype.unwatchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>647</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.unwatchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>648</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>649</span> 
+<span class='line'>650</span> </span><span class="COMM">/**
+<span class='line'>651</span>  * Synchronous realpath(2). Returns the resolved path.
+<span class='line'>652</span>  * @param {*} p
+<span class='line'>653</span>  * @param {*} cache
+<span class='line'>654</span>  * @return {*}
+<span class='line'>655</span>  */</span><span class="WHIT">
+<span class='line'>656</span> </span><span class="NAME">node.fs.prototype.realpathSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>657</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpathSync</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>658</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>659</span> 
+<span class='line'>660</span> </span><span class="COMM">/**
+<span class='line'>661</span>  * Asynchronous realpath(2).  The callback gets two arguments &lt;code class="code prettyprint lang-js">(err,
+<span class='line'>662</span>  * resolvedPath)&lt;/code>.
+<span class='line'>663</span>  * @param {*} p
+<span class='line'>664</span>  * @param {*} cache
+<span class='line'>665</span>  * @param {*} cb
+<span class='line'>666</span>  * @return {*}
+<span class='line'>667</span>  */</span><span class="WHIT">
+<span class='line'>668</span> </span><span class="NAME">node.fs.prototype.realpath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>669</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpath</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>670</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>671</span> 
+<span class='line'>672</span> </span><span class="COMM">/**
+<span class='line'>673</span>  * @param {string} path
+<span class='line'>674</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+<span class='line'>675</span>  * @return {node.fs.ReadStream}
+<span class='line'>676</span>  */</span><span class="WHIT">
+<span class='line'>677</span> </span><span class="NAME">node.fs.prototype.createReadStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>678</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createReadStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>679</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>680</span> 
+<span class='line'>681</span> </span><span class="COMM">/**
+<span class='line'>682</span>  * @param {string} path
+<span class='line'>683</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+<span class='line'>684</span>  * @return {node.fs.WriteStream}
+<span class='line'>685</span>  */</span><span class="WHIT">
+<span class='line'>686</span> </span><span class="NAME">node.fs.prototype.createWriteStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>687</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createWriteStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>688</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>689</span> 
+<span class='line'>690</span> 
+<span class='line'>691</span> </span><span class="COMM">/**
+<span class='line'>692</span>  * @private
+<span class='line'>693</span>  * @type {*}
+<span class='line'>694</span>  */</span><span class="WHIT">
+<span class='line'>695</span> </span><span class="NAME">node.fs.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"fs"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

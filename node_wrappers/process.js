@@ -9,7 +9,7 @@ goog.provide("node.process");
 
 /**
  * Getter&#47;setter to set what is displayed in 'ps'.
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.title;
 
@@ -18,7 +18,7 @@ node.process.prototype.title;
  * <pre class="code prettyprint lang-js">
  *     console.log('Version: ' + process.version);
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.version;
 
@@ -27,12 +27,12 @@ node.process.prototype.version;
  * <pre class="code prettyprint lang-js">
  *     console.log('Prefix: ' + process.installPrefix);
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.installPrefix;
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.versions;
 
@@ -41,12 +41,12 @@ node.process.prototype.versions;
  * <pre class="code prettyprint lang-js">
  *     console.log('This platform is ' + process.platform);
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.platform;
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.ARGV;
 
@@ -69,18 +69,18 @@ node.process.prototype.ARGV;
  *     3: two=three
  *     4: four
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.argv;
 
 /**
  * An object containing the user environment. See environ(7).
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.env;
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.ENV;
 
@@ -89,7 +89,7 @@ node.process.prototype.ENV;
  * <pre class="code prettyprint lang-js">
  *     console.log('This process is pid ' + process.pid);
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.pid;
 
@@ -100,7 +100,7 @@ node.process.prototype.pid;
  * <pre class="code prettyprint lang-js">
  *     &#47;usr&#47;local&#47;bin&#47;node
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.execPath;
 
@@ -113,7 +113,7 @@ node.process.prototype.execPath;
  *       process.stdout.write(d + '\n');
  *     };
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.stdout;
 
@@ -134,12 +134,12 @@ node.process.prototype.stdout;
  *       process.stdout.write('end');
  *     });
  * </pre>
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.stdin;
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.process.prototype.mainModule;
 

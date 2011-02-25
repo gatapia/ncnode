@@ -6,12 +6,12 @@
 goog.provide("node.assert.AssertionError");
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.assert.AssertionError.prototype.name;
 
 /**
- * @type {[object Object]}
+ * @type {*}
  */
 node.assert.AssertionError.prototype.message;
 

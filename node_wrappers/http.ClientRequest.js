@@ -2,7 +2,10 @@
  * @name node.http.ClientRequest
  * @namespace
  * This object is created internally and returned from <code class="code prettyprint lang-js">http.request()</code>.  It
- * represents an <em>in-progress</em> request whose header has already been sent.
+ * represents an <em>in-progress</em> request whose header has already been queued.  The
+ * header is still mutable using the <code class="code prettyprint lang-js">setHeader(name, value)</code>, <code class="code prettyprint lang-js">getHeader(name)</code>,
+ * <code class="code prettyprint lang-js">removeHeader(name)</code> API.  The actual header will be sent along with the first
+ * data chunk or when closing the connection.
  *
  * To get the response, add a listener for <code class="code prettyprint lang-js">'response'</code> to the request object.
  * <code class="code prettyprint lang-js">'response'</code> will be emitted from the request object when the response

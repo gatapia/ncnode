@@ -16,7 +16,7 @@
 <span class='line'>  9</span> 
 <span class='line'> 10</span> </span><span class="COMM">/**
 <span class='line'> 11</span>  * Getter&#47;setter to set what is displayed in 'ps'.
-<span class='line'> 12</span>  * @type {[object Object]}
+<span class='line'> 12</span>  * @type {*}
 <span class='line'> 13</span>  */</span><span class="WHIT">
 <span class='line'> 14</span> </span><span class="NAME">node.process.prototype.title</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 15</span> 
@@ -25,7 +25,7 @@
 <span class='line'> 18</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 19</span>  *     console.log('Version: ' + process.version);
 <span class='line'> 20</span>  * &lt;/pre>
-<span class='line'> 21</span>  * @type {[object Object]}
+<span class='line'> 21</span>  * @type {*}
 <span class='line'> 22</span>  */</span><span class="WHIT">
 <span class='line'> 23</span> </span><span class="NAME">node.process.prototype.version</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 24</span> 
@@ -34,12 +34,12 @@
 <span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 28</span>  *     console.log('Prefix: ' + process.installPrefix);
 <span class='line'> 29</span>  * &lt;/pre>
-<span class='line'> 30</span>  * @type {[object Object]}
+<span class='line'> 30</span>  * @type {*}
 <span class='line'> 31</span>  */</span><span class="WHIT">
 <span class='line'> 32</span> </span><span class="NAME">node.process.prototype.installPrefix</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 33</span> 
 <span class='line'> 34</span> </span><span class="COMM">/**
-<span class='line'> 35</span>  * @type {[object Object]}
+<span class='line'> 35</span>  * @type {*}
 <span class='line'> 36</span>  */</span><span class="WHIT">
 <span class='line'> 37</span> </span><span class="NAME">node.process.prototype.versions</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 38</span> 
@@ -48,12 +48,12 @@
 <span class='line'> 41</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 42</span>  *     console.log('This platform is ' + process.platform);
 <span class='line'> 43</span>  * &lt;/pre>
-<span class='line'> 44</span>  * @type {[object Object]}
+<span class='line'> 44</span>  * @type {*}
 <span class='line'> 45</span>  */</span><span class="WHIT">
 <span class='line'> 46</span> </span><span class="NAME">node.process.prototype.platform</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 47</span> 
 <span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * @type {[object Object]}
+<span class='line'> 49</span>  * @type {*}
 <span class='line'> 50</span>  */</span><span class="WHIT">
 <span class='line'> 51</span> </span><span class="NAME">node.process.prototype.ARGV</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 52</span> 
@@ -76,18 +76,18 @@
 <span class='line'> 69</span>  *     3: two=three
 <span class='line'> 70</span>  *     4: four
 <span class='line'> 71</span>  * &lt;/pre>
-<span class='line'> 72</span>  * @type {[object Object]}
+<span class='line'> 72</span>  * @type {*}
 <span class='line'> 73</span>  */</span><span class="WHIT">
 <span class='line'> 74</span> </span><span class="NAME">node.process.prototype.argv</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 75</span> 
 <span class='line'> 76</span> </span><span class="COMM">/**
 <span class='line'> 77</span>  * An object containing the user environment. See environ(7).
-<span class='line'> 78</span>  * @type {[object Object]}
+<span class='line'> 78</span>  * @type {*}
 <span class='line'> 79</span>  */</span><span class="WHIT">
 <span class='line'> 80</span> </span><span class="NAME">node.process.prototype.env</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 81</span> 
 <span class='line'> 82</span> </span><span class="COMM">/**
-<span class='line'> 83</span>  * @type {[object Object]}
+<span class='line'> 83</span>  * @type {*}
 <span class='line'> 84</span>  */</span><span class="WHIT">
 <span class='line'> 85</span> </span><span class="NAME">node.process.prototype.ENV</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 86</span> 
@@ -96,7 +96,7 @@
 <span class='line'> 89</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'> 90</span>  *     console.log('This process is pid ' + process.pid);
 <span class='line'> 91</span>  * &lt;/pre>
-<span class='line'> 92</span>  * @type {[object Object]}
+<span class='line'> 92</span>  * @type {*}
 <span class='line'> 93</span>  */</span><span class="WHIT">
 <span class='line'> 94</span> </span><span class="NAME">node.process.prototype.pid</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 95</span> 
@@ -107,7 +107,7 @@
 <span class='line'>100</span>  * &lt;pre class="code prettyprint lang-js">
 <span class='line'>101</span>  *     &#47;usr&#47;local&#47;bin&#47;node
 <span class='line'>102</span>  * &lt;/pre>
-<span class='line'>103</span>  * @type {[object Object]}
+<span class='line'>103</span>  * @type {*}
 <span class='line'>104</span>  */</span><span class="WHIT">
 <span class='line'>105</span> </span><span class="NAME">node.process.prototype.execPath</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>106</span> 
@@ -120,7 +120,7 @@
 <span class='line'>113</span>  *       process.stdout.write(d + '\n');
 <span class='line'>114</span>  *     };
 <span class='line'>115</span>  * &lt;/pre>
-<span class='line'>116</span>  * @type {[object Object]}
+<span class='line'>116</span>  * @type {*}
 <span class='line'>117</span>  */</span><span class="WHIT">
 <span class='line'>118</span> </span><span class="NAME">node.process.prototype.stdout</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>119</span> 
@@ -141,12 +141,12 @@
 <span class='line'>134</span>  *       process.stdout.write('end');
 <span class='line'>135</span>  *     });
 <span class='line'>136</span>  * &lt;/pre>
-<span class='line'>137</span>  * @type {[object Object]}
+<span class='line'>137</span>  * @type {*}
 <span class='line'>138</span>  */</span><span class="WHIT">
 <span class='line'>139</span> </span><span class="NAME">node.process.prototype.stdin</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>140</span> 
 <span class='line'>141</span> </span><span class="COMM">/**
-<span class='line'>142</span>  * @type {[object Object]}
+<span class='line'>142</span>  * @type {*}
 <span class='line'>143</span>  */</span><span class="WHIT">
 <span class='line'>144</span> </span><span class="NAME">node.process.prototype.mainModule</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>145</span> 
