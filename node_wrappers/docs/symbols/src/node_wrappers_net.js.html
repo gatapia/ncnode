@@ -1,93 +1,94 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.net
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * The &lt;code>net&lt;/code> module provides you with an asynchronous network wrapper. It contains
-<span class='line'>  5</span>  * methods for creating both servers and clients (called streams). You can include
-<span class='line'>  6</span>  * this module with &lt;code>require("net");&lt;/code>
-<span class='line'>  7</span>  */</span><span class="WHIT">
-<span class='line'>  8</span> 
-<span class='line'>  9</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.net"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 10</span> 
-<span class='line'> 11</span> </span><span class="COMM">/**
-<span class='line'> 12</span>  * #### net.isIP(input)
-<span class='line'> 13</span>  *
-<span class='line'> 14</span>  * Tests if input is an IP address. Returns 0 for invalid strings,
-<span class='line'> 15</span>  * returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
-<span class='line'> 16</span>  *
-<span class='line'> 17</span>  *
-<span class='line'> 18</span>  * #### net.isIPv4(input)
-<span class='line'> 19</span>  *
-<span class='line'> 20</span>  * Returns true if input is a version 4 IP address, otherwise returns false.
-<span class='line'> 21</span>  *
-<span class='line'> 22</span>  *
-<span class='line'> 23</span>  * #### net.isIPv6(input)
-<span class='line'> 24</span>  *
-<span class='line'> 25</span>  * Returns true if input is a version 6 IP address, otherwise returns false.
-<span class='line'> 26</span>  * @return {*}
-<span class='line'> 27</span>  */</span><span class="WHIT">
-<span class='line'> 28</span> </span><span class="NAME">node.net.prototype.isIP</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 29</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.net.core_.isIP</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 30</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 31</span> 
-<span class='line'> 32</span> </span><span class="COMM">/**
-<span class='line'> 33</span>  * @param {*} input
-<span class='line'> 34</span>  * @return {*}
-<span class='line'> 35</span>  */</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="NAME">node.net.prototype.isIPv4</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.net.core_.isIPv4</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 39</span> 
-<span class='line'> 40</span> </span><span class="COMM">/**
-<span class='line'> 41</span>  * @param {*} input
-<span class='line'> 42</span>  * @return {*}
-<span class='line'> 43</span>  */</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="NAME">node.net.prototype.isIPv6</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.net.core_.isIPv6</span><span class="PUNC">(</span><span class="NAME">input</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * Construct a new socket object and opens a socket to the given location. When
-<span class='line'> 50</span>  * the socket is established the &lt;code>'connect'&lt;/code> event will be emitted.
-<span class='line'> 51</span>  *
-<span class='line'> 52</span>  * The arguments for this method change the type of connection:
-<span class='line'> 53</span>  *
-<span class='line'> 54</span>  * * &lt;code>net.createConnection(port, [host])&lt;/code>
-<span class='line'> 55</span>  *
-<span class='line'> 56</span>  *   Creates a TCP connection to &lt;code>port&lt;/code> on &lt;code>host&lt;/code>. If &lt;code>host&lt;/code> is omitted, &lt;code>localhost&lt;/code>
-<span class='line'> 57</span>  *   will be assumed.
-<span class='line'> 58</span>  *
-<span class='line'> 59</span>  * * &lt;code>net.createConnection(path)&lt;/code>
-<span class='line'> 60</span>  *
-<span class='line'> 61</span>  *   Creates unix socket connection to &lt;code>path&lt;/code>
-<span class='line'> 62</span>  *
-<span class='line'> 63</span>  * ---
-<span class='line'> 64</span>  * @param {*} port
-<span class='line'> 65</span>  * @param {*} host
-<span class='line'> 66</span>  * @return {*}
-<span class='line'> 67</span>  */</span><span class="WHIT">
-<span class='line'> 68</span> </span><span class="NAME">node.net.prototype.createConnection</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">port</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 69</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.net.core_.createConnection</span><span class="PUNC">(</span><span class="NAME">port</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 71</span> 
-<span class='line'> 72</span> </span><span class="COMM">/**
-<span class='line'> 73</span>  * Creates a new TCP server. The &lt;code>connectionListener&lt;/code> argument is
-<span class='line'> 74</span>  * automatically set as a listener for the &lt;code>'connection'&lt;/code> event.
-<span class='line'> 75</span>  * @return {*}
-<span class='line'> 76</span>  */</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="NAME">node.net.prototype.createServer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.net.core_.createServer</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 79</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 80</span> 
-<span class='line'> 81</span> 
-<span class='line'> 82</span> </span><span class="COMM">/**
-<span class='line'> 83</span>  * @private
-<span class='line'> 84</span>  * @type {*}
-<span class='line'> 85</span>  */</span><span class="WHIT">
-<span class='line'> 86</span> </span><span class="NAME">node.net.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"net"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_net.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.net
+ * @namespace
+ * The &lt;code>net&lt;/code> module provides you with an asynchronous network wrapper. It contains
+ * methods for creating both servers and clients (called streams). You can include
+ * this module with &lt;code>require("net");&lt;/code>
+ */
+
+goog.provide("node.net");
+
+/**
+ * #### net.isIP(input)
+ *
+ * Tests if input is an IP address. Returns 0 for invalid strings,
+ * returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses.
+ *
+ *
+ * #### net.isIPv4(input)
+ *
+ * Returns true if input is a version 4 IP address, otherwise returns false.
+ *
+ *
+ * #### net.isIPv6(input)
+ *
+ * Returns true if input is a version 6 IP address, otherwise returns false.
+ * @return {*}
+ */
+node.net.prototype.isIP = function() {
+  return node.net.core_.isIP();
+};
+
+/**
+ * @param {*} input
+ * @return {*}
+ */
+node.net.prototype.isIPv4 = function(input) {
+  return node.net.core_.isIPv4(input);
+};
+
+/**
+ * @param {*} input
+ * @return {*}
+ */
+node.net.prototype.isIPv6 = function(input) {
+  return node.net.core_.isIPv6(input);
+};
+
+/**
+ * Construct a new socket object and opens a socket to the given location. When
+ * the socket is established the &lt;code>'connect'&lt;/code> event will be emitted.
+ *
+ * The arguments for this method change the type of connection:
+ *
+ * * &lt;code>net.createConnection(port, [host])&lt;/code>
+ *
+ *   Creates a TCP connection to &lt;code>port&lt;/code> on &lt;code>host&lt;/code>. If &lt;code>host&lt;/code> is omitted, &lt;code>localhost&lt;/code>
+ *   will be assumed.
+ *
+ * * &lt;code>net.createConnection(path)&lt;/code>
+ *
+ *   Creates unix socket connection to &lt;code>path&lt;/code>
+ *
+ * ---
+ * @param {*} port
+ * @param {*} host
+ * @return {*}
+ */
+node.net.prototype.createConnection = function(port, host) {
+  return node.net.core_.createConnection(port, host);
+};
+
+/**
+ * Creates a new TCP server. The &lt;code>connectionListener&lt;/code> argument is
+ * automatically set as a listener for the &lt;code>'connection'&lt;/code> event.
+ * @return {*}
+ */
+node.net.prototype.createServer = function() {
+  return node.net.core_.createServer();
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.net.core_ = require("net");</pre></body></html>

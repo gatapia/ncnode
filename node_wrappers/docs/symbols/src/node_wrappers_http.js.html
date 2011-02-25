@@ -1,105 +1,106 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.http
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * To use the HTTP server and client one must &lt;code>require('http')&lt;/code>.
-<span class='line'>  5</span>  *
-<span class='line'>  6</span>  * The HTTP interfaces in Node are designed to support many features
-<span class='line'>  7</span>  * of the protocol which have been traditionally difficult to use.
-<span class='line'>  8</span>  * In particular, large, possibly chunk-encoded, messages. The interface is
-<span class='line'>  9</span>  * careful to never buffer entire requests or responses--the
-<span class='line'> 10</span>  * user is able to stream data.
-<span class='line'> 11</span>  *
-<span class='line'> 12</span>  * HTTP message headers are represented by an object like this:
-<span class='line'> 13</span>  * &lt;pre>
-<span class='line'> 14</span>  *     { 'content-length': '123',
-<span class='line'> 15</span>  *       'content-type': 'text&#47;plain',
-<span class='line'> 16</span>  *       'connection': 'keep-alive',
-<span class='line'> 17</span>  *       'accept': '*&#47;*' }
-<span class='line'> 18</span>  * &lt;/pre>
-<span class='line'> 19</span>  * Keys are lowercased. Values are not modified.
-<span class='line'> 20</span>  *
-<span class='line'> 21</span>  * In order to support the full spectrum of possible HTTP applications, Node's
-<span class='line'> 22</span>  * HTTP API is very low-level. It deals with stream handling and message
-<span class='line'> 23</span>  * parsing only. It parses a message into headers and body but it does not
-<span class='line'> 24</span>  * parse the actual headers or the body.
-<span class='line'> 25</span>  */</span><span class="WHIT">
-<span class='line'> 26</span> 
-<span class='line'> 27</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.http"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 28</span> 
-<span class='line'> 29</span> </span><span class="COMM">/**
-<span class='line'> 30</span>  * @type {*}
-<span class='line'> 31</span>  */</span><span class="WHIT">
-<span class='line'> 32</span> </span><span class="NAME">node.http.prototype.parsers</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 33</span> 
-<span class='line'> 34</span> </span><span class="COMM">/**
-<span class='line'> 35</span>  * @type {*}
-<span class='line'> 36</span>  */</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="NAME">node.http.prototype.STATUS_CODES</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 38</span> 
-<span class='line'> 39</span> </span><span class="COMM">/**
-<span class='line'> 40</span>  * @param {*} requestListener
-<span class='line'> 41</span>  * @return {*}
-<span class='line'> 42</span>  */</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="NAME">node.http.prototype.createServer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">requestListener</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.createServer</span><span class="PUNC">(</span><span class="NAME">requestListener</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 46</span> 
-<span class='line'> 47</span> </span><span class="COMM">/**
-<span class='line'> 48</span>  * @param {*} host
-<span class='line'> 49</span>  * @param {*} port
-<span class='line'> 50</span>  * @return {*}
-<span class='line'> 51</span>  */</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="NAME">node.http.prototype.getAgent</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">host</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">port</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.getAgent</span><span class="PUNC">(</span><span class="NAME">host</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">port</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 55</span> 
-<span class='line'> 56</span> </span><span class="COMM">/**
-<span class='line'> 57</span>  * @param {*} options
-<span class='line'> 58</span>  * @param {*} cb
-<span class='line'> 59</span>  * @return {*}
-<span class='line'> 60</span>  */</span><span class="WHIT">
-<span class='line'> 61</span> </span><span class="NAME">node.http.prototype.request</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.request</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 64</span> 
-<span class='line'> 65</span> </span><span class="COMM">/**
-<span class='line'> 66</span>  * @param {*} options
-<span class='line'> 67</span>  * @param {*} cb
-<span class='line'> 68</span>  * @return {*}
-<span class='line'> 69</span>  */</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="NAME">node.http.prototype.get</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.get</span><span class="PUNC">(</span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 73</span> 
-<span class='line'> 74</span> </span><span class="COMM">/**
-<span class='line'> 75</span>  * @param {*} port
-<span class='line'> 76</span>  * @param {*} host
-<span class='line'> 77</span>  * @return {*}
-<span class='line'> 78</span>  */</span><span class="WHIT">
-<span class='line'> 79</span> </span><span class="NAME">node.http.prototype.createClient</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">port</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 80</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.createClient</span><span class="PUNC">(</span><span class="NAME">port</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">host</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 81</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 82</span> 
-<span class='line'> 83</span> </span><span class="COMM">/**
-<span class='line'> 84</span>  * @param {*} url
-<span class='line'> 85</span>  * @param {*} encoding_
-<span class='line'> 86</span>  * @param {*} headers_
-<span class='line'> 87</span>  * @return {*}
-<span class='line'> 88</span>  */</span><span class="WHIT">
-<span class='line'> 89</span> </span><span class="NAME">node.http.prototype.cat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">headers_</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 90</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.http.core_.cat</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">headers_</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 91</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 92</span> 
-<span class='line'> 93</span> 
-<span class='line'> 94</span> </span><span class="COMM">/**
-<span class='line'> 95</span>  * @private
-<span class='line'> 96</span>  * @type {*}
-<span class='line'> 97</span>  */</span><span class="WHIT">
-<span class='line'> 98</span> </span><span class="NAME">node.http.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"http"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_http.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.http
+ * @namespace
+ * To use the HTTP server and client one must &lt;code>require('http')&lt;/code>.
+ *
+ * The HTTP interfaces in Node are designed to support many features
+ * of the protocol which have been traditionally difficult to use.
+ * In particular, large, possibly chunk-encoded, messages. The interface is
+ * careful to never buffer entire requests or responses--the
+ * user is able to stream data.
+ *
+ * HTTP message headers are represented by an object like this:
+ * &lt;pre>
+ *     { 'content-length': '123',
+ *       'content-type': 'text&#47;plain',
+ *       'connection': 'keep-alive',
+ *       'accept': '*&#47;*' }
+ * &lt;/pre>
+ * Keys are lowercased. Values are not modified.
+ *
+ * In order to support the full spectrum of possible HTTP applications, Node's
+ * HTTP API is very low-level. It deals with stream handling and message
+ * parsing only. It parses a message into headers and body but it does not
+ * parse the actual headers or the body.
+ */
+
+goog.provide("node.http");
+
+/**
+ * @type {*}
+ */
+node.http.prototype.parsers;
+
+/**
+ * @type {*}
+ */
+node.http.prototype.STATUS_CODES;
+
+/**
+ * @param {*} requestListener
+ * @return {*}
+ */
+node.http.prototype.createServer = function(requestListener) {
+  return node.http.core_.createServer(requestListener);
+};
+
+/**
+ * @param {*} host
+ * @param {*} port
+ * @return {*}
+ */
+node.http.prototype.getAgent = function(host, port) {
+  return node.http.core_.getAgent(host, port);
+};
+
+/**
+ * @param {*} options
+ * @param {*} cb
+ * @return {*}
+ */
+node.http.prototype.request = function(options, cb) {
+  return node.http.core_.request(options, cb);
+};
+
+/**
+ * @param {*} options
+ * @param {*} cb
+ * @return {*}
+ */
+node.http.prototype.get = function(options, cb) {
+  return node.http.core_.get(options, cb);
+};
+
+/**
+ * @param {*} port
+ * @param {*} host
+ * @return {*}
+ */
+node.http.prototype.createClient = function(port, host) {
+  return node.http.core_.createClient(port, host);
+};
+
+/**
+ * @param {*} url
+ * @param {*} encoding_
+ * @param {*} headers_
+ * @return {*}
+ */
+node.http.prototype.cat = function(url, encoding_, headers_) {
+  return node.http.core_.cat(url, encoding_, headers_);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.http.core_ = require("http");</pre></body></html>

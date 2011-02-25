@@ -1,50 +1,52 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.child_process
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  */</span><span class="WHIT">
-<span class='line'>  5</span> 
-<span class='line'>  6</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.child_process"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  7</span> 
-<span class='line'>  8</span> </span><span class="COMM">/**
-<span class='line'>  9</span>  * @param {*} path
-<span class='line'> 10</span>  * @param {*} args /*
-<span class='line'> 11</span>  * @param {*} options
-<span class='line'> 12</span>  * @param {*} customFds */</span><span class="WHIT">
-<span class='line'> 13</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 14</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'> 15</span> node.child_process.prototype.spawn = function(path, args /</span><span class="PUNC">*</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">customFds</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/) {
-<span class='line'> 16</span>   return node.child_process.core_.spawn(path, args /</span><span class="PUNC">*</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">customFds</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/);
-<span class='line'> 17</span> };
-<span class='line'> 18</span> 
-<span class='line'> 19</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'> 20</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">command</span><span class="WHIT"> </span><span class="COMM">/*
-<span class='line'> 21</span>  * @param {*} options
-<span class='line'> 22</span>  * @param {*} callback */</span><span class="WHIT">
-<span class='line'> 23</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 24</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'> 25</span> node.child_process.prototype.exec = function(command /</span><span class="PUNC">*</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/) {
-<span class='line'> 26</span>   return node.child_process.core_.exec(command /</span><span class="PUNC">*</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/);
-<span class='line'> 27</span> };
-<span class='line'> 28</span> 
-<span class='line'> 29</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'> 30</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">param</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">file</span><span class="WHIT"> </span><span class="COMM">/* args
-<span class='line'> 31</span>  * @param {*} options
-<span class='line'> 32</span>  * @param {*} callback */</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/
-<span class='line'> 35</span> node.child_process.prototype.execFile = function(file /</span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/) {
-<span class='line'> 36</span>   return node.child_process.core_.execFile(file /</span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">args</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="REGX">/);
-<span class='line'> 37</span> };
-<span class='line'> 38</span> 
-<span class='line'> 39</span> 
-<span class='line'> 40</span> /</span><span class="PUNC">*</span><span class="PUNC">*</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">private</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="TOKN">@</span><span class="NAME">type</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">*</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="WHIT"> </span><span class="PUNC">*</span><span class="TOKN"></span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_child_process.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.child_process
+ * @namespace
+ */
+
+goog.provide("node.child_process");
+
+/**
+ * @param {*} path
+ * @param {*} args /*
+ * @param {*} options
+ * @param {*} customFds */
+ * @return {*}
+ */
+node.child_process.prototype.spawn = function(path, args /*, options, customFds */) {
+  return node.child_process.core_.spawn(path, args /*, options, customFds */);
+};
+
+/**
+ * @param {*} command /*
+ * @param {*} options
+ * @param {*} callback */
+ * @return {*}
+ */
+node.child_process.prototype.exec = function(command /*, options, callback */) {
+  return node.child_process.core_.exec(command /*, options, callback */);
+};
+
+/**
+ * @param {*} file /* args
+ * @param {*} options
+ * @param {*} callback */
+ * @return {*}
+ */
+node.child_process.prototype.execFile = function(file /* args, options, callback */) {
+  return node.child_process.core_.execFile(file /* args, options, callback */);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.child_process.core_ = require("child_process");</pre></body></html>

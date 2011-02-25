@@ -1,702 +1,703 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.fs
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
-<span class='line'>  5</span>  * use this module do &lt;code>require('fs')&lt;/code>. All the methods have asynchronous and
-<span class='line'>  6</span>  * synchronous forms.
-<span class='line'>  7</span>  *
-<span class='line'>  8</span>  * The asynchronous form always take a completion callback as its last argument.
-<span class='line'>  9</span>  * The arguments passed to the completion callback depend on the method, but the
-<span class='line'> 10</span>  * first argument is always reserved for an exception. If the operation was
-<span class='line'> 11</span>  * completed successfully, then the first argument will be &lt;code>null&lt;/code> or &lt;code>undefined&lt;/code>.
-<span class='line'> 12</span>  *
-<span class='line'> 13</span>  * Here is an example of the asynchronous version:
-<span class='line'> 14</span>  * &lt;pre>
-<span class='line'> 15</span>  *     var fs = require('fs');
-<span class='line'> 16</span>  *
-<span class='line'> 17</span>  *     fs.unlink('&#47;tmp&#47;hello', function (err) {
-<span class='line'> 18</span>  *       if (err) throw err;
-<span class='line'> 19</span>  *       console.log('successfully deleted &#47;tmp&#47;hello');
-<span class='line'> 20</span>  *     });
-<span class='line'> 21</span>  * &lt;/pre>
-<span class='line'> 22</span>  * Here is the synchronous version:
-<span class='line'> 23</span>  * &lt;pre>
-<span class='line'> 24</span>  *     var fs = require('fs');
-<span class='line'> 25</span>  *
-<span class='line'> 26</span>  *     fs.unlinkSync('&#47;tmp&#47;hello')
-<span class='line'> 27</span>  *     console.log('successfully deleted &#47;tmp&#47;hello');
-<span class='line'> 28</span>  * &lt;/pre>
-<span class='line'> 29</span>  * With the asynchronous methods there is no guaranteed ordering. So the
-<span class='line'> 30</span>  * following is prone to error:
-<span class='line'> 31</span>  * &lt;pre>
-<span class='line'> 32</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
-<span class='line'> 33</span>  *       if (err) throw err;
-<span class='line'> 34</span>  *       console.log('renamed complete');
-<span class='line'> 35</span>  *     });
-<span class='line'> 36</span>  *     fs.stat('&#47;tmp&#47;world', function (err, stats) {
-<span class='line'> 37</span>  *       if (err) throw err;
-<span class='line'> 38</span>  *       console.log('stats: ' + JSON.stringify(stats));
-<span class='line'> 39</span>  *     });
-<span class='line'> 40</span>  * &lt;/pre>
-<span class='line'> 41</span>  * It could be that &lt;code>fs.stat&lt;/code> is executed before &lt;code>fs.rename&lt;/code>.
-<span class='line'> 42</span>  * The correct way to do this is to chain the callbacks.
-<span class='line'> 43</span>  * &lt;pre>
-<span class='line'> 44</span>  *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
-<span class='line'> 45</span>  *       if (err) throw err;
-<span class='line'> 46</span>  *       fs.stat('&#47;tmp&#47;world', function (err, stats) {
-<span class='line'> 47</span>  *         if (err) throw err;
-<span class='line'> 48</span>  *         console.log('stats: ' + JSON.stringify(stats));
-<span class='line'> 49</span>  *       });
-<span class='line'> 50</span>  *     });
-<span class='line'> 51</span>  * &lt;/pre>
-<span class='line'> 52</span>  * In busy processes, the programmer is &lt;em>strongly encouraged&lt;/em> to use the
-<span class='line'> 53</span>  * asynchronous versions of these calls. The synchronous versions will block
-<span class='line'> 54</span>  * the entire process until they complete--halting all connections.
-<span class='line'> 55</span>  */</span><span class="WHIT">
-<span class='line'> 56</span> 
-<span class='line'> 57</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.fs"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 58</span> 
-<span class='line'> 59</span> </span><span class="COMM">/**
-<span class='line'> 60</span>  * Asynchronously reads the entire contents of a file. Example:
-<span class='line'> 61</span>  * &lt;pre>
-<span class='line'> 62</span>  *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
-<span class='line'> 63</span>  *       if (err) throw err;
-<span class='line'> 64</span>  *       console.log(data);
-<span class='line'> 65</span>  *     });
-<span class='line'> 66</span>  * &lt;/pre>
-<span class='line'> 67</span>  * The callback is passed two arguments &lt;code>(err, data)&lt;/code>, where &lt;code>data&lt;/code> is the
-<span class='line'> 68</span>  * contents of the file.
-<span class='line'> 69</span>  *
-<span class='line'> 70</span>  * If no encoding is specified, then the raw buffer is returned.
-<span class='line'> 71</span>  * @param {*} path
-<span class='line'> 72</span>  * @param {*} encoding_
-<span class='line'> 73</span>  * @return {*}
-<span class='line'> 74</span>  */</span><span class="WHIT">
-<span class='line'> 75</span> </span><span class="NAME">node.fs.prototype.readFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readFile</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 78</span> 
-<span class='line'> 79</span> </span><span class="COMM">/**
-<span class='line'> 80</span>  * Synchronous version of &lt;code>fs.readFile&lt;/code>. Returns the contents of the &lt;code>filename&lt;/code>.
-<span class='line'> 81</span>  *
-<span class='line'> 82</span>  * If &lt;code>encoding&lt;/code> is specified then this function returns a string. Otherwise it
-<span class='line'> 83</span>  * returns a buffer.
-<span class='line'> 84</span>  * @param {*} path
-<span class='line'> 85</span>  * @param {*} encoding
-<span class='line'> 86</span>  * @return {*}
-<span class='line'> 87</span>  */</span><span class="WHIT">
-<span class='line'> 88</span> </span><span class="NAME">node.fs.prototype.readFileSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 89</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readFileSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 90</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 91</span> 
-<span class='line'> 92</span> </span><span class="COMM">/**
-<span class='line'> 93</span>  * Asynchronous close(2).  No arguments other than a possible exception are given
-<span class='line'> 94</span>  * to the completion callback.
-<span class='line'> 95</span>  * @param {string} fd
-<span class='line'> 96</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
-<span class='line'> 97</span>  * @return {*}
-<span class='line'> 98</span>  */</span><span class="WHIT">
-<span class='line'> 99</span> </span><span class="NAME">node.fs.prototype.close</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>100</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.close</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>101</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>102</span> 
-<span class='line'>103</span> </span><span class="COMM">/**
-<span class='line'>104</span>  * Synchronous close(2).
-<span class='line'>105</span>  * @param {string} fd
-<span class='line'>106</span>  * @return {*}
-<span class='line'>107</span>  */</span><span class="WHIT">
-<span class='line'>108</span> </span><span class="NAME">node.fs.prototype.closeSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>109</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.closeSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>110</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>111</span> 
-<span class='line'>112</span> </span><span class="COMM">/**
-<span class='line'>113</span>  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-<span class='line'>114</span>  * or 'a+'. &lt;code>mode&lt;/code> defaults to 0666. The callback gets two arguments &lt;code>(err, fd)&lt;/code>.
-<span class='line'>115</span>  * @param {*} path
-<span class='line'>116</span>  * @param {*} flags
-<span class='line'>117</span>  * @param {*} mode
-<span class='line'>118</span>  * @param {*} callback
-<span class='line'>119</span>  * @return {*}
-<span class='line'>120</span>  */</span><span class="WHIT">
-<span class='line'>121</span> </span><span class="NAME">node.fs.prototype.open</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>122</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.open</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>123</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>124</span> 
-<span class='line'>125</span> </span><span class="COMM">/**
-<span class='line'>126</span>  * Synchronous open(2).
-<span class='line'>127</span>  * @param {*} path
-<span class='line'>128</span>  * @param {*} flags
-<span class='line'>129</span>  * @param {*} mode
-<span class='line'>130</span>  * @return {*}
-<span class='line'>131</span>  */</span><span class="WHIT">
-<span class='line'>132</span> </span><span class="NAME">node.fs.prototype.openSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>133</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.openSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">flags</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>134</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>135</span> 
-<span class='line'>136</span> </span><span class="COMM">/**
-<span class='line'>137</span>  * Read data from the file specified by &lt;code>fd&lt;/code>.
-<span class='line'>138</span>  *
-<span class='line'>139</span>  * &lt;code>buffer&lt;/code> is the buffer that the data will be written to.
-<span class='line'>140</span>  *
-<span class='line'>141</span>  * &lt;code>offset&lt;/code> is offset within the buffer where writing will start.
-<span class='line'>142</span>  *
-<span class='line'>143</span>  * &lt;code>length&lt;/code> is an integer specifying the number of bytes to read.
-<span class='line'>144</span>  *
-<span class='line'>145</span>  * &lt;code>position&lt;/code> is an integer specifying where to begin reading from in the file.
-<span class='line'>146</span>  * If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, data will be read from the current file position.
-<span class='line'>147</span>  *
-<span class='line'>148</span>  * The callback is given the two arguments, &lt;code>(err, bytesRead)&lt;/code>.
-<span class='line'>149</span>  * @param {*} fd
-<span class='line'>150</span>  * @param {*} buffer
-<span class='line'>151</span>  * @param {*} offset
-<span class='line'>152</span>  * @param {*} length
-<span class='line'>153</span>  * @param {*} position
-<span class='line'>154</span>  * @param {*} callback
-<span class='line'>155</span>  * @return {*}
-<span class='line'>156</span>  */</span><span class="WHIT">
-<span class='line'>157</span> </span><span class="NAME">node.fs.prototype.read</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>158</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.read</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>159</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>160</span> 
-<span class='line'>161</span> </span><span class="COMM">/**
-<span class='line'>162</span>  * Synchronous version of string-based &lt;code>fs.read&lt;/code>. Returns the number of
-<span class='line'>163</span>  * &lt;code>bytesRead&lt;/code>.
-<span class='line'>164</span>  * @param {*} fd
-<span class='line'>165</span>  * @param {*} buffer
-<span class='line'>166</span>  * @param {*} offset
-<span class='line'>167</span>  * @param {*} length
-<span class='line'>168</span>  * @param {*} position
-<span class='line'>169</span>  * @return {*}
-<span class='line'>170</span>  */</span><span class="WHIT">
-<span class='line'>171</span> </span><span class="NAME">node.fs.prototype.readSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>172</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>173</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>174</span> 
-<span class='line'>175</span> </span><span class="COMM">/**
-<span class='line'>176</span>  * Write &lt;code>buffer&lt;/code> to the file specified by &lt;code>fd&lt;/code>.
-<span class='line'>177</span>  *
-<span class='line'>178</span>  * &lt;code>offset&lt;/code> and &lt;code>length&lt;/code> determine the part of the buffer to be written.
-<span class='line'>179</span>  *
-<span class='line'>180</span>  * &lt;code>position&lt;/code> refers to the offset from the beginning of the file where this data
-<span class='line'>181</span>  * should be written. If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, the data will be written at the
-<span class='line'>182</span>  * current position.
-<span class='line'>183</span>  * See pwrite(2).
-<span class='line'>184</span>  *
-<span class='line'>185</span>  * The callback will be given two arguments &lt;code>(err, written)&lt;/code> where &lt;code>written&lt;/code>
-<span class='line'>186</span>  * specifies how many &lt;em>bytes&lt;/em> were written.
-<span class='line'>187</span>  * @param {*} fd
-<span class='line'>188</span>  * @param {*} buffer
-<span class='line'>189</span>  * @param {*} offset
-<span class='line'>190</span>  * @param {*} length
-<span class='line'>191</span>  * @param {*} position
-<span class='line'>192</span>  * @param {*} callback
-<span class='line'>193</span>  * @return {*}
-<span class='line'>194</span>  */</span><span class="WHIT">
-<span class='line'>195</span> </span><span class="NAME">node.fs.prototype.write</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>196</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.write</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>197</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>198</span> 
-<span class='line'>199</span> </span><span class="COMM">/**
-<span class='line'>200</span>  * Synchronous version of string-based &lt;code>fs.write()&lt;/code>. Returns the number of bytes
-<span class='line'>201</span>  * written.
-<span class='line'>202</span>  * @param {*} fd
-<span class='line'>203</span>  * @param {*} buffer
-<span class='line'>204</span>  * @param {*} offset
-<span class='line'>205</span>  * @param {*} length
-<span class='line'>206</span>  * @param {*} position
-<span class='line'>207</span>  * @return {*}
-<span class='line'>208</span>  */</span><span class="WHIT">
-<span class='line'>209</span> </span><span class="NAME">node.fs.prototype.writeSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>210</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.writeSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">buffer</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">offset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>211</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>212</span> 
-<span class='line'>213</span> </span><span class="COMM">/**
-<span class='line'>214</span>  * Asynchronous rename(2). No arguments other than a possible exception are given
-<span class='line'>215</span>  * to the completion callback.
-<span class='line'>216</span>  * @param {*} oldPath
-<span class='line'>217</span>  * @param {*} newPath
-<span class='line'>218</span>  * @param {*} callback
-<span class='line'>219</span>  * @return {*}
-<span class='line'>220</span>  */</span><span class="WHIT">
-<span class='line'>221</span> </span><span class="NAME">node.fs.prototype.rename</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oldPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>222</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.rename</span><span class="PUNC">(</span><span class="NAME">oldPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>223</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>224</span> 
-<span class='line'>225</span> </span><span class="COMM">/**
-<span class='line'>226</span>  * Synchronous rename(2).
-<span class='line'>227</span>  * @param {*} oldPath
-<span class='line'>228</span>  * @param {*} newPath
-<span class='line'>229</span>  * @return {*}
-<span class='line'>230</span>  */</span><span class="WHIT">
-<span class='line'>231</span> </span><span class="NAME">node.fs.prototype.renameSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oldPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newPath</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>232</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.renameSync</span><span class="PUNC">(</span><span class="NAME">oldPath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">newPath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>233</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>234</span> 
-<span class='line'>235</span> </span><span class="COMM">/**
-<span class='line'>236</span>  * Asynchronous ftruncate(2). No arguments other than a possible exception are
-<span class='line'>237</span>  * given to the completion callback.
-<span class='line'>238</span>  * @param {*} fd
-<span class='line'>239</span>  * @param {*} len
-<span class='line'>240</span>  * @param {*} callback
-<span class='line'>241</span>  * @return {*}
-<span class='line'>242</span>  */</span><span class="WHIT">
-<span class='line'>243</span> </span><span class="NAME">node.fs.prototype.truncate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>244</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.truncate</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>245</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>246</span> 
-<span class='line'>247</span> </span><span class="COMM">/**
-<span class='line'>248</span>  * Synchronous ftruncate(2).
-<span class='line'>249</span>  * @param {*} fd
-<span class='line'>250</span>  * @param {*} len
-<span class='line'>251</span>  * @return {*}
-<span class='line'>252</span>  */</span><span class="WHIT">
-<span class='line'>253</span> </span><span class="NAME">node.fs.prototype.truncateSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>254</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.truncateSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">len</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>255</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>256</span> 
-<span class='line'>257</span> </span><span class="COMM">/**
-<span class='line'>258</span>  * Asynchronous rmdir(2). No arguments other than a possible exception are given
-<span class='line'>259</span>  * to the completion callback.
-<span class='line'>260</span>  * @param {*} path
-<span class='line'>261</span>  * @param {*} callback
-<span class='line'>262</span>  * @return {*}
-<span class='line'>263</span>  */</span><span class="WHIT">
-<span class='line'>264</span> </span><span class="NAME">node.fs.prototype.rmdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>265</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.rmdir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>266</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>267</span> 
-<span class='line'>268</span> </span><span class="COMM">/**
-<span class='line'>269</span>  * Synchronous rmdir(2).
-<span class='line'>270</span>  * @param {*} path
-<span class='line'>271</span>  * @return {*}
-<span class='line'>272</span>  */</span><span class="WHIT">
-<span class='line'>273</span> </span><span class="NAME">node.fs.prototype.rmdirSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>274</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.rmdirSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>275</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>276</span> 
-<span class='line'>277</span> </span><span class="COMM">/**
-<span class='line'>278</span>  * @param {*} fd
-<span class='line'>279</span>  * @param {*} callback
-<span class='line'>280</span>  * @return {*}
-<span class='line'>281</span>  */</span><span class="WHIT">
-<span class='line'>282</span> </span><span class="NAME">node.fs.prototype.fdatasync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>283</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fdatasync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>284</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>285</span> 
-<span class='line'>286</span> </span><span class="COMM">/**
-<span class='line'>287</span>  * @param {*} fd
-<span class='line'>288</span>  * @return {*}
-<span class='line'>289</span>  */</span><span class="WHIT">
-<span class='line'>290</span> </span><span class="NAME">node.fs.prototype.fdatasyncSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>291</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fdatasyncSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>292</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>293</span> 
-<span class='line'>294</span> </span><span class="COMM">/**
-<span class='line'>295</span>  * @param {*} fd
-<span class='line'>296</span>  * @param {*} callback
-<span class='line'>297</span>  * @return {*}
-<span class='line'>298</span>  */</span><span class="WHIT">
-<span class='line'>299</span> </span><span class="NAME">node.fs.prototype.fsync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>300</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fsync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>301</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>302</span> 
-<span class='line'>303</span> </span><span class="COMM">/**
-<span class='line'>304</span>  * @param {*} fd
-<span class='line'>305</span>  * @return {*}
-<span class='line'>306</span>  */</span><span class="WHIT">
-<span class='line'>307</span> </span><span class="NAME">node.fs.prototype.fsyncSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>308</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fsyncSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>309</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>310</span> 
-<span class='line'>311</span> </span><span class="COMM">/**
-<span class='line'>312</span>  * Asynchronous mkdir(2). No arguments other than a possible exception are given
-<span class='line'>313</span>  * to the completion callback.
-<span class='line'>314</span>  * @param {*} path
-<span class='line'>315</span>  * @param {*} mode
-<span class='line'>316</span>  * @param {*} callback
-<span class='line'>317</span>  * @return {*}
-<span class='line'>318</span>  */</span><span class="WHIT">
-<span class='line'>319</span> </span><span class="NAME">node.fs.prototype.mkdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>320</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.mkdir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>321</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>322</span> 
-<span class='line'>323</span> </span><span class="COMM">/**
-<span class='line'>324</span>  * Synchronous mkdir(2).
-<span class='line'>325</span>  * @param {*} path
-<span class='line'>326</span>  * @param {*} mode
-<span class='line'>327</span>  * @return {*}
-<span class='line'>328</span>  */</span><span class="WHIT">
-<span class='line'>329</span> </span><span class="NAME">node.fs.prototype.mkdirSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>330</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.mkdirSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>331</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>332</span> 
-<span class='line'>333</span> </span><span class="COMM">/**
-<span class='line'>334</span>  * @param {*} outFd
-<span class='line'>335</span>  * @param {*} inFd
-<span class='line'>336</span>  * @param {*} inOffset
-<span class='line'>337</span>  * @param {*} length
-<span class='line'>338</span>  * @param {*} callback
-<span class='line'>339</span>  * @return {*}
-<span class='line'>340</span>  */</span><span class="WHIT">
-<span class='line'>341</span> </span><span class="NAME">node.fs.prototype.sendfile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">outFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>342</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.sendfile</span><span class="PUNC">(</span><span class="NAME">outFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>343</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>344</span> 
-<span class='line'>345</span> </span><span class="COMM">/**
-<span class='line'>346</span>  * @param {*} outFd
-<span class='line'>347</span>  * @param {*} inFd
-<span class='line'>348</span>  * @param {*} inOffset
-<span class='line'>349</span>  * @param {*} length
-<span class='line'>350</span>  * @return {*}
-<span class='line'>351</span>  */</span><span class="WHIT">
-<span class='line'>352</span> </span><span class="NAME">node.fs.prototype.sendfileSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">outFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>353</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.sendfileSync</span><span class="PUNC">(</span><span class="NAME">outFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inFd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">inOffset</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">length</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>354</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>355</span> 
-<span class='line'>356</span> </span><span class="COMM">/**
-<span class='line'>357</span>  * Asynchronous readdir(3).  Reads the contents of a directory.
-<span class='line'>358</span>  * The callback gets two arguments &lt;code>(err, files)&lt;/code> where &lt;code>files&lt;/code> is an array of
-<span class='line'>359</span>  * the names of the files in the directory excluding &lt;code>'.'&lt;/code> and &lt;code>'..'&lt;/code>.
-<span class='line'>360</span>  * @param {*} path
-<span class='line'>361</span>  * @param {*} callback
-<span class='line'>362</span>  * @return {*}
-<span class='line'>363</span>  */</span><span class="WHIT">
-<span class='line'>364</span> </span><span class="NAME">node.fs.prototype.readdir</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>365</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readdir</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>366</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>367</span> 
-<span class='line'>368</span> </span><span class="COMM">/**
-<span class='line'>369</span>  * Synchronous readdir(3). Returns an array of filenames excluding &lt;code>'.'&lt;/code> and
-<span class='line'>370</span>  * &lt;code>'..'&lt;/code>.
-<span class='line'>371</span>  * @param {*} path
-<span class='line'>372</span>  * @return {*}
-<span class='line'>373</span>  */</span><span class="WHIT">
-<span class='line'>374</span> </span><span class="NAME">node.fs.prototype.readdirSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>375</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readdirSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>376</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>377</span> 
-<span class='line'>378</span> </span><span class="COMM">/**
-<span class='line'>379</span>  * Asynchronous fstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
-<span class='line'>380</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object.
-<span class='line'>381</span>  * @param {*} fd
-<span class='line'>382</span>  * @param {function(Error,node.fs.Stats)=} callback
-<span class='line'>383</span>  * @return {*}
-<span class='line'>384</span>  */</span><span class="WHIT">
-<span class='line'>385</span> </span><span class="NAME">node.fs.prototype.fstat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>386</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fstat</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>387</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>388</span> 
-<span class='line'>389</span> </span><span class="COMM">/**
-<span class='line'>390</span>  * Asynchronous lstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
-<span class='line'>391</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. lstat() is identical to stat(), except that if
-<span class='line'>392</span>  * path is a symbolic link, then the link itself is stat-ed, not the file that it
-<span class='line'>393</span>  * refers to.
-<span class='line'>394</span>  * @param {*} path
-<span class='line'>395</span>  * @param {*} callback
-<span class='line'>396</span>  * @return {*}
-<span class='line'>397</span>  */</span><span class="WHIT">
-<span class='line'>398</span> </span><span class="NAME">node.fs.prototype.lstat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>399</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.lstat</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>400</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>401</span> 
-<span class='line'>402</span> </span><span class="COMM">/**
-<span class='line'>403</span>  * Asynchronous stat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
-<span class='line'>404</span>  * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. It looks like this:
-<span class='line'>405</span>  * &lt;pre>
-<span class='line'>406</span>  *     { dev: 2049,
-<span class='line'>407</span>  *       ino: 305352,
-<span class='line'>408</span>  *       mode: 16877,
-<span class='line'>409</span>  *       nlink: 12,
-<span class='line'>410</span>  *       uid: 1000,
-<span class='line'>411</span>  *       gid: 1000,
-<span class='line'>412</span>  *       rdev: 0,
-<span class='line'>413</span>  *       size: 4096,
-<span class='line'>414</span>  *       blksize: 4096,
-<span class='line'>415</span>  *       blocks: 8,
-<span class='line'>416</span>  *       atime: '2009-06-29T11:11:55Z',
-<span class='line'>417</span>  *       mtime: '2009-06-29T11:11:40Z',
-<span class='line'>418</span>  *       ctime: '2009-06-29T11:11:40Z' }
-<span class='line'>419</span>  * &lt;/pre>
-<span class='line'>420</span>  * See the &lt;code>fs.Stats&lt;/code> section below for more information.
-<span class='line'>421</span>  * @param {*} path
-<span class='line'>422</span>  * @param {*} callback
-<span class='line'>423</span>  * @return {*}
-<span class='line'>424</span>  */</span><span class="WHIT">
-<span class='line'>425</span> </span><span class="NAME">node.fs.prototype.stat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>426</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.stat</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>427</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>428</span> 
-<span class='line'>429</span> </span><span class="COMM">/**
-<span class='line'>430</span>  * Synchronous fstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
-<span class='line'>431</span>  * @param {*} fd
-<span class='line'>432</span>  * @return {fs.Stats}
-<span class='line'>433</span>  */</span><span class="WHIT">
-<span class='line'>434</span> </span><span class="NAME">node.fs.prototype.fstatSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>435</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.fstatSync</span><span class="PUNC">(</span><span class="NAME">fd</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>436</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>437</span> 
-<span class='line'>438</span> </span><span class="COMM">/**
-<span class='line'>439</span>  * Synchronous lstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
-<span class='line'>440</span>  * @param {*} path
-<span class='line'>441</span>  * @return {*}
-<span class='line'>442</span>  */</span><span class="WHIT">
-<span class='line'>443</span> </span><span class="NAME">node.fs.prototype.lstatSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>444</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.lstatSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>445</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>446</span> 
-<span class='line'>447</span> </span><span class="COMM">/**
-<span class='line'>448</span>  * Synchronous stat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
-<span class='line'>449</span>  * @param {*} path
-<span class='line'>450</span>  * @return {*}
-<span class='line'>451</span>  */</span><span class="WHIT">
-<span class='line'>452</span> </span><span class="NAME">node.fs.prototype.statSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>453</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.statSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>454</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>455</span> 
-<span class='line'>456</span> </span><span class="COMM">/**
-<span class='line'>457</span>  * Asynchronous readlink(2). The callback gets two arguments &lt;code>(err,
-<span class='line'>458</span>  * resolvedPath)&lt;/code>.
-<span class='line'>459</span>  * @param {*} path
-<span class='line'>460</span>  * @param {*} callback
-<span class='line'>461</span>  * @return {*}
-<span class='line'>462</span>  */</span><span class="WHIT">
-<span class='line'>463</span> </span><span class="NAME">node.fs.prototype.readlink</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>464</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readlink</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>465</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>466</span> 
-<span class='line'>467</span> </span><span class="COMM">/**
-<span class='line'>468</span>  * Synchronous readlink(2). Returns the resolved path.
-<span class='line'>469</span>  * @param {*} path
-<span class='line'>470</span>  * @return {*}
-<span class='line'>471</span>  */</span><span class="WHIT">
-<span class='line'>472</span> </span><span class="NAME">node.fs.prototype.readlinkSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>473</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.readlinkSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>474</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>475</span> 
-<span class='line'>476</span> </span><span class="COMM">/**
-<span class='line'>477</span>  * Asynchronous symlink(2). No arguments other than a possible exception are given
-<span class='line'>478</span>  * to the completion callback.
-<span class='line'>479</span>  * @param {*} destination
-<span class='line'>480</span>  * @param {*} path
-<span class='line'>481</span>  * @param {*} callback
-<span class='line'>482</span>  * @return {*}
-<span class='line'>483</span>  */</span><span class="WHIT">
-<span class='line'>484</span> </span><span class="NAME">node.fs.prototype.symlink</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">destination</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>485</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.symlink</span><span class="PUNC">(</span><span class="NAME">destination</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>486</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>487</span> 
-<span class='line'>488</span> </span><span class="COMM">/**
-<span class='line'>489</span>  * Synchronous symlink(2).
-<span class='line'>490</span>  * @param {*} destination
-<span class='line'>491</span>  * @param {*} path
-<span class='line'>492</span>  * @return {*}
-<span class='line'>493</span>  */</span><span class="WHIT">
-<span class='line'>494</span> </span><span class="NAME">node.fs.prototype.symlinkSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">destination</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>495</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.symlinkSync</span><span class="PUNC">(</span><span class="NAME">destination</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>496</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>497</span> 
-<span class='line'>498</span> </span><span class="COMM">/**
-<span class='line'>499</span>  * Asynchronous link(2). No arguments other than a possible exception are given to
-<span class='line'>500</span>  * the completion callback.
-<span class='line'>501</span>  * @param {*} srcpath
-<span class='line'>502</span>  * @param {*} dstpath
-<span class='line'>503</span>  * @param {*} callback
-<span class='line'>504</span>  * @return {*}
-<span class='line'>505</span>  */</span><span class="WHIT">
-<span class='line'>506</span> </span><span class="NAME">node.fs.prototype.link</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">srcpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dstpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>507</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.link</span><span class="PUNC">(</span><span class="NAME">srcpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dstpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>508</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>509</span> 
-<span class='line'>510</span> </span><span class="COMM">/**
-<span class='line'>511</span>  * Synchronous link(2).
-<span class='line'>512</span>  * @param {*} srcpath
-<span class='line'>513</span>  * @param {*} dstpath
-<span class='line'>514</span>  * @return {*}
-<span class='line'>515</span>  */</span><span class="WHIT">
-<span class='line'>516</span> </span><span class="NAME">node.fs.prototype.linkSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">srcpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dstpath</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>517</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.linkSync</span><span class="PUNC">(</span><span class="NAME">srcpath</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">dstpath</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>518</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>519</span> 
-<span class='line'>520</span> </span><span class="COMM">/**
-<span class='line'>521</span>  * Asynchronous unlink(2). No arguments other than a possible exception are given
-<span class='line'>522</span>  * to the completion callback.
-<span class='line'>523</span>  * @param {*} path
-<span class='line'>524</span>  * @param {*} callback
-<span class='line'>525</span>  * @return {*}
-<span class='line'>526</span>  */</span><span class="WHIT">
-<span class='line'>527</span> </span><span class="NAME">node.fs.prototype.unlink</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>528</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.unlink</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>529</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>530</span> 
-<span class='line'>531</span> </span><span class="COMM">/**
-<span class='line'>532</span>  * Synchronous unlink(2).
-<span class='line'>533</span>  * @param {*} path
-<span class='line'>534</span>  * @return {*}
-<span class='line'>535</span>  */</span><span class="WHIT">
-<span class='line'>536</span> </span><span class="NAME">node.fs.prototype.unlinkSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>537</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.unlinkSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>538</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>539</span> 
-<span class='line'>540</span> </span><span class="COMM">/**
-<span class='line'>541</span>  * Asynchronous chmod(2). No arguments other than a possible exception are given
-<span class='line'>542</span>  * to the completion callback.
-<span class='line'>543</span>  * @param {string} path The path to change mode on
-<span class='line'>544</span>  * @param {string=} mode mode defaults to 0666
-<span class='line'>545</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
-<span class='line'>546</span>  * @return {*}
-<span class='line'>547</span>  */</span><span class="WHIT">
-<span class='line'>548</span> </span><span class="NAME">node.fs.prototype.chmod</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>549</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.chmod</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>550</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>551</span> 
-<span class='line'>552</span> </span><span class="COMM">/**
-<span class='line'>553</span>  * Synchronous chmod(2).
-<span class='line'>554</span>  * @param {string} path The path to change mode on
-<span class='line'>555</span>  * @param {string} mode mode defaults to 0666
-<span class='line'>556</span>  * @return {*}
-<span class='line'>557</span>  */</span><span class="WHIT">
-<span class='line'>558</span> </span><span class="NAME">node.fs.prototype.chmodSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>559</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.chmodSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">mode</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>560</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>561</span> 
-<span class='line'>562</span> </span><span class="COMM">/**
-<span class='line'>563</span>  * @param {string} path The path to change owners on
-<span class='line'>564</span>  * @param {string} uid The user id
-<span class='line'>565</span>  * @param {string} gid The group id
-<span class='line'>566</span>  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
-<span class='line'>567</span>  * @return {*}
-<span class='line'>568</span>  */</span><span class="WHIT">
-<span class='line'>569</span> </span><span class="NAME">node.fs.prototype.chown</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>570</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.chown</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>571</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>572</span> 
-<span class='line'>573</span> </span><span class="COMM">/**
-<span class='line'>574</span>  * @param {string} path
-<span class='line'>575</span>  * @param {string} uid
-<span class='line'>576</span>  * @param {string} gid
-<span class='line'>577</span>  * @return {*}
-<span class='line'>578</span>  */</span><span class="WHIT">
-<span class='line'>579</span> </span><span class="NAME">node.fs.prototype.chownSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>580</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.chownSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">uid</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">gid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>581</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>582</span> 
-<span class='line'>583</span> </span><span class="COMM">/**
-<span class='line'>584</span>  * Asynchronously writes data to a file. &lt;code>data&lt;/code> can be a string or a buffer.
-<span class='line'>585</span>  *
-<span class='line'>586</span>  * Example:
-<span class='line'>587</span>  * &lt;pre>
-<span class='line'>588</span>  *     fs.writeFile('message.txt', 'Hello Node', function (err) {
-<span class='line'>589</span>  *       if (err) throw err;
-<span class='line'>590</span>  *       console.log('It\'s saved!');
-<span class='line'>591</span>  *     });
-<span class='line'>592</span>  * &lt;/pre>
-<span class='line'>593</span>  * @param {*} path
-<span class='line'>594</span>  * @param {*} data
-<span class='line'>595</span>  * @param {*} encoding_
-<span class='line'>596</span>  * @param {*} callback
-<span class='line'>597</span>  * @return {*}
-<span class='line'>598</span>  */</span><span class="WHIT">
-<span class='line'>599</span> </span><span class="NAME">node.fs.prototype.writeFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>600</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.writeFile</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding_</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>601</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>602</span> 
-<span class='line'>603</span> </span><span class="COMM">/**
-<span class='line'>604</span>  * The synchronous version of &lt;code>fs.writeFile&lt;/code>.
-<span class='line'>605</span>  * @param {*} path
-<span class='line'>606</span>  * @param {*} data
-<span class='line'>607</span>  * @param {*} encoding
-<span class='line'>608</span>  * @return {*}
-<span class='line'>609</span>  */</span><span class="WHIT">
-<span class='line'>610</span> </span><span class="NAME">node.fs.prototype.writeFileSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>611</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.writeFileSync</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">data</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">encoding</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>612</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>613</span> 
-<span class='line'>614</span> </span><span class="COMM">/**
-<span class='line'>615</span>  * Watch for changes on &lt;code>filename&lt;/code>. The callback &lt;code>listener&lt;/code> will be called each
-<span class='line'>616</span>  * time the file is accessed.
-<span class='line'>617</span>  *
-<span class='line'>618</span>  * The second argument is optional. The &lt;code>options&lt;/code> if provided should be an object
-<span class='line'>619</span>  * containing two members a boolean, &lt;code>persistent&lt;/code>, and &lt;code>interval&lt;/code>, a polling
-<span class='line'>620</span>  * value in milliseconds. The default is &lt;code>{ persistent: true, interval: 0 }&lt;/code>.
-<span class='line'>621</span>  *
-<span class='line'>622</span>  * The &lt;code>listener&lt;/code> gets two arguments the current stat object and the previous
-<span class='line'>623</span>  * stat object:
-<span class='line'>624</span>  * &lt;pre>
-<span class='line'>625</span>  *     fs.watchFile(f, function (curr, prev) {
-<span class='line'>626</span>  *       console.log('the current mtime is: ' + curr.mtime);
-<span class='line'>627</span>  *       console.log('the previous mtime was: ' + prev.mtime);
-<span class='line'>628</span>  *     });
-<span class='line'>629</span>  * &lt;/pre>
-<span class='line'>630</span>  * These stat objects are instances of &lt;code>fs.Stat&lt;/code>.
-<span class='line'>631</span>  *
-<span class='line'>632</span>  * If you want to be notified when the file was modified, not just accessed
-<span class='line'>633</span>  * you need to compare &lt;code>curr.mtime&lt;/code> and `prev.mtime.
-<span class='line'>634</span>  * @param {*} filename
-<span class='line'>635</span>  * @return {*}
-<span class='line'>636</span>  */</span><span class="WHIT">
-<span class='line'>637</span> </span><span class="NAME">node.fs.prototype.watchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>638</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.watchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>639</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>640</span> 
-<span class='line'>641</span> </span><span class="COMM">/**
-<span class='line'>642</span>  * Stop watching for changes on &lt;code>filename&lt;/code>.
-<span class='line'>643</span>  * @param {*} filename
-<span class='line'>644</span>  * @return {*}
-<span class='line'>645</span>  */</span><span class="WHIT">
-<span class='line'>646</span> </span><span class="NAME">node.fs.prototype.unwatchFile</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>647</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.unwatchFile</span><span class="PUNC">(</span><span class="NAME">filename</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>648</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>649</span> 
-<span class='line'>650</span> </span><span class="COMM">/**
-<span class='line'>651</span>  * Synchronous realpath(2). Returns the resolved path.
-<span class='line'>652</span>  * @param {*} p
-<span class='line'>653</span>  * @param {*} cache
-<span class='line'>654</span>  * @return {*}
-<span class='line'>655</span>  */</span><span class="WHIT">
-<span class='line'>656</span> </span><span class="NAME">node.fs.prototype.realpathSync</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>657</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpathSync</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>658</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>659</span> 
-<span class='line'>660</span> </span><span class="COMM">/**
-<span class='line'>661</span>  * Asynchronous realpath(2).  The callback gets two arguments &lt;code>(err,
-<span class='line'>662</span>  * resolvedPath)&lt;/code>.
-<span class='line'>663</span>  * @param {*} p
-<span class='line'>664</span>  * @param {*} cache
-<span class='line'>665</span>  * @param {*} cb
-<span class='line'>666</span>  * @return {*}
-<span class='line'>667</span>  */</span><span class="WHIT">
-<span class='line'>668</span> </span><span class="NAME">node.fs.prototype.realpath</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>669</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.realpath</span><span class="PUNC">(</span><span class="NAME">p</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cache</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">cb</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>670</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>671</span> 
-<span class='line'>672</span> </span><span class="COMM">/**
-<span class='line'>673</span>  * @param {string} path
-<span class='line'>674</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
-<span class='line'>675</span>  * @return {node.fs.ReadStream}
-<span class='line'>676</span>  */</span><span class="WHIT">
-<span class='line'>677</span> </span><span class="NAME">node.fs.prototype.createReadStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>678</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createReadStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>679</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>680</span> 
-<span class='line'>681</span> </span><span class="COMM">/**
-<span class='line'>682</span>  * @param {string} path
-<span class='line'>683</span>  * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
-<span class='line'>684</span>  * @return {node.fs.WriteStream}
-<span class='line'>685</span>  */</span><span class="WHIT">
-<span class='line'>686</span> </span><span class="NAME">node.fs.prototype.createWriteStream</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>687</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.fs.core_.createWriteStream</span><span class="PUNC">(</span><span class="NAME">path</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>688</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>689</span> 
-<span class='line'>690</span> 
-<span class='line'>691</span> </span><span class="COMM">/**
-<span class='line'>692</span>  * @private
-<span class='line'>693</span>  * @type {*}
-<span class='line'>694</span>  */</span><span class="WHIT">
-<span class='line'>695</span> </span><span class="NAME">node.fs.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"fs"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_fs.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.fs
+ * @namespace
+ * File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
+ * use this module do &lt;code>require('fs')&lt;/code>. All the methods have asynchronous and
+ * synchronous forms.
+ *
+ * The asynchronous form always take a completion callback as its last argument.
+ * The arguments passed to the completion callback depend on the method, but the
+ * first argument is always reserved for an exception. If the operation was
+ * completed successfully, then the first argument will be &lt;code>null&lt;/code> or &lt;code>undefined&lt;/code>.
+ *
+ * Here is an example of the asynchronous version:
+ * &lt;pre>
+ *     var fs = require('fs');
+ *
+ *     fs.unlink('&#47;tmp&#47;hello', function (err) {
+ *       if (err) throw err;
+ *       console.log('successfully deleted &#47;tmp&#47;hello');
+ *     });
+ * &lt;/pre>
+ * Here is the synchronous version:
+ * &lt;pre>
+ *     var fs = require('fs');
+ *
+ *     fs.unlinkSync('&#47;tmp&#47;hello')
+ *     console.log('successfully deleted &#47;tmp&#47;hello');
+ * &lt;/pre>
+ * With the asynchronous methods there is no guaranteed ordering. So the
+ * following is prone to error:
+ * &lt;pre>
+ *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
+ *       if (err) throw err;
+ *       console.log('renamed complete');
+ *     });
+ *     fs.stat('&#47;tmp&#47;world', function (err, stats) {
+ *       if (err) throw err;
+ *       console.log('stats: ' + JSON.stringify(stats));
+ *     });
+ * &lt;/pre>
+ * It could be that &lt;code>fs.stat&lt;/code> is executed before &lt;code>fs.rename&lt;/code>.
+ * The correct way to do this is to chain the callbacks.
+ * &lt;pre>
+ *     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
+ *       if (err) throw err;
+ *       fs.stat('&#47;tmp&#47;world', function (err, stats) {
+ *         if (err) throw err;
+ *         console.log('stats: ' + JSON.stringify(stats));
+ *       });
+ *     });
+ * &lt;/pre>
+ * In busy processes, the programmer is &lt;em>strongly encouraged&lt;/em> to use the
+ * asynchronous versions of these calls. The synchronous versions will block
+ * the entire process until they complete--halting all connections.
+ */
+
+goog.provide("node.fs");
+
+/**
+ * Asynchronously reads the entire contents of a file. Example:
+ * &lt;pre>
+ *     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
+ *       if (err) throw err;
+ *       console.log(data);
+ *     });
+ * &lt;/pre>
+ * The callback is passed two arguments &lt;code>(err, data)&lt;/code>, where &lt;code>data&lt;/code> is the
+ * contents of the file.
+ *
+ * If no encoding is specified, then the raw buffer is returned.
+ * @param {*} path
+ * @param {*} encoding_
+ * @return {*}
+ */
+node.fs.prototype.readFile = function(path, encoding_) {
+  return node.fs.core_.readFile(path, encoding_);
+};
+
+/**
+ * Synchronous version of &lt;code>fs.readFile&lt;/code>. Returns the contents of the &lt;code>filename&lt;/code>.
+ *
+ * If &lt;code>encoding&lt;/code> is specified then this function returns a string. Otherwise it
+ * returns a buffer.
+ * @param {*} path
+ * @param {*} encoding
+ * @return {*}
+ */
+node.fs.prototype.readFileSync = function(path, encoding) {
+  return node.fs.core_.readFileSync(path, encoding);
+};
+
+/**
+ * Asynchronous close(2).  No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {string} fd
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
+ * @return {*}
+ */
+node.fs.prototype.close = function(fd, callback) {
+  return node.fs.core_.close(fd, callback);
+};
+
+/**
+ * Synchronous close(2).
+ * @param {string} fd
+ * @return {*}
+ */
+node.fs.prototype.closeSync = function(fd) {
+  return node.fs.core_.closeSync(fd);
+};
+
+/**
+ * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
+ * or 'a+'. &lt;code>mode&lt;/code> defaults to 0666. The callback gets two arguments &lt;code>(err, fd)&lt;/code>.
+ * @param {*} path
+ * @param {*} flags
+ * @param {*} mode
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.open = function(path, flags, mode, callback) {
+  return node.fs.core_.open(path, flags, mode, callback);
+};
+
+/**
+ * Synchronous open(2).
+ * @param {*} path
+ * @param {*} flags
+ * @param {*} mode
+ * @return {*}
+ */
+node.fs.prototype.openSync = function(path, flags, mode) {
+  return node.fs.core_.openSync(path, flags, mode);
+};
+
+/**
+ * Read data from the file specified by &lt;code>fd&lt;/code>.
+ *
+ * &lt;code>buffer&lt;/code> is the buffer that the data will be written to.
+ *
+ * &lt;code>offset&lt;/code> is offset within the buffer where writing will start.
+ *
+ * &lt;code>length&lt;/code> is an integer specifying the number of bytes to read.
+ *
+ * &lt;code>position&lt;/code> is an integer specifying where to begin reading from in the file.
+ * If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, data will be read from the current file position.
+ *
+ * The callback is given the two arguments, &lt;code>(err, bytesRead)&lt;/code>.
+ * @param {*} fd
+ * @param {*} buffer
+ * @param {*} offset
+ * @param {*} length
+ * @param {*} position
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.read = function(fd, buffer, offset, length, position, callback) {
+  return node.fs.core_.read(fd, buffer, offset, length, position, callback);
+};
+
+/**
+ * Synchronous version of string-based &lt;code>fs.read&lt;/code>. Returns the number of
+ * &lt;code>bytesRead&lt;/code>.
+ * @param {*} fd
+ * @param {*} buffer
+ * @param {*} offset
+ * @param {*} length
+ * @param {*} position
+ * @return {*}
+ */
+node.fs.prototype.readSync = function(fd, buffer, offset, length, position) {
+  return node.fs.core_.readSync(fd, buffer, offset, length, position);
+};
+
+/**
+ * Write &lt;code>buffer&lt;/code> to the file specified by &lt;code>fd&lt;/code>.
+ *
+ * &lt;code>offset&lt;/code> and &lt;code>length&lt;/code> determine the part of the buffer to be written.
+ *
+ * &lt;code>position&lt;/code> refers to the offset from the beginning of the file where this data
+ * should be written. If &lt;code>position&lt;/code> is &lt;code>null&lt;/code>, the data will be written at the
+ * current position.
+ * See pwrite(2).
+ *
+ * The callback will be given two arguments &lt;code>(err, written)&lt;/code> where &lt;code>written&lt;/code>
+ * specifies how many &lt;em>bytes&lt;/em> were written.
+ * @param {*} fd
+ * @param {*} buffer
+ * @param {*} offset
+ * @param {*} length
+ * @param {*} position
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.write = function(fd, buffer, offset, length, position, callback) {
+  return node.fs.core_.write(fd, buffer, offset, length, position, callback);
+};
+
+/**
+ * Synchronous version of string-based &lt;code>fs.write()&lt;/code>. Returns the number of bytes
+ * written.
+ * @param {*} fd
+ * @param {*} buffer
+ * @param {*} offset
+ * @param {*} length
+ * @param {*} position
+ * @return {*}
+ */
+node.fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
+  return node.fs.core_.writeSync(fd, buffer, offset, length, position);
+};
+
+/**
+ * Asynchronous rename(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {*} oldPath
+ * @param {*} newPath
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.rename = function(oldPath, newPath, callback) {
+  return node.fs.core_.rename(oldPath, newPath, callback);
+};
+
+/**
+ * Synchronous rename(2).
+ * @param {*} oldPath
+ * @param {*} newPath
+ * @return {*}
+ */
+node.fs.prototype.renameSync = function(oldPath, newPath) {
+  return node.fs.core_.renameSync(oldPath, newPath);
+};
+
+/**
+ * Asynchronous ftruncate(2). No arguments other than a possible exception are
+ * given to the completion callback.
+ * @param {*} fd
+ * @param {*} len
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.truncate = function(fd, len, callback) {
+  return node.fs.core_.truncate(fd, len, callback);
+};
+
+/**
+ * Synchronous ftruncate(2).
+ * @param {*} fd
+ * @param {*} len
+ * @return {*}
+ */
+node.fs.prototype.truncateSync = function(fd, len) {
+  return node.fs.core_.truncateSync(fd, len);
+};
+
+/**
+ * Asynchronous rmdir(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.rmdir = function(path, callback) {
+  return node.fs.core_.rmdir(path, callback);
+};
+
+/**
+ * Synchronous rmdir(2).
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.rmdirSync = function(path) {
+  return node.fs.core_.rmdirSync(path);
+};
+
+/**
+ * @param {*} fd
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.fdatasync = function(fd, callback) {
+  return node.fs.core_.fdatasync(fd, callback);
+};
+
+/**
+ * @param {*} fd
+ * @return {*}
+ */
+node.fs.prototype.fdatasyncSync = function(fd) {
+  return node.fs.core_.fdatasyncSync(fd);
+};
+
+/**
+ * @param {*} fd
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.fsync = function(fd, callback) {
+  return node.fs.core_.fsync(fd, callback);
+};
+
+/**
+ * @param {*} fd
+ * @return {*}
+ */
+node.fs.prototype.fsyncSync = function(fd) {
+  return node.fs.core_.fsyncSync(fd);
+};
+
+/**
+ * Asynchronous mkdir(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {*} path
+ * @param {*} mode
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.mkdir = function(path, mode, callback) {
+  return node.fs.core_.mkdir(path, mode, callback);
+};
+
+/**
+ * Synchronous mkdir(2).
+ * @param {*} path
+ * @param {*} mode
+ * @return {*}
+ */
+node.fs.prototype.mkdirSync = function(path, mode) {
+  return node.fs.core_.mkdirSync(path, mode);
+};
+
+/**
+ * @param {*} outFd
+ * @param {*} inFd
+ * @param {*} inOffset
+ * @param {*} length
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
+  return node.fs.core_.sendfile(outFd, inFd, inOffset, length, callback);
+};
+
+/**
+ * @param {*} outFd
+ * @param {*} inFd
+ * @param {*} inOffset
+ * @param {*} length
+ * @return {*}
+ */
+node.fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
+  return node.fs.core_.sendfileSync(outFd, inFd, inOffset, length);
+};
+
+/**
+ * Asynchronous readdir(3).  Reads the contents of a directory.
+ * The callback gets two arguments &lt;code>(err, files)&lt;/code> where &lt;code>files&lt;/code> is an array of
+ * the names of the files in the directory excluding &lt;code>'.'&lt;/code> and &lt;code>'..'&lt;/code>.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.readdir = function(path, callback) {
+  return node.fs.core_.readdir(path, callback);
+};
+
+/**
+ * Synchronous readdir(3). Returns an array of filenames excluding &lt;code>'.'&lt;/code> and
+ * &lt;code>'..'&lt;/code>.
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.readdirSync = function(path) {
+  return node.fs.core_.readdirSync(path);
+};
+
+/**
+ * Asynchronous fstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+ * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object.
+ * @param {*} fd
+ * @param {function(Error,node.fs.Stats)=} callback
+ * @return {*}
+ */
+node.fs.prototype.fstat = function(fd, callback) {
+  return node.fs.core_.fstat(fd, callback);
+};
+
+/**
+ * Asynchronous lstat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+ * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. lstat() is identical to stat(), except that if
+ * path is a symbolic link, then the link itself is stat-ed, not the file that it
+ * refers to.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.lstat = function(path, callback) {
+  return node.fs.core_.lstat(path, callback);
+};
+
+/**
+ * Asynchronous stat(2). The callback gets two arguments &lt;code>(err, stats)&lt;/code> where
+ * &lt;code>stats&lt;/code> is a &lt;code>fs.Stats&lt;/code> object. It looks like this:
+ * &lt;pre>
+ *     { dev: 2049,
+ *       ino: 305352,
+ *       mode: 16877,
+ *       nlink: 12,
+ *       uid: 1000,
+ *       gid: 1000,
+ *       rdev: 0,
+ *       size: 4096,
+ *       blksize: 4096,
+ *       blocks: 8,
+ *       atime: '2009-06-29T11:11:55Z',
+ *       mtime: '2009-06-29T11:11:40Z',
+ *       ctime: '2009-06-29T11:11:40Z' }
+ * &lt;/pre>
+ * See the &lt;code>fs.Stats&lt;/code> section below for more information.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.stat = function(path, callback) {
+  return node.fs.core_.stat(path, callback);
+};
+
+/**
+ * Synchronous fstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
+ * @param {*} fd
+ * @return {fs.Stats}
+ */
+node.fs.prototype.fstatSync = function(fd) {
+  return node.fs.core_.fstatSync(fd);
+};
+
+/**
+ * Synchronous lstat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.lstatSync = function(path) {
+  return node.fs.core_.lstatSync(path);
+};
+
+/**
+ * Synchronous stat(2). Returns an instance of &lt;code>fs.Stats&lt;/code>.
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.statSync = function(path) {
+  return node.fs.core_.statSync(path);
+};
+
+/**
+ * Asynchronous readlink(2). The callback gets two arguments &lt;code>(err,
+ * resolvedPath)&lt;/code>.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.readlink = function(path, callback) {
+  return node.fs.core_.readlink(path, callback);
+};
+
+/**
+ * Synchronous readlink(2). Returns the resolved path.
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.readlinkSync = function(path) {
+  return node.fs.core_.readlinkSync(path);
+};
+
+/**
+ * Asynchronous symlink(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {*} destination
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.symlink = function(destination, path, callback) {
+  return node.fs.core_.symlink(destination, path, callback);
+};
+
+/**
+ * Synchronous symlink(2).
+ * @param {*} destination
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.symlinkSync = function(destination, path) {
+  return node.fs.core_.symlinkSync(destination, path);
+};
+
+/**
+ * Asynchronous link(2). No arguments other than a possible exception are given to
+ * the completion callback.
+ * @param {*} srcpath
+ * @param {*} dstpath
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.link = function(srcpath, dstpath, callback) {
+  return node.fs.core_.link(srcpath, dstpath, callback);
+};
+
+/**
+ * Synchronous link(2).
+ * @param {*} srcpath
+ * @param {*} dstpath
+ * @return {*}
+ */
+node.fs.prototype.linkSync = function(srcpath, dstpath) {
+  return node.fs.core_.linkSync(srcpath, dstpath);
+};
+
+/**
+ * Asynchronous unlink(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {*} path
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.unlink = function(path, callback) {
+  return node.fs.core_.unlink(path, callback);
+};
+
+/**
+ * Synchronous unlink(2).
+ * @param {*} path
+ * @return {*}
+ */
+node.fs.prototype.unlinkSync = function(path) {
+  return node.fs.core_.unlinkSync(path);
+};
+
+/**
+ * Asynchronous chmod(2). No arguments other than a possible exception are given
+ * to the completion callback.
+ * @param {string} path The path to change mode on
+ * @param {string=} mode mode defaults to 0666
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
+ * @return {*}
+ */
+node.fs.prototype.chmod = function(path, mode, callback) {
+  return node.fs.core_.chmod(path, mode, callback);
+};
+
+/**
+ * Synchronous chmod(2).
+ * @param {string} path The path to change mode on
+ * @param {string} mode mode defaults to 0666
+ * @return {*}
+ */
+node.fs.prototype.chmodSync = function(path, mode) {
+  return node.fs.core_.chmodSync(path, mode);
+};
+
+/**
+ * @param {string} path The path to change owners on
+ * @param {string} uid The user id
+ * @param {string} gid The group id
+ * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
+ * @return {*}
+ */
+node.fs.prototype.chown = function(path, uid, gid, callback) {
+  return node.fs.core_.chown(path, uid, gid, callback);
+};
+
+/**
+ * @param {string} path
+ * @param {string} uid
+ * @param {string} gid
+ * @return {*}
+ */
+node.fs.prototype.chownSync = function(path, uid, gid) {
+  return node.fs.core_.chownSync(path, uid, gid);
+};
+
+/**
+ * Asynchronously writes data to a file. &lt;code>data&lt;/code> can be a string or a buffer.
+ *
+ * Example:
+ * &lt;pre>
+ *     fs.writeFile('message.txt', 'Hello Node', function (err) {
+ *       if (err) throw err;
+ *       console.log('It\'s saved!');
+ *     });
+ * &lt;/pre>
+ * @param {*} path
+ * @param {*} data
+ * @param {*} encoding_
+ * @param {*} callback
+ * @return {*}
+ */
+node.fs.prototype.writeFile = function(path, data, encoding_, callback) {
+  return node.fs.core_.writeFile(path, data, encoding_, callback);
+};
+
+/**
+ * The synchronous version of &lt;code>fs.writeFile&lt;/code>.
+ * @param {*} path
+ * @param {*} data
+ * @param {*} encoding
+ * @return {*}
+ */
+node.fs.prototype.writeFileSync = function(path, data, encoding) {
+  return node.fs.core_.writeFileSync(path, data, encoding);
+};
+
+/**
+ * Watch for changes on &lt;code>filename&lt;/code>. The callback &lt;code>listener&lt;/code> will be called each
+ * time the file is accessed.
+ *
+ * The second argument is optional. The &lt;code>options&lt;/code> if provided should be an object
+ * containing two members a boolean, &lt;code>persistent&lt;/code>, and &lt;code>interval&lt;/code>, a polling
+ * value in milliseconds. The default is &lt;code>{ persistent: true, interval: 0 }&lt;/code>.
+ *
+ * The &lt;code>listener&lt;/code> gets two arguments the current stat object and the previous
+ * stat object:
+ * &lt;pre>
+ *     fs.watchFile(f, function (curr, prev) {
+ *       console.log('the current mtime is: ' + curr.mtime);
+ *       console.log('the previous mtime was: ' + prev.mtime);
+ *     });
+ * &lt;/pre>
+ * These stat objects are instances of &lt;code>fs.Stat&lt;/code>.
+ *
+ * If you want to be notified when the file was modified, not just accessed
+ * you need to compare &lt;code>curr.mtime&lt;/code> and `prev.mtime.
+ * @param {*} filename
+ * @return {*}
+ */
+node.fs.prototype.watchFile = function(filename) {
+  return node.fs.core_.watchFile(filename);
+};
+
+/**
+ * Stop watching for changes on &lt;code>filename&lt;/code>.
+ * @param {*} filename
+ * @return {*}
+ */
+node.fs.prototype.unwatchFile = function(filename) {
+  return node.fs.core_.unwatchFile(filename);
+};
+
+/**
+ * Synchronous realpath(2). Returns the resolved path.
+ * @param {*} p
+ * @param {*} cache
+ * @return {*}
+ */
+node.fs.prototype.realpathSync = function(p, cache) {
+  return node.fs.core_.realpathSync(p, cache);
+};
+
+/**
+ * Asynchronous realpath(2).  The callback gets two arguments &lt;code>(err,
+ * resolvedPath)&lt;/code>.
+ * @param {*} p
+ * @param {*} cache
+ * @param {*} cb
+ * @return {*}
+ */
+node.fs.prototype.realpath = function(p, cache, cb) {
+  return node.fs.core_.realpath(p, cache, cb);
+};
+
+/**
+ * @param {string} path
+ * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+ * @return {node.fs.ReadStream}
+ */
+node.fs.prototype.createReadStream = function(path, options) {
+  return node.fs.core_.createReadStream(path, options);
+};
+
+/**
+ * @param {string} path
+ * @param {{flags:string,encoding:string,mode:string,bufferSize:number}=} options
+ * @return {node.fs.WriteStream}
+ */
+node.fs.prototype.createWriteStream = function(path, options) {
+  return node.fs.core_.createWriteStream(path, options);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.fs.core_ = require("fs");</pre></body></html>

@@ -1,101 +1,102 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.url
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * This module has utilities for URL resolution and parsing.
-<span class='line'>  5</span>  * Call &lt;code>require('url')&lt;/code> to use it.
-<span class='line'>  6</span>  *
-<span class='line'>  7</span>  * Parsed URL objects have some or all of the following fields, depending on
-<span class='line'>  8</span>  * whether or not they exist in the URL string. Any parts that are not in the URL
-<span class='line'>  9</span>  * string will not be in the parsed object. Examples are shown for the URL
-<span class='line'> 10</span>  *
-<span class='line'> 11</span>  * &lt;code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'&lt;/code>
-<span class='line'> 12</span>  *
-<span class='line'> 13</span>  * * &lt;code>href&lt;/code>: The full URL that was originally parsed.
-<span class='line'> 14</span>  *
-<span class='line'> 15</span>  *   Example: &lt;code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'&lt;/code>
-<span class='line'> 16</span>  * * &lt;code>protocol&lt;/code>: The request protocol.
-<span class='line'> 17</span>  *
-<span class='line'> 18</span>  *   Example: &lt;code>'http:'&lt;/code>
-<span class='line'> 19</span>  * * &lt;code>host&lt;/code>: The full host portion of the URL, including port and authentication information.
-<span class='line'> 20</span>  *
-<span class='line'> 21</span>  *   Example: &lt;code>'user:pass@host.com:8080'&lt;/code>
-<span class='line'> 22</span>  * * &lt;code>auth&lt;/code>: The authentication information portion of a URL.
-<span class='line'> 23</span>  *
-<span class='line'> 24</span>  *   Example: &lt;code>'user:pass'&lt;/code>
-<span class='line'> 25</span>  * * &lt;code>hostname&lt;/code>: Just the hostname portion of the host.
-<span class='line'> 26</span>  *
-<span class='line'> 27</span>  *   Example: &lt;code>'host.com'&lt;/code>
-<span class='line'> 28</span>  * * &lt;code>port&lt;/code>: The port number portion of the host.
-<span class='line'> 29</span>  *
-<span class='line'> 30</span>  *   Example: &lt;code>'8080'&lt;/code>
-<span class='line'> 31</span>  * * &lt;code>pathname&lt;/code>: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
-<span class='line'> 32</span>  *
-<span class='line'> 33</span>  *   Example: &lt;code>'&#47;p&#47;a&#47;t&#47;h'&lt;/code>
-<span class='line'> 34</span>  * * &lt;code>search&lt;/code>: The 'query string' portion of the URL, including the leading question mark.
-<span class='line'> 35</span>  *
-<span class='line'> 36</span>  *   Example: &lt;code>'?query=string'&lt;/code>
-<span class='line'> 37</span>  * * &lt;code>query&lt;/code>: Either the 'params' portion of the query string, or a querystring-parsed object.
-<span class='line'> 38</span>  *
-<span class='line'> 39</span>  *   Example: &lt;code>'query=string'&lt;/code> or &lt;code>{'query':'string'}&lt;/code>
-<span class='line'> 40</span>  * * &lt;code>hash&lt;/code>: The 'fragment' portion of the URL including the pound-sign.
-<span class='line'> 41</span>  *
-<span class='line'> 42</span>  *   Example: &lt;code>'#hash'&lt;/code>
-<span class='line'> 43</span>  *
-<span class='line'> 44</span>  * The following methods are provided by the URL module:
-<span class='line'> 45</span>  */</span><span class="WHIT">
-<span class='line'> 46</span> 
-<span class='line'> 47</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.url"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 48</span> 
-<span class='line'> 49</span> </span><span class="COMM">/**
-<span class='line'> 50</span>  * Take a URL string, and return an object.  Pass &lt;code>true&lt;/code> as the second argument to also parse
-<span class='line'> 51</span>  * the query string using the &lt;code>querystring&lt;/code> module.
-<span class='line'> 52</span>  * @param {*} url
-<span class='line'> 53</span>  * @param {*} parseQueryString
-<span class='line'> 54</span>  * @param {*} slashesDenoteHost
-<span class='line'> 55</span>  * @return {*}
-<span class='line'> 56</span>  */</span><span class="WHIT">
-<span class='line'> 57</span> </span><span class="NAME">node.url.prototype.parse</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parseQueryString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">slashesDenoteHost</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 58</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.url.core_.parse</span><span class="PUNC">(</span><span class="NAME">url</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">parseQueryString</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">slashesDenoteHost</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 59</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 60</span> 
-<span class='line'> 61</span> </span><span class="COMM">/**
-<span class='line'> 62</span>  * Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.
-<span class='line'> 63</span>  * @param {*} source
-<span class='line'> 64</span>  * @param {*} relative
-<span class='line'> 65</span>  * @return {*}
-<span class='line'> 66</span>  */</span><span class="WHIT">
-<span class='line'> 67</span> </span><span class="NAME">node.url.prototype.resolve</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">relative</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 68</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.url.core_.resolve</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">relative</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 69</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 70</span> 
-<span class='line'> 71</span> </span><span class="COMM">/**
-<span class='line'> 72</span>  * @param {*} source
-<span class='line'> 73</span>  * @param {*} relative
-<span class='line'> 74</span>  * @return {*}
-<span class='line'> 75</span>  */</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="NAME">node.url.prototype.resolveObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">relative</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.url.core_.resolveObject</span><span class="PUNC">(</span><span class="NAME">source</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">relative</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 79</span> 
-<span class='line'> 80</span> </span><span class="COMM">/**
-<span class='line'> 81</span>  * Take a parsed URL object, and return a formatted URL string.
-<span class='line'> 82</span>  * @param {*} obj
-<span class='line'> 83</span>  * @return {*}
-<span class='line'> 84</span>  */</span><span class="WHIT">
-<span class='line'> 85</span> </span><span class="NAME">node.url.prototype.format</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 86</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.url.core_.format</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 87</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 88</span> 
-<span class='line'> 89</span> 
-<span class='line'> 90</span> </span><span class="COMM">/**
-<span class='line'> 91</span>  * @private
-<span class='line'> 92</span>  * @type {*}
-<span class='line'> 93</span>  */</span><span class="WHIT">
-<span class='line'> 94</span> </span><span class="NAME">node.url.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"url"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_url.js</title>
+<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.url
+ * @namespace
+ * This module has utilities for URL resolution and parsing.
+ * Call &lt;code>require('url')&lt;/code> to use it.
+ *
+ * Parsed URL objects have some or all of the following fields, depending on
+ * whether or not they exist in the URL string. Any parts that are not in the URL
+ * string will not be in the parsed object. Examples are shown for the URL
+ *
+ * &lt;code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'&lt;/code>
+ *
+ * * &lt;code>href&lt;/code>: The full URL that was originally parsed.
+ *
+ *   Example: &lt;code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'&lt;/code>
+ * * &lt;code>protocol&lt;/code>: The request protocol.
+ *
+ *   Example: &lt;code>'http:'&lt;/code>
+ * * &lt;code>host&lt;/code>: The full host portion of the URL, including port and authentication information.
+ *
+ *   Example: &lt;code>'user:pass@host.com:8080'&lt;/code>
+ * * &lt;code>auth&lt;/code>: The authentication information portion of a URL.
+ *
+ *   Example: &lt;code>'user:pass'&lt;/code>
+ * * &lt;code>hostname&lt;/code>: Just the hostname portion of the host.
+ *
+ *   Example: &lt;code>'host.com'&lt;/code>
+ * * &lt;code>port&lt;/code>: The port number portion of the host.
+ *
+ *   Example: &lt;code>'8080'&lt;/code>
+ * * &lt;code>pathname&lt;/code>: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
+ *
+ *   Example: &lt;code>'&#47;p&#47;a&#47;t&#47;h'&lt;/code>
+ * * &lt;code>search&lt;/code>: The 'query string' portion of the URL, including the leading question mark.
+ *
+ *   Example: &lt;code>'?query=string'&lt;/code>
+ * * &lt;code>query&lt;/code>: Either the 'params' portion of the query string, or a querystring-parsed object.
+ *
+ *   Example: &lt;code>'query=string'&lt;/code> or &lt;code>{'query':'string'}&lt;/code>
+ * * &lt;code>hash&lt;/code>: The 'fragment' portion of the URL including the pound-sign.
+ *
+ *   Example: &lt;code>'#hash'&lt;/code>
+ *
+ * The following methods are provided by the URL module:
+ */
+
+goog.provide("node.url");
+
+/**
+ * Take a URL string, and return an object.  Pass &lt;code>true&lt;/code> as the second argument to also parse
+ * the query string using the &lt;code>querystring&lt;/code> module.
+ * @param {*} url
+ * @param {*} parseQueryString
+ * @param {*} slashesDenoteHost
+ * @return {*}
+ */
+node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
+  return node.url.core_.parse(url, parseQueryString, slashesDenoteHost);
+};
+
+/**
+ * Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.
+ * @param {*} source
+ * @param {*} relative
+ * @return {*}
+ */
+node.url.prototype.resolve = function(source, relative) {
+  return node.url.core_.resolve(source, relative);
+};
+
+/**
+ * @param {*} source
+ * @param {*} relative
+ * @return {*}
+ */
+node.url.prototype.resolveObject = function(source, relative) {
+  return node.url.core_.resolveObject(source, relative);
+};
+
+/**
+ * Take a parsed URL object, and return a formatted URL string.
+ * @param {*} obj
+ * @return {*}
+ */
+node.url.prototype.format = function(obj) {
+  return node.url.core_.format(obj);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.url.core_ = require("url");</pre></body></html>
