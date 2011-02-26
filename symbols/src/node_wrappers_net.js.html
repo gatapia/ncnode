@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_net.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -31,23 +31,23 @@ goog.provide("node.net");
  * #### net.isIPv6(input)
  *
  * Returns true if input is a version 6 IP address, otherwise returns false.
- * @return {*}
+ * @return {string}
  */
 node.net.prototype.isIP = function() {
   return node.net.core_.isIP();
 };
 
 /**
- * @param {*} input
- * @return {*}
+ * @param {string} input
+ * @return {string}
  */
 node.net.prototype.isIPv4 = function(input) {
   return node.net.core_.isIPv4(input);
 };
 
 /**
- * @param {*} input
- * @return {*}
+ * @param {string} input
+ * @return {string}
  */
 node.net.prototype.isIPv6 = function(input) {
   return node.net.core_.isIPv6(input);
@@ -69,9 +69,9 @@ node.net.prototype.isIPv6 = function(input) {
  *   Creates unix socket connection to &lt;code>path&lt;/code>
  *
  * ---
- * @param {*} port
- * @param {*} host
- * @return {*}
+ * @param {string} port
+ * @param {string} host
+ * @return {string}
  */
 node.net.prototype.createConnection = function(port, host) {
   return node.net.core_.createConnection(port, host);
@@ -80,7 +80,7 @@ node.net.prototype.createConnection = function(port, host) {
 /**
  * Creates a new TCP server. The &lt;code>connectionListener&lt;/code> argument is
  * automatically set as a listener for the &lt;code>'connection'&lt;/code> event.
- * @return {*}
+ * @return {string}
  */
 node.net.prototype.createServer = function() {
   return node.net.core_.createServer();

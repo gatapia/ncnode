@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_tty_posix.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,9 +14,9 @@
 goog.provide("node.tty_posix");
 
 /**
- * @param {*} path
- * @param {*} args
- * @return {*}
+ * @param {string} path
+ * @param {Array.&lt;*>} args
+ * @return {string}
  */
 node.tty_posix.prototype.open = function(path, args) {
   return node.tty_posix.core_.open(path, args);

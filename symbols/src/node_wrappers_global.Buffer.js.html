@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_global.Buffer.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,20 +14,20 @@
 goog.provide("node.global.Buffer");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.Buffer.prototype.poolSize;
 
 /**
- * @param {*} b
- * @return {*}
+ * @param {string} b
+ * @return {string}
  */
 node.global.Buffer.prototype.isBuffer = function(b) {
   return node.global.Buffer.core_.isBuffer(b);
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.Buffer.prototype.byteLength = function() {
   return node.global.Buffer.core_.byteLength();

@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_crypto.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -29,8 +29,8 @@ goog.provide("node.crypto");
  *
  * If no 'ca' details are given, then node.js will use the default publicly trusted list of CAs as given in
  * &lt;http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
- * @param {*} options
- * @return {*}
+ * @param {Object} options
+ * @return {string}
  */
 node.crypto.prototype.createCredentials = function(options) {
   return node.crypto.core_.createCredentials(options);
@@ -43,8 +43,8 @@ node.crypto.prototype.createCredentials = function(options) {
  * &lt;code>algorithm&lt;/code> is dependent on the available algorithms supported by the version
  * of OpenSSL on the platform. Examples are &lt;code>'sha1'&lt;/code>, &lt;code>'md5'&lt;/code>, &lt;code>'sha256'&lt;/code>, &lt;code>'sha512'&lt;/code>, etc.
  * On recent releases, &lt;code>openssl list-message-digest-algorithms&lt;/code> will display the available digest algorithms.
- * @param {*} hash
- * @return {*}
+ * @param {string} hash
+ * @return {string}
  */
 node.crypto.prototype.createHash = function(hash) {
   return node.crypto.core_.createHash(hash);
@@ -55,9 +55,9 @@ node.crypto.prototype.createHash = function(hash) {
  *
  * &lt;code>algorithm&lt;/code> is dependent on the available algorithms supported by OpenSSL - see createHash above.
  * &lt;code>key&lt;/code> is the hmac key to be used.
- * @param {*} hmac
- * @param {*} key
- * @return {*}
+ * @param {string} hmac
+ * @param {string} key
+ * @return {string}
  */
 node.crypto.prototype.createHmac = function(hmac, key) {
   return node.crypto.core_.createHmac(hmac, key);
@@ -68,19 +68,19 @@ node.crypto.prototype.createHmac = function(hmac, key) {
  *
  * &lt;code>algorithm&lt;/code> is dependent on OpenSSL, examples are &lt;code>'aes192'&lt;/code>, etc.
  * On recent releases, &lt;code>openssl list-cipher-algorithms&lt;/code> will display the available cipher algorithms.
- * @param {*} cipher
- * @param {*} key
- * @return {*}
+ * @param {string} cipher
+ * @param {string} key
+ * @return {string}
  */
 node.crypto.prototype.createCipher = function(cipher, key) {
   return node.crypto.core_.createCipher(cipher, key);
 };
 
 /**
- * @param {*} cipher
- * @param {*} key
- * @param {*} iv
- * @return {*}
+ * @param {string} cipher
+ * @param {string} key
+ * @param {string} iv
+ * @return {string}
  */
 node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createCipheriv(cipher, key, iv);
@@ -89,19 +89,19 @@ node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
 /**
  * Creates and returns a decipher object, with the given algorithm and key.
  * This is the mirror of the cipher object above.
- * @param {*} cipher
- * @param {*} key
- * @return {*}
+ * @param {string} cipher
+ * @param {string} key
+ * @return {string}
  */
 node.crypto.prototype.createDecipher = function(cipher, key) {
   return node.crypto.core_.createDecipher(cipher, key);
 };
 
 /**
- * @param {*} cipher
- * @param {*} key
- * @param {*} iv
- * @return {*}
+ * @param {string} cipher
+ * @param {string} key
+ * @param {string} iv
+ * @return {string}
  */
 node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createDecipheriv(cipher, key, iv);
@@ -111,8 +111,8 @@ node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
  * Creates and returns a signing object, with the given algorithm.
  * On recent OpenSSL releases, &lt;code>openssl list-public-key-algorithms&lt;/code> will display
  * the available signing algorithms. Examples are &lt;code>'RSA-SHA256'&lt;/code>.
- * @param {*} algorithm
- * @return {*}
+ * @param {string} algorithm
+ * @return {string}
  */
 node.crypto.prototype.createSign = function(algorithm) {
   return node.crypto.core_.createSign(algorithm);
@@ -121,8 +121,8 @@ node.crypto.prototype.createSign = function(algorithm) {
 /**
  * Creates and returns a verification object, with the given algorithm.
  * This is the mirror of the signing object above.
- * @param {*} algorithm
- * @return {*}
+ * @param {string} algorithm
+ * @return {string}
  */
 node.crypto.prototype.createVerify = function(algorithm) {
   return node.crypto.core_.createVerify(algorithm);
