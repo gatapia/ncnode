@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_buffer.SlowBuffer.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,14 +14,14 @@
 goog.provide("node.buffer.SlowBuffer");
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.buffer.SlowBuffer.prototype.byteLength = function() {
   return node.buffer.SlowBuffer.core_.byteLength();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.buffer.SlowBuffer.prototype.makeFastBuffer = function() {
   return node.buffer.SlowBuffer.core_.makeFastBuffer();

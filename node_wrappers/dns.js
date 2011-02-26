@@ -31,62 +31,62 @@
 goog.provide("node.dns");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.NODATA;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.FORMERR;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.BADRESP;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.NOTFOUND;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.BADNAME;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.TIMEOUT;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.CONNREFUSED;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.NOMEM;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.DESTRUCTION;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.NOTIMP;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.EREFUSED;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.dns.prototype.SERVFAIL;
 
@@ -103,33 +103,33 @@ node.dns.prototype.SERVFAIL;
  * On error, <code>err</code> would be an instanceof <code>Error</code> object, where <code>err.errno</code> is
  * one of the error codes listed below and <code>err.message</code> is a string describing
  * the error in English.
- * @param {*} domain
- * @param {*} type_
- * @param {*} callback_
- * @return {*}
+ * @param {string} domain
+ * @param {string} type_
+ * @param {string} callback_
+ * @return {string}
  */
 node.dns.prototype.resolve = function(domain, type_, callback_) {
   return node.dns.core_.resolve(domain, type_, callback_);
 };
 
 /**
- * @param {*} domain
- * @param {*} family/*=4*/
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {string} family
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
-node.dns.prototype.getHostByName = function(domain, family/*=4*/, callback) {
-  return node.dns.core_.getHostByName(domain, family/*=4*/, callback);
+node.dns.prototype.getHostByName = function(domain, family, callback) {
+  return node.dns.core_.getHostByName(domain, family, callback);
 };
 
 /**
- * @param {*} address
- * @param {*} family/*=4*/
- * @param {*} callback
- * @return {*}
+ * @param {string} address
+ * @param {string} family
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
-node.dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
-  return node.dns.core_.getHostByAddr(address, family/*=4*/, callback);
+node.dns.prototype.getHostByAddr = function(address, family, callback) {
+  return node.dns.core_.getHostByAddr(address, family, callback);
 };
 
 /**
@@ -140,10 +140,10 @@ node.dns.prototype.getHostByAddr = function(address, family/*=4*/, callback) {
  * is a string representation of a IP v4 or v6 address. The <code>family</code> argument
  * is either the integer 4 or 6 and denotes the family of <code>address</code> (not
  * neccessarily the value initially passed to <code>lookup</code>).
- * @param {*} domain
- * @param {*} family
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {string} family
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.lookup = function(domain, family, callback) {
   return node.dns.core_.lookup(domain, family, callback);
@@ -153,9 +153,9 @@ node.dns.prototype.lookup = function(domain, family, callback) {
  * The same as <code>dns.resolve()</code>, but only for IPv4 queries (<code>A</code> records).
  * <code>addresses</code> is an array of IPv4 addresses (e.g.
  * <code>['74.125.79.104', '74.125.79.105', '74.125.79.106']</code>).
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolve4 = function(domain, callback) {
   return node.dns.core_.resolve4(domain, callback);
@@ -163,9 +163,9 @@ node.dns.prototype.resolve4 = function(domain, callback) {
 
 /**
  * The same as <code>dns.resolve4()</code> except for IPv6 queries (an <code>AAAA</code> query).
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolve6 = function(domain, callback) {
   return node.dns.core_.resolve6(domain, callback);
@@ -176,9 +176,9 @@ node.dns.prototype.resolve6 = function(domain, callback) {
  *
  * <code>addresses</code> is an array of MX records, each with a priority and an exchange
  * attribute (e.g. <code>[{'priority': 10, 'exchange': 'mx.example.com'},...]</code>).
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolveMx = function(domain, callback) {
   return node.dns.core_.resolveMx(domain, callback);
@@ -188,9 +188,9 @@ node.dns.prototype.resolveMx = function(domain, callback) {
  * The same as <code>dns.resolve()</code>, but only for text queries (<code>TXT</code> records).
  * <code>addresses</code> is an array of the text records available for <code>domain</code> (e.g.,
  * <code>['v=spf1 ip4:0.0.0.0 ~all']</code>).
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolveTxt = function(domain, callback) {
   return node.dns.core_.resolveTxt(domain, callback);
@@ -201,9 +201,9 @@ node.dns.prototype.resolveTxt = function(domain, callback) {
  * <code>addresses</code> is an array of the SRV records available for <code>domain</code>. Properties
  * of SRV records are priority, weight, port, and name (e.g.,
  * <code>[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolveSrv = function(domain, callback) {
   return node.dns.core_.resolveSrv(domain, callback);
@@ -225,27 +225,27 @@ node.dns.prototype.resolveSrv = function(domain, callback) {
  * - <code>dns.NODATA</code>: domain exists but no data of reqd type.
  * - <code>dns.NOMEM</code>: out of memory while processing.
  * - <code>dns.BADQUERY</code>: the query is malformed.
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.reverse = function(domain, callback) {
   return node.dns.core_.reverse(domain, callback);
 };
 
 /**
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolveNs = function(domain, callback) {
   return node.dns.core_.resolveNs(domain, callback);
 };
 
 /**
- * @param {*} domain
- * @param {*} callback
- * @return {*}
+ * @param {string} domain
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.dns.prototype.resolveCname = function(domain, callback) {
   return node.dns.core_.resolveCname(domain, callback);

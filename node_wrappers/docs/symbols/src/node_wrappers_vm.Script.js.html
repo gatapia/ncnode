@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_vm.Script.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,28 +14,28 @@
 goog.provide("node.vm.Script");
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.Script.prototype.createContext = function() {
   return node.vm.Script.core_.createContext();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.Script.prototype.runInContext = function() {
   return node.vm.Script.core_.runInContext();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.Script.prototype.runInThisContext = function() {
   return node.vm.Script.core_.runInThisContext();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.Script.prototype.runInNewContext = function() {
   return node.vm.Script.core_.runInNewContext();

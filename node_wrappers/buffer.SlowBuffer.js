@@ -6,14 +6,14 @@
 goog.provide("node.buffer.SlowBuffer");
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.buffer.SlowBuffer.prototype.byteLength = function() {
   return node.buffer.SlowBuffer.core_.byteLength();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.buffer.SlowBuffer.prototype.makeFastBuffer = function() {
   return node.buffer.SlowBuffer.core_.makeFastBuffer();

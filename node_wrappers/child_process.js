@@ -6,34 +6,34 @@
 goog.provide("node.child_process");
 
 /**
- * @param {*} path
- * @param {*} args /*
- * @param {*} options
- * @param {*} customFds */
- * @return {*}
+ * @param {string} path
+ * @param {Array.<*>} args
+ * @param {Object} options
+ * @param {string} customFds */
+ * @return {string}
  */
-node.child_process.prototype.spawn = function(path, args /*, options, customFds */) {
-  return node.child_process.core_.spawn(path, args /*, options, customFds */);
+node.child_process.prototype.spawn = function(path, args, options, customFds */) {
+  return node.child_process.core_.spawn(path, args, options, customFds */);
 };
 
 /**
- * @param {*} command /*
- * @param {*} options
- * @param {*} callback */
- * @return {*}
+ * @param {string} command
+ * @param {Object} options
+ * @param {string} callback */
+ * @return {string}
  */
-node.child_process.prototype.exec = function(command /*, options, callback */) {
-  return node.child_process.core_.exec(command /*, options, callback */);
+node.child_process.prototype.exec = function(command, options, callback */) {
+  return node.child_process.core_.exec(command, options, callback */);
 };
 
 /**
- * @param {*} file /* args
- * @param {*} options
- * @param {*} callback */
- * @return {*}
+ * @param {string} file
+ * @param {Object} options
+ * @param {string} callback */
+ * @return {string}
  */
-node.child_process.prototype.execFile = function(file /* args, options, callback */) {
-  return node.child_process.core_.execFile(file /* args, options, callback */);
+node.child_process.prototype.execFile = function(file, options, callback */) {
+  return node.child_process.core_.execFile(file, options, callback */);
 };
 
 

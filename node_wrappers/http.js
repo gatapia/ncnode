@@ -27,64 +27,64 @@
 goog.provide("node.http");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.http.prototype.parsers;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.http.prototype.STATUS_CODES;
 
 /**
- * @param {*} requestListener
- * @return {*}
+ * @param {string} requestListener
+ * @return {string}
  */
 node.http.prototype.createServer = function(requestListener) {
   return node.http.core_.createServer(requestListener);
 };
 
 /**
- * @param {*} host
- * @param {*} port
- * @return {*}
+ * @param {string} host
+ * @param {string} port
+ * @return {string}
  */
 node.http.prototype.getAgent = function(host, port) {
   return node.http.core_.getAgent(host, port);
 };
 
 /**
- * @param {*} options
- * @param {*} cb
- * @return {*}
+ * @param {Object} options
+ * @param {string} cb
+ * @return {string}
  */
 node.http.prototype.request = function(options, cb) {
   return node.http.core_.request(options, cb);
 };
 
 /**
- * @param {*} options
- * @param {*} cb
- * @return {*}
+ * @param {Object} options
+ * @param {string} cb
+ * @return {string}
  */
 node.http.prototype.get = function(options, cb) {
   return node.http.core_.get(options, cb);
 };
 
 /**
- * @param {*} port
- * @param {*} host
- * @return {*}
+ * @param {string} port
+ * @param {string} host
+ * @return {string}
  */
 node.http.prototype.createClient = function(port, host) {
   return node.http.core_.createClient(port, host);
 };
 
 /**
- * @param {*} url
- * @param {*} encoding_
- * @param {*} headers_
- * @return {*}
+ * @param {string} url
+ * @param {string} encoding_
+ * @param {string} headers_
+ * @return {string}
  */
 node.http.prototype.cat = function(url, encoding_, headers_) {
   return node.http.core_.cat(url, encoding_, headers_);

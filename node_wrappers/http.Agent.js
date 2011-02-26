@@ -6,7 +6,7 @@
 goog.provide("node.http.Agent");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.http.Agent.prototype.defaultMaxSockets;
 

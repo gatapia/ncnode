@@ -45,7 +45,7 @@ goog.provide("node.path");
  *     &#47;&#47; if currently in &#47;home&#47;myself&#47;node, it returns
  *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static</em>files&#47;gif&#47;image.gif'
  * </pre>
- * @return {*}
+ * @return {string}
  */
 node.path.prototype.resolve = function() {
   return node.path.core_.resolve();
@@ -64,8 +64,8 @@ node.path.prototype.resolve = function() {
  *     &#47;&#47; returns
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
  * </pre>
- * @param {*} path
- * @return {*}
+ * @param {string} path
+ * @return {string}
  */
 node.path.prototype.normalize = function(path) {
   return node.path.core_.normalize(path);
@@ -80,7 +80,7 @@ node.path.prototype.normalize = function(path) {
  *     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
  * </pre>
- * @return {*}
+ * @return {string}
  */
 node.path.prototype.join = function() {
   return node.path.core_.join();
@@ -95,8 +95,8 @@ node.path.prototype.join = function() {
  *     &#47;&#47; returns
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
  * </pre>
- * @param {*} path
- * @return {*}
+ * @param {string} path
+ * @return {string}
  */
 node.path.prototype.dirname = function(path) {
   return node.path.core_.dirname(path);
@@ -115,9 +115,9 @@ node.path.prototype.dirname = function(path) {
  *     &#47;&#47; returns
  *     'quux'
  * </pre>
- * @param {*} path
- * @param {*} ext
- * @return {*}
+ * @param {string} path
+ * @param {string} ext
+ * @return {string}
  */
 node.path.prototype.basename = function(path, ext) {
   return node.path.core_.basename(path, ext);
@@ -136,8 +136,8 @@ node.path.prototype.basename = function(path, ext) {
  *     &#47;&#47; returns
  *     ''
  * </pre>
- * @param {*} path
- * @return {*}
+ * @param {string} path
+ * @return {string}
  */
 node.path.prototype.extname = function(path) {
   return node.path.core_.extname(path);
@@ -150,17 +150,17 @@ node.path.prototype.extname = function(path) {
  *     path.exists('&#47;etc&#47;passwd', function (exists) {
  *       util.debug(exists ? "it's there" : "no passwd!");
  *     });
- * @param {*} path
- * @param {*} callback
- * @return {*}
+ * @param {string} path
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.path.prototype.exists = function(path, callback) {
   return node.path.core_.exists(path, callback);
 };
 
 /**
- * @param {*} path
- * @return {*}
+ * @param {string} path
+ * @return {string}
  */
 node.path.prototype.existsSync = function(path) {
   return node.path.core_.existsSync(path);

@@ -49,10 +49,10 @@ goog.provide("node.url");
 /**
  * Take a URL string, and return an object.  Pass <code>true</code> as the second argument to also parse
  * the query string using the <code>querystring</code> module.
- * @param {*} url
- * @param {*} parseQueryString
- * @param {*} slashesDenoteHost
- * @return {*}
+ * @param {string} url
+ * @param {string} parseQueryString
+ * @param {string} slashesDenoteHost
+ * @return {string}
  */
 node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
   return node.url.core_.parse(url, parseQueryString, slashesDenoteHost);
@@ -60,18 +60,18 @@ node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
 
 /**
  * Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.
- * @param {*} source
- * @param {*} relative
- * @return {*}
+ * @param {string} source
+ * @param {string} relative
+ * @return {string}
  */
 node.url.prototype.resolve = function(source, relative) {
   return node.url.core_.resolve(source, relative);
 };
 
 /**
- * @param {*} source
- * @param {*} relative
- * @return {*}
+ * @param {string} source
+ * @param {string} relative
+ * @return {string}
  */
 node.url.prototype.resolveObject = function(source, relative) {
   return node.url.core_.resolveObject(source, relative);
@@ -79,8 +79,8 @@ node.url.prototype.resolveObject = function(source, relative) {
 
 /**
  * Take a parsed URL object, and return a formatted URL string.
- * @param {*} obj
- * @return {*}
+ * @param {Object} obj
+ * @return {string}
  */
 node.url.prototype.format = function(obj) {
   return node.url.core_.format(obj);

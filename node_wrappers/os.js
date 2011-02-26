@@ -8,7 +8,7 @@ goog.provide("node.os");
 
 /**
  * Returns the hostname of the operating system.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.hostname = function() {
   return node.os.core_.hostname();
@@ -16,7 +16,7 @@ node.os.prototype.hostname = function() {
 
 /**
  * Returns an array containing the 1, 5, and 15 minute load averages.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.loadavg = function() {
   return node.os.core_.loadavg();
@@ -24,7 +24,7 @@ node.os.prototype.loadavg = function() {
 
 /**
  * Returns the system uptime in seconds.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.uptime = function() {
   return node.os.core_.uptime();
@@ -32,7 +32,7 @@ node.os.prototype.uptime = function() {
 
 /**
  * Returns the amount of free system memory in bytes.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.freemem = function() {
   return node.os.core_.freemem();
@@ -40,7 +40,7 @@ node.os.prototype.freemem = function() {
 
 /**
  * Returns the total amount of system memory in bytes.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.totalmem = function() {
   return node.os.core_.totalmem();
@@ -115,7 +115,7 @@ node.os.prototype.totalmem = function() {
  *            sys: 34920,
  *            idle: 1072572010,
  *            irq: 30 } } ]
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.cpus = function() {
   return node.os.core_.cpus();
@@ -123,7 +123,7 @@ node.os.prototype.cpus = function() {
 
 /**
  * Returns the operating system name.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.type = function() {
   return node.os.core_.type();
@@ -131,7 +131,7 @@ node.os.prototype.type = function() {
 
 /**
  * Returns the operating system release.
- * @return {*}
+ * @return {string}
  */
 node.os.prototype.release = function() {
   return node.os.core_.release();

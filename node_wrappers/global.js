@@ -7,124 +7,124 @@
 goog.provide("node.global");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.global;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.process;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.GLOBAL;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.root;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.console;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.nclosure;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.opts;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.COMPILED;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.goog;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.top;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.window;
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.prototype.ncnode;
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.DTRACE_NET_SERVER_CONNECTION = function() {
   return node.global.core_.DTRACE_NET_SERVER_CONNECTION();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.DTRACE_NET_STREAM_END = function() {
   return node.global.core_.DTRACE_NET_STREAM_END();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.DTRACE_HTTP_SERVER_REQUEST = function() {
   return node.global.core_.DTRACE_HTTP_SERVER_REQUEST();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.DTRACE_HTTP_SERVER_RESPONSE = function() {
   return node.global.core_.DTRACE_HTTP_SERVER_RESPONSE();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.setTimeout = function() {
   return node.global.core_.setTimeout();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.setInterval = function() {
   return node.global.core_.setInterval();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.clearTimeout = function() {
   return node.global.core_.clearTimeout();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.prototype.clearInterval = function() {
   return node.global.core_.clearInterval();
 };
 
 /**
- * @param {*} path
- * @return {*}
+ * @param {string} path
+ * @return {string}
  */
 node.global.prototype.require = function(path) {
   return node.global.core_.require(path);

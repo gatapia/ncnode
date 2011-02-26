@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_timers.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,25 +14,25 @@
 goog.provide("node.timers");
 
 /**
- * @param {*} item
- * @return {*}
+ * @param {string} item
+ * @return {string}
  */
 node.timers.prototype.unenroll = function(item) {
   return node.timers.core_.unenroll(item);
 };
 
 /**
- * @param {*} item
- * @param {*} msecs
- * @return {*}
+ * @param {string} item
+ * @param {string} msecs
+ * @return {string}
  */
 node.timers.prototype.enroll = function(item, msecs) {
   return node.timers.core_.enroll(item, msecs);
 };
 
 /**
- * @param {*} item
- * @return {*}
+ * @param {string} item
+ * @return {string}
  */
 node.timers.prototype.active = function(item) {
   return node.timers.core_.active(item);
@@ -42,9 +42,9 @@ node.timers.prototype.active = function(item) {
  * To schedule execution of &lt;code>callback&lt;/code> after &lt;code>delay&lt;/code> milliseconds. Returns a
  * &lt;code>timeoutId&lt;/code> for possible use with &lt;code>clearTimeout()&lt;/code>. Optionally, you can
  * also pass arguments to the callback.
- * @param {*} callback
- * @param {*} after
- * @return {*}
+ * @param {function(Error=,} callback ...*):undefined
+ * @param {string} after
+ * @return {string}
  */
 node.timers.prototype.setTimeout = function(callback, after) {
   return node.timers.core_.setTimeout(callback, after);
@@ -52,8 +52,8 @@ node.timers.prototype.setTimeout = function(callback, after) {
 
 /**
  * Prevents a timeout from triggering.
- * @param {*} timer
- * @return {*}
+ * @param {string} timer
+ * @return {string}
  */
 node.timers.prototype.clearTimeout = function(timer) {
   return node.timers.core_.clearTimeout(timer);
@@ -63,9 +63,9 @@ node.timers.prototype.clearTimeout = function(timer) {
  * To schedule the repeated execution of &lt;code>callback&lt;/code> every &lt;code>delay&lt;/code> milliseconds.
  * Returns a &lt;code>intervalId&lt;/code> for possible use with &lt;code>clearInterval()&lt;/code>. Optionally,
  * you can also pass arguments to the callback.
- * @param {*} callback
- * @param {*} repeat
- * @return {*}
+ * @param {function(Error=,} callback ...*):undefined
+ * @param {string} repeat
+ * @return {string}
  */
 node.timers.prototype.setInterval = function(callback, repeat) {
   return node.timers.core_.setInterval(callback, repeat);
@@ -73,8 +73,8 @@ node.timers.prototype.setInterval = function(callback, repeat) {
 
 /**
  * Stops a interval from triggering.
- * @param {*} timer
- * @return {*}
+ * @param {string} timer
+ * @return {string}
  */
 node.timers.prototype.clearInterval = function(timer) {
   return node.timers.core_.clearInterval(timer);

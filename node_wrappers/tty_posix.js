@@ -6,9 +6,9 @@
 goog.provide("node.tty_posix");
 
 /**
- * @param {*} path
- * @param {*} args
- * @return {*}
+ * @param {string} path
+ * @param {Array.<*>} args
+ * @return {string}
  */
 node.tty_posix.prototype.open = function(path, args) {
   return node.tty_posix.core_.open(path, args);

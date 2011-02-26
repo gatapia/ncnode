@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_vm.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -27,24 +27,24 @@ goog.provide("node.vm");
  *
  * In case of syntax error in &lt;code>code&lt;/code>, &lt;code>createScript&lt;/code> prints the syntax error to stderr
  * and throws an exception.
- * @param {*} code
- * @param {*} ctx
- * @param {*} name
- * @return {*}
+ * @param {string} code
+ * @param {string} ctx
+ * @param {string} name
+ * @return {string}
  */
 node.vm.prototype.createScript = function(code, ctx, name) {
   return node.vm.core_.createScript(code, ctx, name);
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.prototype.createContext = function() {
   return node.vm.core_.createContext();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.vm.prototype.runInContext = function() {
   return node.vm.core_.runInContext();
@@ -72,7 +72,7 @@ node.vm.prototype.runInContext = function() {
  *
  *     &#47;&#47; 1000
  * &lt;/pre>
- * @return {*}
+ * @return {string}
  */
 node.vm.prototype.runInThisContext = function() {
   return node.vm.core_.runInThisContext();
@@ -106,7 +106,7 @@ node.vm.prototype.runInThisContext = function() {
  * Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
  * global variable leakage, &lt;code>script.runInNewContext&lt;/code> is quite useful, but safely running untrusted code
  * requires a separate process.
- * @return {*}
+ * @return {string}
  */
 node.vm.prototype.runInNewContext = function() {
   return node.vm.core_.runInNewContext();

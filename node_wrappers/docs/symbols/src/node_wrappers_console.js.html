@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_console.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -14,68 +14,68 @@
 goog.provide("node.console");
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.console.prototype.log = function() {
   return node.console.core_.log();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.console.prototype.info = function() {
   return node.console.core_.info();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.console.prototype.warn = function() {
   return node.console.core_.warn();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.console.prototype.error = function() {
   return node.console.core_.error();
 };
 
 /**
- * @param {*} object
- * @return {*}
+ * @param {string} object
+ * @return {string}
  */
 node.console.prototype.dir = function(object) {
   return node.console.core_.dir(object);
 };
 
 /**
- * @param {*} label
- * @return {*}
+ * @param {string} label
+ * @return {string}
  */
 node.console.prototype.time = function(label) {
   return node.console.core_.time(label);
 };
 
 /**
- * @param {*} label
- * @return {*}
+ * @param {string} label
+ * @return {string}
  */
 node.console.prototype.timeEnd = function(label) {
   return node.console.core_.timeEnd(label);
 };
 
 /**
- * @param {*} label
- * @return {*}
+ * @param {string} label
+ * @return {string}
  */
 node.console.prototype.trace = function(label) {
   return node.console.core_.trace(label);
 };
 
 /**
- * @param {*} expression
- * @return {*}
+ * @param {string} expression
+ * @return {string}
  */
 node.console.prototype.assert = function(expression) {
   return node.console.core_.assert(expression);

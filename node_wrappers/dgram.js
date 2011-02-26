@@ -12,9 +12,9 @@ goog.provide("node.dgram");
  * <code>udp4</code>, <code>udp6</code>, and <code>unix_dgram</code>.
  *
  * Takes an optional callback which is added as a listener for <code>message</code> events.
- * @param {*} type
- * @param {*} listener
- * @return {*}
+ * @param {string} type
+ * @param {string} listener
+ * @return {string}
  */
 node.dgram.prototype.createSocket = function(type, listener) {
   return node.dgram.core_.createSocket(type, listener);

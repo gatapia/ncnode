@@ -6,10 +6,10 @@
 goog.provide("node.readline");
 
 /**
- * @param {*} input
- * @param {*} output
- * @param {*} completer
- * @return {*}
+ * @param {string} input
+ * @param {string} output
+ * @param {string} completer
+ * @return {string}
  */
 node.readline.prototype.createInterface = function(input, output, completer) {
   return node.readline.core_.createInterface(input, output, completer);

@@ -8,14 +8,14 @@
 goog.provide("node.util");
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.util.prototype.print = function() {
   return node.util.core_.print();
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.util.prototype.puts = function() {
   return node.util.core_.puts();
@@ -27,16 +27,16 @@ node.util.prototype.puts = function() {
  * <pre>
  *     require('util').debug('message on stderr');
  * </pre>
- * @param {*} x
- * @return {*}
+ * @param {string} x
+ * @return {string}
  */
 node.util.prototype.debug = function(x) {
   return node.util.core_.debug(x);
 };
 
 /**
- * @param {*} x
- * @return {*}
+ * @param {string} x
+ * @return {string}
  */
 node.util.prototype.error = function(x) {
   return node.util.core_.error(x);
@@ -60,18 +60,18 @@ node.util.prototype.error = function(x) {
  *
  *     console.log(util.inspect(util, true, null));
  * </pre>
- * @param {*} obj
- * @param {*} showHidden
- * @param {*} depth
- * @param {*} colors
- * @return {*}
+ * @param {Object} obj
+ * @param {string} showHidden
+ * @param {string} depth
+ * @param {string} colors
+ * @return {string}
  */
 node.util.prototype.inspect = function(obj, showHidden, depth, colors) {
   return node.util.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.util.prototype.p = function() {
   return node.util.core_.p();
@@ -82,15 +82,15 @@ node.util.prototype.p = function() {
  * <pre>
  *     require('util').log('Timestmaped message.');
  * </pre>
- * @param {*} msg
- * @return {*}
+ * @param {string} msg
+ * @return {string}
  */
 node.util.prototype.log = function(msg) {
   return node.util.core_.log(msg);
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.util.prototype.exec = function() {
   return node.util.core_.exec();
@@ -104,10 +104,10 @@ node.util.prototype.exec = function() {
  * paused until the <code>drain</code> event occurs on the <code>writableStream</code>. <code>callback</code> gets
  * an error as its only argument and is called when <code>writableStream</code> is closed or
  * when an error occurs.
- * @param {*} readStream
- * @param {*} writeStream
- * @param {*} callback
- * @return {*}
+ * @param {node.stream.Stream} readStream
+ * @param {node.stream.Stream} writeStream
+ * @param {function(Error=,} callback ...*):undefined
+ * @return {string}
  */
 node.util.prototype.pump = function(readStream, writeStream, callback) {
   return node.util.core_.pump(readStream, writeStream, callback);
@@ -144,9 +144,9 @@ node.util.prototype.pump = function(readStream, writeStream, callback) {
  *         console.log('Received data: "' + data + '"');
  *     })
  *     stream.write("It works!"); &#47;&#47; Received data: "It works!"
- * @param {*} ctor
- * @param {*} superCtor
- * @return {*}
+ * @param {Function} ctor
+ * @param {Function} superCtor
+ * @return {string}
  */
 node.util.prototype.inherits = function(ctor, superCtor) {
   return node.util.core_.inherits(ctor, superCtor);

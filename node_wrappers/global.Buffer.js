@@ -6,20 +6,20 @@
 goog.provide("node.global.Buffer");
 
 /**
- * @type {*}
+ * @type {string}
  */
 node.global.Buffer.prototype.poolSize;
 
 /**
- * @param {*} b
- * @return {*}
+ * @param {string} b
+ * @return {string}
  */
 node.global.Buffer.prototype.isBuffer = function(b) {
   return node.global.Buffer.core_.isBuffer(b);
 };
 
 /**
- * @return {*}
+ * @return {string}
  */
 node.global.Buffer.prototype.byteLength = function() {
   return node.global.Buffer.core_.byteLength();

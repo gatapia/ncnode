@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>node_wrappers_dgram.js</title>
-<link rel="stylesheet" href="../../css/prettify.css" media="all"></link>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
@@ -20,9 +20,9 @@ goog.provide("node.dgram");
  * &lt;code>udp4&lt;/code>, &lt;code>udp6&lt;/code>, and &lt;code>unix_dgram&lt;/code>.
  *
  * Takes an optional callback which is added as a listener for &lt;code>message&lt;/code> events.
- * @param {*} type
- * @param {*} listener
- * @return {*}
+ * @param {string} type
+ * @param {string} listener
+ * @return {string}
  */
 node.dgram.prototype.createSocket = function(type, listener) {
   return node.dgram.core_.createSocket(type, listener);

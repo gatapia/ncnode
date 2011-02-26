@@ -31,20 +31,20 @@
 goog.provide("node.tls");
 
 /**
- * @param {*} credentials
- * @param {*} isServer
- * @param {*} requestCert
- * @param {*} rejectUnauthorized
- * @return {*}
+ * @param {string} credentials
+ * @param {string} isServer
+ * @param {string} requestCert
+ * @param {string} rejectUnauthorized
+ * @return {string}
  */
 node.tls.prototype.createSecurePair = function(credentials, isServer, requestCert, rejectUnauthorized) {
   return node.tls.core_.createSecurePair(credentials, isServer, requestCert, rejectUnauthorized);
 };
 
 /**
- * @param {*} options
- * @param {*} listener
- * @return {*}
+ * @param {Object} options
+ * @param {string} listener
+ * @return {string}
  */
 node.tls.prototype.createServer = function(options, listener) {
   return node.tls.core_.createServer(options, listener);
@@ -71,13 +71,13 @@ node.tls.prototype.createServer = function(options, listener) {
  * to the user to test <code>s.authorized</code> to see if the server certificate was
  * signed by one of the specified CAs. If <code>s.authorized === false</code> then the error
  * can be found in <code>s.authorizationError</code>.
- * @param {*} port /* host
- * @param {*} options
- * @param {*} cb */
- * @return {*}
+ * @param {string} port
+ * @param {Object} options
+ * @param {string} cb */
+ * @return {string}
  */
-node.tls.prototype.connect = function(port /* host, options, cb */) {
-  return node.tls.core_.connect(port /* host, options, cb */);
+node.tls.prototype.connect = function(port, options, cb */) {
+  return node.tls.core_.connect(port, options, cb */);
 };
 
 
