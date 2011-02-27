@@ -528,7 +528,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode, callback)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode_, callback)
 										</div>
 										<div class="description">Asynchronous file open.</div>
 									</td>
@@ -638,7 +638,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cache, cb)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cb)
 										</div>
 										<div class="description">Asynchronous realpath(2).</div>
 									</td>
@@ -649,7 +649,7 @@ the entire process until they complete--halting all connections.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p, cache)
+										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p)
 										</div>
 										<div class="description">Synchronous realpath(2).</div>
 									</td>
@@ -891,28 +891,8 @@ the entire process until they complete--halting all connections.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.fs</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -939,7 +919,7 @@ the entire process until they complete--halting all connections.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>chmod</b>(path, mode, callback)
 								</div>
@@ -981,27 +961,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1013,7 +972,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>chmodSync</b>(path, mode)
 								</div>
@@ -1048,27 +1007,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1080,7 +1018,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>chown</b>(path, uid, gid, callback)
 								</div>
@@ -1127,27 +1065,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1159,7 +1076,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>chownSync</b>(path, uid, gid)
 								</div>
@@ -1200,27 +1117,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1232,7 +1128,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>close</b>(fd, callback)
 								</div>
@@ -1268,27 +1164,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1300,7 +1175,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>closeSync</b>(fd)
 								</div>
@@ -1328,27 +1203,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1495,7 +1349,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>fdatasync</b>(fd, callback)
 								</div>
@@ -1521,35 +1375,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1562,7 +1395,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>fdatasyncSync</b>(fd)
 								</div>
@@ -1591,27 +1424,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1623,7 +1435,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>fstat</b>(fd, callback)
 								</div>
@@ -1658,27 +1470,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1752,7 +1543,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>fsync</b>(fd, callback)
 								</div>
@@ -1778,35 +1569,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1819,7 +1589,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>fsyncSync</b>(fd)
 								</div>
@@ -1848,27 +1618,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -1880,7 +1629,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>link</b>(srcpath, dstpath, callback)
 								</div>
@@ -1913,35 +1662,14 @@ the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1954,7 +1682,7 @@ the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>linkSync</b>(srcpath, dstpath)
 								</div>
@@ -1989,27 +1717,6 @@ the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2021,7 +1728,7 @@ the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>lstat</b>(path, callback)
 								</div>
@@ -2050,35 +1757,14 @@ refers to.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2091,7 +1777,7 @@ refers to.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>lstatSync</b>(path)
 								</div>
@@ -2120,27 +1806,6 @@ refers to.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2152,7 +1817,7 @@ refers to.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>mkdir</b>(path, mode, callback)
 								</div>
@@ -2185,35 +1850,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2226,7 +1870,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>mkdirSync</b>(path, mode)
 								</div>
@@ -2261,27 +1905,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2293,14 +1916,14 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
-									<b>open</b>(path, flags, mode, callback)
+									<b>open</b>(path, flags, mode_, callback)
 								</div>
 
 								<div class="description">
 									Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <code>(err, fd)</code>.
+or 'a+'. The callback gets two arguments <code>(err, fd)</code>.
 
 									
 
@@ -2326,41 +1949,20 @@ or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <co
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>mode</b>
+												<span class="light fixedFont">{string}</span> <b>mode_</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2373,7 +1975,7 @@ or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <co
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>openSync</b>(path, flags, mode)
 								</div>
@@ -2414,27 +2016,6 @@ or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <co
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2446,7 +2027,7 @@ or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <co
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>read</b>(fd, buffer, offset, length, position, callback)
 								</div>
@@ -2495,7 +2076,7 @@ The callback is given the two arguments, <code>(err, bytesRead)</code>.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -2507,35 +2088,14 @@ The callback is given the two arguments, <code>(err, bytesRead)</code>.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2548,7 +2108,7 @@ The callback is given the two arguments, <code>(err, bytesRead)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readdir</b>(path, callback)
 								</div>
@@ -2576,35 +2136,14 @@ the names of the files in the directory excluding <code>'.'</code> and <code>'..
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2617,7 +2156,7 @@ the names of the files in the directory excluding <code>'.'</code> and <code>'..
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readdirSync</b>(path)
 								</div>
@@ -2647,27 +2186,6 @@ the names of the files in the directory excluding <code>'.'</code> and <code>'..
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2679,7 +2197,7 @@ the names of the files in the directory excluding <code>'.'</code> and <code>'..
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readFile</b>(path, encoding_)
 								</div>
@@ -2724,27 +2242,6 @@ If no encoding is specified, then the raw buffer is returned.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2756,7 +2253,7 @@ If no encoding is specified, then the raw buffer is returned.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readFileSync</b>(path, encoding)
 								</div>
@@ -2794,27 +2291,6 @@ returns a buffer.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2826,7 +2302,7 @@ returns a buffer.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readlink</b>(path, callback)
 								</div>
@@ -2853,35 +2329,14 @@ resolvedPath)</code>.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2894,7 +2349,7 @@ resolvedPath)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readlinkSync</b>(path)
 								</div>
@@ -2923,27 +2378,6 @@ resolvedPath)</code>.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -2955,7 +2389,7 @@ resolvedPath)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>readSync</b>(fd, buffer, offset, length, position)
 								</div>
@@ -2994,7 +2428,7 @@ resolvedPath)</code>.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -3009,27 +2443,6 @@ resolvedPath)</code>.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -3041,9 +2454,9 @@ resolvedPath)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
-									<b>realpath</b>(p, cache, cb)
+									<b>realpath</b>(p, cb)
 								</div>
 
 								<div class="description">
@@ -3068,12 +2481,6 @@ resolvedPath)</code>.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>cache</b>
-												
-											</dt>
-											<dd></dd>
-										
-											<dt>
 												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
@@ -3082,27 +2489,6 @@ resolvedPath)</code>.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3115,9 +2501,9 @@ resolvedPath)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
-									<b>realpathSync</b>(p, cache)
+									<b>realpathSync</b>(p)
 								</div>
 
 								<div class="description">
@@ -3140,36 +2526,9 @@ resolvedPath)</code>.
 											</dt>
 											<dd></dd>
 										
-											<dt>
-												<span class="light fixedFont">{string}</span> <b>cache</b>
-												
-											</dt>
-											<dd></dd>
-										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3182,7 +2541,7 @@ resolvedPath)</code>.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>rename</b>(oldPath, newPath, callback)
 								</div>
@@ -3215,35 +2574,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3256,7 +2594,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>renameSync</b>(oldPath, newPath)
 								</div>
@@ -3291,27 +2629,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -3323,7 +2640,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>rmdir</b>(path, callback)
 								</div>
@@ -3350,35 +2667,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3391,7 +2687,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>rmdirSync</b>(path)
 								</div>
@@ -3420,27 +2716,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -3452,7 +2727,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>sendfile</b>(outFd, inFd, inOffset, length, callback)
 								</div>
@@ -3490,41 +2765,20 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3537,7 +2791,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>sendfileSync</b>(outFd, inFd, inOffset, length)
 								</div>
@@ -3575,7 +2829,7 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -3583,27 +2837,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3616,7 +2849,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>stat</b>(path, callback)
 								</div>
@@ -3659,35 +2892,14 @@ See the <code>fs.Stats</code> section below for more information.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3700,7 +2912,7 @@ See the <code>fs.Stats</code> section below for more information.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>statSync</b>(path)
 								</div>
@@ -3729,27 +2941,6 @@ See the <code>fs.Stats</code> section below for more information.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -3761,7 +2952,7 @@ See the <code>fs.Stats</code> section below for more information.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>symlink</b>(destination, path, callback)
 								</div>
@@ -3794,35 +2985,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3835,7 +3005,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>symlinkSync</b>(destination, path)
 								</div>
@@ -3870,27 +3040,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -3902,7 +3051,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>truncate</b>(fd, len, callback)
 								</div>
@@ -3935,35 +3084,14 @@ given to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3976,7 +3104,7 @@ given to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>truncateSync</b>(fd, len)
 								</div>
@@ -4011,27 +3139,6 @@ given to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -4043,7 +3150,7 @@ given to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>unlink</b>(path, callback)
 								</div>
@@ -4070,35 +3177,14 @@ to the completion callback.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4111,7 +3197,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>unlinkSync</b>(path)
 								</div>
@@ -4140,27 +3226,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -4172,7 +3237,7 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>unwatchFile</b>(filename)
 								</div>
@@ -4201,27 +3266,6 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -4233,18 +3277,18 @@ to the completion callback.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>watchFile</b>(filename)
 								</div>
 
 								<div class="description">
 									Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
-time the file is accessed.
+time the file changes.
 
 The second argument is optional. The <code>options</code> if provided should be an object
 containing two members a boolean, <code>persistent</code>, and <code>interval</code>, a polling
-value in milliseconds. The default is <code>{ persistent: true, interval: 0 }</code>.
+value in milliseconds. The default is <code>{persistent: true, interval: 0}</code>.
 
 The <code>listener</code> gets two arguments the current stat object and the previous
 stat object:
@@ -4255,9 +3299,6 @@ stat object:
     });
 </pre>
 These stat objects are instances of <code>fs.Stat</code>.
-
-If you want to be notified when the file was modified, not just accessed
-you need to compare <code>curr.mtime</code> and `prev.mtime.
 
 									
 
@@ -4280,27 +3321,6 @@ you need to compare <code>curr.mtime</code> and `prev.mtime.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -4312,7 +3332,7 @@ you need to compare <code>curr.mtime</code> and `prev.mtime.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>write</b>(fd, buffer, offset, length, position, callback)
 								</div>
@@ -4360,7 +3380,7 @@ specifies how many <em>bytes</em> were written.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -4372,35 +3392,14 @@ specifies how many <em>bytes</em> were written.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4413,7 +3412,7 @@ specifies how many <em>bytes</em> were written.
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>writeFile</b>(path, data, encoding_, callback)
 								</div>
@@ -4459,35 +3458,14 @@ Example:
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=|}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=|...*):undefined}</span> <b>callback</b>
 												
 											</dt>
-											<dd>...*):undefined</dd>
+											<dd></dd>
 										
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4500,7 +3478,7 @@ Example:
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>writeFileSync</b>(path, data, encoding)
 								</div>
@@ -4541,27 +3519,6 @@ Example:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
@@ -4573,7 +3530,7 @@ Example:
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>writeSync</b>(fd, buffer, offset, length, position)
 								</div>
@@ -4612,7 +3569,7 @@ written.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -4626,27 +3583,6 @@ written.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>

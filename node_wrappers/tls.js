@@ -32,10 +32,9 @@ goog.provide("node.tls");
 
 /**
  * @param {string} credentials
- * @param {string} isServer
+ * @param {boolean} isServer
  * @param {string} requestCert
  * @param {string} rejectUnauthorized
- * @return {string}
  */
 node.tls.prototype.createSecurePair = function(credentials, isServer, requestCert, rejectUnauthorized) {
   return node.tls.core_.createSecurePair(credentials, isServer, requestCert, rejectUnauthorized);
@@ -44,7 +43,6 @@ node.tls.prototype.createSecurePair = function(credentials, isServer, requestCer
 /**
  * @param {Object} options
  * @param {string} listener
- * @return {string}
  */
 node.tls.prototype.createServer = function(options, listener) {
   return node.tls.core_.createServer(options, listener);
@@ -73,11 +71,10 @@ node.tls.prototype.createServer = function(options, listener) {
  * can be found in <code>s.authorizationError</code>.
  * @param {string} port
  * @param {Object} options
- * @param {string} cb */
- * @return {string}
+ * @param {string} cb
  */
-node.tls.prototype.connect = function(port, options, cb */) {
-  return node.tls.core_.connect(port, options, cb */);
+node.tls.prototype.connect = function(port, options, cb) {
+  return node.tls.core_.connect(port, options, cb);
 };
 
 

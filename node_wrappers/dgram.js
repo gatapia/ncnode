@@ -14,7 +14,6 @@ goog.provide("node.dgram");
  * Takes an optional callback which is added as a listener for <code>message</code> events.
  * @param {string} type
  * @param {string} listener
- * @return {string}
  */
 node.dgram.prototype.createSocket = function(type, listener) {
   return node.dgram.core_.createSocket(type, listener);

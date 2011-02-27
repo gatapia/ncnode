@@ -70,7 +70,6 @@ goog.provide("node.fs");
  * If no encoding is specified, then the raw buffer is returned.
  * @param {string} path
  * @param {string} encoding_
- * @return {string}
  */
 node.fs.prototype.readFile = function(path, encoding_) {
   return node.fs.core_.readFile(path, encoding_);
@@ -83,7 +82,6 @@ node.fs.prototype.readFile = function(path, encoding_) {
  * returns a buffer.
  * @param {string} path
  * @param {string} encoding
- * @return {string}
  */
 node.fs.prototype.readFileSync = function(path, encoding) {
   return node.fs.core_.readFileSync(path, encoding);
@@ -94,7 +92,6 @@ node.fs.prototype.readFileSync = function(path, encoding) {
  * to the completion callback.
  * @param {string} fd
  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
- * @return {string}
  */
 node.fs.prototype.close = function(fd, callback) {
   return node.fs.core_.close(fd, callback);
@@ -103,7 +100,6 @@ node.fs.prototype.close = function(fd, callback) {
 /**
  * Synchronous close(2).
  * @param {string} fd
- * @return {string}
  */
 node.fs.prototype.closeSync = function(fd) {
   return node.fs.core_.closeSync(fd);
@@ -111,15 +107,14 @@ node.fs.prototype.closeSync = function(fd) {
 
 /**
  * Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
- * or 'a+'. <code>mode</code> defaults to 0666. The callback gets two arguments <code>(err, fd)</code>.
+ * or 'a+'. The callback gets two arguments <code>(err, fd)</code>.
  * @param {string} path
  * @param {string} flags
- * @param {string} mode
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {string} mode_
+ * @param {function(Error=,...*):undefined} callback
  */
-node.fs.prototype.open = function(path, flags, mode, callback) {
-  return node.fs.core_.open(path, flags, mode, callback);
+node.fs.prototype.open = function(path, flags, mode_, callback) {
+  return node.fs.core_.open(path, flags, mode_, callback);
 };
 
 /**
@@ -127,7 +122,6 @@ node.fs.prototype.open = function(path, flags, mode, callback) {
  * @param {string} path
  * @param {string} flags
  * @param {string} mode
- * @return {string}
  */
 node.fs.prototype.openSync = function(path, flags, mode) {
   return node.fs.core_.openSync(path, flags, mode);
@@ -149,10 +143,9 @@ node.fs.prototype.openSync = function(path, flags, mode) {
  * @param {string} fd
  * @param {string} buffer
  * @param {string} offset
- * @param {string} length
+ * @param {number} length
  * @param {string} position
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.read = function(fd, buffer, offset, length, position, callback) {
   return node.fs.core_.read(fd, buffer, offset, length, position, callback);
@@ -164,9 +157,8 @@ node.fs.prototype.read = function(fd, buffer, offset, length, position, callback
  * @param {string} fd
  * @param {string} buffer
  * @param {string} offset
- * @param {string} length
+ * @param {number} length
  * @param {string} position
- * @return {string}
  */
 node.fs.prototype.readSync = function(fd, buffer, offset, length, position) {
   return node.fs.core_.readSync(fd, buffer, offset, length, position);
@@ -187,10 +179,9 @@ node.fs.prototype.readSync = function(fd, buffer, offset, length, position) {
  * @param {string} fd
  * @param {string} buffer
  * @param {string} offset
- * @param {string} length
+ * @param {number} length
  * @param {string} position
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.write = function(fd, buffer, offset, length, position, callback) {
   return node.fs.core_.write(fd, buffer, offset, length, position, callback);
@@ -202,9 +193,8 @@ node.fs.prototype.write = function(fd, buffer, offset, length, position, callbac
  * @param {string} fd
  * @param {string} buffer
  * @param {string} offset
- * @param {string} length
+ * @param {number} length
  * @param {string} position
- * @return {string}
  */
 node.fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
   return node.fs.core_.writeSync(fd, buffer, offset, length, position);
@@ -215,8 +205,7 @@ node.fs.prototype.writeSync = function(fd, buffer, offset, length, position) {
  * to the completion callback.
  * @param {string} oldPath
  * @param {string} newPath
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.rename = function(oldPath, newPath, callback) {
   return node.fs.core_.rename(oldPath, newPath, callback);
@@ -226,7 +215,6 @@ node.fs.prototype.rename = function(oldPath, newPath, callback) {
  * Synchronous rename(2).
  * @param {string} oldPath
  * @param {string} newPath
- * @return {string}
  */
 node.fs.prototype.renameSync = function(oldPath, newPath) {
   return node.fs.core_.renameSync(oldPath, newPath);
@@ -237,8 +225,7 @@ node.fs.prototype.renameSync = function(oldPath, newPath) {
  * given to the completion callback.
  * @param {string} fd
  * @param {string} len
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.truncate = function(fd, len, callback) {
   return node.fs.core_.truncate(fd, len, callback);
@@ -248,7 +235,6 @@ node.fs.prototype.truncate = function(fd, len, callback) {
  * Synchronous ftruncate(2).
  * @param {string} fd
  * @param {string} len
- * @return {string}
  */
 node.fs.prototype.truncateSync = function(fd, len) {
   return node.fs.core_.truncateSync(fd, len);
@@ -258,8 +244,7 @@ node.fs.prototype.truncateSync = function(fd, len) {
  * Asynchronous rmdir(2). No arguments other than a possible exception are given
  * to the completion callback.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.rmdir = function(path, callback) {
   return node.fs.core_.rmdir(path, callback);
@@ -268,7 +253,6 @@ node.fs.prototype.rmdir = function(path, callback) {
 /**
  * Synchronous rmdir(2).
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.rmdirSync = function(path) {
   return node.fs.core_.rmdirSync(path);
@@ -276,8 +260,7 @@ node.fs.prototype.rmdirSync = function(path) {
 
 /**
  * @param {string} fd
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.fdatasync = function(fd, callback) {
   return node.fs.core_.fdatasync(fd, callback);
@@ -285,7 +268,6 @@ node.fs.prototype.fdatasync = function(fd, callback) {
 
 /**
  * @param {string} fd
- * @return {string}
  */
 node.fs.prototype.fdatasyncSync = function(fd) {
   return node.fs.core_.fdatasyncSync(fd);
@@ -293,8 +275,7 @@ node.fs.prototype.fdatasyncSync = function(fd) {
 
 /**
  * @param {string} fd
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.fsync = function(fd, callback) {
   return node.fs.core_.fsync(fd, callback);
@@ -302,7 +283,6 @@ node.fs.prototype.fsync = function(fd, callback) {
 
 /**
  * @param {string} fd
- * @return {string}
  */
 node.fs.prototype.fsyncSync = function(fd) {
   return node.fs.core_.fsyncSync(fd);
@@ -313,8 +293,7 @@ node.fs.prototype.fsyncSync = function(fd) {
  * to the completion callback.
  * @param {string} path
  * @param {string} mode
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.mkdir = function(path, mode, callback) {
   return node.fs.core_.mkdir(path, mode, callback);
@@ -324,7 +303,6 @@ node.fs.prototype.mkdir = function(path, mode, callback) {
  * Synchronous mkdir(2).
  * @param {string} path
  * @param {string} mode
- * @return {string}
  */
 node.fs.prototype.mkdirSync = function(path, mode) {
   return node.fs.core_.mkdirSync(path, mode);
@@ -334,9 +312,8 @@ node.fs.prototype.mkdirSync = function(path, mode) {
  * @param {string} outFd
  * @param {string} inFd
  * @param {string} inOffset
- * @param {string} length
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {number} length
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
   return node.fs.core_.sendfile(outFd, inFd, inOffset, length, callback);
@@ -346,8 +323,7 @@ node.fs.prototype.sendfile = function(outFd, inFd, inOffset, length, callback) {
  * @param {string} outFd
  * @param {string} inFd
  * @param {string} inOffset
- * @param {string} length
- * @return {string}
+ * @param {number} length
  */
 node.fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
   return node.fs.core_.sendfileSync(outFd, inFd, inOffset, length);
@@ -358,8 +334,7 @@ node.fs.prototype.sendfileSync = function(outFd, inFd, inOffset, length) {
  * The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
  * the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.readdir = function(path, callback) {
   return node.fs.core_.readdir(path, callback);
@@ -369,7 +344,6 @@ node.fs.prototype.readdir = function(path, callback) {
  * Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and
  * <code>'..'</code>.
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.readdirSync = function(path) {
   return node.fs.core_.readdirSync(path);
@@ -380,7 +354,6 @@ node.fs.prototype.readdirSync = function(path) {
  * <code>stats</code> is a <code>fs.Stats</code> object.
  * @param {string} fd
  * @param {function(Error,node.fs.Stats)=} callback
- * @return {string}
  */
 node.fs.prototype.fstat = function(fd, callback) {
   return node.fs.core_.fstat(fd, callback);
@@ -392,8 +365,7 @@ node.fs.prototype.fstat = function(fd, callback) {
  * path is a symbolic link, then the link itself is stat-ed, not the file that it
  * refers to.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.lstat = function(path, callback) {
   return node.fs.core_.lstat(path, callback);
@@ -419,8 +391,7 @@ node.fs.prototype.lstat = function(path, callback) {
  * </pre>
  * See the <code>fs.Stats</code> section below for more information.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.stat = function(path, callback) {
   return node.fs.core_.stat(path, callback);
@@ -438,7 +409,6 @@ node.fs.prototype.fstatSync = function(fd) {
 /**
  * Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.lstatSync = function(path) {
   return node.fs.core_.lstatSync(path);
@@ -447,7 +417,6 @@ node.fs.prototype.lstatSync = function(path) {
 /**
  * Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.statSync = function(path) {
   return node.fs.core_.statSync(path);
@@ -457,8 +426,7 @@ node.fs.prototype.statSync = function(path) {
  * Asynchronous readlink(2). The callback gets two arguments <code>(err,
  * resolvedPath)</code>.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.readlink = function(path, callback) {
   return node.fs.core_.readlink(path, callback);
@@ -467,7 +435,6 @@ node.fs.prototype.readlink = function(path, callback) {
 /**
  * Synchronous readlink(2). Returns the resolved path.
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.readlinkSync = function(path) {
   return node.fs.core_.readlinkSync(path);
@@ -478,8 +445,7 @@ node.fs.prototype.readlinkSync = function(path) {
  * to the completion callback.
  * @param {string} destination
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.symlink = function(destination, path, callback) {
   return node.fs.core_.symlink(destination, path, callback);
@@ -489,7 +455,6 @@ node.fs.prototype.symlink = function(destination, path, callback) {
  * Synchronous symlink(2).
  * @param {string} destination
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.symlinkSync = function(destination, path) {
   return node.fs.core_.symlinkSync(destination, path);
@@ -500,8 +465,7 @@ node.fs.prototype.symlinkSync = function(destination, path) {
  * the completion callback.
  * @param {string} srcpath
  * @param {string} dstpath
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.link = function(srcpath, dstpath, callback) {
   return node.fs.core_.link(srcpath, dstpath, callback);
@@ -511,7 +475,6 @@ node.fs.prototype.link = function(srcpath, dstpath, callback) {
  * Synchronous link(2).
  * @param {string} srcpath
  * @param {string} dstpath
- * @return {string}
  */
 node.fs.prototype.linkSync = function(srcpath, dstpath) {
   return node.fs.core_.linkSync(srcpath, dstpath);
@@ -521,8 +484,7 @@ node.fs.prototype.linkSync = function(srcpath, dstpath) {
  * Asynchronous unlink(2). No arguments other than a possible exception are given
  * to the completion callback.
  * @param {string} path
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.unlink = function(path, callback) {
   return node.fs.core_.unlink(path, callback);
@@ -531,7 +493,6 @@ node.fs.prototype.unlink = function(path, callback) {
 /**
  * Synchronous unlink(2).
  * @param {string} path
- * @return {string}
  */
 node.fs.prototype.unlinkSync = function(path) {
   return node.fs.core_.unlinkSync(path);
@@ -543,7 +504,6 @@ node.fs.prototype.unlinkSync = function(path) {
  * @param {string} path The path to change mode on
  * @param {string=} mode mode defaults to 0666
  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
- * @return {string}
  */
 node.fs.prototype.chmod = function(path, mode, callback) {
   return node.fs.core_.chmod(path, mode, callback);
@@ -553,7 +513,6 @@ node.fs.prototype.chmod = function(path, mode, callback) {
  * Synchronous chmod(2).
  * @param {string} path The path to change mode on
  * @param {string} mode mode defaults to 0666
- * @return {string}
  */
 node.fs.prototype.chmodSync = function(path, mode) {
   return node.fs.core_.chmodSync(path, mode);
@@ -564,7 +523,6 @@ node.fs.prototype.chmodSync = function(path, mode) {
  * @param {string} uid The user id
  * @param {string} gid The group id
  * @param {function(Error=)} callback The callback gets one argument (err). Which is undefined if no error occurred.
- * @return {string}
  */
 node.fs.prototype.chown = function(path, uid, gid, callback) {
   return node.fs.core_.chown(path, uid, gid, callback);
@@ -574,7 +532,6 @@ node.fs.prototype.chown = function(path, uid, gid, callback) {
  * @param {string} path
  * @param {string} uid
  * @param {string} gid
- * @return {string}
  */
 node.fs.prototype.chownSync = function(path, uid, gid) {
   return node.fs.core_.chownSync(path, uid, gid);
@@ -593,8 +550,7 @@ node.fs.prototype.chownSync = function(path, uid, gid) {
  * @param {string} path
  * @param {string} data
  * @param {string} encoding_
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.fs.prototype.writeFile = function(path, data, encoding_, callback) {
   return node.fs.core_.writeFile(path, data, encoding_, callback);
@@ -605,7 +561,6 @@ node.fs.prototype.writeFile = function(path, data, encoding_, callback) {
  * @param {string} path
  * @param {string} data
  * @param {string} encoding
- * @return {string}
  */
 node.fs.prototype.writeFileSync = function(path, data, encoding) {
   return node.fs.core_.writeFileSync(path, data, encoding);
@@ -613,11 +568,11 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
 
 /**
  * Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
- * time the file is accessed.
+ * time the file changes.
  *
  * The second argument is optional. The <code>options</code> if provided should be an object
  * containing two members a boolean, <code>persistent</code>, and <code>interval</code>, a polling
- * value in milliseconds. The default is <code>{ persistent: true, interval: 0 }</code>.
+ * value in milliseconds. The default is <code>{persistent: true, interval: 0}</code>.
  *
  * The <code>listener</code> gets two arguments the current stat object and the previous
  * stat object:
@@ -628,11 +583,7 @@ node.fs.prototype.writeFileSync = function(path, data, encoding) {
  *     });
  * </pre>
  * These stat objects are instances of <code>fs.Stat</code>.
- *
- * If you want to be notified when the file was modified, not just accessed
- * you need to compare <code>curr.mtime</code> and `prev.mtime.
  * @param {string} filename
- * @return {string}
  */
 node.fs.prototype.watchFile = function(filename) {
   return node.fs.core_.watchFile(filename);
@@ -641,7 +592,6 @@ node.fs.prototype.watchFile = function(filename) {
 /**
  * Stop watching for changes on <code>filename</code>.
  * @param {string} filename
- * @return {string}
  */
 node.fs.prototype.unwatchFile = function(filename) {
   return node.fs.core_.unwatchFile(filename);
@@ -650,23 +600,19 @@ node.fs.prototype.unwatchFile = function(filename) {
 /**
  * Synchronous realpath(2). Returns the resolved path.
  * @param {string} p
- * @param {string} cache
- * @return {string}
  */
-node.fs.prototype.realpathSync = function(p, cache) {
-  return node.fs.core_.realpathSync(p, cache);
+node.fs.prototype.realpathSync = function(p) {
+  return node.fs.core_.realpathSync(p);
 };
 
 /**
  * Asynchronous realpath(2).  The callback gets two arguments <code>(err,
  * resolvedPath)</code>.
  * @param {string} p
- * @param {string} cache
  * @param {string} cb
- * @return {string}
  */
-node.fs.prototype.realpath = function(p, cache, cb) {
-  return node.fs.core_.realpath(p, cache, cb);
+node.fs.prototype.realpath = function(p, cb) {
+  return node.fs.core_.realpath(p, cb);
 };
 
 /**

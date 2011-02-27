@@ -282,6 +282,17 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
+										<div class="fixedFont"><b><a href="../symbols/node.tls.html#connect">connect</a></b>(port, options, cb)
+										</div>
+										<div class="description">Creates a new client connection to the given <code>port</code> and <code>host</code>.</div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item1'
+								>
+									<td class="attributes">&nbsp;</td>
+									<td class="nameDescription">
 										<div class="fixedFont"><b><a href="../symbols/node.tls.html#createSecurePair">createSecurePair</a></b>(credentials, isServer, requestCert, rejectUnauthorized)
 										</div>
 										<div class="description"></div>
@@ -289,7 +300,7 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								</tr>
 							
 								<tr
-									 class='item1'
+									 class='item2'
 								>
 									<td class="attributes">&nbsp;</td>
 									<td class="nameDescription">
@@ -315,28 +326,8 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.tls</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -358,12 +349,83 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 							<li
 								 class='item0'
 							>
+								<div class="fixedFont heading" id="connect">
+									<span class='lighter'>
+									
+									</span>
+
+									
+
+									<b>connect</b>(port, options, cb)
+								</div>
+
+								<div class="description">
+									Creates a new client connection to the given <code>port</code> and <code>host</code>. (If <code>host</code>
+defaults to <code>localhost</code>.) <code>options</code> should be an object which specifies
+
+  - <code>key</code>: A string or <code>Buffer</code> containing the private key of the server in
+    PEM format. (Required)
+
+  - <code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the server in
+    PEM format.
+
+  - <code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. If this is
+    omitted several well known "root" CAs will be used, like VeriSign.
+    These are used to authorize connections.
+
+<code>tls.connect()</code> returns a cleartext <code>CryptoStream</code> object.
+
+After the TLS&#47;SSL handshake the <code>callback</code> is called. The <code>callback</code> will be
+called no matter if the server's certificate was authorized or not. It is up
+to the user to test <code>s.authorized</code> to see if the server certificate was
+signed by one of the specified CAs. If <code>s.authorized === false</code> then the error
+can be found in <code>s.authorizationError</code>.
+
+									
+
+									
+								</div>
+
+								
+
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{string}</span> <b>port</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
+												
+											</dt>
+											<dd></dd>
+										
+									</dl>
+								
+
+								
+								<div class="hr"></div>
+							</li>
+						
+							<li
+								 class='item1'
+							>
 								<div class="fixedFont heading" id="createSecurePair">
 									<span class='lighter'>
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>createSecurePair</b>(credentials, isServer, requestCert, rejectUnauthorized)
 								</div>
@@ -389,7 +451,7 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{string}</span> <b>isServer</b>
+												<span class="light fixedFont">{boolean}</span> <b>isServer</b>
 												
 											</dt>
 											<dd></dd>
@@ -410,39 +472,18 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
-								 class='item1'
+								 class='item2'
 							>
 								<div class="fixedFont heading" id="createServer">
 									<span class='lighter'>
 									
 									</span>
 
-									<span class="light">{string}</span>
+									
 
 									<b>createServer</b>(options, listener)
 								</div>
@@ -476,27 +517,6 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{string}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>

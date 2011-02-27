@@ -8,14 +8,14 @@
 goog.provide("node.util");
 
 /**
- * @return {string}
+ *
  */
 node.util.prototype.print = function() {
   return node.util.core_.print();
 };
 
 /**
- * @return {string}
+ *
  */
 node.util.prototype.puts = function() {
   return node.util.core_.puts();
@@ -28,7 +28,6 @@ node.util.prototype.puts = function() {
  *     require('util').debug('message on stderr');
  * </pre>
  * @param {string} x
- * @return {string}
  */
 node.util.prototype.debug = function(x) {
   return node.util.core_.debug(x);
@@ -36,7 +35,6 @@ node.util.prototype.debug = function(x) {
 
 /**
  * @param {string} x
- * @return {string}
  */
 node.util.prototype.error = function(x) {
   return node.util.core_.error(x);
@@ -62,16 +60,15 @@ node.util.prototype.error = function(x) {
  * </pre>
  * @param {Object} obj
  * @param {string} showHidden
- * @param {string} depth
+ * @param {number} depth
  * @param {string} colors
- * @return {string}
  */
 node.util.prototype.inspect = function(obj, showHidden, depth, colors) {
   return node.util.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
- * @return {string}
+ *
  */
 node.util.prototype.p = function() {
   return node.util.core_.p();
@@ -83,14 +80,13 @@ node.util.prototype.p = function() {
  *     require('util').log('Timestmaped message.');
  * </pre>
  * @param {string} msg
- * @return {string}
  */
 node.util.prototype.log = function(msg) {
   return node.util.core_.log(msg);
 };
 
 /**
- * @return {string}
+ *
  */
 node.util.prototype.exec = function() {
   return node.util.core_.exec();
@@ -106,8 +102,7 @@ node.util.prototype.exec = function() {
  * when an error occurs.
  * @param {node.stream.Stream} readStream
  * @param {node.stream.Stream} writeStream
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.util.prototype.pump = function(readStream, writeStream, callback) {
   return node.util.core_.pump(readStream, writeStream, callback);
@@ -146,7 +141,6 @@ node.util.prototype.pump = function(readStream, writeStream, callback) {
  *     stream.write("It works!"); &#47;&#47; Received data: "It works!"
  * @param {Function} ctor
  * @param {Function} superCtor
- * @return {string}
  */
 node.util.prototype.inherits = function(ctor, superCtor) {
   return node.util.core_.inherits(ctor, superCtor);

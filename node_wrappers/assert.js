@@ -12,9 +12,8 @@ goog.provide("node.assert");
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @param {function(*,} operator *):boolean
+ * @param {function(*,*):boolean} operator
  * @param {string} stackStartFunction
- * @return {string}
  */
 node.assert.prototype.fail = function(actual, expected, message, operator, stackStartFunction) {
   return node.assert.core_.fail(actual, expected, message, operator, stackStartFunction);
@@ -24,7 +23,6 @@ node.assert.prototype.fail = function(actual, expected, message, operator, stack
  * Tests if value is a <code>true</code> value, it is equivalent to <code>assert.equal(true, value, message);</code>
  * @param {string} value
  * @param {string} message
- * @return {string}
  */
 node.assert.prototype.ok = function(value, message) {
   return node.assert.core_.ok(value, message);
@@ -35,7 +33,6 @@ node.assert.prototype.ok = function(value, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {string}
  */
 node.assert.prototype.equal = function(actual, expected, message) {
   return node.assert.core_.equal(actual, expected, message);
@@ -46,7 +43,6 @@ node.assert.prototype.equal = function(actual, expected, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {string}
  */
 node.assert.prototype.notEqual = function(actual, expected, message) {
   return node.assert.core_.notEqual(actual, expected, message);
@@ -57,7 +53,6 @@ node.assert.prototype.notEqual = function(actual, expected, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {Object}
  */
 node.assert.prototype.deepEqual = function(actual, expected, message) {
   return node.assert.core_.deepEqual(actual, expected, message);
@@ -68,7 +63,6 @@ node.assert.prototype.deepEqual = function(actual, expected, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {Object}
  */
 node.assert.prototype.notDeepEqual = function(actual, expected, message) {
   return node.assert.core_.notDeepEqual(actual, expected, message);
@@ -79,7 +73,6 @@ node.assert.prototype.notDeepEqual = function(actual, expected, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {string}
  */
 node.assert.prototype.strictEqual = function(actual, expected, message) {
   return node.assert.core_.strictEqual(actual, expected, message);
@@ -90,7 +83,6 @@ node.assert.prototype.strictEqual = function(actual, expected, message) {
  * @param {*} actual
  * @param {*} expected
  * @param {string} message
- * @return {string}
  */
 node.assert.prototype.notStrictEqual = function(actual, expected, message) {
   return node.assert.core_.notStrictEqual(actual, expected, message);
@@ -135,7 +127,6 @@ node.assert.prototype.notStrictEqual = function(actual, expected, message) {
  * @param {string} block
  * @param {string=} error
  * @param {string=} message
- * @return {string}
  */
 node.assert.prototype.throws = function(block, error, message) {
   return node.assert.core_.throws(block, error, message);
@@ -146,7 +137,6 @@ node.assert.prototype.throws = function(block, error, message) {
  * @param {string} block
  * @param {string=} error
  * @param {string=} message
- * @return {string}
  */
 node.assert.prototype.doesNotThrow = function(block, error, message) {
   return node.assert.core_.doesNotThrow(block, error, message);
@@ -156,7 +146,6 @@ node.assert.prototype.doesNotThrow = function(block, error, message) {
  * Tests if value is not a false value, throws if it is a true value. Useful when
  * testing the first argument, <code>error</code> in callbacks.
  * @param {Error} err
- * @return {string}
  */
 node.assert.prototype.ifError = function(err) {
   return node.assert.core_.ifError(err);

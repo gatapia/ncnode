@@ -106,7 +106,6 @@ node.dns.prototype.SERVFAIL;
  * @param {string} domain
  * @param {string} type_
  * @param {string} callback_
- * @return {string}
  */
 node.dns.prototype.resolve = function(domain, type_, callback_) {
   return node.dns.core_.resolve(domain, type_, callback_);
@@ -115,8 +114,7 @@ node.dns.prototype.resolve = function(domain, type_, callback_) {
 /**
  * @param {string} domain
  * @param {string} family
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.getHostByName = function(domain, family, callback) {
   return node.dns.core_.getHostByName(domain, family, callback);
@@ -125,8 +123,7 @@ node.dns.prototype.getHostByName = function(domain, family, callback) {
 /**
  * @param {string} address
  * @param {string} family
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.getHostByAddr = function(address, family, callback) {
   return node.dns.core_.getHostByAddr(address, family, callback);
@@ -142,8 +139,7 @@ node.dns.prototype.getHostByAddr = function(address, family, callback) {
  * neccessarily the value initially passed to <code>lookup</code>).
  * @param {string} domain
  * @param {string} family
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.lookup = function(domain, family, callback) {
   return node.dns.core_.lookup(domain, family, callback);
@@ -154,8 +150,7 @@ node.dns.prototype.lookup = function(domain, family, callback) {
  * <code>addresses</code> is an array of IPv4 addresses (e.g.
  * <code>['74.125.79.104', '74.125.79.105', '74.125.79.106']</code>).
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolve4 = function(domain, callback) {
   return node.dns.core_.resolve4(domain, callback);
@@ -164,8 +159,7 @@ node.dns.prototype.resolve4 = function(domain, callback) {
 /**
  * The same as <code>dns.resolve4()</code> except for IPv6 queries (an <code>AAAA</code> query).
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolve6 = function(domain, callback) {
   return node.dns.core_.resolve6(domain, callback);
@@ -177,8 +171,7 @@ node.dns.prototype.resolve6 = function(domain, callback) {
  * <code>addresses</code> is an array of MX records, each with a priority and an exchange
  * attribute (e.g. <code>[{'priority': 10, 'exchange': 'mx.example.com'},...]</code>).
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolveMx = function(domain, callback) {
   return node.dns.core_.resolveMx(domain, callback);
@@ -189,8 +182,7 @@ node.dns.prototype.resolveMx = function(domain, callback) {
  * <code>addresses</code> is an array of the text records available for <code>domain</code> (e.g.,
  * <code>['v=spf1 ip4:0.0.0.0 ~all']</code>).
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolveTxt = function(domain, callback) {
   return node.dns.core_.resolveTxt(domain, callback);
@@ -202,8 +194,7 @@ node.dns.prototype.resolveTxt = function(domain, callback) {
  * of SRV records are priority, weight, port, and name (e.g.,
  * <code>[{'priority': 10, {'weight': 5, 'port': 21223, 'name': 'service.example.com'}, ...]</code>).
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolveSrv = function(domain, callback) {
   return node.dns.core_.resolveSrv(domain, callback);
@@ -226,8 +217,7 @@ node.dns.prototype.resolveSrv = function(domain, callback) {
  * - <code>dns.NOMEM</code>: out of memory while processing.
  * - <code>dns.BADQUERY</code>: the query is malformed.
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.reverse = function(domain, callback) {
   return node.dns.core_.reverse(domain, callback);
@@ -235,8 +225,7 @@ node.dns.prototype.reverse = function(domain, callback) {
 
 /**
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolveNs = function(domain, callback) {
   return node.dns.core_.resolveNs(domain, callback);
@@ -244,8 +233,7 @@ node.dns.prototype.resolveNs = function(domain, callback) {
 
 /**
  * @param {string} domain
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.dns.prototype.resolveCname = function(domain, callback) {
   return node.dns.core_.resolveCname(domain, callback);

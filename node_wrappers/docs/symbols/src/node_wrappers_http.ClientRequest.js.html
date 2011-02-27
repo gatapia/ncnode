@@ -10,10 +10,7 @@
  * @name node.http.ClientRequest
  * @namespace
  * This object is created internally and returned from &lt;code>http.request()&lt;/code>.  It
- * represents an &lt;em>in-progress&lt;/em> request whose header has already been queued.  The
- * header is still mutable using the &lt;code>setHeader(name, value)&lt;/code>, &lt;code>getHeader(name)&lt;/code>,
- * &lt;code>removeHeader(name)&lt;/code> API.  The actual header will be sent along with the first
- * data chunk or when closing the connection.
+ * represents an &lt;em>in-progress&lt;/em> request whose header has already been sent.
  *
  * To get the response, add a listener for &lt;code>'response'&lt;/code> to the request object.
  * &lt;code>'response'&lt;/code> will be emitted from the request object when the response

@@ -38,7 +38,6 @@ node.http.prototype.STATUS_CODES;
 
 /**
  * @param {string} requestListener
- * @return {string}
  */
 node.http.prototype.createServer = function(requestListener) {
   return node.http.core_.createServer(requestListener);
@@ -47,7 +46,6 @@ node.http.prototype.createServer = function(requestListener) {
 /**
  * @param {string} host
  * @param {string} port
- * @return {string}
  */
 node.http.prototype.getAgent = function(host, port) {
   return node.http.core_.getAgent(host, port);
@@ -56,7 +54,6 @@ node.http.prototype.getAgent = function(host, port) {
 /**
  * @param {Object} options
  * @param {string} cb
- * @return {string}
  */
 node.http.prototype.request = function(options, cb) {
   return node.http.core_.request(options, cb);
@@ -65,7 +62,6 @@ node.http.prototype.request = function(options, cb) {
 /**
  * @param {Object} options
  * @param {string} cb
- * @return {string}
  */
 node.http.prototype.get = function(options, cb) {
   return node.http.core_.get(options, cb);
@@ -74,7 +70,6 @@ node.http.prototype.get = function(options, cb) {
 /**
  * @param {string} port
  * @param {string} host
- * @return {string}
  */
 node.http.prototype.createClient = function(port, host) {
   return node.http.core_.createClient(port, host);
@@ -84,7 +79,6 @@ node.http.prototype.createClient = function(port, host) {
  * @param {string} url
  * @param {string} encoding_
  * @param {string} headers_
- * @return {string}
  */
 node.http.prototype.cat = function(url, encoding_, headers_) {
   return node.http.core_.cat(url, encoding_, headers_);

@@ -22,7 +22,6 @@ goog.provide("node.crypto");
  * If no 'ca' details are given, then node.js will use the default publicly trusted list of CAs as given in
  * <http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
  * @param {Object} options
- * @return {string}
  */
 node.crypto.prototype.createCredentials = function(options) {
   return node.crypto.core_.createCredentials(options);
@@ -36,7 +35,6 @@ node.crypto.prototype.createCredentials = function(options) {
  * of OpenSSL on the platform. Examples are <code>'sha1'</code>, <code>'md5'</code>, <code>'sha256'</code>, <code>'sha512'</code>, etc.
  * On recent releases, <code>openssl list-message-digest-algorithms</code> will display the available digest algorithms.
  * @param {string} hash
- * @return {string}
  */
 node.crypto.prototype.createHash = function(hash) {
   return node.crypto.core_.createHash(hash);
@@ -49,7 +47,6 @@ node.crypto.prototype.createHash = function(hash) {
  * <code>key</code> is the hmac key to be used.
  * @param {string} hmac
  * @param {string} key
- * @return {string}
  */
 node.crypto.prototype.createHmac = function(hmac, key) {
   return node.crypto.core_.createHmac(hmac, key);
@@ -62,7 +59,6 @@ node.crypto.prototype.createHmac = function(hmac, key) {
  * On recent releases, <code>openssl list-cipher-algorithms</code> will display the available cipher algorithms.
  * @param {string} cipher
  * @param {string} key
- * @return {string}
  */
 node.crypto.prototype.createCipher = function(cipher, key) {
   return node.crypto.core_.createCipher(cipher, key);
@@ -72,7 +68,6 @@ node.crypto.prototype.createCipher = function(cipher, key) {
  * @param {string} cipher
  * @param {string} key
  * @param {string} iv
- * @return {string}
  */
 node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createCipheriv(cipher, key, iv);
@@ -83,7 +78,6 @@ node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
  * This is the mirror of the cipher object above.
  * @param {string} cipher
  * @param {string} key
- * @return {string}
  */
 node.crypto.prototype.createDecipher = function(cipher, key) {
   return node.crypto.core_.createDecipher(cipher, key);
@@ -93,7 +87,6 @@ node.crypto.prototype.createDecipher = function(cipher, key) {
  * @param {string} cipher
  * @param {string} key
  * @param {string} iv
- * @return {string}
  */
 node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createDecipheriv(cipher, key, iv);
@@ -104,7 +97,6 @@ node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
  * On recent OpenSSL releases, <code>openssl list-public-key-algorithms</code> will display
  * the available signing algorithms. Examples are <code>'RSA-SHA256'</code>.
  * @param {string} algorithm
- * @return {string}
  */
 node.crypto.prototype.createSign = function(algorithm) {
   return node.crypto.core_.createSign(algorithm);
@@ -114,7 +106,6 @@ node.crypto.prototype.createSign = function(algorithm) {
  * Creates and returns a verification object, with the given algorithm.
  * This is the mirror of the signing object above.
  * @param {string} algorithm
- * @return {string}
  */
 node.crypto.prototype.createVerify = function(algorithm) {
   return node.crypto.core_.createVerify(algorithm);

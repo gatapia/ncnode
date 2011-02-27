@@ -10,7 +10,6 @@ goog.provide("node.https");
 /**
  * @param {string} opts
  * @param {string} requestListener
- * @return {string}
  */
 node.https.prototype.createServer = function(opts, requestListener) {
   return node.https.core_.createServer(opts, requestListener);
@@ -18,7 +17,6 @@ node.https.prototype.createServer = function(opts, requestListener) {
 
 /**
  * @param {Object} options
- * @return {string}
  */
 node.https.prototype.getAgent = function(options) {
   return node.https.core_.getAgent(options);
@@ -27,7 +25,6 @@ node.https.prototype.getAgent = function(options) {
 /**
  * @param {Object} options
  * @param {string} cb
- * @return {string}
  */
 node.https.prototype.request = function(options, cb) {
   return node.https.core_.request(options, cb);
@@ -36,7 +33,6 @@ node.https.prototype.request = function(options, cb) {
 /**
  * @param {Object} options
  * @param {string} cb
- * @return {string}
  */
 node.https.prototype.get = function(options, cb) {
   return node.https.core_.get(options, cb);

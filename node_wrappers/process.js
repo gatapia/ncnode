@@ -144,14 +144,14 @@ node.process.prototype.stdin;
 node.process.prototype.mainModule;
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.compile = function() {
   return node.process.core_.compile();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.reallyExit = function() {
   return node.process.core_.reallyExit();
@@ -169,7 +169,6 @@ node.process.prototype.reallyExit = function() {
  *       console.log('chdir: ' + err);
  *     }
  * </pre>
- * @return {string}
  */
 node.process.prototype.chdir = function() {
   return node.process.core_.chdir();
@@ -180,7 +179,6 @@ node.process.prototype.chdir = function() {
  * <pre>
  *     console.log('Current directory: ' + process.cwd());
  * </pre>
- * @return {string}
  */
 node.process.prototype.cwd = function() {
   return node.process.core_.cwd();
@@ -192,7 +190,6 @@ node.process.prototype.cwd = function() {
  * <pre>
  *     console.log('Current uid: ' + process.getuid());
  * </pre>
- * @return {string}
  */
 node.process.prototype.getuid = function() {
   return node.process.core_.getuid();
@@ -212,7 +209,6 @@ node.process.prototype.getuid = function() {
  *       console.log('Failed to set uid: ' + err);
  *     }
  * </pre>
- * @return {string}
  */
 node.process.prototype.setuid = function() {
   return node.process.core_.setuid();
@@ -232,7 +228,6 @@ node.process.prototype.setuid = function() {
  *       console.log('Failed to set gid: ' + err);
  *     }
  * </pre>
- * @return {string}
  */
 node.process.prototype.setgid = function() {
   return node.process.core_.setgid();
@@ -244,7 +239,6 @@ node.process.prototype.setgid = function() {
  * <pre>
  *     console.log('Current gid: ' + process.getgid());
  * </pre>
- * @return {string}
  */
 node.process.prototype.getgid = function() {
   return node.process.core_.getgid();
@@ -261,14 +255,13 @@ node.process.prototype.getgid = function() {
  *     console.log('Changed umask from: ' + oldmask.toString(8) +
  *                 ' to ' + newmask.toString(8));
  * </pre>
- * @return {string}
  */
 node.process.prototype.umask = function() {
   return node.process.core_.umask();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.dlopen = function() {
   return node.process.core_.dlopen();
@@ -289,21 +282,20 @@ node.process.prototype.dlopen = function() {
  *       heapUsed: 650472 }
  * </pre>
  * <code>heapTotal</code> and <code>heapUsed</code> refer to V8's memory usage.
- * @return {string}
  */
 node.process.prototype.memoryUsage = function() {
   return node.process.core_.memoryUsage();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.binding = function() {
   return node.process.core_.binding();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.assert = function() {
   return node.process.core_.assert();
@@ -318,15 +310,14 @@ node.process.prototype.assert = function() {
  *       console.log('nextTick callback');
  *     });
  * </pre>
- * @param {function(Error=,} callback ...*):undefined
- * @return {string}
+ * @param {function(Error=,...*):undefined} callback
  */
 node.process.prototype.nextTick = function(callback) {
   return node.process.core_.nextTick(callback);
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.openStdin = function() {
   return node.process.core_.openStdin();
@@ -342,7 +333,6 @@ node.process.prototype.openStdin = function() {
  * </pre>
  * The shell that executed node should see the exit code as 1.
  * @param {string} code
- * @return {string}
  */
 node.process.prototype.exit = function(code) {
   return node.process.core_.exit(code);
@@ -373,7 +363,6 @@ node.process.prototype.exit = function(code) {
  * </pre>
  * @param {string} pid
  * @param {string} sig
- * @return {string}
  */
 node.process.prototype.kill = function(pid, sig) {
   return node.process.core_.kill(pid, sig);
@@ -382,7 +371,6 @@ node.process.prototype.kill = function(pid, sig) {
 /**
  * @param {string} type
  * @param {string} listener
- * @return {string}
  */
 node.process.prototype.addListener = function(type, listener) {
   return node.process.core_.addListener(type, listener);
@@ -391,7 +379,6 @@ node.process.prototype.addListener = function(type, listener) {
 /**
  * @param {string} type
  * @param {string} listener
- * @return {string}
  */
 node.process.prototype.on = function(type, listener) {
   return node.process.core_.on(type, listener);
@@ -400,56 +387,55 @@ node.process.prototype.on = function(type, listener) {
 /**
  * @param {string} type
  * @param {string} listener
- * @return {string}
  */
 node.process.prototype.removeListener = function(type, listener) {
   return node.process.core_.removeListener(type, listener);
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.debug = function() {
   return node.process.core_.debug();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.error = function() {
   return node.process.core_.error();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.watchFile = function() {
   return node.process.core_.watchFile();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.unwatchFile = function() {
   return node.process.core_.unwatchFile();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.mixin = function() {
   return node.process.core_.mixin();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.createChildProcess = function() {
   return node.process.core_.createChildProcess();
 };
 
 /**
- * @return {string}
+ *
  */
 node.process.prototype.inherits = function() {
   return node.process.core_.inherits();
@@ -457,7 +443,6 @@ node.process.prototype.inherits = function() {
 
 /**
  * @param {string} n
- * @return {string}
  */
 node.process.prototype.setMaxListeners = function(n) {
   return node.process.core_.setMaxListeners(n);
@@ -465,7 +450,6 @@ node.process.prototype.setMaxListeners = function(n) {
 
 /**
  * @param {string} type
- * @return {string}
  */
 node.process.prototype.emit = function(type) {
   return node.process.core_.emit(type);
@@ -474,7 +458,6 @@ node.process.prototype.emit = function(type) {
 /**
  * @param {string} type
  * @param {string} listener
- * @return {string}
  */
 node.process.prototype.once = function(type, listener) {
   return node.process.core_.once(type, listener);
@@ -482,7 +465,6 @@ node.process.prototype.once = function(type, listener) {
 
 /**
  * @param {string} type
- * @return {string}
  */
 node.process.prototype.removeAllListeners = function(type) {
   return node.process.core_.removeAllListeners(type);
@@ -490,7 +472,6 @@ node.process.prototype.removeAllListeners = function(type) {
 
 /**
  * @param {string} type
- * @return {string}
  */
 node.process.prototype.listeners = function(type) {
   return node.process.core_.listeners(type);

@@ -10,7 +10,6 @@ goog.provide("node.querystring");
 /**
  * @param {string} s
  * @param {string} decodeSpaces
- * @return {string}
  */
 node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
   return node.querystring.core_.unescapeBuffer(s, decodeSpaces);
@@ -21,7 +20,6 @@ node.querystring.prototype.unescapeBuffer = function(s, decodeSpaces) {
  * provided so that it could be overridden if necessary.
  * @param {string} s
  * @param {string} decodeSpaces
- * @return {string}
  */
 node.querystring.prototype.unescape = function(s, decodeSpaces) {
   return node.querystring.core_.unescape(s, decodeSpaces);
@@ -31,7 +29,6 @@ node.querystring.prototype.unescape = function(s, decodeSpaces) {
  * The escape function used by <code>querystring.stringify</code>,
  * provided so that it could be overridden if necessary.
  * @param {string} str
- * @return {string}
  */
 node.querystring.prototype.escape = function(str) {
   return node.querystring.core_.escape(str);
@@ -42,7 +39,6 @@ node.querystring.prototype.escape = function(str) {
  * @param {string} sep
  * @param {string} eq
  * @param {string} name
- * @return {string}
  */
 node.querystring.prototype.encode = function(obj, sep, eq, name) {
   return node.querystring.core_.encode(obj, sep, eq, name);
@@ -66,7 +62,6 @@ node.querystring.prototype.encode = function(obj, sep, eq, name) {
  * @param {string} sep
  * @param {string} eq
  * @param {string} name
- * @return {string}
  */
 node.querystring.prototype.stringify = function(obj, sep, eq, name) {
   return node.querystring.core_.stringify(obj, sep, eq, name);
@@ -76,7 +71,6 @@ node.querystring.prototype.stringify = function(obj, sep, eq, name) {
  * @param {string} qs
  * @param {string} sep
  * @param {string} eq
- * @return {string}
  */
 node.querystring.prototype.decode = function(qs, sep, eq) {
   return node.querystring.core_.decode(qs, sep, eq);
@@ -95,7 +89,6 @@ node.querystring.prototype.decode = function(qs, sep, eq) {
  * @param {string} qs
  * @param {string} sep
  * @param {string} eq
- * @return {string}
  */
 node.querystring.prototype.parse = function(qs, sep, eq) {
   return node.querystring.core_.parse(qs, sep, eq);
