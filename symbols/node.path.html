@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -210,7 +206,7 @@
 		<div class="intro">
 			<p class="description summary">
 				This module contains utilities for dealing with file paths.  Use
-<code class="code prettyprint lang-js">require('path')</code> to use it.  It provides the following methods:
+<code>require('path')</code> to use it.  It provides the following methods:
 			</p>
 
 			
@@ -252,9 +248,9 @@
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#basename">basename</a></b>(path, ext)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.basename">basename</a></b>(path, ext)
 										</div>
 										<div class="description">Return the last portion of a path.</div>
 									</td>
@@ -263,9 +259,9 @@
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#dirname">dirname</a></b>(path)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.dirname">dirname</a></b>(path)
 										</div>
 										<div class="description">Return the directory name of a path.</div>
 									</td>
@@ -274,9 +270,9 @@
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#exists">exists</a></b>(path, callback)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.exists">exists</a></b>(path, callback)
 										</div>
 										<div class="description">Test whether or not the given path exists.</div>
 									</td>
@@ -285,9 +281,9 @@
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#existsSync">existsSync</a></b>(path)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.existsSync">existsSync</a></b>(path)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -296,9 +292,9 @@
 								<tr
 									 class='item4'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#extname">extname</a></b>(path)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.extname">extname</a></b>(path)
 										</div>
 										<div class="description">Return the extension of the path.</div>
 									</td>
@@ -307,9 +303,9 @@
 								<tr
 									 class='item5'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#join">join</a></b>()
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.join">join</a></b>()
 										</div>
 										<div class="description">Join all arguments together and normalize the resulting path.</div>
 									</td>
@@ -318,22 +314,22 @@
 								<tr
 									 class='item6'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#normalize">normalize</a></b>(path)
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.normalize">normalize</a></b>(path)
 										</div>
-										<div class="description">Normalize a string path, taking care of <code class="code prettyprint lang-js">'.</div>
+										<div class="description">Normalize a string path, taking care of <code>'.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item7'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.path.html#resolve">resolve</a></b>()
+										<div class="fixedFont">node.path.<b><a href="../symbols/node.path.html#.resolve">resolve</a></b>()
 										</div>
-										<div class="description">Resolves <code class="code prettyprint lang-js">to</code> to an absolute path.</div>
+										<div class="description">Resolves <code>to</code> to an absolute path.</div>
 									</td>
 								</tr>
 							
@@ -353,28 +349,8 @@
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.path</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -396,21 +372,21 @@
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="basename">
+								<div class="fixedFont heading" id=".basename">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>basename</b>(path, ext)
+									<span class="light">node.path.</span><b>basename</b>(path, ext)
 								</div>
 
 								<div class="description">
-									Return the last portion of a path.  Similar to the Unix <code class="code prettyprint lang-js">basename</code> command.
+									Return the last portion of a path.  Similar to the Unix <code>basename</code> command.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.basename('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux.html')
     &#47;&#47; returns
     'quux.html'
@@ -432,13 +408,13 @@ Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>ext</b>
+												<span class="light fixedFont">{string}</span> <b>ext</b>
 												
 											</dt>
 											<dd></dd>
@@ -446,27 +422,6 @@ Example:
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -474,21 +429,21 @@ Example:
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="dirname">
+								<div class="fixedFont heading" id=".dirname">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>dirname</b>(path)
+									<span class="light">node.path.</span><b>dirname</b>(path)
 								</div>
 
 								<div class="description">
-									Return the directory name of a path.  Similar to the Unix <code class="code prettyprint lang-js">dirname</code> command.
+									Return the directory name of a path.  Similar to the Unix <code>dirname</code> command.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.dirname('&#47;foo&#47;bar&#47;baz&#47;asdf&#47;quux')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -506,7 +461,7 @@ Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -515,47 +470,26 @@ Example:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="exists">
+								<div class="fixedFont heading" id=".exists">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>exists</b>(path, callback)
+									<span class="light">node.path.</span><b>exists</b>(path, callback)
 								</div>
 
 								<div class="description">
-									Test whether or not the given path exists.  Then, call the <code class="code prettyprint lang-js">callback</code> argument
+									Test whether or not the given path exists.  Then, call the <code>callback</code> argument
 with either true or false. Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.exists('&#47;etc&#47;passwd', function (exists) {
       util.debug(exists ? "it's there" : "no passwd!");
     });
@@ -572,13 +506,13 @@ with either true or false. Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -586,27 +520,6 @@ with either true or false. Example:
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -614,14 +527,14 @@ with either true or false. Example:
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="existsSync">
+								<div class="fixedFont heading" id=".existsSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>existsSync</b>(path)
+									<span class="light">node.path.</span><b>existsSync</b>(path)
 								</div>
 
 								<div class="description">
@@ -639,7 +552,7 @@ with either true or false. Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -648,48 +561,27 @@ with either true or false. Example:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item4'
 							>
-								<div class="fixedFont heading" id="extname">
+								<div class="fixedFont heading" id=".extname">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>extname</b>(path)
+									<span class="light">node.path.</span><b>extname</b>(path)
 								</div>
 
 								<div class="description">
 									Return the extension of the path.  Everything after the last '.' in the last portion
 of the path.  If there is no '.' in the last portion of the path or the only '.' is
 the first character, then it returns an empty string.  Examples:
-<pre class="code prettyprint lang-js">
+<pre>
     path.extname('index.html')
     &#47;&#47; returns
     '.html'
@@ -711,7 +603,7 @@ the first character, then it returns an empty string.  Examples:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -720,48 +612,27 @@ the first character, then it returns an empty string.  Examples:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item5'
 							>
-								<div class="fixedFont heading" id="join">
+								<div class="fixedFont heading" id=".join">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>join</b>()
+									<span class="light">node.path.</span><b>join</b>()
 								</div>
 
 								<div class="description">
 									Join all arguments together and normalize the resulting path.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     node> require('path').join(
     ...   '&#47;foo', 'bar', 'baz&#47;asdf', 'quux', '..')
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -777,52 +648,31 @@ Example:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item6'
 							>
-								<div class="fixedFont heading" id="normalize">
+								<div class="fixedFont heading" id=".normalize">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>normalize</b>(path)
+									<span class="light">node.path.</span><b>normalize</b>(path)
 								</div>
 
 								<div class="description">
-									Normalize a string path, taking care of <code class="code prettyprint lang-js">'..'</code> and <code class="code prettyprint lang-js">'.'</code> parts.
+									Normalize a string path, taking care of <code>'..'</code> and <code>'.'</code> parts.
 
 When multiple slashes are found, they're replaces by a single one;
 when the path contains a trailing slash, it is preserved.
 On windows backslashes are used.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     path.normalize('&#47;foo&#47;bar&#47;&#47;baz&#47;asdf&#47;quux&#47;..')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz&#47;asdf'
@@ -840,7 +690,7 @@ Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -849,58 +699,37 @@ Example:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item7'
 							>
-								<div class="fixedFont heading" id="resolve">
+								<div class="fixedFont heading" id=".resolve">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>resolve</b>()
+									<span class="light">node.path.</span><b>resolve</b>()
 								</div>
 
 								<div class="description">
-									Resolves <code class="code prettyprint lang-js">to</code> to an absolute path.
+									Resolves <code>to</code> to an absolute path.
 
-If <code class="code prettyprint lang-js">to</code> isn't already absolute <code class="code prettyprint lang-js">from</code> arguments are prepended in right to left
-order, until an absolute path is found. If after using all <code class="code prettyprint lang-js">from</code> paths still
+If <code>to</code> isn't already absolute <code>from</code> arguments are prepended in right to left
+order, until an absolute path is found. If after using all <code>from</code> paths still
 no absolute path is found, the current working directory is used as well. The
 resulting path is normalized, and trailing slashes are removed unless the path
 gets resolved to the root directory.
 
-Another way to think of it is as a sequence of <code class="code prettyprint lang-js">cd</code> commands in a shell.
-<pre class="code prettyprint lang-js">
+Another way to think of it is as a sequence of <code>cd</code> commands in a shell.
+<pre>
     path.resolve('foo&#47;bar', '&#47;tmp&#47;file&#47;', '..', 'a&#47;..&#47;subfile')
 </pre>
 Is similar to:
-<pre class="code prettyprint lang-js">
+<pre>
     cd foo&#47;bar
     cd &#47;tmp&#47;file&#47;
     cd ..
@@ -911,7 +740,7 @@ The difference is that the different paths don't need to exist and may also be
 files.
 
 Examples:
-<pre class="code prettyprint lang-js">
+<pre>
     path.resolve('&#47;foo&#47;bar', '.&#47;baz')
     &#47;&#47; returns
     '&#47;foo&#47;bar&#47;baz'
@@ -935,27 +764,6 @@ Examples:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								
 							</li>
 						
@@ -973,7 +781,7 @@ Examples:
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

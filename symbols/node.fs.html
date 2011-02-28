@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -210,16 +206,16 @@
 		<div class="intro">
 			<p class="description summary">
 				File I&#47;O is provided by simple wrappers around standard POSIX functions.  To
-use this module do <code class="code prettyprint lang-js">require('fs')</code>. All the methods have asynchronous and
+use this module do <code>require('fs')</code>. All the methods have asynchronous and
 synchronous forms.
 
 The asynchronous form always take a completion callback as its last argument.
 The arguments passed to the completion callback depend on the method, but the
 first argument is always reserved for an exception. If the operation was
-completed successfully, then the first argument will be <code class="code prettyprint lang-js">null</code> or <code class="code prettyprint lang-js">undefined</code>.
+completed successfully, then the first argument will be <code>null</code> or <code>undefined</code>.
 
 Here is an example of the asynchronous version:
-<pre class="code prettyprint lang-js">
+<pre>
     var fs = require('fs');
 
     fs.unlink('&#47;tmp&#47;hello', function (err) {
@@ -228,7 +224,7 @@ Here is an example of the asynchronous version:
     });
 </pre>
 Here is the synchronous version:
-<pre class="code prettyprint lang-js">
+<pre>
     var fs = require('fs');
 
     fs.unlinkSync('&#47;tmp&#47;hello')
@@ -236,7 +232,7 @@ Here is the synchronous version:
 </pre>
 With the asynchronous methods there is no guaranteed ordering. So the
 following is prone to error:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
       if (err) throw err;
       console.log('renamed complete');
@@ -246,9 +242,9 @@ following is prone to error:
       console.log('stats: ' + JSON.stringify(stats));
     });
 </pre>
-It could be that <code class="code prettyprint lang-js">fs.stat</code> is executed before <code class="code prettyprint lang-js">fs.rename</code>.
+It could be that <code>fs.stat</code> is executed before <code>fs.rename</code>.
 The correct way to do this is to chain the callbacks.
-<pre class="code prettyprint lang-js">
+<pre>
     fs.rename('&#47;tmp&#47;hello', '&#47;tmp&#47;world', function (err) {
       if (err) throw err;
       fs.stat('&#47;tmp&#47;world', function (err, stats) {
@@ -277,11 +273,6 @@ the entire process until they complete--halting all connections.
 		
 
 		
-			
-			
-
-			
-		
 <!--
 #### METHODS SUMMARY
 -->
@@ -306,9 +297,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#chmod">chmod</a></b>(path, mode, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.chmod">chmod</a></b>(path, mode, callback)
 										</div>
 										<div class="description">Asynchronous chmod(2).</div>
 									</td>
@@ -317,9 +308,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#chmodSync">chmodSync</a></b>(path, mode)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.chmodSync">chmodSync</a></b>(path, mode)
 										</div>
 										<div class="description">Synchronous chmod(2).</div>
 									</td>
@@ -328,9 +319,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#chown">chown</a></b>(path, uid, gid, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.chown">chown</a></b>(path, uid, gid, callback)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -339,9 +330,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#chownSync">chownSync</a></b>(path, uid, gid)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.chownSync">chownSync</a></b>(path, uid, gid)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -350,9 +341,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item4'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#close">close</a></b>(fd, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.close">close</a></b>(fd, callback)
 										</div>
 										<div class="description">Asynchronous close(2).</div>
 									</td>
@@ -361,9 +352,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item5'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#closeSync">closeSync</a></b>(fd)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.closeSync">closeSync</a></b>(fd)
 										</div>
 										<div class="description">Synchronous close(2).</div>
 									</td>
@@ -372,9 +363,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item6'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#createReadStream">createReadStream</a></b>(path, options)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.createReadStream">createReadStream</a></b>(path, options)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -383,9 +374,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item7'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#createWriteStream">createWriteStream</a></b>(path, options)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.createWriteStream">createWriteStream</a></b>(path, options)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -394,9 +385,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item8'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fdatasync">fdatasync</a></b>(fd, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fdatasync">fdatasync</a></b>(fd, callback)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -405,9 +396,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item9'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fdatasyncSync">fdatasyncSync</a></b>(fd)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fdatasyncSync">fdatasyncSync</a></b>(fd)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -416,9 +407,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item10'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fstat">fstat</a></b>(fd, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fstat">fstat</a></b>(fd, callback)
 										</div>
 										<div class="description">Asynchronous fstat(2).</div>
 									</td>
@@ -427,9 +418,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item11'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fstatSync">fstatSync</a></b>(fd)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fstatSync">fstatSync</a></b>(fd)
 										</div>
 										<div class="description">Synchronous fstat(2).</div>
 									</td>
@@ -438,9 +429,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item12'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fsync">fsync</a></b>(fd, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fsync">fsync</a></b>(fd, callback)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -449,9 +440,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item13'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#fsyncSync">fsyncSync</a></b>(fd)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.fsyncSync">fsyncSync</a></b>(fd)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -460,9 +451,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item14'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#link">link</a></b>(srcpath, dstpath, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.link">link</a></b>(srcpath, dstpath, callback)
 										</div>
 										<div class="description">Asynchronous link(2).</div>
 									</td>
@@ -471,9 +462,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item15'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#linkSync">linkSync</a></b>(srcpath, dstpath)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.linkSync">linkSync</a></b>(srcpath, dstpath)
 										</div>
 										<div class="description">Synchronous link(2).</div>
 									</td>
@@ -482,9 +473,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item16'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#lstat">lstat</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.lstat">lstat</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous lstat(2).</div>
 									</td>
@@ -493,9 +484,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item17'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#lstatSync">lstatSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.lstatSync">lstatSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous lstat(2).</div>
 									</td>
@@ -504,9 +495,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item18'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#mkdir">mkdir</a></b>(path, mode, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.mkdir">mkdir</a></b>(path, mode, callback)
 										</div>
 										<div class="description">Asynchronous mkdir(2).</div>
 									</td>
@@ -515,9 +506,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item19'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#mkdirSync">mkdirSync</a></b>(path, mode)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.mkdirSync">mkdirSync</a></b>(path, mode)
 										</div>
 										<div class="description">Synchronous mkdir(2).</div>
 									</td>
@@ -526,9 +517,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item20'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#open">open</a></b>(path, flags, mode_, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.open">open</a></b>(path, flags, mode_, callback)
 										</div>
 										<div class="description">Asynchronous file open.</div>
 									</td>
@@ -537,9 +528,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item21'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#openSync">openSync</a></b>(path, flags, mode)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.openSync">openSync</a></b>(path, flags, mode)
 										</div>
 										<div class="description">Synchronous open(2).</div>
 									</td>
@@ -548,20 +539,20 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item22'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#read">read</a></b>(fd, buffer, offset, length, position, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.read">read</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Read data from the file specified by <code class="code prettyprint lang-js">fd</code>.</div>
+										<div class="description">Read data from the file specified by <code>fd</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item23'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readdir">readdir</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readdir">readdir</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous readdir(3).</div>
 									</td>
@@ -570,9 +561,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item24'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readdirSync">readdirSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readdirSync">readdirSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous readdir(3).</div>
 									</td>
@@ -581,9 +572,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item25'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readFile">readFile</a></b>(path, encoding_)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readFile">readFile</a></b>(path, encoding_)
 										</div>
 										<div class="description">Asynchronously reads the entire contents of a file.</div>
 									</td>
@@ -592,20 +583,20 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item26'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readFileSync">readFileSync</a></b>(path, encoding)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readFileSync">readFileSync</a></b>(path, encoding)
 										</div>
-										<div class="description">Synchronous version of <code class="code prettyprint lang-js">fs.readFile</code>.</div>
+										<div class="description">Synchronous version of <code>fs.readFile</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item27'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readlink">readlink</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readlink">readlink</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous readlink(2).</div>
 									</td>
@@ -614,9 +605,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item28'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readlinkSync">readlinkSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readlinkSync">readlinkSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous readlink(2).</div>
 									</td>
@@ -625,20 +616,20 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item29'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#readSync">readSync</a></b>(fd, buffer, offset, length, position)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.readSync">readSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based <code class="code prettyprint lang-js">fs.read</code>.</div>
+										<div class="description">Synchronous version of string-based <code>fs.read</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item30'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpath">realpath</a></b>(p, cb)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.realpath">realpath</a></b>(p, cb)
 										</div>
 										<div class="description">Asynchronous realpath(2).</div>
 									</td>
@@ -647,9 +638,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item31'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#realpathSync">realpathSync</a></b>(p)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.realpathSync">realpathSync</a></b>(p)
 										</div>
 										<div class="description">Synchronous realpath(2).</div>
 									</td>
@@ -658,9 +649,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item32'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#rename">rename</a></b>(oldPath, newPath, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.rename">rename</a></b>(oldPath, newPath, callback)
 										</div>
 										<div class="description">Asynchronous rename(2).</div>
 									</td>
@@ -669,9 +660,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item33'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#renameSync">renameSync</a></b>(oldPath, newPath)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.renameSync">renameSync</a></b>(oldPath, newPath)
 										</div>
 										<div class="description">Synchronous rename(2).</div>
 									</td>
@@ -680,9 +671,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item34'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#rmdir">rmdir</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.rmdir">rmdir</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous rmdir(2).</div>
 									</td>
@@ -691,9 +682,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item35'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#rmdirSync">rmdirSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.rmdirSync">rmdirSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous rmdir(2).</div>
 									</td>
@@ -702,9 +693,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item36'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#sendfile">sendfile</a></b>(outFd, inFd, inOffset, length, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.sendfile">sendfile</a></b>(outFd, inFd, inOffset, length, callback)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -713,9 +704,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item37'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#sendfileSync">sendfileSync</a></b>(outFd, inFd, inOffset, length)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.sendfileSync">sendfileSync</a></b>(outFd, inFd, inOffset, length)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -724,9 +715,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item38'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#stat">stat</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.stat">stat</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous stat(2).</div>
 									</td>
@@ -735,9 +726,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item39'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#statSync">statSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.statSync">statSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous stat(2).</div>
 									</td>
@@ -746,9 +737,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item40'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#symlink">symlink</a></b>(destination, path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.symlink">symlink</a></b>(destination, path, callback)
 										</div>
 										<div class="description">Asynchronous symlink(2).</div>
 									</td>
@@ -757,9 +748,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item41'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#symlinkSync">symlinkSync</a></b>(destination, path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.symlinkSync">symlinkSync</a></b>(destination, path)
 										</div>
 										<div class="description">Synchronous symlink(2).</div>
 									</td>
@@ -768,9 +759,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item42'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#truncate">truncate</a></b>(fd, len, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.truncate">truncate</a></b>(fd, len, callback)
 										</div>
 										<div class="description">Asynchronous ftruncate(2).</div>
 									</td>
@@ -779,9 +770,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item43'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#truncateSync">truncateSync</a></b>(fd, len)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.truncateSync">truncateSync</a></b>(fd, len)
 										</div>
 										<div class="description">Synchronous ftruncate(2).</div>
 									</td>
@@ -790,9 +781,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item44'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#unlink">unlink</a></b>(path, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.unlink">unlink</a></b>(path, callback)
 										</div>
 										<div class="description">Asynchronous unlink(2).</div>
 									</td>
@@ -801,9 +792,9 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item45'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#unlinkSync">unlinkSync</a></b>(path)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.unlinkSync">unlinkSync</a></b>(path)
 										</div>
 										<div class="description">Synchronous unlink(2).</div>
 									</td>
@@ -812,42 +803,42 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item46'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#unwatchFile">unwatchFile</a></b>(filename)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.unwatchFile">unwatchFile</a></b>(filename)
 										</div>
-										<div class="description">Stop watching for changes on <code class="code prettyprint lang-js">filename</code>.</div>
+										<div class="description">Stop watching for changes on <code>filename</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item47'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#watchFile">watchFile</a></b>(filename)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.watchFile">watchFile</a></b>(filename)
 										</div>
-										<div class="description">Watch for changes on <code class="code prettyprint lang-js">filename</code>.</div>
+										<div class="description">Watch for changes on <code>filename</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item48'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#write">write</a></b>(fd, buffer, offset, length, position, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.write">write</a></b>(fd, buffer, offset, length, position, callback)
 										</div>
-										<div class="description">Write <code class="code prettyprint lang-js">buffer</code> to the file specified by <code class="code prettyprint lang-js">fd</code>.</div>
+										<div class="description">Write <code>buffer</code> to the file specified by <code>fd</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item49'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeFile">writeFile</a></b>(path, data, encoding_, callback)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.writeFile">writeFile</a></b>(path, data, encoding_, callback)
 										</div>
 										<div class="description">Asynchronously writes data to a file.</div>
 									</td>
@@ -856,22 +847,22 @@ the entire process until they complete--halting all connections.
 								<tr
 									 class='item50'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeFileSync">writeFileSync</a></b>(path, data, encoding)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.writeFileSync">writeFileSync</a></b>(path, data, encoding)
 										</div>
-										<div class="description">The synchronous version of <code class="code prettyprint lang-js">fs.writeFile</code>.</div>
+										<div class="description">The synchronous version of <code>fs.writeFile</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item51'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.fs.html#writeSync">writeSync</a></b>(fd, buffer, offset, length, position)
+										<div class="fixedFont">node.fs.<b><a href="../symbols/node.fs.html#.writeSync">writeSync</a></b>(fd, buffer, offset, length, position)
 										</div>
-										<div class="description">Synchronous version of string-based <code class="code prettyprint lang-js">fs.write()</code>.</div>
+										<div class="description">Synchronous version of string-based <code>fs.write()</code>.</div>
 									</td>
 								</tr>
 							
@@ -891,28 +882,8 @@ the entire process until they complete--halting all connections.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.fs</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -934,14 +905,14 @@ the entire process until they complete--halting all connections.
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="chmod">
+								<div class="fixedFont heading" id=".chmod">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>chmod</b>(path, mode, callback)
+									<span class="light">node.fs.</span><b>chmod</b>(path, mode, callback)
 								</div>
 
 								<div class="description">
@@ -972,7 +943,7 @@ to the completion callback.
 											<dd>mode defaults to 0666</dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error=)}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error=)=}</span> <b>callback</b>
 												
 											</dt>
 											<dd>The callback gets one argument (err). Which is undefined if no error occurred.</dd>
@@ -981,41 +952,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="chmodSync">
+								<div class="fixedFont heading" id=".chmodSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>chmodSync</b>(path, mode)
+									<span class="light">node.fs.</span><b>chmodSync</b>(path, mode)
 								</div>
 
 								<div class="description">
@@ -1048,41 +998,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="chown">
+								<div class="fixedFont heading" id=".chown">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>chown</b>(path, uid, gid, callback)
+									<span class="light">node.fs.</span><b>chown</b>(path, uid, gid, callback)
 								</div>
 
 								<div class="description">
@@ -1127,41 +1056,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="chownSync">
+								<div class="fixedFont heading" id=".chownSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>chownSync</b>(path, uid, gid)
+									<span class="light">node.fs.</span><b>chownSync</b>(path, uid, gid)
 								</div>
 
 								<div class="description">
@@ -1200,41 +1108,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item4'
 							>
-								<div class="fixedFont heading" id="close">
+								<div class="fixedFont heading" id=".close">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>close</b>(fd, callback)
+									<span class="light">node.fs.</span><b>close</b>(fd, callback)
 								</div>
 
 								<div class="description">
@@ -1268,41 +1155,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item5'
 							>
-								<div class="fixedFont heading" id="closeSync">
+								<div class="fixedFont heading" id=".closeSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>closeSync</b>(fd)
+									<span class="light">node.fs.</span><b>closeSync</b>(fd)
 								</div>
 
 								<div class="description">
@@ -1329,41 +1195,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item6'
 							>
-								<div class="fixedFont heading" id="createReadStream">
+								<div class="fixedFont heading" id=".createReadStream">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
 									<span class="light">{<a href="../symbols/node.fs.ReadStream.html">node.fs.ReadStream</a>}</span>
 
-									<b>createReadStream</b>(path, options)
+									<span class="light">node.fs.</span><b>createReadStream</b>(path, options)
 								</div>
 
 								<div class="description">
@@ -1423,14 +1268,14 @@ to the completion callback.
 							<li
 								 class='item7'
 							>
-								<div class="fixedFont heading" id="createWriteStream">
+								<div class="fixedFont heading" id=".createWriteStream">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
 									<span class="light">{<a href="../symbols/node.fs.WriteStream.html">node.fs.WriteStream</a>}</span>
 
-									<b>createWriteStream</b>(path, options)
+									<span class="light">node.fs.</span><b>createWriteStream</b>(path, options)
 								</div>
 
 								<div class="description">
@@ -1490,14 +1335,14 @@ to the completion callback.
 							<li
 								 class='item8'
 							>
-								<div class="fixedFont heading" id="fdatasync">
+								<div class="fixedFont heading" id=".fdatasync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>fdatasync</b>(fd, callback)
+									<span class="light">node.fs.</span><b>fdatasync</b>(fd, callback)
 								</div>
 
 								<div class="description">
@@ -1515,13 +1360,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -1529,27 +1374,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1557,14 +1381,14 @@ to the completion callback.
 							<li
 								 class='item9'
 							>
-								<div class="fixedFont heading" id="fdatasyncSync">
+								<div class="fixedFont heading" id=".fdatasyncSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>fdatasyncSync</b>(fd)
+									<span class="light">node.fs.</span><b>fdatasyncSync</b>(fd)
 								</div>
 
 								<div class="description">
@@ -1582,7 +1406,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
@@ -1590,27 +1414,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1618,19 +1421,19 @@ to the completion callback.
 							<li
 								 class='item10'
 							>
-								<div class="fixedFont heading" id="fstat">
+								<div class="fixedFont heading" id=".fstat">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>fstat</b>(fd, callback)
+									<span class="light">node.fs.</span><b>fstat</b>(fd, callback)
 								</div>
 
 								<div class="description">
-									Asynchronous fstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
-<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object.
+									Asynchronous fstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object.
 
 									
 
@@ -1644,13 +1447,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{function(Error|node.fs.Stats)=}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|node.fs.Stats)=}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -1658,27 +1461,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1686,18 +1468,18 @@ to the completion callback.
 							<li
 								 class='item11'
 							>
-								<div class="fixedFont heading" id="fstatSync">
+								<div class="fixedFont heading" id=".fstatSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{fs.Stats}</span>
+									<span class="light">{<a href="../symbols/node.fs.Stats.html">node.fs.Stats</a>}</span>
 
-									<b>fstatSync</b>(fd)
+									<span class="light">node.fs.</span><b>fstatSync</b>(fd)
 								</div>
 
 								<div class="description">
-									Synchronous fstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
+									Synchronous fstat(2). Returns an instance of <code>fs.Stats</code>.
 
 									
 
@@ -1711,7 +1493,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
@@ -1731,7 +1513,7 @@ to the completion callback.
 										
 											<dt class="heading">Returns:</dt>
 											
-												<dd><span class="light fixedFont">{fs.Stats}</span> </dd>
+												<dd><span class="light fixedFont">{<a href="../symbols/node.fs.Stats.html">node.fs.Stats</a>}</span> </dd>
 											
 										
 
@@ -1747,14 +1529,14 @@ to the completion callback.
 							<li
 								 class='item12'
 							>
-								<div class="fixedFont heading" id="fsync">
+								<div class="fixedFont heading" id=".fsync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>fsync</b>(fd, callback)
+									<span class="light">node.fs.</span><b>fsync</b>(fd, callback)
 								</div>
 
 								<div class="description">
@@ -1772,13 +1554,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -1786,27 +1568,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1814,14 +1575,14 @@ to the completion callback.
 							<li
 								 class='item13'
 							>
-								<div class="fixedFont heading" id="fsyncSync">
+								<div class="fixedFont heading" id=".fsyncSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>fsyncSync</b>(fd)
+									<span class="light">node.fs.</span><b>fsyncSync</b>(fd)
 								</div>
 
 								<div class="description">
@@ -1839,7 +1600,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
@@ -1848,41 +1609,20 @@ to the completion callback.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item14'
 							>
-								<div class="fixedFont heading" id="link">
+								<div class="fixedFont heading" id=".link">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>link</b>(srcpath, dstpath, callback)
+									<span class="light">node.fs.</span><b>link</b>(srcpath, dstpath, callback)
 								</div>
 
 								<div class="description">
@@ -1901,19 +1641,19 @@ the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>srcpath</b>
+												<span class="light fixedFont">{string}</span> <b>srcpath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>dstpath</b>
+												<span class="light fixedFont">{string}</span> <b>dstpath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -1921,27 +1661,6 @@ the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -1949,14 +1668,14 @@ the completion callback.
 							<li
 								 class='item15'
 							>
-								<div class="fixedFont heading" id="linkSync">
+								<div class="fixedFont heading" id=".linkSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>linkSync</b>(srcpath, dstpath)
+									<span class="light">node.fs.</span><b>linkSync</b>(srcpath, dstpath)
 								</div>
 
 								<div class="description">
@@ -1974,13 +1693,13 @@ the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>srcpath</b>
+												<span class="light fixedFont">{string}</span> <b>srcpath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>dstpath</b>
+												<span class="light fixedFont">{string}</span> <b>dstpath</b>
 												
 											</dt>
 											<dd></dd>
@@ -1988,27 +1707,6 @@ the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2016,19 +1714,19 @@ the completion callback.
 							<li
 								 class='item16'
 							>
-								<div class="fixedFont heading" id="lstat">
+								<div class="fixedFont heading" id=".lstat">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>lstat</b>(path, callback)
+									<span class="light">node.fs.</span><b>lstat</b>(path, callback)
 								</div>
 
 								<div class="description">
-									Asynchronous lstat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
-<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. lstat() is identical to stat(), except that if
+									Asynchronous lstat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. lstat() is identical to stat(), except that if
 path is a symbolic link, then the link itself is stat-ed, not the file that it
 refers to.
 
@@ -2044,13 +1742,13 @@ refers to.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2058,27 +1756,6 @@ refers to.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2086,18 +1763,18 @@ refers to.
 							<li
 								 class='item17'
 							>
-								<div class="fixedFont heading" id="lstatSync">
+								<div class="fixedFont heading" id=".lstatSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>lstatSync</b>(path)
+									<span class="light">node.fs.</span><b>lstatSync</b>(path)
 								</div>
 
 								<div class="description">
-									Synchronous lstat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
+									Synchronous lstat(2). Returns an instance of <code>fs.Stats</code>.
 
 									
 
@@ -2111,7 +1788,7 @@ refers to.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -2120,41 +1797,20 @@ refers to.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item18'
 							>
-								<div class="fixedFont heading" id="mkdir">
+								<div class="fixedFont heading" id=".mkdir">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>mkdir</b>(path, mode, callback)
+									<span class="light">node.fs.</span><b>mkdir</b>(path, mode, callback)
 								</div>
 
 								<div class="description">
@@ -2173,19 +1829,19 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{string}</span> <b>mode</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2193,27 +1849,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2221,14 +1856,14 @@ to the completion callback.
 							<li
 								 class='item19'
 							>
-								<div class="fixedFont heading" id="mkdirSync">
+								<div class="fixedFont heading" id=".mkdirSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>mkdirSync</b>(path, mode)
+									<span class="light">node.fs.</span><b>mkdirSync</b>(path, mode)
 								</div>
 
 								<div class="description">
@@ -2246,13 +1881,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{string}</span> <b>mode</b>
 												
 											</dt>
 											<dd></dd>
@@ -2260,27 +1895,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2288,19 +1902,19 @@ to the completion callback.
 							<li
 								 class='item20'
 							>
-								<div class="fixedFont heading" id="open">
+								<div class="fixedFont heading" id=".open">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>open</b>(path, flags, mode_, callback)
+									<span class="light">node.fs.</span><b>open</b>(path, flags, mode_, callback)
 								</div>
 
 								<div class="description">
 									Asynchronous file open. See open(2). Flags can be 'r', 'r+', 'w', 'w+', 'a',
-or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">(err, fd)</code>.
+or 'a+'. The callback gets two arguments <code>(err, fd)</code>.
 
 									
 
@@ -2314,25 +1928,25 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>flags</b>
+												<span class="light fixedFont">{string}</span> <b>flags</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode_</b>
+												<span class="light fixedFont">{string}</span> <b>mode_</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2340,27 +1954,6 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2368,14 +1961,14 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 							<li
 								 class='item21'
 							>
-								<div class="fixedFont heading" id="openSync">
+								<div class="fixedFont heading" id=".openSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>openSync</b>(path, flags, mode)
+									<span class="light">node.fs.</span><b>openSync</b>(path, flags, mode)
 								</div>
 
 								<div class="description">
@@ -2393,19 +1986,19 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>flags</b>
+												<span class="light fixedFont">{string}</span> <b>flags</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>mode</b>
+												<span class="light fixedFont">{string}</span> <b>mode</b>
 												
 											</dt>
 											<dd></dd>
@@ -2413,27 +2006,6 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2441,29 +2013,29 @@ or 'a+'. The callback gets two arguments <code class="code prettyprint lang-js">
 							<li
 								 class='item22'
 							>
-								<div class="fixedFont heading" id="read">
+								<div class="fixedFont heading" id=".read">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>read</b>(fd, buffer, offset, length, position, callback)
+									<span class="light">node.fs.</span><b>read</b>(fd, buffer, offset, length, position, callback)
 								</div>
 
 								<div class="description">
-									Read data from the file specified by <code class="code prettyprint lang-js">fd</code>.
+									Read data from the file specified by <code>fd</code>.
 
-<code class="code prettyprint lang-js">buffer</code> is the buffer that the data will be written to.
+<code>buffer</code> is the buffer that the data will be written to.
 
-<code class="code prettyprint lang-js">offset</code> is offset within the buffer where writing will start.
+<code>offset</code> is offset within the buffer where writing will start.
 
-<code class="code prettyprint lang-js">length</code> is an integer specifying the number of bytes to read.
+<code>length</code> is an integer specifying the number of bytes to read.
 
-<code class="code prettyprint lang-js">position</code> is an integer specifying where to begin reading from in the file.
-If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, data will be read from the current file position.
+<code>position</code> is an integer specifying where to begin reading from in the file.
+If <code>position</code> is <code>null</code>, data will be read from the current file position.
 
-The callback is given the two arguments, <code class="code prettyprint lang-js">(err, bytesRead)</code>.
+The callback is given the two arguments, <code>(err, bytesRead)</code>.
 
 									
 
@@ -2477,37 +2049,37 @@ The callback is given the two arguments, <code class="code prettyprint lang-js">
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>buffer</b>
+												<span class="light fixedFont">{<a href="../symbols/node.buffer.Buffer.html">node.buffer.Buffer</a>}</span> <b>buffer</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>offset</b>
+												<span class="light fixedFont">{number}</span> <b>offset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>position</b>
+												<span class="light fixedFont">{number}</span> <b>position</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2515,27 +2087,6 @@ The callback is given the two arguments, <code class="code prettyprint lang-js">
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2543,20 +2094,20 @@ The callback is given the two arguments, <code class="code prettyprint lang-js">
 							<li
 								 class='item23'
 							>
-								<div class="fixedFont heading" id="readdir">
+								<div class="fixedFont heading" id=".readdir">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readdir</b>(path, callback)
+									<span class="light">node.fs.</span><b>readdir</b>(path, callback)
 								</div>
 
 								<div class="description">
 									Asynchronous readdir(3).  Reads the contents of a directory.
-The callback gets two arguments <code class="code prettyprint lang-js">(err, files)</code> where <code class="code prettyprint lang-js">files</code> is an array of
-the names of the files in the directory excluding <code class="code prettyprint lang-js">'.'</code> and <code class="code prettyprint lang-js">'..'</code>.
+The callback gets two arguments <code>(err, files)</code> where <code>files</code> is an array of
+the names of the files in the directory excluding <code>'.'</code> and <code>'..'</code>.
 
 									
 
@@ -2570,13 +2121,13 @@ the names of the files in the directory excluding <code class="code prettyprint 
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2584,27 +2135,6 @@ the names of the files in the directory excluding <code class="code prettyprint 
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2612,19 +2142,19 @@ the names of the files in the directory excluding <code class="code prettyprint 
 							<li
 								 class='item24'
 							>
-								<div class="fixedFont heading" id="readdirSync">
+								<div class="fixedFont heading" id=".readdirSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readdirSync</b>(path)
+									<span class="light">node.fs.</span><b>readdirSync</b>(path)
 								</div>
 
 								<div class="description">
-									Synchronous readdir(3). Returns an array of filenames excluding <code class="code prettyprint lang-js">'.'</code> and
-<code class="code prettyprint lang-js">'..'</code>.
+									Synchronous readdir(3). Returns an array of filenames excluding <code>'.'</code> and
+<code>'..'</code>.
 
 									
 
@@ -2638,7 +2168,7 @@ the names of the files in the directory excluding <code class="code prettyprint 
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -2647,52 +2177,31 @@ the names of the files in the directory excluding <code class="code prettyprint 
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item25'
 							>
-								<div class="fixedFont heading" id="readFile">
+								<div class="fixedFont heading" id=".readFile">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readFile</b>(path, encoding_)
+									<span class="light">node.fs.</span><b>readFile</b>(path, encoding_)
 								</div>
 
 								<div class="description">
 									Asynchronously reads the entire contents of a file. Example:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.readFile('&#47;etc&#47;passwd', function (err, data) {
       if (err) throw err;
       console.log(data);
     });
 </pre>
-The callback is passed two arguments <code class="code prettyprint lang-js">(err, data)</code>, where <code class="code prettyprint lang-js">data</code> is the
+The callback is passed two arguments <code>(err, data)</code>, where <code>data</code> is the
 contents of the file.
 
 If no encoding is specified, then the raw buffer is returned.
@@ -2709,13 +2218,13 @@ If no encoding is specified, then the raw buffer is returned.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>encoding_</b>
+												<span class="light fixedFont">{string}</span> <b>encoding_</b>
 												
 											</dt>
 											<dd></dd>
@@ -2723,27 +2232,6 @@ If no encoding is specified, then the raw buffer is returned.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2751,20 +2239,20 @@ If no encoding is specified, then the raw buffer is returned.
 							<li
 								 class='item26'
 							>
-								<div class="fixedFont heading" id="readFileSync">
+								<div class="fixedFont heading" id=".readFileSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readFileSync</b>(path, encoding)
+									<span class="light">node.fs.</span><b>readFileSync</b>(path, encoding)
 								</div>
 
 								<div class="description">
-									Synchronous version of <code class="code prettyprint lang-js">fs.readFile</code>. Returns the contents of the <code class="code prettyprint lang-js">filename</code>.
+									Synchronous version of <code>fs.readFile</code>. Returns the contents of the <code>filename</code>.
 
-If <code class="code prettyprint lang-js">encoding</code> is specified then this function returns a string. Otherwise it
+If <code>encoding</code> is specified then this function returns a string. Otherwise it
 returns a buffer.
 
 									
@@ -2779,13 +2267,13 @@ returns a buffer.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>encoding</b>
+												<span class="light fixedFont">{string}</span> <b>encoding</b>
 												
 											</dt>
 											<dd></dd>
@@ -2793,27 +2281,6 @@ returns a buffer.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2821,18 +2288,18 @@ returns a buffer.
 							<li
 								 class='item27'
 							>
-								<div class="fixedFont heading" id="readlink">
+								<div class="fixedFont heading" id=".readlink">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readlink</b>(path, callback)
+									<span class="light">node.fs.</span><b>readlink</b>(path, callback)
 								</div>
 
 								<div class="description">
-									Asynchronous readlink(2). The callback gets two arguments <code class="code prettyprint lang-js">(err,
+									Asynchronous readlink(2). The callback gets two arguments <code>(err,
 resolvedPath)</code>.
 
 									
@@ -2847,13 +2314,13 @@ resolvedPath)</code>.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -2861,27 +2328,6 @@ resolvedPath)</code>.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -2889,14 +2335,14 @@ resolvedPath)</code>.
 							<li
 								 class='item28'
 							>
-								<div class="fixedFont heading" id="readlinkSync">
+								<div class="fixedFont heading" id=".readlinkSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readlinkSync</b>(path)
+									<span class="light">node.fs.</span><b>readlinkSync</b>(path)
 								</div>
 
 								<div class="description">
@@ -2914,7 +2360,7 @@ resolvedPath)</code>.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -2923,46 +2369,25 @@ resolvedPath)</code>.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item29'
 							>
-								<div class="fixedFont heading" id="readSync">
+								<div class="fixedFont heading" id=".readSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>readSync</b>(fd, buffer, offset, length, position)
+									<span class="light">node.fs.</span><b>readSync</b>(fd, buffer, offset, length, position)
 								</div>
 
 								<div class="description">
-									Synchronous version of string-based <code class="code prettyprint lang-js">fs.read</code>. Returns the number of
-<code class="code prettyprint lang-js">bytesRead</code>.
+									Synchronous version of string-based <code>fs.read</code>. Returns the number of
+<code>bytesRead</code>.
 
 									
 
@@ -2976,31 +2401,31 @@ resolvedPath)</code>.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>buffer</b>
+												<span class="light fixedFont">{<a href="../symbols/node.buffer.Buffer.html">node.buffer.Buffer</a>}</span> <b>buffer</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>offset</b>
+												<span class="light fixedFont">{number}</span> <b>offset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>position</b>
+												<span class="light fixedFont">{number}</span> <b>position</b>
 												
 											</dt>
 											<dd></dd>
@@ -3008,27 +2433,6 @@ resolvedPath)</code>.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3036,18 +2440,18 @@ resolvedPath)</code>.
 							<li
 								 class='item30'
 							>
-								<div class="fixedFont heading" id="realpath">
+								<div class="fixedFont heading" id=".realpath">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>realpath</b>(p, cb)
+									<span class="light">node.fs.</span><b>realpath</b>(p, cb)
 								</div>
 
 								<div class="description">
-									Asynchronous realpath(2).  The callback gets two arguments <code class="code prettyprint lang-js">(err,
+									Asynchronous realpath(2).  The callback gets two arguments <code>(err,
 resolvedPath)</code>.
 
 									
@@ -3062,13 +2466,13 @@ resolvedPath)</code>.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>p</b>
+												<span class="light fixedFont">{string}</span> <b>p</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>cb</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -3076,27 +2480,6 @@ resolvedPath)</code>.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3104,14 +2487,14 @@ resolvedPath)</code>.
 							<li
 								 class='item31'
 							>
-								<div class="fixedFont heading" id="realpathSync">
+								<div class="fixedFont heading" id=".realpathSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>realpathSync</b>(p)
+									<span class="light">node.fs.</span><b>realpathSync</b>(p)
 								</div>
 
 								<div class="description">
@@ -3129,7 +2512,7 @@ resolvedPath)</code>.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>p</b>
+												<span class="light fixedFont">{string}</span> <b>p</b>
 												
 											</dt>
 											<dd></dd>
@@ -3138,41 +2521,20 @@ resolvedPath)</code>.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item32'
 							>
-								<div class="fixedFont heading" id="rename">
+								<div class="fixedFont heading" id=".rename">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>rename</b>(oldPath, newPath, callback)
+									<span class="light">node.fs.</span><b>rename</b>(oldPath, newPath, callback)
 								</div>
 
 								<div class="description">
@@ -3191,19 +2553,19 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>oldPath</b>
+												<span class="light fixedFont">{string}</span> <b>oldPath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>newPath</b>
+												<span class="light fixedFont">{string}</span> <b>newPath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3211,27 +2573,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3239,14 +2580,14 @@ to the completion callback.
 							<li
 								 class='item33'
 							>
-								<div class="fixedFont heading" id="renameSync">
+								<div class="fixedFont heading" id=".renameSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>renameSync</b>(oldPath, newPath)
+									<span class="light">node.fs.</span><b>renameSync</b>(oldPath, newPath)
 								</div>
 
 								<div class="description">
@@ -3264,13 +2605,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>oldPath</b>
+												<span class="light fixedFont">{string}</span> <b>oldPath</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>newPath</b>
+												<span class="light fixedFont">{string}</span> <b>newPath</b>
 												
 											</dt>
 											<dd></dd>
@@ -3278,27 +2619,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3306,14 +2626,14 @@ to the completion callback.
 							<li
 								 class='item34'
 							>
-								<div class="fixedFont heading" id="rmdir">
+								<div class="fixedFont heading" id=".rmdir">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>rmdir</b>(path, callback)
+									<span class="light">node.fs.</span><b>rmdir</b>(path, callback)
 								</div>
 
 								<div class="description">
@@ -3332,13 +2652,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3346,27 +2666,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3374,14 +2673,14 @@ to the completion callback.
 							<li
 								 class='item35'
 							>
-								<div class="fixedFont heading" id="rmdirSync">
+								<div class="fixedFont heading" id=".rmdirSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>rmdirSync</b>(path)
+									<span class="light">node.fs.</span><b>rmdirSync</b>(path)
 								</div>
 
 								<div class="description">
@@ -3399,7 +2698,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -3407,27 +2706,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3435,14 +2713,14 @@ to the completion callback.
 							<li
 								 class='item36'
 							>
-								<div class="fixedFont heading" id="sendfile">
+								<div class="fixedFont heading" id=".sendfile">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>sendfile</b>(outFd, inFd, inOffset, length, callback)
+									<span class="light">node.fs.</span><b>sendfile</b>(outFd, inFd, inOffset, length, callback)
 								</div>
 
 								<div class="description">
@@ -3460,31 +2738,31 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>outFd</b>
+												<span class="light fixedFont">{string}</span> <b>outFd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>inFd</b>
+												<span class="light fixedFont">{string}</span> <b>inFd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>inOffset</b>
+												<span class="light fixedFont">{number}</span> <b>inOffset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3492,27 +2770,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3520,14 +2777,14 @@ to the completion callback.
 							<li
 								 class='item37'
 							>
-								<div class="fixedFont heading" id="sendfileSync">
+								<div class="fixedFont heading" id=".sendfileSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>sendfileSync</b>(outFd, inFd, inOffset, length)
+									<span class="light">node.fs.</span><b>sendfileSync</b>(outFd, inFd, inOffset, length)
 								</div>
 
 								<div class="description">
@@ -3545,25 +2802,25 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>outFd</b>
+												<span class="light fixedFont">{string}</span> <b>outFd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>inFd</b>
+												<span class="light fixedFont">{string}</span> <b>inFd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>inOffset</b>
+												<span class="light fixedFont">{number}</span> <b>inOffset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
@@ -3571,27 +2828,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3599,20 +2835,20 @@ to the completion callback.
 							<li
 								 class='item38'
 							>
-								<div class="fixedFont heading" id="stat">
+								<div class="fixedFont heading" id=".stat">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>stat</b>(path, callback)
+									<span class="light">node.fs.</span><b>stat</b>(path, callback)
 								</div>
 
 								<div class="description">
-									Asynchronous stat(2). The callback gets two arguments <code class="code prettyprint lang-js">(err, stats)</code> where
-<code class="code prettyprint lang-js">stats</code> is a <code class="code prettyprint lang-js">fs.Stats</code> object. It looks like this:
-<pre class="code prettyprint lang-js">
+									Asynchronous stat(2). The callback gets two arguments <code>(err, stats)</code> where
+<code>stats</code> is a <code>fs.Stats</code> object. It looks like this:
+<pre>
     { dev: 2049,
       ino: 305352,
       mode: 16877,
@@ -3627,7 +2863,7 @@ to the completion callback.
       mtime: '2009-06-29T11:11:40Z',
       ctime: '2009-06-29T11:11:40Z' }
 </pre>
-See the <code class="code prettyprint lang-js">fs.Stats</code> section below for more information.
+See the <code>fs.Stats</code> section below for more information.
 
 									
 
@@ -3641,13 +2877,13 @@ See the <code class="code prettyprint lang-js">fs.Stats</code> section below for
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3655,27 +2891,6 @@ See the <code class="code prettyprint lang-js">fs.Stats</code> section below for
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3683,18 +2898,18 @@ See the <code class="code prettyprint lang-js">fs.Stats</code> section below for
 							<li
 								 class='item39'
 							>
-								<div class="fixedFont heading" id="statSync">
+								<div class="fixedFont heading" id=".statSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>statSync</b>(path)
+									<span class="light">node.fs.</span><b>statSync</b>(path)
 								</div>
 
 								<div class="description">
-									Synchronous stat(2). Returns an instance of <code class="code prettyprint lang-js">fs.Stats</code>.
+									Synchronous stat(2). Returns an instance of <code>fs.Stats</code>.
 
 									
 
@@ -3708,7 +2923,7 @@ See the <code class="code prettyprint lang-js">fs.Stats</code> section below for
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -3717,41 +2932,20 @@ See the <code class="code prettyprint lang-js">fs.Stats</code> section below for
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item40'
 							>
-								<div class="fixedFont heading" id="symlink">
+								<div class="fixedFont heading" id=".symlink">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>symlink</b>(destination, path, callback)
+									<span class="light">node.fs.</span><b>symlink</b>(destination, path, callback)
 								</div>
 
 								<div class="description">
@@ -3770,19 +2964,19 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>destination</b>
+												<span class="light fixedFont">{string}</span> <b>destination</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3790,27 +2984,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3818,14 +2991,14 @@ to the completion callback.
 							<li
 								 class='item41'
 							>
-								<div class="fixedFont heading" id="symlinkSync">
+								<div class="fixedFont heading" id=".symlinkSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>symlinkSync</b>(destination, path)
+									<span class="light">node.fs.</span><b>symlinkSync</b>(destination, path)
 								</div>
 
 								<div class="description">
@@ -3843,13 +3016,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>destination</b>
+												<span class="light fixedFont">{string}</span> <b>destination</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -3857,27 +3030,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3885,14 +3037,14 @@ to the completion callback.
 							<li
 								 class='item42'
 							>
-								<div class="fixedFont heading" id="truncate">
+								<div class="fixedFont heading" id=".truncate">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>truncate</b>(fd, len, callback)
+									<span class="light">node.fs.</span><b>truncate</b>(fd, len, callback)
 								</div>
 
 								<div class="description">
@@ -3911,19 +3063,19 @@ given to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>len</b>
+												<span class="light fixedFont">{string}</span> <b>len</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -3931,27 +3083,6 @@ given to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -3959,14 +3090,14 @@ given to the completion callback.
 							<li
 								 class='item43'
 							>
-								<div class="fixedFont heading" id="truncateSync">
+								<div class="fixedFont heading" id=".truncateSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>truncateSync</b>(fd, len)
+									<span class="light">node.fs.</span><b>truncateSync</b>(fd, len)
 								</div>
 
 								<div class="description">
@@ -3984,13 +3115,13 @@ given to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>len</b>
+												<span class="light fixedFont">{string}</span> <b>len</b>
 												
 											</dt>
 											<dd></dd>
@@ -3998,27 +3129,6 @@ given to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4026,14 +3136,14 @@ given to the completion callback.
 							<li
 								 class='item44'
 							>
-								<div class="fixedFont heading" id="unlink">
+								<div class="fixedFont heading" id=".unlink">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>unlink</b>(path, callback)
+									<span class="light">node.fs.</span><b>unlink</b>(path, callback)
 								</div>
 
 								<div class="description">
@@ -4052,13 +3162,13 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -4066,27 +3176,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4094,14 +3183,14 @@ to the completion callback.
 							<li
 								 class='item45'
 							>
-								<div class="fixedFont heading" id="unlinkSync">
+								<div class="fixedFont heading" id=".unlinkSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>unlinkSync</b>(path)
+									<span class="light">node.fs.</span><b>unlinkSync</b>(path)
 								</div>
 
 								<div class="description">
@@ -4119,7 +3208,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
@@ -4127,27 +3216,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4155,18 +3223,18 @@ to the completion callback.
 							<li
 								 class='item46'
 							>
-								<div class="fixedFont heading" id="unwatchFile">
+								<div class="fixedFont heading" id=".unwatchFile">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>unwatchFile</b>(filename)
+									<span class="light">node.fs.</span><b>unwatchFile</b>(filename)
 								</div>
 
 								<div class="description">
-									Stop watching for changes on <code class="code prettyprint lang-js">filename</code>.
+									Stop watching for changes on <code>filename</code>.
 
 									
 
@@ -4180,7 +3248,7 @@ to the completion callback.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>filename</b>
+												<span class="light fixedFont">{string}</span> <b>filename</b>
 												
 											</dt>
 											<dd></dd>
@@ -4188,27 +3256,6 @@ to the completion callback.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4216,33 +3263,33 @@ to the completion callback.
 							<li
 								 class='item47'
 							>
-								<div class="fixedFont heading" id="watchFile">
+								<div class="fixedFont heading" id=".watchFile">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>watchFile</b>(filename)
+									<span class="light">node.fs.</span><b>watchFile</b>(filename)
 								</div>
 
 								<div class="description">
-									Watch for changes on <code class="code prettyprint lang-js">filename</code>. The callback <code class="code prettyprint lang-js">listener</code> will be called each
+									Watch for changes on <code>filename</code>. The callback <code>listener</code> will be called each
 time the file changes.
 
-The second argument is optional. The <code class="code prettyprint lang-js">options</code> if provided should be an object
-containing two members a boolean, <code class="code prettyprint lang-js">persistent</code>, and <code class="code prettyprint lang-js">interval</code>, a polling
-value in milliseconds. The default is <code class="code prettyprint lang-js">{persistent: true, interval: 0}</code>.
+The second argument is optional. The <code>options</code> if provided should be an object
+containing two members a boolean, <code>persistent</code>, and <code>interval</code>, a polling
+value in milliseconds. The default is <code>{persistent: true, interval: 0}</code>.
 
-The <code class="code prettyprint lang-js">listener</code> gets two arguments the current stat object and the previous
+The <code>listener</code> gets two arguments the current stat object and the previous
 stat object:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.watchFile(f, function (curr, prev) {
       console.log('the current mtime is: ' + curr.mtime);
       console.log('the previous mtime was: ' + prev.mtime);
     });
 </pre>
-These stat objects are instances of <code class="code prettyprint lang-js">fs.Stat</code>.
+These stat objects are instances of <code>fs.Stat</code>.
 
 									
 
@@ -4256,7 +3303,7 @@ These stat objects are instances of <code class="code prettyprint lang-js">fs.St
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>filename</b>
+												<span class="light fixedFont">{string}</span> <b>filename</b>
 												
 											</dt>
 											<dd></dd>
@@ -4265,54 +3312,33 @@ These stat objects are instances of <code class="code prettyprint lang-js">fs.St
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item48'
 							>
-								<div class="fixedFont heading" id="write">
+								<div class="fixedFont heading" id=".write">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>write</b>(fd, buffer, offset, length, position, callback)
+									<span class="light">node.fs.</span><b>write</b>(fd, buffer, offset, length, position, callback)
 								</div>
 
 								<div class="description">
-									Write <code class="code prettyprint lang-js">buffer</code> to the file specified by <code class="code prettyprint lang-js">fd</code>.
+									Write <code>buffer</code> to the file specified by <code>fd</code>.
 
-<code class="code prettyprint lang-js">offset</code> and <code class="code prettyprint lang-js">length</code> determine the part of the buffer to be written.
+<code>offset</code> and <code>length</code> determine the part of the buffer to be written.
 
-<code class="code prettyprint lang-js">position</code> refers to the offset from the beginning of the file where this data
-should be written. If <code class="code prettyprint lang-js">position</code> is <code class="code prettyprint lang-js">null</code>, the data will be written at the
+<code>position</code> refers to the offset from the beginning of the file where this data
+should be written. If <code>position</code> is <code>null</code>, the data will be written at the
 current position.
 See pwrite(2).
 
-The callback will be given two arguments <code class="code prettyprint lang-js">(err, written)</code> where <code class="code prettyprint lang-js">written</code>
+The callback will be given two arguments <code>(err, written)</code> where <code>written</code>
 specifies how many <em>bytes</em> were written.
 
 									
@@ -4327,37 +3353,37 @@ specifies how many <em>bytes</em> were written.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>buffer</b>
+												<span class="light fixedFont">{<a href="../symbols/node.buffer.Buffer.html">node.buffer.Buffer</a>}</span> <b>buffer</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>offset</b>
+												<span class="light fixedFont">{number}</span> <b>offset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>position</b>
+												<span class="light fixedFont">{number}</span> <b>position</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -4365,27 +3391,6 @@ specifies how many <em>bytes</em> were written.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4393,21 +3398,21 @@ specifies how many <em>bytes</em> were written.
 							<li
 								 class='item49'
 							>
-								<div class="fixedFont heading" id="writeFile">
+								<div class="fixedFont heading" id=".writeFile">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>writeFile</b>(path, data, encoding_, callback)
+									<span class="light">node.fs.</span><b>writeFile</b>(path, data, encoding_, callback)
 								</div>
 
 								<div class="description">
-									Asynchronously writes data to a file. <code class="code prettyprint lang-js">data</code> can be a string or a buffer.
+									Asynchronously writes data to a file. <code>data</code> can be a string or a buffer.
 
 Example:
-<pre class="code prettyprint lang-js">
+<pre>
     fs.writeFile('message.txt', 'Hello Node', function (err) {
       if (err) throw err;
       console.log('It\'s saved!');
@@ -4426,25 +3431,25 @@ Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>data</b>
+												<span class="light fixedFont">{string}</span> <b>data</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>encoding_</b>
+												<span class="light fixedFont">{string}</span> <b>encoding_</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>callback</b>
+												<span class="light fixedFont">{function(Error?|...[*]):undefined}</span> <b>callback</b>
 												
 											</dt>
 											<dd></dd>
@@ -4452,27 +3457,6 @@ Example:
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4480,18 +3464,18 @@ Example:
 							<li
 								 class='item50'
 							>
-								<div class="fixedFont heading" id="writeFileSync">
+								<div class="fixedFont heading" id=".writeFileSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>writeFileSync</b>(path, data, encoding)
+									<span class="light">node.fs.</span><b>writeFileSync</b>(path, data, encoding)
 								</div>
 
 								<div class="description">
-									The synchronous version of <code class="code prettyprint lang-js">fs.writeFile</code>.
+									The synchronous version of <code>fs.writeFile</code>.
 
 									
 
@@ -4505,19 +3489,19 @@ Example:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>path</b>
+												<span class="light fixedFont">{string}</span> <b>path</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>data</b>
+												<span class="light fixedFont">{string}</span> <b>data</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>encoding</b>
+												<span class="light fixedFont">{string}</span> <b>encoding</b>
 												
 											</dt>
 											<dd></dd>
@@ -4525,27 +3509,6 @@ Example:
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -4553,18 +3516,18 @@ Example:
 							<li
 								 class='item51'
 							>
-								<div class="fixedFont heading" id="writeSync">
+								<div class="fixedFont heading" id=".writeSync">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>writeSync</b>(fd, buffer, offset, length, position)
+									<span class="light">node.fs.</span><b>writeSync</b>(fd, buffer, offset, length, position)
 								</div>
 
 								<div class="description">
-									Synchronous version of string-based <code class="code prettyprint lang-js">fs.write()</code>. Returns the number of bytes
+									Synchronous version of string-based <code>fs.write()</code>. Returns the number of bytes
 written.
 
 									
@@ -4579,31 +3542,31 @@ written.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>fd</b>
+												<span class="light fixedFont">{string}</span> <b>fd</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>buffer</b>
+												<span class="light fixedFont">{<a href="../symbols/node.buffer.Buffer.html">node.buffer.Buffer</a>}</span> <b>buffer</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>offset</b>
+												<span class="light fixedFont">{number}</span> <b>offset</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>length</b>
+												<span class="light fixedFont">{number}</span> <b>length</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>position</b>
+												<span class="light fixedFont">{number}</span> <b>position</b>
 												
 											</dt>
 											<dd></dd>
@@ -4611,27 +3574,6 @@ written.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>
@@ -4650,7 +3592,7 @@ written.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

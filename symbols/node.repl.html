@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -214,9 +210,9 @@ includable in other programs.  REPL provides a way to interactively run
 JavaScript and see the results.  It can be used for debugging, testing, or
 just trying things out.
 
-By executing <code class="code prettyprint lang-js">node</code> without any arguments from the command-line you will be
+By executing <code>node</code> without any arguments from the command-line you will be
 dropped into the REPL. It has simplistic emacs line-editing.
-<pre class="code prettyprint lang-js">
+<pre>
     mjr:~$ node
     Type '.help' for options.
     > a = [ 1, 2, 3];
@@ -228,11 +224,11 @@ dropped into the REPL. It has simplistic emacs line-editing.
     2
     3
 </pre>
-For advanced line-editors, start node with the environmental variable <code class="code prettyprint lang-js">NODE<em>NO</em>READLINE=1</code>.
-This will start the REPL in canonical terminal settings which will allow you to use with <code class="code prettyprint lang-js">rlwrap</code>.
+For advanced line-editors, start node with the environmental variable <code>NODE<em>NO</em>READLINE=1</code>.
+This will start the REPL in canonical terminal settings which will allow you to use with <code>rlwrap</code>.
 
 For example, you could add this to your bashrc file:
-<pre class="code prettyprint lang-js">
+<pre>
     alias node="env NODE<em>NO</em>READLINE=1 rlwrap node"
 </pre>
 			</p>
@@ -251,11 +247,6 @@ For example, you could add this to your bashrc file:
 
 		
 
-		
-			
-			
-
-			
 		
 <!--
 #### METHODS SUMMARY
@@ -281,20 +272,20 @@ For example, you could add this to your bashrc file:
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.repl.html#start">start</a></b>(prompt, source)
+										<div class="fixedFont">node.repl.<b><a href="../symbols/node.repl.html#.start">start</a></b>(prompt, source)
 										</div>
-										<div class="description">Starts a REPL with <code class="code prettyprint lang-js">prompt</code> as the prompt and <code class="code prettyprint lang-js">stream</code> for all I&#47;O.</div>
+										<div class="description">Starts a REPL with <code>prompt</code> as the prompt and <code>stream</code> for all I&#47;O.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.repl.html#writer">writer</a></b>(obj, showHidden, depth, colors)
+										<div class="fixedFont">node.repl.<b><a href="../symbols/node.repl.html#.writer">writer</a></b>(obj, showHidden, depth, colors)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -316,28 +307,8 @@ For example, you could add this to your bashrc file:
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.repl</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -359,26 +330,26 @@ For example, you could add this to your bashrc file:
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="start">
+								<div class="fixedFont heading" id=".start">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>start</b>(prompt, source)
+									<span class="light">node.repl.</span><b>start</b>(prompt, source)
 								</div>
 
 								<div class="description">
-									Starts a REPL with <code class="code prettyprint lang-js">prompt</code> as the prompt and <code class="code prettyprint lang-js">stream</code> for all I&#47;O.  <code class="code prettyprint lang-js">prompt</code>
-is optional and defaults to <code class="code prettyprint lang-js">> </code>.  <code class="code prettyprint lang-js">stream</code> is optional and defaults to
-<code class="code prettyprint lang-js">process.stdin</code>.
+									Starts a REPL with <code>prompt</code> as the prompt and <code>stream</code> for all I&#47;O.  <code>prompt</code>
+is optional and defaults to <code>> </code>.  <code>stream</code> is optional and defaults to
+<code>process.stdin</code>.
 
 Multiple REPLs may be started against the same running instance of node.  Each
 will share the same global object but will have unique I&#47;O.
 
 Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
-<pre class="code prettyprint lang-js">
+<pre>
     var net = require("net"),
         repl = require("repl");
 
@@ -397,8 +368,8 @@ Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
     }).listen(5001);
 </pre>
 Running this program from the command line will start a REPL on stdin.  Other
-REPL clients may connect through the Unix socket or TCP socket. <code class="code prettyprint lang-js">telnet</code> is useful
-for connecting to TCP sockets, and <code class="code prettyprint lang-js">socat</code> can be used to connect to both Unix and
+REPL clients may connect through the Unix socket or TCP socket. <code>telnet</code> is useful
+for connecting to TCP sockets, and <code>socat</code> can be used to connect to both Unix and
 TCP sockets.
 
 By starting a REPL from a Unix socket-based server instead of stdin, you can
@@ -416,13 +387,13 @@ connect to a long-running node process without restarting it.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>prompt</b>
+												<span class="light fixedFont">{string}</span> <b>prompt</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>source</b>
+												<span class="light fixedFont">{string}</span> <b>source</b>
 												
 											</dt>
 											<dd></dd>
@@ -430,27 +401,6 @@ connect to a long-running node process without restarting it.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -458,14 +408,14 @@ connect to a long-running node process without restarting it.
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="writer">
+								<div class="fixedFont heading" id=".writer">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>writer</b>(obj, showHidden, depth, colors)
+									<span class="light">node.repl.</span><b>writer</b>(obj, showHidden, depth, colors)
 								</div>
 
 								<div class="description">
@@ -483,25 +433,25 @@ connect to a long-running node process without restarting it.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>obj</b>
+												<span class="light fixedFont">{Object}</span> <b>obj</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>showHidden</b>
+												<span class="light fixedFont">{string}</span> <b>showHidden</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>depth</b>
+												<span class="light fixedFont">{number}</span> <b>depth</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>colors</b>
+												<span class="light fixedFont">{string}</span> <b>colors</b>
 												
 											</dt>
 											<dd></dd>
@@ -509,27 +459,6 @@ connect to a long-running node process without restarting it.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>
@@ -548,7 +477,7 @@ connect to a long-running node process without restarting it.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

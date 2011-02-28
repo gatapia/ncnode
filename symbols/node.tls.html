@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -209,31 +205,31 @@
 
 		<div class="intro">
 			<p class="description summary">
-				Use <code class="code prettyprint lang-js">require('tls')</code> to access this module.
+				Use <code>require('tls')</code> to access this module.
 
-The <code class="code prettyprint lang-js">tls</code> module uses OpenSSL to provide Transport Layer Security and&#47;or
+The <code>tls</code> module uses OpenSSL to provide Transport Layer Security and&#47;or
 Secure Socket Layer: encrypted stream communication.
 
 TLS&#47;SSL is a public&#47;private key infrastructure. Each client and each
 server must have a private key. A private key is created like this
-<pre class="code prettyprint lang-js">
+<pre>
     openssl genrsa -out ryans-key.pem 1024
 </pre>
 All severs and some clients need to have a certificate. Certificates are public
 keys signed by a Certificate Authority or self-signed. The first step to
 getting a certificate is to create a "Certificate Signing Request" (CSR)
 file. This is done with:
-<pre class="code prettyprint lang-js">
+<pre>
     openssl req -new -key ryans-key.pem -out ryans-csr.pem
 </pre>
 To create a self-signed certificate with the CSR, do this:
-<pre class="code prettyprint lang-js">
+<pre>
     openssl x509 -req -in ryans-csr.pem -signkey ryans-key.pem -out ryans-cert.pem
 </pre>
 Alternatively you can send the CSR to a Certificate Authority for signing.
 
 (TODO: docs on creating a CA, for now interested users should just look at
-<code class="code prettyprint lang-js">test&#47;fixtures&#47;keys&#47;Makefile</code> in the Node source code)
+<code>test&#47;fixtures&#47;keys&#47;Makefile</code> in the Node source code)
 			</p>
 
 			
@@ -250,11 +246,6 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 
 		
 
-		
-			
-			
-
-			
 		
 <!--
 #### METHODS SUMMARY
@@ -280,20 +271,31 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.tls.html#createSecurePair">createSecurePair</a></b>(credentials, isServer, requestCert, rejectUnauthorized)
+										<div class="fixedFont">node.tls.<b><a href="../symbols/node.tls.html#.connect">connect</a></b>(port, options, cb)
 										</div>
-										<div class="description"></div>
+										<div class="description">Creates a new client connection to the given <code>port</code> and <code>host</code>.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.tls.html#createServer">createServer</a></b>(options, listener)
+										<div class="fixedFont">node.tls.<b><a href="../symbols/node.tls.html#.createSecurePair">createSecurePair</a></b>(credentials, isServer, requestCert, rejectUnauthorized)
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+								<tr
+									 class='item2'
+								>
+									<td class="attributes">static &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">node.tls.<b><a href="../symbols/node.tls.html#.createServer">createServer</a></b>(options, listener)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -315,28 +317,8 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.tls</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -358,18 +340,37 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="createSecurePair">
+								<div class="fixedFont heading" id=".connect">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createSecurePair</b>(credentials, isServer, requestCert, rejectUnauthorized)
+									<span class="light">node.tls.</span><b>connect</b>(port, options, cb)
 								</div>
 
 								<div class="description">
-									
+									Creates a new client connection to the given <code>port</code> and <code>host</code>. (If <code>host</code>
+defaults to <code>localhost</code>.) <code>options</code> should be an object which specifies
+
+  - <code>key</code>: A string or <code>Buffer</code> containing the private key of the server in
+    PEM format. (Required)
+
+  - <code>cert</code>: A string or <code>Buffer</code> containing the certificate key of the server in
+    PEM format.
+
+  - <code>ca</code>: An array of strings or <code>Buffer</code>s of trusted certificates. If this is
+    omitted several well known "root" CAs will be used, like VeriSign.
+    These are used to authorize connections.
+
+<code>tls.connect()</code> returns a cleartext <code>CryptoStream</code> object.
+
+After the TLS&#47;SSL handshake the <code>callback</code> is called. The <code>callback</code> will be
+called no matter if the server's certificate was authorized or not. It is up
+to the user to test <code>s.authorized</code> to see if the server certificate was
+signed by one of the specified CAs. If <code>s.authorized === false</code> then the error
+can be found in <code>s.authorizationError</code>.
 
 									
 
@@ -383,25 +384,19 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>credentials</b>
+												<span class="light fixedFont">{string}</span> <b>port</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>isServer</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>requestCert</b>
-												
-											</dt>
-											<dd></dd>
-										
-											<dt>
-												<span class="light fixedFont">{*}</span> <b>rejectUnauthorized</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -409,27 +404,6 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -437,14 +411,14 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="createServer">
+								<div class="fixedFont heading" id=".createSecurePair">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createServer</b>(options, listener)
+									<span class="light">node.tls.</span><b>createSecurePair</b>(credentials, isServer, requestCert, rejectUnauthorized)
 								</div>
 
 								<div class="description">
@@ -462,13 +436,25 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{string}</span> <b>credentials</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>listener</b>
+												<span class="light fixedFont">{boolean}</span> <b>isServer</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{string}</span> <b>requestCert</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{string}</span> <b>rejectUnauthorized</b>
 												
 											</dt>
 											<dd></dd>
@@ -477,26 +463,51 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 								
 
 								
-									<dl class="detailList nomargin">
+								<div class="hr"></div>
+							</li>
+						
+							<li
+								 class='item2'
+							>
+								<div class="fixedFont heading" id=".createServer">
+									<span class='lighter'>
+									static 
+									</span>
 
-										
+									
 
-										
+									<span class="light">node.tls.</span><b>createServer</b>(options, listener)
+								</div>
 
-										
+								<div class="description">
+									
 
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
+									
 
-										
+									
+								</div>
 
-										
+								
 
+								
+									<dl class="detailList params">
+										<dt class="heading">Parameters:</dt>
+										
+											<dt>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
+												
+											</dt>
+											<dd></dd>
+										
+											<dt>
+												<span class="light fixedFont">{string}</span> <b>listener</b>
+												
+											</dt>
+											<dd></dd>
+										
 									</dl>
+								
+
 								
 								
 							</li>
@@ -515,7 +526,7 @@ Alternatively you can send the CSR to a Certificate Authority for signing.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

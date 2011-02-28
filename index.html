@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="javascript/all.js"></script>
-    	<script src="javascript/prettify.js"></script>
+    <script src="javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -210,7 +206,7 @@
 					<h2 class="classname"><a href="symbols/node.html">node</a></h2>
 					<p>An example of a <a href="node.http.html">web server</a> written with Node which responds with 'Hello
 World':
-<pre class="code prettyprint lang-js">
+<pre>
     var http = require('http');
 
     http.createServer(function (request, response) {
@@ -220,9 +216,9 @@ World':
 
     console.log('Server running at http:&#47;&#47;127.0.0.1:8124&#47;');
 </pre>
-To run the server, put the code into a file called <code class="code prettyprint lang-js">example.js</code> and execute
+To run the server, put the code into a file called <code>example.js</code> and execute
 it with the node program
-<pre class="code prettyprint lang-js">
+<pre>
     > node example.js
     Server running at http:&#47;&#47;127.0.0.1:8124&#47;
 </pre>
@@ -232,7 +228,7 @@ All of the examples in the documentation can be run similarly.</p>
 				<li>
 					<h2 class="classname"><a href="symbols/node.assert.html">node.assert</a></h2>
 					<p>This module is used for writing unit tests for your applications, you can
-access it with <code class="code prettyprint lang-js">require('assert')</code>.</p>
+access it with <code>require('assert')</code>.</p>
 				</li>
 			
 				<li>
@@ -272,7 +268,7 @@ access it with <code class="code prettyprint lang-js">require('assert')</code>.<
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.crypto.html">node.crypto</a></h2>
-					<p>Use <code class="code prettyprint lang-js">require('crypto')</code> to access this module.</p>
+					<p>Use <code>require('crypto')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -312,7 +308,7 @@ access it with <code class="code prettyprint lang-js">require('assert')</code>.<
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.dgram.html">node.dgram</a></h2>
-					<p>Datagram sockets are available through <code class="code prettyprint lang-js">require('dgram')</code>.</p>
+					<p>Datagram sockets are available through <code>require('dgram')</code>.</p>
 				</li>
 			
 				<li>
@@ -322,13 +318,13 @@ access it with <code class="code prettyprint lang-js">require('assert')</code>.<
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.dns.html">node.dns</a></h2>
-					<p>Use <code class="code prettyprint lang-js">require('dns')</code> to access this module.</p>
+					<p>Use <code>require('dns')</code> to access this module.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.events.html">node.events</a></h2>
-					<p>Many objects in Node emit events: a <code class="code prettyprint lang-js">net.Server</code> emits an event each time
-a peer connects to it, a <code class="code prettyprint lang-js">fs.readStream</code> emits an event when the file is
+					<p>Many objects in Node emit events: a <code>net.Server</code> emits an event each time
+a peer connects to it, a <code>fs.readStream</code> emits an event when the file is
 opened.</p>
 				</li>
 			
@@ -364,32 +360,27 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.fs.ReadStream.html">node.fs.ReadStream</a></h2>
-					<p><code class="code prettyprint lang-js">ReadStream</code> is a <code class="code prettyprint lang-js">Readable Stream</code>.</p>
-				</li>
-			
-				<li>
-					<h2 class="classname"><a href="symbols/node.fs.Stats.html">node.fs.Stats</a></h2>
-					<p>Objects returned from <code class="code prettyprint lang-js">fs.stat()</code> and <code class="code prettyprint lang-js">fs.lstat()</code> are of this type.</p>
-				</li>
-			
-				<li>
-					<h2 class="classname"><a href="symbols/node.fs.WriteStream.html">node.fs.WriteStream</a></h2>
-					<p><code class="code prettyprint lang-js">WriteStream</code> is a <code class="code prettyprint lang-js">Writable Stream</code>.</p>
-				</li>
-			
-				<li>
-					<h2 class="classname"><a href="symbols/node.global.html">node.global</a></h2>
-					<p>These object are available in the global scope and can be accessed from anywhere.</p>
-				</li>
-			
-				<li>
-					<h2 class="classname"><a href="symbols/node.global.Buffer.html">node.global.Buffer</a></h2>
 					<p></p>
 				</li>
 			
 				<li>
+					<h2 class="classname"><a href="symbols/node.fs.Stats.html">node.fs.Stats</a></h2>
+					<p></p>
+				</li>
+			
+				<li>
+					<h2 class="classname"><a href="symbols/node.fs.WriteStream.html">node.fs.WriteStream</a></h2>
+					<p></p>
+				</li>
+			
+				<li>
+					<h2 class="classname"><a href="symbols/node.global.html">node.global</a></h2>
+					<p>global</p>
+				</li>
+			
+				<li>
 					<h2 class="classname"><a href="symbols/node.http.html">node.http</a></h2>
-					<p>To use the HTTP server and client one must <code class="code prettyprint lang-js">require('http')</code>.</p>
+					<p>To use the HTTP server and client one must <code>require('http')</code>.</p>
 				</li>
 			
 				<li>
@@ -404,7 +395,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.ClientRequest.html">node.http.ClientRequest</a></h2>
-					<p>This object is created internally and returned from <code class="code prettyprint lang-js">http.request()</code>.</p>
+					<p></p>
 				</li>
 			
 				<li>
@@ -419,12 +410,12 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.Server.html">node.http.Server</a></h2>
-					<p>This is an <code class="code prettyprint lang-js">EventEmitter</code> with the following events:</p>
+					<p></p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.http.ServerResponse.html">node.http.ServerResponse</a></h2>
-					<p>This object is created internally by a HTTP server--not by the user.</p>
+					<p></p>
 				</li>
 			
 				<li>
@@ -444,7 +435,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.net.html">node.net</a></h2>
-					<p>The <code class="code prettyprint lang-js">net</code> module provides you with an asynchronous network wrapper.</p>
+					<p>The <code>net</code> module provides you with an asynchronous network wrapper.</p>
 				</li>
 			
 				<li>
@@ -464,7 +455,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.os.html">node.os</a></h2>
-					<p>Use <code class="code prettyprint lang-js">require('os')</code> to access this module.</p>
+					<p>Use <code>require('os')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -474,12 +465,7 @@ opened.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.process.html">node.process</a></h2>
-					<p>The <code class="code prettyprint lang-js">process</code> object is a global object and can be accessed from anywhere.</p>
-				</li>
-			
-				<li>
-					<h2 class="classname"><a href="symbols/node.process.EventEmitter.html">node.process.EventEmitter</a></h2>
-					<p></p>
+					<p>process</p>
 				</li>
 			
 				<li>
@@ -540,7 +526,7 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.tls.html">node.tls</a></h2>
-					<p>Use <code class="code prettyprint lang-js">require('tls')</code> to access this module.</p>
+					<p>Use <code>require('tls')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -550,7 +536,7 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.tty.html">node.tty</a></h2>
-					<p>Use <code class="code prettyprint lang-js">require('tty')</code> to access this module.</p>
+					<p>Use <code>require('tty')</code> to access this module.</p>
 				</li>
 			
 				<li>
@@ -590,13 +576,13 @@ includable in other programs.</p>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.util.html">node.util</a></h2>
-					<p>These functions are in the module <code class="code prettyprint lang-js">'util'</code>.</p>
+					<p>These functions are in the module <code>'util'</code>.</p>
 				</li>
 			
 				<li>
 					<h2 class="classname"><a href="symbols/node.vm.html">node.vm</a></h2>
 					<p>You can access this module with:
-<pre class="code prettyprint lang-js">
+<pre>
     var vm = require('vm');
 </pre>
 JavaScript code can be compiled and run immediately or compiled, saved, and run later.</p>
@@ -613,7 +599,7 @@ JavaScript code can be compiled and run immediately or compiled, saved, and run 
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('css/screen.css', 'css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

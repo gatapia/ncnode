@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -209,7 +205,7 @@
 
 		<div class="intro">
 			<p class="description summary">
-				To use the HTTP server and client one must <code class="code prettyprint lang-js">require('http')</code>.
+				To use the HTTP server and client one must <code>require('http')</code>.
 
 The HTTP interfaces in Node are designed to support many features
 of the protocol which have been traditionally difficult to use.
@@ -218,7 +214,7 @@ careful to never buffer entire requests or responses--the
 user is able to stream data.
 
 HTTP message headers are represented by an object like this:
-<pre class="code prettyprint lang-js">
+<pre>
     { 'content-length': '123',
       'content-type': 'text&#47;plain',
       'connection': 'keep-alive',
@@ -249,6 +245,43 @@ parse the actual headers or the body.
 		
 			
 			
+				<div class="props">
+					<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class node.http.">
+						<caption class="sectionTitle">Field Summary</caption>
+
+						<thead>
+							<tr>
+								<th scope="col">Field Attributes</th>
+								<th scope="col">Field Name and Description</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							
+								<tr>
+									<td class="attributes">static &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										node.http.<b><a href="../symbols/node.http.html#.parsers">parsers</a></b>
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+								<tr>
+									<td class="attributes">static &nbsp;</td>
+									<td class="nameDescription">
+										<div class="fixedFont">
+										node.http.<b><a href="../symbols/node.http.html#.STATUS_CODES">STATUS_CODES</a></b>
+										</div>
+										<div class="description"></div>
+									</td>
+								</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			
 
 			
 		
@@ -276,9 +309,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#cat">cat</a></b>(url, encoding_, headers_)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.cat">cat</a></b>(url, encoding_, headers_)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -287,9 +320,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#createClient">createClient</a></b>(port, host)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.createClient">createClient</a></b>(port, host)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -298,9 +331,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#createServer">createServer</a></b>(requestListener)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.createServer">createServer</a></b>(requestListener)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -309,9 +342,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#get">get</a></b>(options, cb)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.get">get</a></b>(options, cb)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -320,9 +353,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item4'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#getAgent">getAgent</a></b>(host, port)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.getAgent">getAgent</a></b>(host, port)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -331,9 +364,9 @@ parse the actual headers or the body.
 								<tr
 									 class='item5'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.http.html#request">request</a></b>(options, cb)
+										<div class="fixedFont">node.http.<b><a href="../symbols/node.http.html#.request">request</a></b>(options, cb)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -355,32 +388,66 @@ parse the actual headers or the body.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.http</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
 -->
+		
+			<div class="details props">
+				<div class="innerProps">
+					<h2 class="sectionTitle">
+						Field Detail
+					</h2>
+
+					
+						<div class="fixedFont heading" id=".parsers">
+							<span class='lighter'>
+							static 
+							</span>
+
+							
+
+							<span class="light">node.http.</span><b>parsers</b>
+						</div>
+
+						<div class="description">
+							
+							
+
+							
+						</div>
+
+						
+							
+
+						<div class="hr"></div>
+					
+						<div class="fixedFont heading" id=".STATUS_CODES">
+							<span class='lighter'>
+							static 
+							</span>
+
+							
+
+							<span class="light">node.http.</span><b>STATUS_CODES</b>
+						</div>
+
+						<div class="description">
+							
+							
+
+							
+						</div>
+
+						
+							
+
+						
+					
+				</div>
+			</div>
 		
 <!--
 #### METHOD DETAILS
@@ -398,14 +465,14 @@ parse the actual headers or the body.
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="cat">
+								<div class="fixedFont heading" id=".cat">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>cat</b>(url, encoding_, headers_)
+									<span class="light">node.http.</span><b>cat</b>(url, encoding_, headers_)
 								</div>
 
 								<div class="description">
@@ -423,19 +490,19 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>url</b>
+												<span class="light fixedFont">{string}</span> <b>url</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>encoding_</b>
+												<span class="light fixedFont">{string}</span> <b>encoding_</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>headers_</b>
+												<span class="light fixedFont">{string}</span> <b>headers_</b>
 												
 											</dt>
 											<dd></dd>
@@ -443,27 +510,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -471,14 +517,14 @@ parse the actual headers or the body.
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="createClient">
+								<div class="fixedFont heading" id=".createClient">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createClient</b>(port, host)
+									<span class="light">node.http.</span><b>createClient</b>(port, host)
 								</div>
 
 								<div class="description">
@@ -496,13 +542,13 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>port</b>
+												<span class="light fixedFont">{string}</span> <b>port</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>host</b>
+												<span class="light fixedFont">{string}</span> <b>host</b>
 												
 											</dt>
 											<dd></dd>
@@ -510,27 +556,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -538,14 +563,14 @@ parse the actual headers or the body.
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="createServer">
+								<div class="fixedFont heading" id=".createServer">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createServer</b>(requestListener)
+									<span class="light">node.http.</span><b>createServer</b>(requestListener)
 								</div>
 
 								<div class="description">
@@ -563,7 +588,7 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>requestListener</b>
+												<span class="light fixedFont">{string}</span> <b>requestListener</b>
 												
 											</dt>
 											<dd></dd>
@@ -571,27 +596,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -599,14 +603,14 @@ parse the actual headers or the body.
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="get">
+								<div class="fixedFont heading" id=".get">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>get</b>(options, cb)
+									<span class="light">node.http.</span><b>get</b>(options, cb)
 								</div>
 
 								<div class="description">
@@ -624,13 +628,13 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>cb</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -638,27 +642,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -666,14 +649,14 @@ parse the actual headers or the body.
 							<li
 								 class='item4'
 							>
-								<div class="fixedFont heading" id="getAgent">
+								<div class="fixedFont heading" id=".getAgent">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>getAgent</b>(host, port)
+									<span class="light">node.http.</span><b>getAgent</b>(host, port)
 								</div>
 
 								<div class="description">
@@ -691,13 +674,13 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>host</b>
+												<span class="light fixedFont">{string}</span> <b>host</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>port</b>
+												<span class="light fixedFont">{string}</span> <b>port</b>
 												
 											</dt>
 											<dd></dd>
@@ -705,27 +688,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -733,14 +695,14 @@ parse the actual headers or the body.
 							<li
 								 class='item5'
 							>
-								<div class="fixedFont heading" id="request">
+								<div class="fixedFont heading" id=".request">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>request</b>(options, cb)
+									<span class="light">node.http.</span><b>request</b>(options, cb)
 								</div>
 
 								<div class="description">
@@ -758,13 +720,13 @@ parse the actual headers or the body.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>cb</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -772,27 +734,6 @@ parse the actual headers or the body.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>
@@ -811,7 +752,7 @@ parse the actual headers or the body.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

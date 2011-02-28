@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -228,11 +224,6 @@ separate module.
 		
 
 		
-			
-			
-
-			
-		
 <!--
 #### METHODS SUMMARY
 -->
@@ -257,9 +248,9 @@ separate module.
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.https.html#createServer">createServer</a></b>(opts, requestListener)
+										<div class="fixedFont">node.https.<b><a href="../symbols/node.https.html#.createServer">createServer</a></b>(opts, requestListener)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -268,9 +259,9 @@ separate module.
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.https.html#get">get</a></b>(options, cb)
+										<div class="fixedFont">node.https.<b><a href="../symbols/node.https.html#.get">get</a></b>(options, cb)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -279,9 +270,9 @@ separate module.
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.https.html#getAgent">getAgent</a></b>(options)
+										<div class="fixedFont">node.https.<b><a href="../symbols/node.https.html#.getAgent">getAgent</a></b>(options)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -290,9 +281,9 @@ separate module.
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.https.html#request">request</a></b>(options, cb)
+										<div class="fixedFont">node.https.<b><a href="../symbols/node.https.html#.request">request</a></b>(options, cb)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -314,28 +305,8 @@ separate module.
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.https</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -357,14 +328,14 @@ separate module.
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="createServer">
+								<div class="fixedFont heading" id=".createServer">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createServer</b>(opts, requestListener)
+									<span class="light">node.https.</span><b>createServer</b>(opts, requestListener)
 								</div>
 
 								<div class="description">
@@ -382,13 +353,13 @@ separate module.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>opts</b>
+												<span class="light fixedFont">{string}</span> <b>opts</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>requestListener</b>
+												<span class="light fixedFont">{string}</span> <b>requestListener</b>
 												
 											</dt>
 											<dd></dd>
@@ -396,27 +367,6 @@ separate module.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -424,14 +374,14 @@ separate module.
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="get">
+								<div class="fixedFont heading" id=".get">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>get</b>(options, cb)
+									<span class="light">node.https.</span><b>get</b>(options, cb)
 								</div>
 
 								<div class="description">
@@ -449,13 +399,13 @@ separate module.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>cb</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -463,27 +413,6 @@ separate module.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -491,14 +420,14 @@ separate module.
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="getAgent">
+								<div class="fixedFont heading" id=".getAgent">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>getAgent</b>(options)
+									<span class="light">node.https.</span><b>getAgent</b>(options)
 								</div>
 
 								<div class="description">
@@ -516,7 +445,7 @@ separate module.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
@@ -524,27 +453,6 @@ separate module.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -552,14 +460,14 @@ separate module.
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="request">
+								<div class="fixedFont heading" id=".request">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>request</b>(options, cb)
+									<span class="light">node.https.</span><b>request</b>(options, cb)
 								</div>
 
 								<div class="description">
@@ -577,13 +485,13 @@ separate module.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>options</b>
+												<span class="light fixedFont">{Object}</span> <b>options</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>cb</b>
+												<span class="light fixedFont">{string}</span> <b>cb</b>
 												
 											</dt>
 											<dd></dd>
@@ -591,27 +499,6 @@ separate module.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>
@@ -630,7 +517,7 @@ separate module.
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

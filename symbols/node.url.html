@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -210,44 +206,44 @@
 		<div class="intro">
 			<p class="description summary">
 				This module has utilities for URL resolution and parsing.
-Call <code class="code prettyprint lang-js">require('url')</code> to use it.
+Call <code>require('url')</code> to use it.
 
 Parsed URL objects have some or all of the following fields, depending on
 whether or not they exist in the URL string. Any parts that are not in the URL
 string will not be in the parsed object. Examples are shown for the URL
 
-<code class="code prettyprint lang-js">'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
+<code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
 
-* <code class="code prettyprint lang-js">href</code>: The full URL that was originally parsed.
+* <code>href</code>: The full URL that was originally parsed.
 
-  Example: <code class="code prettyprint lang-js">'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
-* <code class="code prettyprint lang-js">protocol</code>: The request protocol.
+  Example: <code>'http:&#47;&#47;user:pass@host.com:8080&#47;p&#47;a&#47;t&#47;h?query=string#hash'</code>
+* <code>protocol</code>: The request protocol.
 
-  Example: <code class="code prettyprint lang-js">'http:'</code>
-* <code class="code prettyprint lang-js">host</code>: The full host portion of the URL, including port and authentication information.
+  Example: <code>'http:'</code>
+* <code>host</code>: The full host portion of the URL, including port and authentication information.
 
-  Example: <code class="code prettyprint lang-js">'user:pass@host.com:8080'</code>
-* <code class="code prettyprint lang-js">auth</code>: The authentication information portion of a URL.
+  Example: <code>'user:pass@host.com:8080'</code>
+* <code>auth</code>: The authentication information portion of a URL.
 
-  Example: <code class="code prettyprint lang-js">'user:pass'</code>
-* <code class="code prettyprint lang-js">hostname</code>: Just the hostname portion of the host.
+  Example: <code>'user:pass'</code>
+* <code>hostname</code>: Just the hostname portion of the host.
 
-  Example: <code class="code prettyprint lang-js">'host.com'</code>
-* <code class="code prettyprint lang-js">port</code>: The port number portion of the host.
+  Example: <code>'host.com'</code>
+* <code>port</code>: The port number portion of the host.
 
-  Example: <code class="code prettyprint lang-js">'8080'</code>
-* <code class="code prettyprint lang-js">pathname</code>: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
+  Example: <code>'8080'</code>
+* <code>pathname</code>: The path section of the URL, that comes after the host and before the query, including the initial slash if present.
 
-  Example: <code class="code prettyprint lang-js">'&#47;p&#47;a&#47;t&#47;h'</code>
-* <code class="code prettyprint lang-js">search</code>: The 'query string' portion of the URL, including the leading question mark.
+  Example: <code>'&#47;p&#47;a&#47;t&#47;h'</code>
+* <code>search</code>: The 'query string' portion of the URL, including the leading question mark.
 
-  Example: <code class="code prettyprint lang-js">'?query=string'</code>
-* <code class="code prettyprint lang-js">query</code>: Either the 'params' portion of the query string, or a querystring-parsed object.
+  Example: <code>'?query=string'</code>
+* <code>query</code>: Either the 'params' portion of the query string, or a querystring-parsed object.
 
-  Example: <code class="code prettyprint lang-js">'query=string'</code> or <code class="code prettyprint lang-js">{'query':'string'}</code>
-* <code class="code prettyprint lang-js">hash</code>: The 'fragment' portion of the URL including the pound-sign.
+  Example: <code>'query=string'</code> or <code>{'query':'string'}</code>
+* <code>hash</code>: The 'fragment' portion of the URL including the pound-sign.
 
-  Example: <code class="code prettyprint lang-js">'#hash'</code>
+  Example: <code>'#hash'</code>
 
 The following methods are provided by the URL module:
 			</p>
@@ -291,9 +287,9 @@ The following methods are provided by the URL module:
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.url.html#format">format</a></b>(obj)
+										<div class="fixedFont">node.url.<b><a href="../symbols/node.url.html#.format">format</a></b>(obj)
 										</div>
 										<div class="description">Take a parsed URL object, and return a formatted URL string.</div>
 									</td>
@@ -302,9 +298,9 @@ The following methods are provided by the URL module:
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.url.html#parse">parse</a></b>(url, parseQueryString, slashesDenoteHost)
+										<div class="fixedFont">node.url.<b><a href="../symbols/node.url.html#.parse">parse</a></b>(url, parseQueryString, slashesDenoteHost)
 										</div>
 										<div class="description">Take a URL string, and return an object.</div>
 									</td>
@@ -313,9 +309,9 @@ The following methods are provided by the URL module:
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.url.html#resolve">resolve</a></b>(source, relative)
+										<div class="fixedFont">node.url.<b><a href="../symbols/node.url.html#.resolve">resolve</a></b>(source, relative)
 										</div>
 										<div class="description">Take a base URL, and a href URL, and resolve them as a browser would for an anchor tag.</div>
 									</td>
@@ -324,9 +320,9 @@ The following methods are provided by the URL module:
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.url.html#resolveObject">resolveObject</a></b>(source, relative)
+										<div class="fixedFont">node.url.<b><a href="../symbols/node.url.html#.resolveObject">resolveObject</a></b>(source, relative)
 										</div>
 										<div class="description"></div>
 									</td>
@@ -348,28 +344,8 @@ The following methods are provided by the URL module:
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.url</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -391,14 +367,14 @@ The following methods are provided by the URL module:
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="format">
+								<div class="fixedFont heading" id=".format">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>format</b>(obj)
+									<span class="light">node.url.</span><b>format</b>(obj)
 								</div>
 
 								<div class="description">
@@ -416,7 +392,7 @@ The following methods are provided by the URL module:
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>obj</b>
+												<span class="light fixedFont">{Object}</span> <b>obj</b>
 												
 											</dt>
 											<dd></dd>
@@ -425,46 +401,25 @@ The following methods are provided by the URL module:
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="parse">
+								<div class="fixedFont heading" id=".parse">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>parse</b>(url, parseQueryString, slashesDenoteHost)
+									<span class="light">node.url.</span><b>parse</b>(url, parseQueryString, slashesDenoteHost)
 								</div>
 
 								<div class="description">
-									Take a URL string, and return an object.  Pass <code class="code prettyprint lang-js">true</code> as the second argument to also parse
-the query string using the <code class="code prettyprint lang-js">querystring</code> module.
+									Take a URL string, and return an object.  Pass <code>true</code> as the second argument to also parse
+the query string using the <code>querystring</code> module.
 
 									
 
@@ -478,19 +433,19 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>url</b>
+												<span class="light fixedFont">{string}</span> <b>url</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>parseQueryString</b>
+												<span class="light fixedFont">{string}</span> <b>parseQueryString</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>slashesDenoteHost</b>
+												<span class="light fixedFont">{string}</span> <b>slashesDenoteHost</b>
 												
 											</dt>
 											<dd></dd>
@@ -498,27 +453,6 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -526,14 +460,14 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="resolve">
+								<div class="fixedFont heading" id=".resolve">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>resolve</b>(source, relative)
+									<span class="light">node.url.</span><b>resolve</b>(source, relative)
 								</div>
 
 								<div class="description">
@@ -551,13 +485,13 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>source</b>
+												<span class="light fixedFont">{string}</span> <b>source</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>relative</b>
+												<span class="light fixedFont">{string}</span> <b>relative</b>
 												
 											</dt>
 											<dd></dd>
@@ -565,27 +499,6 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -593,14 +506,14 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="resolveObject">
+								<div class="fixedFont heading" id=".resolveObject">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>resolveObject</b>(source, relative)
+									<span class="light">node.url.</span><b>resolveObject</b>(source, relative)
 								</div>
 
 								<div class="description">
@@ -618,13 +531,13 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>source</b>
+												<span class="light fixedFont">{string}</span> <b>source</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>relative</b>
+												<span class="light fixedFont">{string}</span> <b>relative</b>
 												
 											</dt>
 											<dd></dd>
@@ -632,27 +545,6 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								
 							</li>
@@ -671,7 +563,7 @@ the query string using the <code class="code prettyprint lang-js">querystring</c
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

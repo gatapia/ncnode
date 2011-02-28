@@ -1,55 +1,57 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.http.ClientRequest
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * This object is created internally and returned from &lt;code class="code prettyprint lang-js">http.request()&lt;/code>.  It
-<span class='line'>  5</span>  * represents an &lt;em>in-progress&lt;/em> request whose header has already been sent.
-<span class='line'>  6</span>  *
-<span class='line'>  7</span>  * To get the response, add a listener for &lt;code class="code prettyprint lang-js">'response'&lt;/code> to the request object.
-<span class='line'>  8</span>  * &lt;code class="code prettyprint lang-js">'response'&lt;/code> will be emitted from the request object when the response
-<span class='line'>  9</span>  * headers have been received.  The &lt;code class="code prettyprint lang-js">'response'&lt;/code> event is executed with one
-<span class='line'> 10</span>  * argument which is an instance of &lt;code class="code prettyprint lang-js">http.ClientResponse&lt;/code>.
-<span class='line'> 11</span>  *
-<span class='line'> 12</span>  * During the &lt;code class="code prettyprint lang-js">'response'&lt;/code> event, one can add listeners to the
-<span class='line'> 13</span>  * response object; particularly to listen for the &lt;code class="code prettyprint lang-js">'data'&lt;/code> event. Note that
-<span class='line'> 14</span>  * the &lt;code class="code prettyprint lang-js">'response'&lt;/code> event is called before any part of the response body is received,
-<span class='line'> 15</span>  * so there is no need to worry about racing to catch the first part of the
-<span class='line'> 16</span>  * body. As long as a listener for &lt;code class="code prettyprint lang-js">'data'&lt;/code> is added during the &lt;code class="code prettyprint lang-js">'response'&lt;/code>
-<span class='line'> 17</span>  * event, the entire body will be caught.
-<span class='line'> 18</span>  *
-<span class='line'> 19</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 20</span>  *     &#47;&#47; Good
-<span class='line'> 21</span>  *     request.on('response', function (response) {
-<span class='line'> 22</span>  *       response.on('data', function (chunk) {
-<span class='line'> 23</span>  *         console.log('BODY: ' + chunk);
-<span class='line'> 24</span>  *       });
-<span class='line'> 25</span>  *     });
-<span class='line'> 26</span>  *
-<span class='line'> 27</span>  *     &#47;&#47; Bad - misses all or part of the body
-<span class='line'> 28</span>  *     request.on('response', function (response) {
-<span class='line'> 29</span>  *       setTimeout(function () {
-<span class='line'> 30</span>  *         response.on('data', function (chunk) {
-<span class='line'> 31</span>  *           console.log('BODY: ' + chunk);
-<span class='line'> 32</span>  *         });
-<span class='line'> 33</span>  *       }, 10);
-<span class='line'> 34</span>  *     });
-<span class='line'> 35</span>  * &lt;/pre>
-<span class='line'> 36</span>  * This is a &lt;code class="code prettyprint lang-js">Writable Stream&lt;/code>.
-<span class='line'> 37</span>  *
-<span class='line'> 38</span>  * This is an &lt;code class="code prettyprint lang-js">EventEmitter&lt;/code> with the following events:
-<span class='line'> 39</span>  */</span><span class="WHIT">
-<span class='line'> 40</span> 
-<span class='line'> 41</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.http.ClientRequest"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 42</span> 
-<span class='line'> 43</span> 
-<span class='line'> 44</span> </span><span class="COMM">/**
-<span class='line'> 45</span>  * @private
-<span class='line'> 46</span>  * @type {*}
-<span class='line'> 47</span>  */</span><span class="WHIT">
-<span class='line'> 48</span> </span><span class="NAME">node.http.ClientRequest.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"http"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">ClientRequest</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_http.ClientRequest.js</title>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>
+goog.provide("node.http.ClientRequest");
+
+/**
+ * This object is created internally and returned from &lt;code>http.request()&lt;/code>.  It
+ * represents an &lt;em>in-progress&lt;/em> request whose header has already been sent.
+ *
+ * To get the response, add a listener for &lt;code>'response'&lt;/code> to the request object.
+ * &lt;code>'response'&lt;/code> will be emitted from the request object when the response
+ * headers have been received.  The &lt;code>'response'&lt;/code> event is executed with one
+ * argument which is an instance of &lt;code>http.ClientResponse&lt;/code>.
+ *
+ * During the &lt;code>'response'&lt;/code> event, one can add listeners to the
+ * response object; particularly to listen for the &lt;code>'data'&lt;/code> event. Note that
+ * the &lt;code>'response'&lt;/code> event is called before any part of the response body is received,
+ * so there is no need to worry about racing to catch the first part of the
+ * body. As long as a listener for &lt;code>'data'&lt;/code> is added during the &lt;code>'response'&lt;/code>
+ * event, the entire body will be caught.
+ *
+ * &lt;pre>
+ *     &#47;&#47; Good
+ *     request.on('response', function (response) {
+ *       response.on('data', function (chunk) {
+ *         console.log('BODY: ' + chunk);
+ *       });
+ *     });
+ *
+ *     &#47;&#47; Bad - misses all or part of the body
+ *     request.on('response', function (response) {
+ *       setTimeout(function () {
+ *         response.on('data', function (chunk) {
+ *           console.log('BODY: ' + chunk);
+ *         });
+ *       }, 10);
+ *     });
+ * &lt;/pre>
+ * This is a &lt;code>Writable Stream&lt;/code>.
+ *
+ * This is an &lt;code>EventEmitter&lt;/code> with the following events:
+ * @constructor
+ */
+node.http.ClientRequest = function() {};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.http.ClientRequest.core_ = require("http").ClientRequest;</pre></body></html>

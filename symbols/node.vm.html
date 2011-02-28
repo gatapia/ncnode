@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"></meta>
 		<meta name="mobileoptimized" content="0"></meta>
 
-    <link rel="stylesheet" href="../css/prettify.css" media="all"></link>
+    <link rel="stylesheet" href="../css/prettify_wynn.css" media="all"></link>
 		<link rel="stylesheet" href="../css/all.css" media="all"></link>
 
 
@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="../css/screen.css" media="screen and (min-width: 661px)"></link>
 
 		<script src="../javascript/all.js"></script>
-    	<script src="../javascript/prettify.js"></script>
+    <script src="../javascript/prettify.js"></script>
 		<!--[if lt IE 9]>
 			<script src="../javascript/html5.js"></script>
 		<![endif]-->
@@ -102,8 +102,6 @@
 				
 					<li><a href="../symbols/node.global.html">node<span class='break'> </span>.<span class='break'> </span>global</a></li>
 				
-					<li><a href="../symbols/node.global.Buffer.html">node<span class='break'> </span>.<span class='break'> </span>global<span class='break'> </span>.<span class='break'> </span>Buffer</a></li>
-				
 					<li><a href="../symbols/node.http.html">node<span class='break'> </span>.<span class='break'> </span>http</a></li>
 				
 					<li><a href="../symbols/node.http.Agent.html">node<span class='break'> </span>.<span class='break'> </span>http<span class='break'> </span>.<span class='break'> </span>Agent</a></li>
@@ -139,8 +137,6 @@
 					<li><a href="../symbols/node.path.html">node<span class='break'> </span>.<span class='break'> </span>path</a></li>
 				
 					<li><a href="../symbols/node.process.html">node<span class='break'> </span>.<span class='break'> </span>process</a></li>
-				
-					<li><a href="../symbols/node.process.EventEmitter.html">node<span class='break'> </span>.<span class='break'> </span>process<span class='break'> </span>.<span class='break'> </span>EventEmitter</a></li>
 				
 					<li><a href="../symbols/node.querystring.html">node<span class='break'> </span>.<span class='break'> </span>querystring</a></li>
 				
@@ -210,7 +206,7 @@
 		<div class="intro">
 			<p class="description summary">
 				You can access this module with:
-<pre class="code prettyprint lang-js">
+<pre>
     var vm = require('vm');
 </pre>
 JavaScript code can be compiled and run immediately or compiled, saved, and run later.
@@ -230,11 +226,6 @@ JavaScript code can be compiled and run immediately or compiled, saved, and run 
 
 		
 
-		
-			
-			
-
-			
 		
 <!--
 #### METHODS SUMMARY
@@ -260,9 +251,9 @@ JavaScript code can be compiled and run immediately or compiled, saved, and run 
 								<tr
 									 class='item0'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.vm.html#createContext">createContext</a></b>()
+										<div class="fixedFont">node.vm.<b><a href="../symbols/node.vm.html#.createContext">createContext</a></b>()
 										</div>
 										<div class="description"></div>
 									</td>
@@ -271,11 +262,11 @@ JavaScript code can be compiled and run immediately or compiled, saved, and run 
 								<tr
 									 class='item1'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.vm.html#createScript">createScript</a></b>(code, ctx, name)
+										<div class="fixedFont">node.vm.<b><a href="../symbols/node.vm.html#.createScript">createScript</a></b>(code, ctx, name)
 										</div>
-										<div class="description"><code class="code prettyprint lang-js">createScript</code> compiles <code class="code prettyprint lang-js">code</code> as if it were loaded from <code class="code prettyprint lang-js">filename</code>,
+										<div class="description"><code>createScript</code> compiles <code>code</code> as if it were loaded from <code>filename</code>,
 but does not run it.</div>
 									</td>
 								</tr>
@@ -283,9 +274,9 @@ but does not run it.</div>
 								<tr
 									 class='item2'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.vm.html#runInContext">runInContext</a></b>()
+										<div class="fixedFont">node.vm.<b><a href="../symbols/node.vm.html#.runInContext">runInContext</a></b>()
 										</div>
 										<div class="description"></div>
 									</td>
@@ -294,22 +285,22 @@ but does not run it.</div>
 								<tr
 									 class='item3'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.vm.html#runInNewContext">runInNewContext</a></b>()
+										<div class="fixedFont">node.vm.<b><a href="../symbols/node.vm.html#.runInNewContext">runInNewContext</a></b>()
 										</div>
-										<div class="description">Similar to <code class="code prettyprint lang-js">vm.runInNewContext</code> a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.</div>
+										<div class="description">Similar to <code>vm.runInNewContext</code> a method of a precompiled <code>Script</code> object.</div>
 									</td>
 								</tr>
 							
 								<tr
 									 class='item4'
 								>
-									<td class="attributes">&nbsp;</td>
+									<td class="attributes">static &nbsp;</td>
 									<td class="nameDescription">
-										<div class="fixedFont"><b><a href="../symbols/node.vm.html#runInThisContext">runInThisContext</a></b>()
+										<div class="fixedFont">node.vm.<b><a href="../symbols/node.vm.html#.runInThisContext">runInThisContext</a></b>()
 										</div>
-										<div class="description">Similar to <code class="code prettyprint lang-js">vm.runInThisContext</code> but a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.</div>
+										<div class="description">Similar to <code>vm.runInThisContext</code> but a method of a precompiled <code>Script</code> object.</div>
 									</td>
 								</tr>
 							
@@ -329,28 +320,8 @@ but does not run it.</div>
 #### CONSTRUCTOR DETAILS
 -->
 		
-			<div class="details props">
-				<div class="innerProps">
-					<h2 class="sectionTitle" id="constructor">
-						Namespace Detail
-					</h2>
-
-					<div class="fixedFont">
-						<b>node.vm</b>
-					</div>
-
-					<div class="description">
-						
-						
-					</div>
-
-					
-
-					
-
-					
-				</div>
-			</div>
+      
+      
 		
 <!--
 #### FIELD DETAILS
@@ -372,14 +343,14 @@ but does not run it.</div>
 							<li
 								 class='item0'
 							>
-								<div class="fixedFont heading" id="createContext">
+								<div class="fixedFont heading" id=".createContext">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createContext</b>()
+									<span class="light">node.vm.</span><b>createContext</b>()
 								</div>
 
 								<div class="description">
@@ -394,27 +365,6 @@ but does not run it.</div>
 
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -422,24 +372,24 @@ but does not run it.</div>
 							<li
 								 class='item1'
 							>
-								<div class="fixedFont heading" id="createScript">
+								<div class="fixedFont heading" id=".createScript">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>createScript</b>(code, ctx, name)
+									<span class="light">node.vm.</span><b>createScript</b>(code, ctx, name)
 								</div>
 
 								<div class="description">
-									<code class="code prettyprint lang-js">createScript</code> compiles <code class="code prettyprint lang-js">code</code> as if it were loaded from <code class="code prettyprint lang-js">filename</code>,
-but does not run it. Instead, it returns a <code class="code prettyprint lang-js">vm.Script</code> object representing this compiled code.
+									<code>createScript</code> compiles <code>code</code> as if it were loaded from <code>filename</code>,
+but does not run it. Instead, it returns a <code>vm.Script</code> object representing this compiled code.
 This script can be run later many times using methods below.
 The returned script is not bound to any global object.
-It is bound before each run, just for that run. <code class="code prettyprint lang-js">filename</code> is optional.
+It is bound before each run, just for that run. <code>filename</code> is optional.
 
-In case of syntax error in <code class="code prettyprint lang-js">code</code>, <code class="code prettyprint lang-js">createScript</code> prints the syntax error to stderr
+In case of syntax error in <code>code</code>, <code>createScript</code> prints the syntax error to stderr
 and throws an exception.
 
 									
@@ -454,19 +404,19 @@ and throws an exception.
 										<dt class="heading">Parameters:</dt>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>code</b>
+												<span class="light fixedFont">{string}</span> <b>code</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>ctx</b>
+												<span class="light fixedFont">{string}</span> <b>ctx</b>
 												
 											</dt>
 											<dd></dd>
 										
 											<dt>
-												<span class="light fixedFont">{*}</span> <b>name</b>
+												<span class="light fixedFont">{string}</span> <b>name</b>
 												
 											</dt>
 											<dd></dd>
@@ -474,27 +424,6 @@ and throws an exception.
 									</dl>
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -502,14 +431,14 @@ and throws an exception.
 							<li
 								 class='item2'
 							>
-								<div class="fixedFont heading" id="runInContext">
+								<div class="fixedFont heading" id=".runInContext">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>runInContext</b>()
+									<span class="light">node.vm.</span><b>runInContext</b>()
 								</div>
 
 								<div class="description">
@@ -524,27 +453,6 @@ and throws an exception.
 
 								
 
-								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
 								
 								<div class="hr"></div>
 							</li>
@@ -552,24 +460,24 @@ and throws an exception.
 							<li
 								 class='item3'
 							>
-								<div class="fixedFont heading" id="runInNewContext">
+								<div class="fixedFont heading" id=".runInNewContext">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>runInNewContext</b>()
+									<span class="light">node.vm.</span><b>runInNewContext</b>()
 								</div>
 
 								<div class="description">
-									Similar to <code class="code prettyprint lang-js">vm.runInNewContext</code> a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.
-<code class="code prettyprint lang-js">script.runInNewContext</code> runs the code of <code class="code prettyprint lang-js">script</code> with <code class="code prettyprint lang-js">sandbox</code> as the global object and returns the result.
-Running code does not have access to local scope. <code class="code prettyprint lang-js">sandbox</code> is optional.
+									Similar to <code>vm.runInNewContext</code> a method of a precompiled <code>Script</code> object.
+<code>script.runInNewContext</code> runs the code of <code>script</code> with <code>sandbox</code> as the global object and returns the result.
+Running code does not have access to local scope. <code>sandbox</code> is optional.
 
 Example: compile code that increments a global variable and sets one, then execute this code multiple times.
 These globals are contained in the sandbox.
-<pre class="code prettyprint lang-js">
+<pre>
     var util = require('util'),
         vm = require('vm'),
         sandbox = {
@@ -588,7 +496,7 @@ These globals are contained in the sandbox.
     &#47;&#47; { animal: 'cat', count: 12, name: 'kitty' }
 </pre>
 Note that running untrusted code is a tricky business requiring great care.  To prevent accidental
-global variable leakage, <code class="code prettyprint lang-js">script.runInNewContext</code> is quite useful, but safely running untrusted code
+global variable leakage, <code>script.runInNewContext</code> is quite useful, but safely running untrusted code
 requires a separate process.
 
 									
@@ -601,51 +509,30 @@ requires a separate process.
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								<div class="hr"></div>
 							</li>
 						
 							<li
 								 class='item4'
 							>
-								<div class="fixedFont heading" id="runInThisContext">
+								<div class="fixedFont heading" id=".runInThisContext">
 									<span class='lighter'>
-									
+									static 
 									</span>
 
-									<span class="light">{*}</span>
+									
 
-									<b>runInThisContext</b>()
+									<span class="light">node.vm.</span><b>runInThisContext</b>()
 								</div>
 
 								<div class="description">
-									Similar to <code class="code prettyprint lang-js">vm.runInThisContext</code> but a method of a precompiled <code class="code prettyprint lang-js">Script</code> object.
-<code class="code prettyprint lang-js">script.runInThisContext</code> runs the code of <code class="code prettyprint lang-js">script</code> and returns the result.
-Running code does not have access to local scope, but does have access to the <code class="code prettyprint lang-js">global</code> object
+									Similar to <code>vm.runInThisContext</code> but a method of a precompiled <code>Script</code> object.
+<code>script.runInThisContext</code> runs the code of <code>script</code> and returns the result.
+Running code does not have access to local scope, but does have access to the <code>global</code> object
 (v8: in actual context).
 
-Example of using <code class="code prettyprint lang-js">script.runInThisContext</code> to compile code once and run it multiple times:
-<pre class="code prettyprint lang-js">
+Example of using <code>script.runInThisContext</code> to compile code once and run it multiple times:
+<pre>
     var vm = require('vm');
 
     globalVar = 0;
@@ -671,27 +558,6 @@ Example of using <code class="code prettyprint lang-js">script.runInThisContext<
 								
 
 								
-									<dl class="detailList nomargin">
-
-										
-
-										
-
-										
-
-										
-											<dt class="heading">Returns:</dt>
-											
-												<dd><span class="light fixedFont">{*}</span> </dd>
-											
-										
-
-										
-
-										
-
-									</dl>
-								
 								
 							</li>
 						
@@ -709,7 +575,7 @@ Example of using <code class="code prettyprint lang-js">script.runInThisContext<
 		<script type="text/javascript">
 			wbos.CssTools.MediaQueryFallBack.LoadCss('../css/screen.css', '../css/handheld.css', 660)
 			codeview.classFilter.Init()
-      		addEventListener('load', prettyPrint, false);
+      		addEventListener('load', prePrettyPrint, false);
 		</script>
 	</body>
 </html>

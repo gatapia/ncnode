@@ -1,99 +1,98 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.repl
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
-<span class='line'>  5</span>  * includable in other programs.  REPL provides a way to interactively run
-<span class='line'>  6</span>  * JavaScript and see the results.  It can be used for debugging, testing, or
-<span class='line'>  7</span>  * just trying things out.
-<span class='line'>  8</span>  *
-<span class='line'>  9</span>  * By executing &lt;code class="code prettyprint lang-js">node&lt;/code> without any arguments from the command-line you will be
-<span class='line'> 10</span>  * dropped into the REPL. It has simplistic emacs line-editing.
-<span class='line'> 11</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 12</span>  *     mjr:~$ node
-<span class='line'> 13</span>  *     Type '.help' for options.
-<span class='line'> 14</span>  *     > a = [ 1, 2, 3];
-<span class='line'> 15</span>  *     [ 1, 2, 3 ]
-<span class='line'> 16</span>  *     > a.forEach(function (v) {
-<span class='line'> 17</span>  *     ...   console.log(v);
-<span class='line'> 18</span>  *     ...   });
-<span class='line'> 19</span>  *     1
-<span class='line'> 20</span>  *     2
-<span class='line'> 21</span>  *     3
-<span class='line'> 22</span>  * &lt;/pre>
-<span class='line'> 23</span>  * For advanced line-editors, start node with the environmental variable &lt;code class="code prettyprint lang-js">NODE&lt;em>NO&lt;/em>READLINE=1&lt;/code>.
-<span class='line'> 24</span>  * This will start the REPL in canonical terminal settings which will allow you to use with &lt;code class="code prettyprint lang-js">rlwrap&lt;/code>.
-<span class='line'> 25</span>  *
-<span class='line'> 26</span>  * For example, you could add this to your bashrc file:
-<span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 28</span>  *     alias node="env NODE&lt;em>NO&lt;/em>READLINE=1 rlwrap node"
-<span class='line'> 29</span>  * &lt;/pre>
-<span class='line'> 30</span>  */</span><span class="WHIT">
-<span class='line'> 31</span> 
-<span class='line'> 32</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.repl"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 33</span> 
-<span class='line'> 34</span> </span><span class="COMM">/**
-<span class='line'> 35</span>  * @param {*} obj
-<span class='line'> 36</span>  * @param {*} showHidden
-<span class='line'> 37</span>  * @param {*} depth
-<span class='line'> 38</span>  * @param {*} colors
-<span class='line'> 39</span>  * @return {*}
-<span class='line'> 40</span>  */</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="NAME">node.repl.prototype.writer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showHidden</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">depth</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colors</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.repl.core_.writer</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showHidden</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">depth</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colors</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 44</span> 
-<span class='line'> 45</span> </span><span class="COMM">/**
-<span class='line'> 46</span>  * Starts a REPL with &lt;code class="code prettyprint lang-js">prompt&lt;/code> as the prompt and &lt;code class="code prettyprint lang-js">stream&lt;/code> for all I&#47;O.  &lt;code class="code prettyprint lang-js">prompt&lt;/code>
-<span class='line'> 47</span>  * is optional and defaults to &lt;code class="code prettyprint lang-js">> &lt;/code>.  &lt;code class="code prettyprint lang-js">stream&lt;/code> is optional and defaults to
-<span class='line'> 48</span>  * &lt;code class="code prettyprint lang-js">process.stdin&lt;/code>.
-<span class='line'> 49</span>  *
-<span class='line'> 50</span>  * Multiple REPLs may be started against the same running instance of node.  Each
-<span class='line'> 51</span>  * will share the same global object but will have unique I&#47;O.
-<span class='line'> 52</span>  *
-<span class='line'> 53</span>  * Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
-<span class='line'> 54</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 55</span>  *     var net = require("net"),
-<span class='line'> 56</span>  *         repl = require("repl");
-<span class='line'> 57</span>  *
-<span class='line'> 58</span>  *     connections = 0;
-<span class='line'> 59</span>  *
-<span class='line'> 60</span>  *     repl.start("node via stdin> ");
-<span class='line'> 61</span>  *
-<span class='line'> 62</span>  *     net.createServer(function (socket) {
-<span class='line'> 63</span>  *       connections += 1;
-<span class='line'> 64</span>  *       repl.start("node via Unix socket> ", socket);
-<span class='line'> 65</span>  *     }).listen("&#47;tmp&#47;node-repl-sock");
-<span class='line'> 66</span>  *
-<span class='line'> 67</span>  *     net.createServer(function (socket) {
-<span class='line'> 68</span>  *       connections += 1;
-<span class='line'> 69</span>  *       repl.start("node via TCP socket> ", socket);
-<span class='line'> 70</span>  *     }).listen(5001);
-<span class='line'> 71</span>  * &lt;/pre>
-<span class='line'> 72</span>  * Running this program from the command line will start a REPL on stdin.  Other
-<span class='line'> 73</span>  * REPL clients may connect through the Unix socket or TCP socket. &lt;code class="code prettyprint lang-js">telnet&lt;/code> is useful
-<span class='line'> 74</span>  * for connecting to TCP sockets, and &lt;code class="code prettyprint lang-js">socat&lt;/code> can be used to connect to both Unix and
-<span class='line'> 75</span>  * TCP sockets.
-<span class='line'> 76</span>  *
-<span class='line'> 77</span>  * By starting a REPL from a Unix socket-based server instead of stdin, you can
-<span class='line'> 78</span>  * connect to a long-running node process without restarting it.
-<span class='line'> 79</span>  * @param {*} prompt
-<span class='line'> 80</span>  * @param {*} source
-<span class='line'> 81</span>  * @return {*}
-<span class='line'> 82</span>  */</span><span class="WHIT">
-<span class='line'> 83</span> </span><span class="NAME">node.repl.prototype.start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">prompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 84</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.repl.core_.start</span><span class="PUNC">(</span><span class="NAME">prompt</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">source</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 85</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 86</span> 
-<span class='line'> 87</span> 
-<span class='line'> 88</span> </span><span class="COMM">/**
-<span class='line'> 89</span>  * @private
-<span class='line'> 90</span>  * @type {*}
-<span class='line'> 91</span>  */</span><span class="WHIT">
-<span class='line'> 92</span> </span><span class="NAME">node.repl.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"repl"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_repl.js</title>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.repl
+ * @namespace
+ * A Read-Eval-Print-Loop (REPL) is available both as a standalone program and easily
+ * includable in other programs.  REPL provides a way to interactively run
+ * JavaScript and see the results.  It can be used for debugging, testing, or
+ * just trying things out.
+ *
+ * By executing &lt;code>node&lt;/code> without any arguments from the command-line you will be
+ * dropped into the REPL. It has simplistic emacs line-editing.
+ * &lt;pre>
+ *     mjr:~$ node
+ *     Type '.help' for options.
+ *     > a = [ 1, 2, 3];
+ *     [ 1, 2, 3 ]
+ *     > a.forEach(function (v) {
+ *     ...   console.log(v);
+ *     ...   });
+ *     1
+ *     2
+ *     3
+ * &lt;/pre>
+ * For advanced line-editors, start node with the environmental variable &lt;code>NODE&lt;em>NO&lt;/em>READLINE=1&lt;/code>.
+ * This will start the REPL in canonical terminal settings which will allow you to use with &lt;code>rlwrap&lt;/code>.
+ *
+ * For example, you could add this to your bashrc file:
+ * &lt;pre>
+ *     alias node="env NODE&lt;em>NO&lt;/em>READLINE=1 rlwrap node"
+ * &lt;/pre>
+ */
+
+goog.provide("node.repl");
+
+/**
+ * @param {Object} obj
+ * @param {string} showHidden
+ * @param {number} depth
+ * @param {string} colors
+ */
+node.repl.writer = function(obj, showHidden, depth, colors) {
+  return node.repl.core_.writer(obj, showHidden, depth, colors);
+};
+
+/**
+ * Starts a REPL with &lt;code>prompt&lt;/code> as the prompt and &lt;code>stream&lt;/code> for all I&#47;O.  &lt;code>prompt&lt;/code>
+ * is optional and defaults to &lt;code>> &lt;/code>.  &lt;code>stream&lt;/code> is optional and defaults to
+ * &lt;code>process.stdin&lt;/code>.
+ *
+ * Multiple REPLs may be started against the same running instance of node.  Each
+ * will share the same global object but will have unique I&#47;O.
+ *
+ * Here is an example that starts a REPL on stdin, a Unix socket, and a TCP socket:
+ * &lt;pre>
+ *     var net = require("net"),
+ *         repl = require("repl");
+ *
+ *     connections = 0;
+ *
+ *     repl.start("node via stdin> ");
+ *
+ *     net.createServer(function (socket) {
+ *       connections += 1;
+ *       repl.start("node via Unix socket> ", socket);
+ *     }).listen("&#47;tmp&#47;node-repl-sock");
+ *
+ *     net.createServer(function (socket) {
+ *       connections += 1;
+ *       repl.start("node via TCP socket> ", socket);
+ *     }).listen(5001);
+ * &lt;/pre>
+ * Running this program from the command line will start a REPL on stdin.  Other
+ * REPL clients may connect through the Unix socket or TCP socket. &lt;code>telnet&lt;/code> is useful
+ * for connecting to TCP sockets, and &lt;code>socat&lt;/code> can be used to connect to both Unix and
+ * TCP sockets.
+ *
+ * By starting a REPL from a Unix socket-based server instead of stdin, you can
+ * connect to a long-running node process without restarting it.
+ * @param {string} prompt
+ * @param {string} source
+ */
+node.repl.start = function(prompt, source) {
+  return node.repl.core_.start(prompt, source);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.repl.core_ = require("repl");</pre></body></html>

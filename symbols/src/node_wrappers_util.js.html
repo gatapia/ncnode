@@ -1,167 +1,164 @@
-<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
-	.KEYW {color: #933;}
-	.COMM {color: #bbb; font-style: italic;}
-	.NUMB {color: #393;}
-	.STRN {color: #393;}
-	.REGX {color: #339;}
-	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
-	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
-<span class='line'>  2</span>  * @name node.util
-<span class='line'>  3</span>  * @namespace
-<span class='line'>  4</span>  * These functions are in the module &lt;code class="code prettyprint lang-js">'util'&lt;/code>. Use &lt;code class="code prettyprint lang-js">require('util')&lt;/code> to access
-<span class='line'>  5</span>  * them.
-<span class='line'>  6</span>  */</span><span class="WHIT">
-<span class='line'>  7</span> 
-<span class='line'>  8</span> </span><span class="NAME">goog.provide</span><span class="PUNC">(</span><span class="STRN">"node.util"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>  9</span> 
-<span class='line'> 10</span> </span><span class="COMM">/**
-<span class='line'> 11</span>  * @return {*}
-<span class='line'> 12</span>  */</span><span class="WHIT">
-<span class='line'> 13</span> </span><span class="NAME">node.util.prototype.print</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 14</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.print</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 15</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 16</span> 
-<span class='line'> 17</span> </span><span class="COMM">/**
-<span class='line'> 18</span>  * @return {*}
-<span class='line'> 19</span>  */</span><span class="WHIT">
-<span class='line'> 20</span> </span><span class="NAME">node.util.prototype.puts</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 21</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.puts</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 22</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 23</span> 
-<span class='line'> 24</span> </span><span class="COMM">/**
-<span class='line'> 25</span>  * A synchronous output function. Will block the process and
-<span class='line'> 26</span>  * output &lt;code class="code prettyprint lang-js">string&lt;/code> immediately to &lt;code class="code prettyprint lang-js">stderr&lt;/code>.
-<span class='line'> 27</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 28</span>  *     require('util').debug('message on stderr');
-<span class='line'> 29</span>  * &lt;/pre>
-<span class='line'> 30</span>  * @param {*} x
-<span class='line'> 31</span>  * @return {*}
-<span class='line'> 32</span>  */</span><span class="WHIT">
-<span class='line'> 33</span> </span><span class="NAME">node.util.prototype.debug</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.debug</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 36</span> 
-<span class='line'> 37</span> </span><span class="COMM">/**
-<span class='line'> 38</span>  * @param {*} x
-<span class='line'> 39</span>  * @return {*}
-<span class='line'> 40</span>  */</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="NAME">node.util.prototype.error</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.error</span><span class="PUNC">(</span><span class="NAME">x</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 44</span> 
-<span class='line'> 45</span> </span><span class="COMM">/**
-<span class='line'> 46</span>  * Return a string representation of &lt;code class="code prettyprint lang-js">object&lt;/code>, which is useful for debugging.
-<span class='line'> 47</span>  *
-<span class='line'> 48</span>  * If &lt;code class="code prettyprint lang-js">showHidden&lt;/code> is &lt;code class="code prettyprint lang-js">true&lt;/code>, then the object's non-enumerable properties will be
-<span class='line'> 49</span>  * shown too.
-<span class='line'> 50</span>  *
-<span class='line'> 51</span>  * If &lt;code class="code prettyprint lang-js">depth&lt;/code> is provided, it tells &lt;code class="code prettyprint lang-js">inspect&lt;/code> how many times to recurse while
-<span class='line'> 52</span>  * formatting the object. This is useful for inspecting large complicated objects.
-<span class='line'> 53</span>  *
-<span class='line'> 54</span>  * The default is to only recurse twice.  To make it recurse indefinitely, pass
-<span class='line'> 55</span>  * in &lt;code class="code prettyprint lang-js">null&lt;/code> for &lt;code class="code prettyprint lang-js">depth&lt;/code>.
-<span class='line'> 56</span>  *
-<span class='line'> 57</span>  * Example of inspecting all properties of the &lt;code class="code prettyprint lang-js">util&lt;/code> object:
-<span class='line'> 58</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 59</span>  *     var util = require('util');
-<span class='line'> 60</span>  *
-<span class='line'> 61</span>  *     console.log(util.inspect(util, true, null));
-<span class='line'> 62</span>  * &lt;/pre>
-<span class='line'> 63</span>  * @param {*} obj
-<span class='line'> 64</span>  * @param {*} showHidden
-<span class='line'> 65</span>  * @param {*} depth
-<span class='line'> 66</span>  * @param {*} colors
-<span class='line'> 67</span>  * @return {*}
-<span class='line'> 68</span>  */</span><span class="WHIT">
-<span class='line'> 69</span> </span><span class="NAME">node.util.prototype.inspect</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showHidden</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">depth</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colors</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.inspect</span><span class="PUNC">(</span><span class="NAME">obj</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">showHidden</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">depth</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">colors</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> 
-<span class='line'> 73</span> </span><span class="COMM">/**
-<span class='line'> 74</span>  * @return {*}
-<span class='line'> 75</span>  */</span><span class="WHIT">
-<span class='line'> 76</span> </span><span class="NAME">node.util.prototype.p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.p</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 79</span> 
-<span class='line'> 80</span> </span><span class="COMM">/**
-<span class='line'> 81</span>  * Output with timestamp on &lt;code class="code prettyprint lang-js">stdout&lt;/code>.
-<span class='line'> 82</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'> 83</span>  *     require('util').log('Timestmaped message.');
-<span class='line'> 84</span>  * &lt;/pre>
-<span class='line'> 85</span>  * @param {*} msg
-<span class='line'> 86</span>  * @return {*}
-<span class='line'> 87</span>  */</span><span class="WHIT">
-<span class='line'> 88</span> </span><span class="NAME">node.util.prototype.log</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 89</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.log</span><span class="PUNC">(</span><span class="NAME">msg</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 90</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 91</span> 
-<span class='line'> 92</span> </span><span class="COMM">/**
-<span class='line'> 93</span>  * @return {*}
-<span class='line'> 94</span>  */</span><span class="WHIT">
-<span class='line'> 95</span> </span><span class="NAME">node.util.prototype.exec</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 96</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.exec</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 97</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 98</span> 
-<span class='line'> 99</span> </span><span class="COMM">/**
-<span class='line'>100</span>  * Experimental
-<span class='line'>101</span>  *
-<span class='line'>102</span>  * Read the data from &lt;code class="code prettyprint lang-js">readableStream&lt;/code> and send it to the &lt;code class="code prettyprint lang-js">writableStream&lt;/code>.
-<span class='line'>103</span>  * When &lt;code class="code prettyprint lang-js">writableStream.write(data)&lt;/code> returns &lt;code class="code prettyprint lang-js">false&lt;/code> &lt;code class="code prettyprint lang-js">readableStream&lt;/code> will be
-<span class='line'>104</span>  * paused until the &lt;code class="code prettyprint lang-js">drain&lt;/code> event occurs on the &lt;code class="code prettyprint lang-js">writableStream&lt;/code>. &lt;code class="code prettyprint lang-js">callback&lt;/code> gets
-<span class='line'>105</span>  * an error as its only argument and is called when &lt;code class="code prettyprint lang-js">writableStream&lt;/code> is closed or
-<span class='line'>106</span>  * when an error occurs.
-<span class='line'>107</span>  * @param {*} readStream
-<span class='line'>108</span>  * @param {*} writeStream
-<span class='line'>109</span>  * @param {*} callback
-<span class='line'>110</span>  * @return {*}
-<span class='line'>111</span>  */</span><span class="WHIT">
-<span class='line'>112</span> </span><span class="NAME">node.util.prototype.pump</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">readStream</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">writeStream</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>113</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.pump</span><span class="PUNC">(</span><span class="NAME">readStream</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">writeStream</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">callback</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>114</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>115</span> 
-<span class='line'>116</span> </span><span class="COMM">/**
-<span class='line'>117</span>  * Inherit the prototype methods from one
-<span class='line'>118</span>  * &lt;a href="node.https:&#47;&#47;developer.mozilla.org&#47;en&#47;JavaScript&#47;Reference&#47;Global&lt;em>Objects&#47;Object&#47;constructor">constructor&lt;/a>
-<span class='line'>119</span>  * into another.  The prototype of &lt;code class="code prettyprint lang-js">constructor&lt;/code> will be set to a new
-<span class='line'>120</span>  * object created from &lt;code class="code prettyprint lang-js">superConstructor&lt;/code>.
-<span class='line'>121</span>  *
-<span class='line'>122</span>  * As an additional convenience, &lt;code class="code prettyprint lang-js">superConstructor&lt;/code> will be accessible
-<span class='line'>123</span>  * through the &lt;code class="code prettyprint lang-js">constructor.super&lt;/em>&lt;/code> property.
-<span class='line'>124</span>  * &lt;pre class="code prettyprint lang-js">
-<span class='line'>125</span>  *     var util = require("util");
-<span class='line'>126</span>  *     var events = require("events");
-<span class='line'>127</span>  *
-<span class='line'>128</span>  *     function MyStream() {
-<span class='line'>129</span>  *         events.EventEmitter.call(this);
-<span class='line'>130</span>  *     }
-<span class='line'>131</span>  *
-<span class='line'>132</span>  *     util.inherits(MyStream, events.EventEmitter);
-<span class='line'>133</span>  *
-<span class='line'>134</span>  *     MyStream.prototype.write = function(data) {
-<span class='line'>135</span>  *         this.emit("data", data);
-<span class='line'>136</span>  *     }
-<span class='line'>137</span>  *
-<span class='line'>138</span>  *     var stream = new MyStream();
-<span class='line'>139</span>  *
-<span class='line'>140</span>  *     console.log(stream instanceof events.EventEmitter); &#47;&#47; true
-<span class='line'>141</span>  *     console.log(MyStream.super_ === events.EventEmitter); &#47;&#47; true
-<span class='line'>142</span>  *
-<span class='line'>143</span>  *     stream.on("data", function(data) {
-<span class='line'>144</span>  *         console.log('Received data: "' + data + '"');
-<span class='line'>145</span>  *     })
-<span class='line'>146</span>  *     stream.write("It works!"); &#47;&#47; Received data: "It works!"
-<span class='line'>147</span>  * @param {*} ctor
-<span class='line'>148</span>  * @param {*} superCtor
-<span class='line'>149</span>  * @return {*}
-<span class='line'>150</span>  */</span><span class="WHIT">
-<span class='line'>151</span> </span><span class="NAME">node.util.prototype.inherits</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">ctor</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">superCtor</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>152</span> </span><span class="WHIT">  </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">node.util.core_.inherits</span><span class="PUNC">(</span><span class="NAME">ctor</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">superCtor</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>153</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>154</span> 
-<span class='line'>155</span> 
-<span class='line'>156</span> </span><span class="COMM">/**
-<span class='line'>157</span>  * @private
-<span class='line'>158</span>  * @type {*}
-<span class='line'>159</span>  */</span><span class="WHIT">
-<span class='line'>160</span> </span><span class="NAME">node.util.core_</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">require</span><span class="PUNC">(</span><span class="STRN">"util"</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>node_wrappers_util.js</title>
+<link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
+<link rel="stylesheet" href="../../css/all.css" media="all"></link>
+<script src="../../javascript/all.js"></script>
+<script src="../../javascript/prettify.js"></script>
+</head><body onload="prePrettyPrint();"><pre>/**
+ * @name node.util
+ * @namespace
+ * These functions are in the module &lt;code>'util'&lt;/code>. Use &lt;code>require('util')&lt;/code> to access
+ * them.
+ */
+
+goog.provide("node.util");
+
+goog.require("node.stream.Stream");
+
+/**
+ *
+ */
+node.util.print = function() {
+  return node.util.core_.print();
+};
+
+/**
+ *
+ */
+node.util.puts = function() {
+  return node.util.core_.puts();
+};
+
+/**
+ * A synchronous output function. Will block the process and
+ * output &lt;code>string&lt;/code> immediately to &lt;code>stderr&lt;/code>.
+ * &lt;pre>
+ *     require('util').debug('message on stderr');
+ * &lt;/pre>
+ * @param {string} x
+ */
+node.util.debug = function(x) {
+  return node.util.core_.debug(x);
+};
+
+/**
+ * @param {string} x
+ */
+node.util.error = function(x) {
+  return node.util.core_.error(x);
+};
+
+/**
+ * Return a string representation of &lt;code>object&lt;/code>, which is useful for debugging.
+ *
+ * If &lt;code>showHidden&lt;/code> is &lt;code>true&lt;/code>, then the object's non-enumerable properties will be
+ * shown too.
+ *
+ * If &lt;code>depth&lt;/code> is provided, it tells &lt;code>inspect&lt;/code> how many times to recurse while
+ * formatting the object. This is useful for inspecting large complicated objects.
+ *
+ * The default is to only recurse twice.  To make it recurse indefinitely, pass
+ * in &lt;code>null&lt;/code> for &lt;code>depth&lt;/code>.
+ *
+ * Example of inspecting all properties of the &lt;code>util&lt;/code> object:
+ * &lt;pre>
+ *     var util = require('util');
+ *
+ *     console.log(util.inspect(util, true, null));
+ * &lt;/pre>
+ * @param {Object} obj
+ * @param {string} showHidden
+ * @param {number} depth
+ * @param {string} colors
+ */
+node.util.inspect = function(obj, showHidden, depth, colors) {
+  return node.util.core_.inspect(obj, showHidden, depth, colors);
+};
+
+/**
+ *
+ */
+node.util.p = function() {
+  return node.util.core_.p();
+};
+
+/**
+ * Output with timestamp on &lt;code>stdout&lt;/code>.
+ * &lt;pre>
+ *     require('util').log('Timestmaped message.');
+ * &lt;/pre>
+ * @param {string} msg
+ */
+node.util.log = function(msg) {
+  return node.util.core_.log(msg);
+};
+
+/**
+ *
+ */
+node.util.exec = function() {
+  return node.util.core_.exec();
+};
+
+/**
+ * Experimental
+ *
+ * Read the data from &lt;code>readableStream&lt;/code> and send it to the &lt;code>writableStream&lt;/code>.
+ * When &lt;code>writableStream.write(data)&lt;/code> returns &lt;code>false&lt;/code> &lt;code>readableStream&lt;/code> will be
+ * paused until the &lt;code>drain&lt;/code> event occurs on the &lt;code>writableStream&lt;/code>. &lt;code>callback&lt;/code> gets
+ * an error as its only argument and is called when &lt;code>writableStream&lt;/code> is closed or
+ * when an error occurs.
+ * @param {node.stream.Stream} readStream
+ * @param {node.stream.Stream} writeStream
+ * @param {function(Error?,...[*]):undefined} callback
+ */
+node.util.pump = function(readStream, writeStream, callback) {
+  return node.util.core_.pump(readStream, writeStream, callback);
+};
+
+/**
+ * Inherit the prototype methods from one
+ * &lt;a href="node.https:&#47;&#47;developer.mozilla.org&#47;en&#47;JavaScript&#47;Reference&#47;Global&lt;em>Objects&#47;Object&#47;constructor">constructor&lt;/a>
+ * into another.  The prototype of &lt;code>constructor&lt;/code> will be set to a new
+ * object created from &lt;code>superConstructor&lt;/code>.
+ *
+ * As an additional convenience, &lt;code>superConstructor&lt;/code> will be accessible
+ * through the &lt;code>constructor.super&lt;/em>&lt;/code> property.
+ * &lt;pre>
+ *     var util = require("util");
+ *     var events = require("events");
+ *
+ *     function MyStream() {
+ *         events.EventEmitter.call(this);
+ *     }
+ *
+ *     util.inherits(MyStream, events.EventEmitter);
+ *
+ *     MyStream.prototype.write = function(data) {
+ *         this.emit("data", data);
+ *     }
+ *
+ *     var stream = new MyStream();
+ *
+ *     console.log(stream instanceof events.EventEmitter); &#47;&#47; true
+ *     console.log(MyStream.super_ === events.EventEmitter); &#47;&#47; true
+ *
+ *     stream.on("data", function(data) {
+ *         console.log('Received data: "' + data + '"');
+ *     })
+ *     stream.write("It works!"); &#47;&#47; Received data: "It works!"
+ * @param {Function} ctor
+ * @param {Function} superCtor
+ */
+node.util.inherits = function(ctor, superCtor) {
+  return node.util.core_.inherits(ctor, superCtor);
+};
+
+
+/**
+ * @private
+ * @type {*}
+ */
+node.util.core_ = require("util");</pre></body></html>
