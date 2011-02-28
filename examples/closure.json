@@ -1,0 +1,3 @@
+{
+  additionalCompileRoots:['../node_wrappers']
+}

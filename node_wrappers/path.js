@@ -46,7 +46,7 @@ goog.provide("node.path");
  *     '&#47;home&#47;myself&#47;node&#47;wwwroot&#47;static</em>files&#47;gif&#47;image.gif'
  * </pre>
  */
-node.path.prototype.resolve = function() {
+node.path.resolve = function() {
   return node.path.core_.resolve();
 };
 
@@ -65,7 +65,7 @@ node.path.prototype.resolve = function() {
  * </pre>
  * @param {string} path
  */
-node.path.prototype.normalize = function(path) {
+node.path.normalize = function(path) {
   return node.path.core_.normalize(path);
 };
 
@@ -79,7 +79,7 @@ node.path.prototype.normalize = function(path) {
  *     '&#47;foo&#47;bar&#47;baz&#47;asdf'
  * </pre>
  */
-node.path.prototype.join = function() {
+node.path.join = function() {
   return node.path.core_.join();
 };
 
@@ -94,7 +94,7 @@ node.path.prototype.join = function() {
  * </pre>
  * @param {string} path
  */
-node.path.prototype.dirname = function(path) {
+node.path.dirname = function(path) {
   return node.path.core_.dirname(path);
 };
 
@@ -114,7 +114,7 @@ node.path.prototype.dirname = function(path) {
  * @param {string} path
  * @param {string} ext
  */
-node.path.prototype.basename = function(path, ext) {
+node.path.basename = function(path, ext) {
   return node.path.core_.basename(path, ext);
 };
 
@@ -133,7 +133,7 @@ node.path.prototype.basename = function(path, ext) {
  * </pre>
  * @param {string} path
  */
-node.path.prototype.extname = function(path) {
+node.path.extname = function(path) {
   return node.path.core_.extname(path);
 };
 
@@ -145,16 +145,16 @@ node.path.prototype.extname = function(path) {
  *       util.debug(exists ? "it's there" : "no passwd!");
  *     });
  * @param {string} path
- * @param {function(Error=,...*):undefined} callback
+ * @param {function(Error?,...[*]):undefined} callback
  */
-node.path.prototype.exists = function(path, callback) {
+node.path.exists = function(path, callback) {
   return node.path.core_.exists(path, callback);
 };
 
 /**
  * @param {string} path
  */
-node.path.prototype.existsSync = function(path) {
+node.path.existsSync = function(path) {
   return node.path.core_.existsSync(path);
 };
 

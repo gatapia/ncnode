@@ -53,7 +53,7 @@ goog.provide("node.url");
  * @param {string} parseQueryString
  * @param {string} slashesDenoteHost
  */
-node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
+node.url.parse = function(url, parseQueryString, slashesDenoteHost) {
   return node.url.core_.parse(url, parseQueryString, slashesDenoteHost);
 };
 
@@ -62,7 +62,7 @@ node.url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
  * @param {string} source
  * @param {string} relative
  */
-node.url.prototype.resolve = function(source, relative) {
+node.url.resolve = function(source, relative) {
   return node.url.core_.resolve(source, relative);
 };
 
@@ -70,7 +70,7 @@ node.url.prototype.resolve = function(source, relative) {
  * @param {string} source
  * @param {string} relative
  */
-node.url.prototype.resolveObject = function(source, relative) {
+node.url.resolveObject = function(source, relative) {
   return node.url.core_.resolveObject(source, relative);
 };
 
@@ -78,7 +78,7 @@ node.url.prototype.resolveObject = function(source, relative) {
  * Take a parsed URL object, and return a formatted URL string.
  * @param {Object} obj
  */
-node.url.prototype.format = function(obj) {
+node.url.format = function(obj) {
   return node.url.core_.format(obj);
 };
 

@@ -1,9 +1,10 @@
-/**
- * @name node.crypto.Verify
- * @namespace
- */
 
 goog.provide("node.crypto.Verify");
+
+/**
+ * @constructor
+ */
+node.crypto.Verify = function() {};
 
 
 /**

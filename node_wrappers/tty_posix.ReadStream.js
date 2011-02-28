@@ -1,9 +1,10 @@
-/**
- * @name node.tty_posix.ReadStream
- * @namespace
- */
 
 goog.provide("node.tty_posix.ReadStream");
+
+/**
+ * @constructor
+ */
+node.tty_posix.ReadStream = function() {};
 
 
 /**

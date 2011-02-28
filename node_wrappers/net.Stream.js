@@ -1,9 +1,10 @@
-/**
- * @name node.net.Stream
- * @namespace
- */
 
 goog.provide("node.net.Stream");
+
+/**
+ * @constructor
+ */
+node.net.Stream = function() {};
 
 
 /**

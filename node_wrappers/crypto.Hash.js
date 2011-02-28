@@ -1,9 +1,10 @@
-/**
- * @name node.crypto.Hash
- * @namespace
- */
 
 goog.provide("node.crypto.Hash");
+
+/**
+ * @constructor
+ */
+node.crypto.Hash = function() {};
 
 
 /**

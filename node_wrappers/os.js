@@ -9,35 +9,35 @@ goog.provide("node.os");
 /**
  * Returns the hostname of the operating system.
  */
-node.os.prototype.hostname = function() {
+node.os.hostname = function() {
   return node.os.core_.hostname();
 };
 
 /**
  * Returns an array containing the 1, 5, and 15 minute load averages.
  */
-node.os.prototype.loadavg = function() {
+node.os.loadavg = function() {
   return node.os.core_.loadavg();
 };
 
 /**
  * Returns the system uptime in seconds.
  */
-node.os.prototype.uptime = function() {
+node.os.uptime = function() {
   return node.os.core_.uptime();
 };
 
 /**
  * Returns the amount of free system memory in bytes.
  */
-node.os.prototype.freemem = function() {
+node.os.freemem = function() {
   return node.os.core_.freemem();
 };
 
 /**
  * Returns the total amount of system memory in bytes.
  */
-node.os.prototype.totalmem = function() {
+node.os.totalmem = function() {
   return node.os.core_.totalmem();
 };
 
@@ -111,21 +111,21 @@ node.os.prototype.totalmem = function() {
  *            idle: 1072572010,
  *            irq: 30 } } ]
  */
-node.os.prototype.cpus = function() {
+node.os.cpus = function() {
   return node.os.core_.cpus();
 };
 
 /**
  * Returns the operating system name.
  */
-node.os.prototype.type = function() {
+node.os.type = function() {
   return node.os.core_.type();
 };
 
 /**
  * Returns the operating system release.
  */
-node.os.prototype.release = function() {
+node.os.release = function() {
   return node.os.core_.release();
 };
 

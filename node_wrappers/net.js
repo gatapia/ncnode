@@ -24,21 +24,21 @@ goog.provide("node.net");
  *
  * Returns true if input is a version 6 IP address, otherwise returns false.
  */
-node.net.prototype.isIP = function() {
+node.net.isIP = function() {
   return node.net.core_.isIP();
 };
 
 /**
  * @param {string} input
  */
-node.net.prototype.isIPv4 = function(input) {
+node.net.isIPv4 = function(input) {
   return node.net.core_.isIPv4(input);
 };
 
 /**
  * @param {string} input
  */
-node.net.prototype.isIPv6 = function(input) {
+node.net.isIPv6 = function(input) {
   return node.net.core_.isIPv6(input);
 };
 
@@ -61,7 +61,7 @@ node.net.prototype.isIPv6 = function(input) {
  * @param {string} port
  * @param {string} host
  */
-node.net.prototype.createConnection = function(port, host) {
+node.net.createConnection = function(port, host) {
   return node.net.core_.createConnection(port, host);
 };
 
@@ -69,7 +69,7 @@ node.net.prototype.createConnection = function(port, host) {
  * Creates a new TCP server. The <code>connectionListener</code> argument is
  * automatically set as a listener for the <code>'connection'</code> event.
  */
-node.net.prototype.createServer = function() {
+node.net.createServer = function() {
   return node.net.core_.createServer();
 };
 

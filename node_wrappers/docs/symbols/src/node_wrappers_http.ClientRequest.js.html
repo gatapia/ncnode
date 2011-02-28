@@ -6,9 +6,10 @@
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
-</head><body onload="prePrettyPrint();"><pre>/**
- * @name node.http.ClientRequest
- * @namespace
+</head><body onload="prePrettyPrint();"><pre>
+goog.provide("node.http.ClientRequest");
+
+/**
  * This object is created internally and returned from &lt;code>http.request()&lt;/code>.  It
  * represents an &lt;em>in-progress&lt;/em> request whose header has already been sent.
  *
@@ -44,9 +45,9 @@
  * This is a &lt;code>Writable Stream&lt;/code>.
  *
  * This is an &lt;code>EventEmitter&lt;/code> with the following events:
+ * @constructor
  */
-
-goog.provide("node.http.ClientRequest");
+node.http.ClientRequest = function() {};
 
 
 /**

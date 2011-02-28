@@ -37,7 +37,7 @@ goog.provide("node.repl");
  * @param {number} depth
  * @param {string} colors
  */
-node.repl.prototype.writer = function(obj, showHidden, depth, colors) {
+node.repl.writer = function(obj, showHidden, depth, colors) {
   return node.repl.core_.writer(obj, showHidden, depth, colors);
 };
 
@@ -78,7 +78,7 @@ node.repl.prototype.writer = function(obj, showHidden, depth, colors) {
  * @param {string} prompt
  * @param {string} source
  */
-node.repl.prototype.start = function(prompt, source) {
+node.repl.start = function(prompt, source) {
   return node.repl.core_.start(prompt, source);
 };
 

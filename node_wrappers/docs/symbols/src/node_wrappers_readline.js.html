@@ -18,7 +18,7 @@ goog.provide("node.readline");
  * @param {string} output
  * @param {string} completer
  */
-node.readline.prototype.createInterface = function(input, output, completer) {
+node.readline.createInterface = function(input, output, completer) {
   return node.readline.core_.createInterface(input, output, completer);
 };
 

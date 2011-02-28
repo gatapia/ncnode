@@ -1,14 +1,15 @@
-/**
- * @name node.buffer.Buffer
- * @namespace
- */
 
 goog.provide("node.buffer.Buffer");
 
 /**
- * @type {number}
+ * @constructor
  */
-node.buffer.Buffer.prototype.poolSize;
+node.buffer.Buffer = function() {};
+
+/**
+ * @type {number|null}
+ */
+node.buffer.Buffer.prototype.poolSize = null;
 
 /**
  * @param {string} b

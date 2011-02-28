@@ -1,6 +1,7 @@
+
+goog.provide("node.fs.Stats");
+
 /**
- * @name node.fs.Stats
- * @namespace
  * Objects returned from <code>fs.stat()</code> and <code>fs.lstat()</code> are of this type.
  *
  *  - <code>stats.isFile()</code>
@@ -10,9 +11,9 @@
  *  - <code>stats.isSymbolicLink()</code> (only valid with  <code>fs.lstat()</code>)
  *  - <code>stats.isFIFO()</code>
  *  - <code>stats.isSocket()</code>
+ * @constructor
  */
-
-goog.provide("node.fs.Stats");
+node.fs.Stats = function() {};
 
 
 /**

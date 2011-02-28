@@ -7,17 +7,19 @@
 
 goog.provide("node.util");
 
+goog.require("node.stream.Stream");
+
 /**
  *
  */
-node.util.prototype.print = function() {
+node.util.print = function() {
   return node.util.core_.print();
 };
 
 /**
  *
  */
-node.util.prototype.puts = function() {
+node.util.puts = function() {
   return node.util.core_.puts();
 };
 
@@ -29,14 +31,14 @@ node.util.prototype.puts = function() {
  * </pre>
  * @param {string} x
  */
-node.util.prototype.debug = function(x) {
+node.util.debug = function(x) {
   return node.util.core_.debug(x);
 };
 
 /**
  * @param {string} x
  */
-node.util.prototype.error = function(x) {
+node.util.error = function(x) {
   return node.util.core_.error(x);
 };
 
@@ -63,14 +65,14 @@ node.util.prototype.error = function(x) {
  * @param {number} depth
  * @param {string} colors
  */
-node.util.prototype.inspect = function(obj, showHidden, depth, colors) {
+node.util.inspect = function(obj, showHidden, depth, colors) {
   return node.util.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
  *
  */
-node.util.prototype.p = function() {
+node.util.p = function() {
   return node.util.core_.p();
 };
 
@@ -81,14 +83,14 @@ node.util.prototype.p = function() {
  * </pre>
  * @param {string} msg
  */
-node.util.prototype.log = function(msg) {
+node.util.log = function(msg) {
   return node.util.core_.log(msg);
 };
 
 /**
  *
  */
-node.util.prototype.exec = function() {
+node.util.exec = function() {
   return node.util.core_.exec();
 };
 
@@ -102,9 +104,9 @@ node.util.prototype.exec = function() {
  * when an error occurs.
  * @param {node.stream.Stream} readStream
  * @param {node.stream.Stream} writeStream
- * @param {function(Error=,...*):undefined} callback
+ * @param {function(Error?,...[*]):undefined} callback
  */
-node.util.prototype.pump = function(readStream, writeStream, callback) {
+node.util.pump = function(readStream, writeStream, callback) {
   return node.util.core_.pump(readStream, writeStream, callback);
 };
 
@@ -142,7 +144,7 @@ node.util.prototype.pump = function(readStream, writeStream, callback) {
  * @param {Function} ctor
  * @param {Function} superCtor
  */
-node.util.prototype.inherits = function(ctor, superCtor) {
+node.util.inherits = function(ctor, superCtor) {
   return node.util.core_.inherits(ctor, superCtor);
 };
 

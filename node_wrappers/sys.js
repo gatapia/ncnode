@@ -5,31 +5,33 @@
 
 goog.provide("node.sys");
 
+goog.require("node.stream.Stream");
+
 /**
  *
  */
-node.sys.prototype.print = function() {
+node.sys.print = function() {
   return node.sys.core_.print();
 };
 
 /**
  *
  */
-node.sys.prototype.puts = function() {
+node.sys.puts = function() {
   return node.sys.core_.puts();
 };
 
 /**
  * @param {string} x
  */
-node.sys.prototype.debug = function(x) {
+node.sys.debug = function(x) {
   return node.sys.core_.debug(x);
 };
 
 /**
  * @param {string} x
  */
-node.sys.prototype.error = function(x) {
+node.sys.error = function(x) {
   return node.sys.core_.error(x);
 };
 
@@ -39,37 +41,37 @@ node.sys.prototype.error = function(x) {
  * @param {number} depth
  * @param {string} colors
  */
-node.sys.prototype.inspect = function(obj, showHidden, depth, colors) {
+node.sys.inspect = function(obj, showHidden, depth, colors) {
   return node.sys.core_.inspect(obj, showHidden, depth, colors);
 };
 
 /**
  *
  */
-node.sys.prototype.p = function() {
+node.sys.p = function() {
   return node.sys.core_.p();
 };
 
 /**
  * @param {string} msg
  */
-node.sys.prototype.log = function(msg) {
+node.sys.log = function(msg) {
   return node.sys.core_.log(msg);
 };
 
 /**
  *
  */
-node.sys.prototype.exec = function() {
+node.sys.exec = function() {
   return node.sys.core_.exec();
 };
 
 /**
  * @param {node.stream.Stream} readStream
  * @param {node.stream.Stream} writeStream
- * @param {function(Error=,...*):undefined} callback
+ * @param {function(Error?,...[*]):undefined} callback
  */
-node.sys.prototype.pump = function(readStream, writeStream, callback) {
+node.sys.pump = function(readStream, writeStream, callback) {
   return node.sys.core_.pump(readStream, writeStream, callback);
 };
 
@@ -77,7 +79,7 @@ node.sys.prototype.pump = function(readStream, writeStream, callback) {
  * @param {Function} ctor
  * @param {Function} superCtor
  */
-node.sys.prototype.inherits = function(ctor, superCtor) {
+node.sys.inherits = function(ctor, superCtor) {
   return node.sys.core_.inherits(ctor, superCtor);
 };
 

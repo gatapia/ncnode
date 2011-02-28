@@ -15,7 +15,7 @@ goog.provide("node.assert");
  * @param {function(*,*):boolean} operator
  * @param {string} stackStartFunction
  */
-node.assert.prototype.fail = function(actual, expected, message, operator, stackStartFunction) {
+node.assert.fail = function(actual, expected, message, operator, stackStartFunction) {
   return node.assert.core_.fail(actual, expected, message, operator, stackStartFunction);
 };
 
@@ -24,7 +24,7 @@ node.assert.prototype.fail = function(actual, expected, message, operator, stack
  * @param {string} value
  * @param {string} message
  */
-node.assert.prototype.ok = function(value, message) {
+node.assert.ok = function(value, message) {
   return node.assert.core_.ok(value, message);
 };
 
@@ -34,7 +34,7 @@ node.assert.prototype.ok = function(value, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.equal = function(actual, expected, message) {
+node.assert.equal = function(actual, expected, message) {
   return node.assert.core_.equal(actual, expected, message);
 };
 
@@ -44,7 +44,7 @@ node.assert.prototype.equal = function(actual, expected, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.notEqual = function(actual, expected, message) {
+node.assert.notEqual = function(actual, expected, message) {
   return node.assert.core_.notEqual(actual, expected, message);
 };
 
@@ -54,7 +54,7 @@ node.assert.prototype.notEqual = function(actual, expected, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.deepEqual = function(actual, expected, message) {
+node.assert.deepEqual = function(actual, expected, message) {
   return node.assert.core_.deepEqual(actual, expected, message);
 };
 
@@ -64,7 +64,7 @@ node.assert.prototype.deepEqual = function(actual, expected, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.notDeepEqual = function(actual, expected, message) {
+node.assert.notDeepEqual = function(actual, expected, message) {
   return node.assert.core_.notDeepEqual(actual, expected, message);
 };
 
@@ -74,7 +74,7 @@ node.assert.prototype.notDeepEqual = function(actual, expected, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.strictEqual = function(actual, expected, message) {
+node.assert.strictEqual = function(actual, expected, message) {
   return node.assert.core_.strictEqual(actual, expected, message);
 };
 
@@ -84,52 +84,8 @@ node.assert.prototype.strictEqual = function(actual, expected, message) {
  * @param {*} expected
  * @param {string} message
  */
-node.assert.prototype.notStrictEqual = function(actual, expected, message) {
+node.assert.notStrictEqual = function(actual, expected, message) {
   return node.assert.core_.notStrictEqual(actual, expected, message);
-};
-
-/**
- * Expects <code>block</code> to throw an error. <code>error</code> can be constructor, regexp or
- * validation function.
- *
- * Validate instanceof using constructor:
- * <pre>
- *     assert.throws(
- *       function() {
- *         throw new Error("Wrong value");
- *       },
- *       Error
- *     );
- * </pre>
- * Validate error message using RegExp:
- * <pre>
- *     assert.throws(
- *       function() {
- *         throw new Error("Wrong value");
- *       },
- *       &#47;value&#47;
- *     );
- * </pre>
- * Custom error validation:
- * <pre>
- *     assert.throws(
- *       function() {
- *         throw new Error("Wrong value");
- *       },
- *       function(err) {
- *         if ( (err instanceof Error) && &#47;value&#47;.test(err) ) {
- *           return true;
- *         }
- *       },
- *       "unexpected error"
- *     );
- * </pre>
- * @param {string} block
- * @param {string=} error
- * @param {string=} message
- */
-node.assert.prototype.throws = function(block, error, message) {
-  return node.assert.core_.throws(block, error, message);
 };
 
 /**
@@ -138,7 +94,7 @@ node.assert.prototype.throws = function(block, error, message) {
  * @param {string=} error
  * @param {string=} message
  */
-node.assert.prototype.doesNotThrow = function(block, error, message) {
+node.assert.doesNotThrow = function(block, error, message) {
   return node.assert.core_.doesNotThrow(block, error, message);
 };
 
@@ -147,7 +103,7 @@ node.assert.prototype.doesNotThrow = function(block, error, message) {
  * testing the first argument, <code>error</code> in callbacks.
  * @param {Error} err
  */
-node.assert.prototype.ifError = function(err) {
+node.assert.ifError = function(err) {
   return node.assert.core_.ifError(err);
 };
 

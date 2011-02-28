@@ -1,9 +1,10 @@
-/**
- * @name node.dgram.Socket
- * @namespace
- */
 
 goog.provide("node.dgram.Socket");
+
+/**
+ * @constructor
+ */
+node.dgram.Socket = function() {};
 
 
 /**

@@ -31,7 +31,7 @@ goog.provide("node.crypto");
  * &lt;http:&#47;&#47;mxr.mozilla.org&#47;mozilla&#47;source&#47;security&#47;nss&#47;lib&#47;ckfw&#47;builtins&#47;certdata.txt>.
  * @param {Object} options
  */
-node.crypto.prototype.createCredentials = function(options) {
+node.crypto.createCredentials = function(options) {
   return node.crypto.core_.createCredentials(options);
 };
 
@@ -44,7 +44,7 @@ node.crypto.prototype.createCredentials = function(options) {
  * On recent releases, &lt;code>openssl list-message-digest-algorithms&lt;/code> will display the available digest algorithms.
  * @param {string} hash
  */
-node.crypto.prototype.createHash = function(hash) {
+node.crypto.createHash = function(hash) {
   return node.crypto.core_.createHash(hash);
 };
 
@@ -56,7 +56,7 @@ node.crypto.prototype.createHash = function(hash) {
  * @param {string} hmac
  * @param {string} key
  */
-node.crypto.prototype.createHmac = function(hmac, key) {
+node.crypto.createHmac = function(hmac, key) {
   return node.crypto.core_.createHmac(hmac, key);
 };
 
@@ -68,7 +68,7 @@ node.crypto.prototype.createHmac = function(hmac, key) {
  * @param {string} cipher
  * @param {string} key
  */
-node.crypto.prototype.createCipher = function(cipher, key) {
+node.crypto.createCipher = function(cipher, key) {
   return node.crypto.core_.createCipher(cipher, key);
 };
 
@@ -77,7 +77,7 @@ node.crypto.prototype.createCipher = function(cipher, key) {
  * @param {string} key
  * @param {string} iv
  */
-node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
+node.crypto.createCipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createCipheriv(cipher, key, iv);
 };
 
@@ -87,7 +87,7 @@ node.crypto.prototype.createCipheriv = function(cipher, key, iv) {
  * @param {string} cipher
  * @param {string} key
  */
-node.crypto.prototype.createDecipher = function(cipher, key) {
+node.crypto.createDecipher = function(cipher, key) {
   return node.crypto.core_.createDecipher(cipher, key);
 };
 
@@ -96,7 +96,7 @@ node.crypto.prototype.createDecipher = function(cipher, key) {
  * @param {string} key
  * @param {string} iv
  */
-node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
+node.crypto.createDecipheriv = function(cipher, key, iv) {
   return node.crypto.core_.createDecipheriv(cipher, key, iv);
 };
 
@@ -106,7 +106,7 @@ node.crypto.prototype.createDecipheriv = function(cipher, key, iv) {
  * the available signing algorithms. Examples are &lt;code>'RSA-SHA256'&lt;/code>.
  * @param {string} algorithm
  */
-node.crypto.prototype.createSign = function(algorithm) {
+node.crypto.createSign = function(algorithm) {
   return node.crypto.core_.createSign(algorithm);
 };
 
@@ -115,7 +115,7 @@ node.crypto.prototype.createSign = function(algorithm) {
  * This is the mirror of the signing object above.
  * @param {string} algorithm
  */
-node.crypto.prototype.createVerify = function(algorithm) {
+node.crypto.createVerify = function(algorithm) {
   return node.crypto.core_.createVerify(algorithm);
 };
 

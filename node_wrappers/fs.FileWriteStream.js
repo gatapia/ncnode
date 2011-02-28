@@ -1,9 +1,10 @@
-/**
- * @name node.fs.FileWriteStream
- * @namespace
- */
 
 goog.provide("node.fs.FileWriteStream");
+
+/**
+ * @constructor
+ */
+node.fs.FileWriteStream = function() {};
 
 
 /**

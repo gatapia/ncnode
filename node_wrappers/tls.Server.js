@@ -1,9 +1,10 @@
-/**
- * @name node.tls.Server
- * @namespace
- */
 
 goog.provide("node.tls.Server");
+
+/**
+ * @constructor
+ */
+node.tls.Server = function() {};
 
 
 /**

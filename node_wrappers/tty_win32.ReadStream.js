@@ -1,9 +1,10 @@
-/**
- * @name node.tty_win32.ReadStream
- * @namespace
- */
 
 goog.provide("node.tty_win32.ReadStream");
+
+/**
+ * @constructor
+ */
+node.tty_win32.ReadStream = function() {};
 
 
 /**

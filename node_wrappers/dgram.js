@@ -15,7 +15,7 @@ goog.provide("node.dgram");
  * @param {string} type
  * @param {string} listener
  */
-node.dgram.prototype.createSocket = function(type, listener) {
+node.dgram.createSocket = function(type, listener) {
   return node.dgram.core_.createSocket(type, listener);
 };
 

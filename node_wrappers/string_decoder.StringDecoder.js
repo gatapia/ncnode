@@ -1,9 +1,10 @@
-/**
- * @name node.string_decoder.StringDecoder
- * @namespace
- */
 
 goog.provide("node.string_decoder.StringDecoder");
+
+/**
+ * @constructor
+ */
+node.string_decoder.StringDecoder = function() {};
 
 
 /**

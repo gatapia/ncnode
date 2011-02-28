@@ -27,19 +27,19 @@
 goog.provide("node.http");
 
 /**
- * @type {string}
+ * @type {string|null}
  */
-node.http.prototype.parsers;
+node.http.parsers = null;
 
 /**
- * @type {string}
+ * @type {string|null}
  */
-node.http.prototype.STATUS_CODES;
+node.http.STATUS_CODES = null;
 
 /**
  * @param {string} requestListener
  */
-node.http.prototype.createServer = function(requestListener) {
+node.http.createServer = function(requestListener) {
   return node.http.core_.createServer(requestListener);
 };
 
@@ -47,7 +47,7 @@ node.http.prototype.createServer = function(requestListener) {
  * @param {string} host
  * @param {string} port
  */
-node.http.prototype.getAgent = function(host, port) {
+node.http.getAgent = function(host, port) {
   return node.http.core_.getAgent(host, port);
 };
 
@@ -55,7 +55,7 @@ node.http.prototype.getAgent = function(host, port) {
  * @param {Object} options
  * @param {string} cb
  */
-node.http.prototype.request = function(options, cb) {
+node.http.request = function(options, cb) {
   return node.http.core_.request(options, cb);
 };
 
@@ -63,7 +63,7 @@ node.http.prototype.request = function(options, cb) {
  * @param {Object} options
  * @param {string} cb
  */
-node.http.prototype.get = function(options, cb) {
+node.http.get = function(options, cb) {
   return node.http.core_.get(options, cb);
 };
 
@@ -71,7 +71,7 @@ node.http.prototype.get = function(options, cb) {
  * @param {string} port
  * @param {string} host
  */
-node.http.prototype.createClient = function(port, host) {
+node.http.createClient = function(port, host) {
   return node.http.core_.createClient(port, host);
 };
 
@@ -80,7 +80,7 @@ node.http.prototype.createClient = function(port, host) {
  * @param {string} encoding_
  * @param {string} headers_
  */
-node.http.prototype.cat = function(url, encoding_, headers_) {
+node.http.cat = function(url, encoding_, headers_) {
   return node.http.core_.cat(url, encoding_, headers_);
 };
 

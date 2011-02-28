@@ -16,63 +16,63 @@ goog.provide("node.console");
 /**
  *
  */
-node.console.prototype.log = function() {
+node.console.log = function() {
   return node.console.core_.log();
 };
 
 /**
  *
  */
-node.console.prototype.info = function() {
+node.console.info = function() {
   return node.console.core_.info();
 };
 
 /**
  *
  */
-node.console.prototype.warn = function() {
+node.console.warn = function() {
   return node.console.core_.warn();
 };
 
 /**
  *
  */
-node.console.prototype.error = function() {
+node.console.error = function() {
   return node.console.core_.error();
 };
 
 /**
  * @param {string} object
  */
-node.console.prototype.dir = function(object) {
+node.console.dir = function(object) {
   return node.console.core_.dir(object);
 };
 
 /**
  * @param {string} label
  */
-node.console.prototype.time = function(label) {
+node.console.time = function(label) {
   return node.console.core_.time(label);
 };
 
 /**
  * @param {string} label
  */
-node.console.prototype.timeEnd = function(label) {
+node.console.timeEnd = function(label) {
   return node.console.core_.timeEnd(label);
 };
 
 /**
  * @param {string} label
  */
-node.console.prototype.trace = function(label) {
+node.console.trace = function(label) {
   return node.console.core_.trace(label);
 };
 
 /**
  * @param {string} expression
  */
-node.console.prototype.assert = function(expression) {
+node.console.assert = function(expression) {
   return node.console.core_.assert(expression);
 };
 

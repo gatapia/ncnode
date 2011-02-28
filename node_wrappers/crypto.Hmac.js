@@ -1,9 +1,10 @@
-/**
- * @name node.crypto.Hmac
- * @namespace
- */
 
 goog.provide("node.crypto.Hmac");
+
+/**
+ * @constructor
+ */
+node.crypto.Hmac = function() {};
 
 
 /**

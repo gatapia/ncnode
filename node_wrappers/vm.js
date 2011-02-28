@@ -23,21 +23,21 @@ goog.provide("node.vm");
  * @param {string} ctx
  * @param {string} name
  */
-node.vm.prototype.createScript = function(code, ctx, name) {
+node.vm.createScript = function(code, ctx, name) {
   return node.vm.core_.createScript(code, ctx, name);
 };
 
 /**
  *
  */
-node.vm.prototype.createContext = function() {
+node.vm.createContext = function() {
   return node.vm.core_.createContext();
 };
 
 /**
  *
  */
-node.vm.prototype.runInContext = function() {
+node.vm.runInContext = function() {
   return node.vm.core_.runInContext();
 };
 
@@ -64,7 +64,7 @@ node.vm.prototype.runInContext = function() {
  *     &#47;&#47; 1000
  * </pre>
  */
-node.vm.prototype.runInThisContext = function() {
+node.vm.runInThisContext = function() {
   return node.vm.core_.runInThisContext();
 };
 
@@ -97,7 +97,7 @@ node.vm.prototype.runInThisContext = function() {
  * global variable leakage, <code>script.runInNewContext</code> is quite useful, but safely running untrusted code
  * requires a separate process.
  */
-node.vm.prototype.runInNewContext = function() {
+node.vm.runInNewContext = function() {
   return node.vm.core_.runInNewContext();
 };
 

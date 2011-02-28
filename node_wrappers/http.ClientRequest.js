@@ -1,6 +1,7 @@
+
+goog.provide("node.http.ClientRequest");
+
 /**
- * @name node.http.ClientRequest
- * @namespace
  * This object is created internally and returned from <code>http.request()</code>.  It
  * represents an <em>in-progress</em> request whose header has already been sent.
  *
@@ -36,9 +37,9 @@
  * This is a <code>Writable Stream</code>.
  *
  * This is an <code>EventEmitter</code> with the following events:
+ * @constructor
  */
-
-goog.provide("node.http.ClientRequest");
+node.http.ClientRequest = function() {};
 
 
 /**

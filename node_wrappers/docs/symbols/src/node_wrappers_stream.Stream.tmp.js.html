@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>node_wrappers_process.EventEmitter.js</title>
+<title>node_wrappers_stream.Stream.tmp.js</title>
 <link rel="stylesheet" href="../../css/prettify_wynn.css" media="all"></link>
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
-</head><body onload="prePrettyPrint();"><pre>/**
- * @name node.process.EventEmitter
- * @namespace
- */
+</head><body onload="prePrettyPrint();"><pre>
+goog.provide("node.stream.Stream");
 
-goog.provide("node.process.EventEmitter");
+/**
+ * @constructor
+ */
+node.stream.Stream = function() {};
 
 
 /**
  * @private
  * @type {*}
  */
-node.process.EventEmitter.core_ = process.EventEmitter;</pre></body></html>
+node.stream.Stream.core_ = require("stream").Stream;</pre></body></html>

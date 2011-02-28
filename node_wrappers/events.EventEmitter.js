@@ -1,9 +1,10 @@
-/**
- * @name node.events.EventEmitter
- * @namespace
- */
 
 goog.provide("node.events.EventEmitter");
+
+/**
+ * @constructor
+ */
+node.events.EventEmitter = function() {};
 
 
 /**

@@ -6,14 +6,15 @@
 <link rel="stylesheet" href="../../css/all.css" media="all"></link>
 <script src="../../javascript/all.js"></script>
 <script src="../../javascript/prettify.js"></script>
-</head><body onload="prePrettyPrint();"><pre>/**
- * @name node.http.ServerResponse
- * @namespace
+</head><body onload="prePrettyPrint();"><pre>
+goog.provide("node.http.ServerResponse");
+
+/**
  * This object is created internally by a HTTP server--not by the user. It is
  * passed as the second parameter to the &lt;code>'request'&lt;/code> event. It is a &lt;code>Writable Stream&lt;/code>.
+ * @constructor
  */
-
-goog.provide("node.http.ServerResponse");
+node.http.ServerResponse = function() {};
 
 
 /**

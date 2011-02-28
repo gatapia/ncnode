@@ -1,9 +1,10 @@
-/**
- * @name node.net.Socket
- * @namespace
- */
 
 goog.provide("node.net.Socket");
+
+/**
+ * @constructor
+ */
+node.net.Socket = function() {};
 
 
 /**

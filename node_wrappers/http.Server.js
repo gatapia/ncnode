@@ -1,10 +1,11 @@
-/**
- * @name node.http.Server
- * @namespace
- * This is an <code>EventEmitter</code> with the following events:
- */
 
 goog.provide("node.http.Server");
+
+/**
+ * This is an <code>EventEmitter</code> with the following events:
+ * @constructor
+ */
+node.http.Server = function() {};
 
 
 /**

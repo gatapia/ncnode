@@ -1,10 +1,11 @@
-/**
- * @name node.fs.ReadStream
- * @namespace
- * <code>ReadStream</code> is a <code>Readable Stream</code>.
- */
 
 goog.provide("node.fs.ReadStream");
+
+/**
+ * <code>ReadStream</code> is a <code>Readable Stream</code>.
+ * @constructor
+ */
+node.fs.ReadStream = function() {};
 
 
 /**

@@ -1,9 +1,10 @@
-/**
- * @name node.tty_posix.WriteStream
- * @namespace
- */
 
 goog.provide("node.tty_posix.WriteStream");
+
+/**
+ * @constructor
+ */
+node.tty_posix.WriteStream = function() {};
 
 
 /**

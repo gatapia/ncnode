@@ -1,9 +1,10 @@
-/**
- * @name node.fs.FileReadStream
- * @namespace
- */
 
 goog.provide("node.fs.FileReadStream");
+
+/**
+ * @constructor
+ */
+node.fs.FileReadStream = function() {};
 
 
 /**

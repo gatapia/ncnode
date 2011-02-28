@@ -1,9 +1,10 @@
-/**
- * @name node.crypto.Credentials
- * @namespace
- */
 
 goog.provide("node.crypto.Credentials");
+
+/**
+ * @constructor
+ */
+node.crypto.Credentials = function() {};
 
 
 /**

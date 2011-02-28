@@ -1,9 +1,10 @@
-/**
- * @name node.http.Client
- * @namespace
- */
 
 goog.provide("node.http.Client");
+
+/**
+ * @constructor
+ */
+node.http.Client = function() {};
 
 
 /**
