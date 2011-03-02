@@ -1,0 +1,15 @@
+{
+  "name": "ncnode",
+  "description": "NClosure wrappers for the Node.js core libs",
+  "author": "Guido Tapia <guido@tapia.com.au>",
+  "url":"https://github.com/gatapia/ncnode",
+  "directories": {
+    "lib": "./node_wrappers",
+  },
+  "version": "0.0.1",
+  "engines": { "node": ">=0.3.0-pre" },
+  "repository": { "type": "git",
+                 "url" : "git://github.com/gatapia/ncnode.git" },
+  "licenses": [ { "type": "The MIT License",
+                 "url": "http://www.opensource.org/licenses/mit-license.php" } ]
+}
