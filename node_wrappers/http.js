@@ -26,6 +26,10 @@
 
 goog.provide("node.http");
 
+goog.require("node.http.ClientRequest");
+goog.require("node.http.ServerResponse");
+goog.require("node.http.Server");
+
 /**
  * @type {string|null}
  */
@@ -37,7 +41,8 @@ node.http.parsers = null;
 node.http.STATUS_CODES = null;
 
 /**
- * @param {string} requestListener
+ * @param {function(node.http.ClientRequest,node.http.ServerResponse):undefined} requestListener
+ * @return {node.http.Server}
  */
 node.http.createServer = function(requestListener) {
   return node.http.core_.createServer(requestListener);

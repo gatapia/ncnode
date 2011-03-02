@@ -6,6 +6,11 @@ goog.provide("node.crypto.Credentials");
  */
 node.crypto.Credentials = function() {};
 
+/**
+ * @type {string|null}
+ */
+node.crypto.Credentials.prototype.context = null;
+
 
 /**
  * @private
