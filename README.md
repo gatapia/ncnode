@@ -1,10 +1,10 @@
 # ncnode
 
-## Overview
-This project is still in the 'do not use, crazy thoughts being flung around
-the room' stage.
+# NOTE: This project has been merged into the [NClosure](http://gatapia.github.com/nclosure/) project to give all
+NClosure users access to the Node core libs through a type safe API.
 
-For a demo of what nclosure can do see the generated docs for the [node core libraries](http://gatapia.github.com/ncnode/).
+## Overview
+For a demo of what nclosure can do see the generated docs for the [node core libraries](http://gatapia.github.com/nclosure/node/index.html).
 
 ## Goal
 To generate wrappers for the Node.js core libs that are fully closure annotated
